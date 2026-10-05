@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# Preserve the exact downloaded bytes used by SHA-256 provenance checks.
+/separation/src/music_analyzer/vendor/msst/* -text
+/separation/configs/models/*.upstream.yaml -text

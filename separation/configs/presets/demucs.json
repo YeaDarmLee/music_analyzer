@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "default": "baseline",
+  "presets": {
+    "baseline": {
+      "id": "baseline_fp32_4s",
+      "segment_sec": 4,
+      "model_segment_override_sec": null,
+      "overlap": 0.25,
+      "shifts": 0,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": true,
+      "model_id": "demucs_htdemucs"
+    },
+    "memory_safe": {
+      "id": "memory_safe_fp32_2s",
+      "segment_sec": 2,
+      "model_segment_override_sec": 2,
+      "overlap": 0.25,
+      "shifts": 0,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": false,
+      "model_id": "demucs_htdemucs"
+    },
+    "quality": {
+      "id": "quality_fp32_7p8s_overlap50_shift2",
+      "segment_sec": 7.8,
+      "model_segment_override_sec": null,
+      "overlap": 0.5,
+      "shifts": 2,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": true,
+      "model_id": "demucs_htdemucs"
+    },
+    "quality_6s": {
+      "id": "quality_6s_fp32_7p8s_overlap50_shift2",
+      "segment_sec": 7.8,
+      "model_segment_override_sec": null,
+      "overlap": 0.5,
+      "shifts": 2,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": true,
+      "model_id": "demucs_htdemucs_6s"
+    },
+    "quality_6s_memory_safe": {
+      "id": "quality_6s_memory_safe_fp32_2s",
+      "segment_sec": 2,
+      "model_segment_override_sec": 2,
+      "overlap": 0.25,
+      "shifts": 0,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": false,
+      "model_id": "demucs_htdemucs_6s"
+    },
+    "quality_ft": {
+      "id": "quality_ft_fp32_7p8s_overlap50_shift2",
+      "segment_sec": 7.8,
+      "model_segment_override_sec": null,
+      "overlap": 0.5,
+      "shifts": 2,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": true,
+      "model_id": "demucs_htdemucs_ft"
+    },
+    "quality_ft_memory_safe": {
+      "id": "quality_ft_memory_safe_fp32_2s",
+      "segment_sec": 2,
+      "model_segment_override_sec": 2,
+      "overlap": 0.25,
+      "shifts": 0,
+      "seed": 0,
+      "precision": "float32",
+      "device": "cuda",
+      "tf32": false,
+      "cudnn_enabled": false,
+      "model_id": "demucs_htdemucs_ft"
+    },
+    "vocal_roformer": {
+      "id": "vocal_roformer",
+      "model_id": "melband_roformer_kj",
+      "segment_sec": 8,
+      "overlap": 0.75,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "vocal_roformer_memory_safe": {
+      "id": "vocal_roformer_memory_safe",
+      "model_id": "melband_roformer_kj",
+      "segment_sec": 4,
+      "overlap": 0.75,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "instrument_roformer_6s": {
+      "id": "instrument_roformer_6s",
+      "model_id": "bs_roformer_6s",
+      "segment_sec": 13.351473922902494,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "instrument_roformer_6s_memory_safe": {
+      "id": "instrument_roformer_6s_memory_safe",
+      "model_id": "bs_roformer_6s",
+      "segment_sec": 6,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    }
+  },
+  "oom_fallback": {
+    "baseline": "memory_safe",
+    "memory_safe": null,
+    "quality_6s": "quality_6s_memory_safe",
+    "quality_6s_memory_safe": null,
+    "quality_ft": "quality_ft_memory_safe",
+    "quality_ft_memory_safe": null,
+    "quality": "memory_safe",
+    "vocal_roformer": "vocal_roformer_memory_safe",
+    "vocal_roformer_memory_safe": null,
+    "instrument_roformer_6s": "instrument_roformer_6s_memory_safe",
+    "instrument_roformer_6s_memory_safe": null
+  }
+}

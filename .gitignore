@@ -1,0 +1,31 @@
+# Local runtime and generated results
+.venv/
+data/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+*.log
+*.partial
+
+# Input media, separated audio, and model weights
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.aac
+*.ogg
+*.mp4
+*.ckpt
+*.th
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Local secrets and machine-specific settings
+.env
+.env.*
+!.env.example

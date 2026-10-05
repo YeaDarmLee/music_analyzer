@@ -1,0 +1,51 @@
+{
+  "version": "1.1",
+  "status": "initial_family_mapping",
+  "instruments": [
+    {
+      "id": "instrument.voice",
+      "parent": null,
+      "mix_group": null
+    },
+    {
+      "id": "instrument.voice.vocal",
+      "parent": "instrument.voice",
+      "mix_group": "main"
+    },
+    {
+      "id": "instrument.drums",
+      "parent": null,
+      "mix_group": "main"
+    },
+    {
+      "id": "instrument.bass",
+      "parent": null,
+      "mix_group": "main"
+    },
+    {
+      "id": "instrument.guitar",
+      "parent": null,
+      "mix_group": "main"
+    },
+    {
+      "id": "instrument.piano",
+      "parent": null,
+      "mix_group": "main"
+    },
+    {
+      "id": "instrument.other",
+      "parent": null,
+      "mix_group": "main"
+    },
+    {
+      "id": "mix.accompaniment",
+      "parent": null,
+      "mix_group": "main",
+      "description": "Full accompaniment residual; not an individual instrument"
+    }
+  ],
+  "notes": [
+    "Other is a residual category, not an identified instrument.",
+    "Child instrument and role mappings must be reviewed before S7; no heuristic label conversion."
+  ]
+}

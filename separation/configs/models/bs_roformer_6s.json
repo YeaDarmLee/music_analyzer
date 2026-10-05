@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "model_id": "bs_roformer_6s",
+  "architecture": "BSRoformer",
+  "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+  "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+  "checkpoint_url": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/030a01aa951b3908ed6b01b2e507c17953300c2d/bs_roformer/bs_6stem_fixed.ckpt",
+  "checkpoint_filename": "bs_6stem_fixed.ckpt",
+  "checkpoint_signature": "bs_6stem_fixed",
+  "upstream_sha256_prefix": "24e7d35ee9c64415673d3fd33e06a67cac2c103c5df6267ba1576459c775916e",
+  "checkpoint_index_evidence": "https://huggingface.co/noblebarkrr/mvsepless_resources/tree/030a01aa951b3908ed6b01b2e507c17953300c2d",
+  "native_sample_rate": 44100,
+  "channels": 2,
+  "source_labels": [
+    "bass",
+    "drums",
+    "other",
+    "vocals",
+    "guitar",
+    "piano"
+  ],
+  "taxonomy_version": "1.0",
+  "source_mapping": {
+    "drums": "instrument.drums",
+    "bass": "instrument.bass",
+    "other": "instrument.other",
+    "vocals": "instrument.voice.vocal",
+    "guitar": "instrument.guitar",
+    "piano": "instrument.piano"
+  },
+  "code_license": {
+    "value": "MIT",
+    "status": "VERIFIED",
+    "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/blob/84b1eac0887756b4f1a9d7a1ff49105939749ed2/LICENSE"
+  },
+  "weight_license": {
+    "value": "UNKNOWN",
+    "status": "UNRESOLVED",
+    "evidence_url": "https://huggingface.co/noblebarkrr/mvsepless_resources/tree/030a01aa951b3908ed6b01b2e507c17953300c2d"
+  },
+  "usage_status": {
+    "local_research": "PROJECT_DEV_BASELINE",
+    "commercial_service": "REVIEW_REQUIRED",
+    "redistribution": "BLOCKED"
+  },
+  "training_data_risk": "UNKNOWN",
+  "commercial_release_status": "DEV_ONLY",
+  "quality_notes": [
+    "Community-published six-stem checkpoint; training provenance and comparative quality unverified",
+    "Experimental instrument candidate, not selected production model"
+  ],
+  "engine": "bs_roformer",
+  "upstream_config_file": "bs_roformer_6s.upstream.yaml",
+  "upstream_config_sha256": "4678db9430a87ee33e7fad199166928c9adcd322e2df1a812b4bf03726e2a48b"
+}
