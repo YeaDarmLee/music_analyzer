@@ -18,9 +18,56 @@ def test_only_allowed_audio_can_be_uploaded(library):
         library.create("track.wav","instrument_roformer_6s",io.BytesIO(),0)
     assert not list(library.web.glob("analysis_*"))
 
+def test_flat_session_keeps_instrument_parents_and_reconstructs_remaining(library):
+    import numpy as np
+    import soundfile as sf
+    identifier="analysis_"+"f"*32
+    folder=library.web/identifier;folder.mkdir()
+    families=["vocals","lead","backing","piano","other","guitar","bass","drums","synth_pad","other_residual","lead_guitar","guitar_residual"]
+    tracks=[]
+    for i,family in enumerate(families):
+        path=folder/(family+".wav")
+        sf.write(path,np.full((100,2),.01*(i+1)),44100,subtype="FLOAT")
+        tracks.append({"family":family,"path":str(path.relative_to(library.root)),"parent_family":"vocals" if family in ("lead","backing") else None})
+    original=folder/"original.wav";sf.write(original,np.ones((100,2))*.8,44100,subtype="FLOAT")
+    row={"id":identifier,"tracks":tracks,"original":str(original.relative_to(library.root)),"groups":[{}]}
+    result=library.flatten_session(row)
+    assert [t["family"] for t in result["tracks"]]==["lead","backing","piano","synth","guitar","bass","drums","other"]
+    assert "groups" not in result and all("parent_family" not in t for t in result["tracks"])
+    assert library.track_path(result,"synth")==folder/"other.wav"
+    assert library.track_path(result,"guitar")==folder/"guitar.wav"
+    summed=sum(sf.read(library.track_path(result,t["family"]))[0] for t in result["tracks"])
+    np.testing.assert_allclose(summed,sf.read(original)[0],atol=1e-7)
+
 def test_path_cannot_escape_data_root(library,tmp_path):
     outside=tmp_path.parent/"outside.txt";outside.write_text("private")
     with pytest.raises(FileNotFoundError):library.safe("../outside.txt")
+
+def test_final_ten_tracks_preserve_models_and_reconstruct_original(library):
+    import numpy as np
+    import soundfile as sf
+    identifier="analysis_"+"d"*32
+    folder=library.web/identifier;folder.mkdir()
+    labels=["vocals","lead","backing","piano","synth","bowed_strings","acoustic-guitar","electric-guitar","bass","drums","other","brass"]
+    tracks=[]
+    for index,label in enumerate(labels):
+        path=folder/(label+".wav")
+        sf.write(path,np.full((200,2),.02*(index+1)),44100,subtype="FLOAT")
+        tracks.append({"family":label,"path":str(path.relative_to(library.root))})
+    original=folder/"original.wav";sf.write(original,np.full((200,2),.9),44100,subtype="FLOAT")
+    row={"id":identifier,"tracks":tracks,"original":str(original.relative_to(library.root))}
+    result=library.final_session(row)
+    assert [t["family"] for t in result["tracks"]]==["lead","backing","piano","synth","strings","acoustic_guitar","guitar","bass","drums","other"]
+    assert result["track_layout"]=="flat_v2" and "track_note" not in result
+    assert library.track_path(result,"strings")==folder/"bowed_strings.wav"
+    assert library.track_path(result,"synth")==folder/"synth.wav"
+    summed=sum(sf.read(library.track_path(result,t["family"]))[0] for t in result["tracks"])
+    np.testing.assert_allclose(summed,sf.read(original)[0],atol=1e-7)
+    with pytest.raises(ValueError,match="누락"):
+        library.final_session({**row,"tracks":[t for t in tracks if t["family"]!="synth"]})
+    for family in ("strings","acoustic_guitar"):
+        enhanced=library.enhanced(result,family,0)
+        np.testing.assert_array_equal(sf.read(enhanced)[0],sf.read(library.track_path(result,family))[0])
 
 def test_restart_marks_incomplete_analysis_failed(tmp_path):
     folder=tmp_path/"web"/("analysis_"+"1"*32)
@@ -45,7 +92,10 @@ def test_http_download_range_and_host_guard(library,tmp_path):
     row={"id":identifier,"state":"SUCCEEDED","name":"song","created":"now","tracks":[{"family":"guitar","path":"source.wav"}],"original":"source.wav"}
     write_json(library.web/identifier/"record.json",row)
     dist=tmp_path/"dist";dist.mkdir();(dist/"index.html").write_text("<html>Vue</html>")
-    server=ThreadingHTTPServer(("127.0.0.1",0),make_handler(library,dist,0))
+    class OwnerSession:
+        def session_user(self,token):return {"id":"test-owner"}
+        def owns(self,user_id,analysis_id):return analysis_id==identifier
+    server=ThreadingHTTPServer(("127.0.0.1",0),make_handler(library,dist,0,auth=OwnerSession()))
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     base=f"http://127.0.0.1:{server.server_port}"
     try:
@@ -126,3 +176,51 @@ def test_bundle_uses_snapshot_strength_and_keeps_raw(library):
         assert b'73' in archive.read("settings.json")
     with pytest.raises(ValueError):library.bundle(row,"both",{"original":50})
     with pytest.raises(ValueError):library.bundle(row,"both",{"guitar":101})
+
+def test_vocal_detail_queues_parent_vocal_without_changing_parent(library,monkeypatch):
+    import copy
+    import music_analyzer.registry as registry
+    parent={"id":"analysis_"+"a"*32,"name":"song","state":"SUCCEEDED","duration":20,"tracks":[{"family":"vocals","path":"vocals.wav"}]}
+    original=copy.deepcopy(parent);(library.root/"vocals.wav").write_bytes(b"audio")
+    monkeypatch.setattr(library,"get",lambda identifier:parent)
+    monkeypatch.setattr(registry,"resolve",lambda *args:(None,None))
+    calls=[];monkeypatch.setattr(library.executor,"submit",lambda *args:calls.append(args))
+    result=library.create_vocal_detail(parent["id"])
+    assert parent==original and result["state"]=="QUEUED"
+    assert result["parent_analysis_id"]==parent["id"] and calls[0][2]==library.root/"vocals.wav"
+    assert not result["quality_improvement_verified"]
+
+
+def test_vocal_detail_rejects_unknown_model(library):
+    with pytest.raises(ValueError,match="지원하지 않는"):
+        library.create_vocal_detail("unused",preset="unknown")
+
+def test_long_preview_is_lossless_compressed_and_preserves_timeline(library):
+    import numpy as np
+    import soundfile as sf
+    samples=np.linspace(-.4,.4,4096,dtype=np.float32)
+    stereo=np.column_stack((samples,-samples))
+    source=library.root/'source.wav'
+    sf.write(source,stereo,44100,subtype='FLOAT')
+    row={'id':'analysis_'+'e'*32,'duration':121,'original':'source.wav','tracks':[{'family':'guitar','path':'source.wav','peak':.4}]}
+    target=library.preview(row,'guitar')
+    actual,rate=sf.read(target,always_2d=True)
+    assert target.suffix=='.flac' and sf.info(target).format=='FLAC'
+    assert rate==44100 and actual.shape==stereo.shape
+    np.testing.assert_allclose(actual,stereo*.9,atol=1/32768)
+    assert library.preview(row,'guitar')==target
+    assert library.track_path(row,'guitar')==source
+
+def test_audio_window_preserves_samples_timeline_and_bounds(library):
+    import numpy as np
+    import soundfile as sf
+    samples=np.column_stack((np.linspace(-.4,.4,4096,dtype=np.float32),np.zeros(4096,dtype=np.float32)))
+    source=library.root/'source.wav';sf.write(source,samples,44100,subtype='FLOAT');before=source.read_bytes()
+    row={'id':'analysis_'+'f'*32,'duration':121,'original':'source.wav','tracks':[{'family':'guitar','path':'source.wav','peak':.4}]}
+    body=library.audio_window(row,'guitar',2048,4096)
+    actual,rate=sf.read(io.BytesIO(body),always_2d=True)
+    assert rate==44100 and actual.shape==(2048,2)
+    np.testing.assert_allclose(actual,samples[2048:]*.9,atol=1/32768)
+    assert source.read_bytes()==before
+    for start,count in [(-1,1),(0,1323001),(4096,1),(0,0)]:
+        with pytest.raises(ValueError):library.audio_window(row,'guitar',start,count)

@@ -113,6 +113,26 @@
       "device": "cuda",
       "batch_size": 1
     },
+    "instrument_mega4": {
+      "id": "instrument_mega4",
+      "model_id": "bs_roformer_mega4",
+      "segment_sec": 10,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "instrument_mega4_memory_safe": {
+      "id": "instrument_mega4_memory_safe",
+      "model_id": "bs_roformer_mega4",
+      "segment_sec": 5,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
     "instrument_roformer_6s": {
       "id": "instrument_roformer_6s",
       "model_id": "bs_roformer_6s",
@@ -132,9 +152,61 @@
       "precision": "float16",
       "device": "cuda",
       "batch_size": 1
+    },
+    "karaoke_roformer": {
+      "id": "karaoke_roformer",
+      "model_id": "melband_karaoke",
+      "segment_sec": 6,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "karaoke_roformer_memory_safe": {
+      "id": "karaoke_roformer_memory_safe",
+      "model_id": "melband_karaoke",
+      "segment_sec": 3,
+      "overlap": 0.5,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "bs_karaoke": {
+      "id": "bs_karaoke",
+      "model_id": "bs_karaoke",
+      "segment_sec": 10,
+      "overlap": 0.75,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "bs_karaoke_memory_safe": {
+      "id": "bs_karaoke_memory_safe",
+      "model_id": "bs_karaoke",
+      "segment_sec": 5,
+      "overlap": 0.75,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "bs_karaoke_refined": {
+      "id": "bs_karaoke_refined",
+      "model_id": "bs_karaoke",
+      "segment_sec": 10,
+      "overlap": 0.875,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
     }
   },
   "oom_fallback": {
+    "instrument_mega4": "instrument_mega4_memory_safe",
+    "instrument_mega4_memory_safe": null,
     "baseline": "memory_safe",
     "memory_safe": null,
     "quality_6s": "quality_6s_memory_safe",
@@ -145,6 +217,11 @@
     "vocal_roformer": "vocal_roformer_memory_safe",
     "vocal_roformer_memory_safe": null,
     "instrument_roformer_6s": "instrument_roformer_6s_memory_safe",
-    "instrument_roformer_6s_memory_safe": null
+    "instrument_roformer_6s_memory_safe": null,
+    "karaoke_roformer": "karaoke_roformer_memory_safe",
+    "karaoke_roformer_memory_safe": null,
+    "bs_karaoke": "bs_karaoke_memory_safe",
+    "bs_karaoke_memory_safe": null,
+    "bs_karaoke_refined": "bs_karaoke_memory_safe"
   }
 }

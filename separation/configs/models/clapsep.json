@@ -1,0 +1,23 @@
+{
+  "model_id": "clapsep",
+  "revision": "e3c73653fa9aadcddbcc3b5e967182a573589e81",
+  "repository_url": "https://huggingface.co/spaces/AisakaMikoto/CLAPSep",
+  "code_license": "MIT per official GitHub; attribution retained",
+  "weight_license": "UNKNOWN",
+  "commercial_release_status": "DEV_ONLY",
+  "native_sample_rate": 32000,
+  "code_hashes": {
+    "model/CLAPSep.py": "f0121287f618ffc9357eb889ee16e408ce1fec633ed7e58d820d7c387d70a210",
+    "model/CLAPSep_decoder.py": "3416fed2371f08707d65c2a394a5a27e73291b1299c08e0acbbb693810ea7d48"
+  },
+  "artifacts": [
+    {
+      "filename": "best_model.ckpt",
+      "sha256": "6fcc8dbcd7174af86266cf16b4105eced0802352762f81dbfefdce29af3dba04"
+    },
+    {
+      "filename": "music_audioset_epoch_15_esc_90.14.pt",
+      "sha256": "fae3e9c087f2909c28a09dc31c8dfcdacbc42ba44c70e972b58c1bd1caf6dedd"
+    }
+  ]
+}

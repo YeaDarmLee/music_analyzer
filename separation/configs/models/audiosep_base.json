@@ -1,0 +1,23 @@
+{
+  "model_id": "audiosep_base",
+  "code_revision": "944583f18b84589dc965de3ad77525c945334252",
+  "repository_url": "https://github.com/Audio-AGI/AudioSep",
+  "weight_revision": "0807a713283035d8b0d0628f1b8e3d6580459f7b",
+  "weight_repository": "https://huggingface.co/spaces/Audio-AGI/AudioSep",
+  "code_license": "MIT",
+  "weight_license": "MIT declared on official Space card; individual checkpoint permission not separately verified",
+  "commercial_release_status": "DEV_ONLY",
+  "native_sample_rate": 32000,
+  "native_channels": 1,
+  "stereo_strategy": "independent_channel_inference",
+  "artifacts": [
+    {
+      "filename": "audiosep_base_4M_steps.ckpt",
+      "sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c"
+    },
+    {
+      "filename": "music_speech_audioset_epoch_15_esc_89.98.pt",
+      "sha256": "51c68f12f9d7ea25fdaaccf741ec7f81e93ee594455410f3bca4f47f88d8e006"
+    }
+  ]
+}

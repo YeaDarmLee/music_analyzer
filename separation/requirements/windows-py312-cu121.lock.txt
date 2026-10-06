@@ -57,3 +57,7 @@ tqdm==4.70.1
 treetable==0.2.6
 typing_extensions==4.16.0
 urllib3==2.8.0
+
+# MySQL authentication (RSA support for caching_sha2_password)
+PyMySQL[rsa]==1.1.2
+cryptography==50.0.2

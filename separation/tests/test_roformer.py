@@ -6,6 +6,27 @@ from music_analyzer.registry import config
 
 @pytest.mark.parametrize("frames",[1,127,1000,4097])
 @pytest.mark.parametrize("overlap",[0,.5,.75])
+def test_skip_tail_windows_matches_previous_chunk_dependent_inference(frames,overlap):
+    chunk=64;stride=max(1,int(chunk*(1-overlap)));border=chunk-stride
+    audio=np.random.default_rng(7).normal(size=(2,frames)).astype(np.float32)
+    padded=np.pad(audio,((0,0),(border,border)),mode="reflect" if frames>1 else "edge")
+    result=np.zeros_like(padded);weights=np.zeros(padded.shape[1],dtype=np.float32)
+    fade=max(1,chunk//10);window=np.ones(chunk,dtype=np.float32)
+    window[:fade]=np.linspace(1/fade,1,fade,dtype=np.float32);window[-fade:]=window[:fade][::-1]
+    def infer(piece):return piece*.7+piece.mean(axis=1,keepdims=True)*.3
+    for offset in range(0,padded.shape[1],stride):
+        length=min(chunk,padded.shape[1]-offset)
+        piece=np.pad(padded[:,offset:offset+length],((0,0),(0,chunk-length)))
+        result[:,offset:offset+length]+=infer(piece)[:,:length]*window[:length]
+        weights[offset:offset+length]+=window[:length]
+    expected=(result/weights)[:,border:border+frames]
+    calls=[]
+    actual=overlap_infer(audio,chunk,overlap,lambda x:(calls.append(1),infer(x))[1])
+    np.testing.assert_array_equal(actual,expected)
+    assert len(calls)==len(range(0,border+frames,stride))
+
+@pytest.mark.parametrize("frames",[1,127,1000,4097])
+@pytest.mark.parametrize("overlap",[0,.5,.75])
 def test_overlap_preserves_stereo_timeline_and_amplitude(frames,overlap):
     audio=np.random.default_rng(42).normal(size=(2,frames)).astype(np.float32)*2
     result=overlap_infer(audio,512,overlap,lambda x:x)
@@ -49,3 +70,18 @@ def test_multistem_source_contract_and_vendor():
     configuration=load_config(entry)
     assert configuration["model"]["num_stems"]==6
     assert configuration["training"]["instruments"]==entry["source_labels"]
+
+def test_final_instrument_source_contract_and_vendor():
+    entry=config("bs_roformer_mega4")
+    configuration=load_config(entry)
+    assert configuration["model"]["num_stems"]==4
+    assert configuration["training"]["instruments"]==["acoustic-guitar","electric-guitar","synth","bowed_strings"]
+
+
+def test_bs_karaoke_pinned_config_is_single_target_with_residual():
+    registration=config("bs_karaoke")
+    configuration=load_config(registration)
+    assert registration["source_labels"]==["lead","backing"]
+    assert registration["multi_output"] is False
+    assert configuration["model"]["num_stems"]==1
+    assert configuration["training"]["target_instrument"]=="Vocals"

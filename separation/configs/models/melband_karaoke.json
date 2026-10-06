@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "model_id": "melband_karaoke",
+  "architecture": "MelBandRoformer",
+  "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+  "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+  "checkpoint_url": "https://huggingface.co/becruily/mel-band-roformer-karaoke/resolve/0c149975cfaa261c7d87baf54330a9da85bcf888/mel_band_roformer_karaoke_becruily.ckpt",
+  "checkpoint_filename": "mel_band_roformer_karaoke_becruily.ckpt",
+  "checkpoint_signature": "becruily_karaoke",
+  "upstream_sha256_prefix": "d3aa262ac01df870b9fc033e9c7b6cad33fe04fc9c148b6c40841326a515a0e0",
+  "checkpoint_index_evidence": "https://huggingface.co/becruily/mel-band-roformer-karaoke/tree/0c149975cfaa261c7d87baf54330a9da85bcf888",
+  "native_sample_rate": 44100,
+  "channels": 2,
+  "source_labels": [
+    "lead",
+    "backing"
+  ],
+  "taxonomy_version": "1.1",
+  "source_mapping": {
+    "lead": "instrument.voice.lead",
+    "backing": "instrument.voice.backing_candidate"
+  },
+  "code_license": {
+    "value": "MIT",
+    "status": "VERIFIED",
+    "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/blob/84b1eac0887756b4f1a9d7a1ff49105939749ed2/LICENSE"
+  },
+  "weight_license": {
+    "value": "UNKNOWN",
+    "status": "UNRESOLVED",
+    "evidence_url": "https://huggingface.co/becruily/mel-band-roformer-karaoke"
+  },
+  "usage_status": {
+    "local_research": "PROJECT_DEV_BASELINE",
+    "commercial_service": "REVIEW_REQUIRED",
+    "redistribution": "BLOCKED"
+  },
+  "training_data_risk": "UNKNOWN",
+  "commercial_release_status": "DEV_ONLY",
+  "engine": "melband_roformer",
+  "quality_notes": [
+    "Experimental karaoke model; not singer identity separation"
+  ],
+  "upstream_config_sha256": "cd37b0dcc285fc22d88090415722ac7127ee1d9ea2f3346c3b8d8fcc61e0c74b",
+  "raw_source_labels": [
+    "Vocals",
+    "Instrumental"
+  ],
+  "multi_output": true,
+  "upstream_config_file": "melband_karaoke.upstream.yaml"
+}

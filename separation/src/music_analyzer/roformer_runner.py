@@ -43,7 +43,9 @@ def overlap_infer(audio, chunk, overlap, infer, check=lambda:None, tick=lambda:N
     window=np.ones(chunk,dtype=np.float32)
     window[:fade]=np.linspace(1/fade,1,fade,dtype=np.float32)
     window[-fade:]=window[:fade][::-1]
-    for offset in range(0,padded.shape[1],stride):
+    # Windows beginning after the retained timeline cannot contribute to output.
+    retained_end=border+audio.shape[1]
+    for offset in range(0,retained_end,stride):
         check()
         length=min(chunk,padded.shape[1]-offset)
         piece=np.pad(padded[:,offset:offset+length],((0,0),(0,chunk-length)))
@@ -53,14 +55,14 @@ def overlap_infer(audio, chunk, overlap, infer, check=lambda:None, tick=lambda:N
         result[...,offset:offset+length]+=prediction[...,:length]*window[:length]
         weights[offset:offset+length]+=window[:length]
         tick()
-    if not np.all(weights>0):
+    retained=slice(border,retained_end)
+    if not np.all(weights[retained]>0):
         raise ValueError("Uncovered output samples")
-    result/=weights
-    return result[...,border:border+audio.shape[1]].copy()
+    return (result[...,retained]/weights[retained]).copy()
 
 def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env,started,state,check,progress):
-    multi = registration.get("engine")=="bs_roformer"
-    if multi:
+    multi = registration.get("multi_output", registration.get("engine")=="bs_roformer")
+    if registration.get("engine")=="bs_roformer":
         from .vendor.msst.bs_roformer import BSRoformer as Model
     else:
         from .vendor.msst.mel_band_roformer import MelBandRoformer as Model
@@ -70,13 +72,13 @@ def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env
     torch.backends.cuda.matmul.allow_tf32=False
     torch.backends.cudnn.allow_tf32=False
     loading=time.perf_counter()
-    model=Model(**configuration["model"],**({} if multi else {"match_input_audio_length":True}))
+    model=Model(**configuration["model"],**({} if registration.get("engine")=="bs_roformer" else {"match_input_audio_length":True}))
     weights=torch.load(checkpoint,map_location="cpu",weights_only=True)
     if isinstance(weights,dict) and "state_dict" in weights:
         weights=weights["state_dict"]
     if all(key.startswith("module.") for key in weights):
         weights={key[7:]:value for key,value in weights.items()}
-    if configuration["training"]["instruments"] != registration["source_labels"] and multi:
+    if configuration["training"]["instruments"] != registration.get("raw_source_labels",registration["source_labels"]) and multi:
         raise ValueError("ROFORMER_SOURCE_ORDER_MISMATCH")
     model.load_state_dict(weights,strict=True)
     del weights
@@ -89,7 +91,7 @@ def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env
     stride=max(1,int(chunk*(1-selected["overlap"])))
     border=chunk-stride
     silent=not np.any(audio)
-    progress["total"]=0 if silent else math.ceil((len(audio)+2*border)/stride)
+    progress["total"]=0 if silent else math.ceil((len(audio)+border)/stride)
     progress["completed"]=0
     torch.cuda.reset_peak_memory_stats()
     torch.cuda.synchronize()
@@ -98,7 +100,9 @@ def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env
     def infer(piece):
         with torch.inference_mode(),torch.autocast("cuda",dtype=torch.float16):
             output=model(torch.from_numpy(piece).unsqueeze(0).to("cuda"))
-        return output[0].float().cpu().numpy()
+        prediction=output[0].float().cpu().numpy()
+        if not multi and prediction.ndim==3 and prediction.shape[0]==1:prediction=prediction[0]
+        return prediction
     def tick():
         progress["completed"]+=1
         state("SEPARATING")
@@ -120,7 +124,7 @@ def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env
         properties=write_raw_streaming(path,estimate.T,check)
         stems.append({"id":"stem_"+label,"family":label,"canonical_id":registration["source_mapping"][label],
                       "path":"stems/"+label+".wav","sha256":sha256_file(path),"presence":"unknown",
-                      "quality_score":None,"derivation":"model_estimate" if multi or label=="vocals" else "input_minus_estimated_vocals",**properties})
+                      "quality_score":None,"derivation":"model_estimate" if multi or label==registration["source_labels"][0] else "input_minus_first_model_estimate",**properties})
     error=prediction.astype(np.float64).sum(axis=0).T-audio
     manifest={"kind":"separation_result","schema_version":"1.0","status":"succeeded",
               "job_id":request["job_id"],"asset_id":request["asset_id"],
@@ -133,7 +137,7 @@ def run_roformer(request,root,attempt,asset,selected,checkpoint,registration,env
               "normalization":{"scope":"none","per_stem_gain":1.0},
               "stems":stems,"warnings":["No reference stems: perceptual quality is not scored",
                                         "Instrument candidate has unverified training provenance" if multi else "Accompaniment is a residual; reconstruction does not measure separation quality"],
-              "mix_group":{"kind":"estimated_partition" if multi else "model_vocals_plus_input_residual","reconstruction_guaranteed":not multi,"tolerance":"float32_roundoff"},
+              "mix_group":{"kind":"estimated_partition" if multi else "first_model_estimate_plus_input_residual","reconstruction_guaranteed":not multi,"tolerance":"float32_roundoff"},
               "timing":{"model_load_sec":load_sec,"inference_sec":inference_sec,"rtf":inference_sec/(len(audio)/RATE),"wall_sec":time.perf_counter()-started},
               "memory":memory,"diagnostics":{"reconstruction_error_rms":float(np.sqrt(np.mean(error**2))),
                     "reconstruction_error_peak":float(np.abs(error).max()),"reference_available":False,

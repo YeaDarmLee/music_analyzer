@@ -7,7 +7,7 @@ from pathlib import Path
 from .common import project_root, read_json, sha256_file, write_json
 
 CONFIG = project_root() / "separation/configs/models/demucs_htdemucs.json"
-MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s")
+MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke", "bs_roformer_mega4")
 FILES = {"955717e8-8726e21a.th", "5c90dfd2-34c22ccb.th",
          "f7e0c4bc-ba3fe64a.th", "d12395a8-e57c48e6.th",
          "92cfc3b6-ef3bcb9c.th", "04573f0d-f3cf25b2.th"}
@@ -86,6 +86,8 @@ def prepare(data_root: Path, model_id="demucs_htdemucs") -> dict:
             partial = path.with_suffix(".th.partial")
             is_roformer = model_id == "melband_roformer_kj" and artifact["url"] == "https://huggingface.co/KimberleyJSN/melbandroformer/resolve/ac9b0614ab3cd7f77219e18ba494dfd93956c348/MelBandRoformer.ckpt" and path.name == "MelBandRoformer.ckpt"
             is_roformer = is_roformer or (model_id == "bs_roformer_6s" and path.name == "bs_6stem_fixed.ckpt" and artifact["url"] == "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/030a01aa951b3908ed6b01b2e507c17953300c2d/bs_roformer/bs_6stem_fixed.ckpt")
+            is_roformer = is_roformer or (model_id == "melband_karaoke" and artifact["url"] == "https://huggingface.co/becruily/mel-band-roformer-karaoke/resolve/0c149975cfaa261c7d87baf54330a9da85bcf888/mel_band_roformer_karaoke_becruily.ckpt" and path.name == "mel_band_roformer_karaoke_becruily.ckpt")
+            is_roformer = is_roformer or (model_id == "bs_karaoke" and artifact["url"] == "https://huggingface.co/becruily/bs-roformer-karaoke/resolve/f7849ae934209184dc288d1018cd8a76a7fc8b3c/bs_roformer_karaoke_frazer_becruily.ckpt" and path.name == "bs_roformer_karaoke_frazer_becruily.ckpt")
             if not is_roformer and (path.name not in FILES or artifact["url"] != BASE_URL + path.name):
                 raise ValueError("Checkpoint URL is outside the official allowlist")
             try:
@@ -114,9 +116,9 @@ def prepare(data_root: Path, model_id="demucs_htdemucs") -> dict:
         extra["ensemble_sha256"] = sha256_file(ensemble)
     registration = {**entry, "checkpoint_sha256": hashes[checkpoint.name],
                     "artifact_hashes": hashes, "config_sha256": sha256_file(config_path(model_id)), **extra,
-                    "verification": {"upstream_hash": "published_sha256_full" if model_id in ("melband_roformer_kj", "bs_roformer_6s") else "sha256_prefix_8",
+                    "verification": {"upstream_hash": "published_sha256_full" if model_id in ("melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke") else "sha256_prefix_8",
                                      "full_hash": "observed_on_first_download_then_pinned",
-                                     "independent_full_hash_verified": model_id in ("melband_roformer_kj", "bs_roformer_6s")}}
+                                     "independent_full_hash_verified": model_id in ("melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke")}}
     write_json(registration_path, registration)
     return registration
 

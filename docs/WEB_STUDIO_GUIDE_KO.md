@@ -9,7 +9,7 @@ cd C:\workspace\music_analyzer
 .\scripts\start-web.ps1
 ```
 
-브라우저에서 http://127.0.0.1:8780 에 접속합니다. 이미 빌드했다면 `-SkipBuild` 옵션을 사용할 수 있습니다. 종료는 실행한 터미널에서 Ctrl+C입니다.
+브라우저에서 http://127.0.0.1:8780 에 접속하면 메인 화면이 표시됩니다. 상단 로그인 버튼으로 모달을 열어 회원가입 또는 로그인합니다. 본인 분석만 표시됩니다. [회원·MySQL 설정과 DDL](ACCOUNTS_MYSQL_KO.md)을 참고하세요. 이미 빌드했다면 `-SkipBuild` 옵션을 사용할 수 있습니다. 종료는 실행한 터미널에서 Ctrl+C입니다.
 
 ## 사용 흐름
 
@@ -51,4 +51,4 @@ cd C:\workspace\music_analyzer
 
 ## 외부 접속 설정
 
-사용자 승인에 따라 start-web.ps1은 0.0.0.0:8780에서 외부 요청을 받습니다. 공유기에서 이 PC의 8780으로 포트 전달을 설정한 상태라면 http://공인IP:8780 으로 접속합니다. 로그인은 아직 없으며 접속 가능한 사람은 조회·다운로드·분석을 할 수 있습니다. 로컬로만 실행하려면 start-web.ps1 -LocalOnly를 사용합니다. Python 모듈 직접 실행은 기본 로컬 전용이며 외부 실행 시 --host 0.0.0.0 --public-access 옵션을 지정합니다. 서로 다른 Origin에서의 요청 제한은 유지합니다.
+회원 기능 도입 후 start-web.ps1 기본값은 로컬 전용입니다. 외부 공개는 HTTPS 프록시와 AUTH_COOKIE_SECURE=1 설정을 준비한 뒤 start-web.ps1 -PublicAccess로 명시합니다. Python 직접 실행은 --host 0.0.0.0 --public-access를 사용합니다. 백엔드 HTTP 포트는 프록시에서만 접근하도록 제한하고, 브라우저에서는 HTTPS 주소를 사용합니다. 상세 설정은 [회원 기능 가이드](ACCOUNTS_MYSQL_KO.md)를 참고하세요.

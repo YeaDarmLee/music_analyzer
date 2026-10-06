@@ -7,7 +7,7 @@ name = "music-analyzer-separation"
 version = "0.1.0"
 description = "Local separation environment and Demucs smoke verification"
 requires-python = ">=3.11,<3.13"
-dependencies = ["numpy==1.26.4", "soundfile==0.13.1", "psutil==7.1.0", "filelock==3.32.3"]
+dependencies = ["numpy==1.26.4", "soundfile==0.13.1", "psutil==7.1.0", "filelock==3.32.3", "PyMySQL[rsa]==1.1.2"]
 
 [project.optional-dependencies]
 demucs = ["demucs==4.0.1", "torch==2.5.1", "torchaudio==2.5.1"]

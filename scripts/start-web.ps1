@@ -1,4 +1,4 @@
-param([ValidateRange(1024,65535)][int]$Port = 8780, [switch]$SkipBuild, [switch]$LocalOnly)
+param([ValidateRange(1024,65535)][int]$Port = 8780, [switch]$SkipBuild, [switch]$LocalOnly, [switch]$PublicAccess)
 $ErrorActionPreference = 'Stop'
 $projectPath = Split-Path -Parent $PSScriptRoot
 $pythonPath = Join-Path $projectPath '.venv\Scripts\python.exe'
@@ -14,7 +14,8 @@ if (-not $SkipBuild) {
         if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed.' }
     } finally { Pop-Location }
 }
-if ($LocalOnly) {
+if ($LocalOnly -and $PublicAccess) { throw 'Choose either -LocalOnly or -PublicAccess.' }
+if (-not $PublicAccess) {
     & $pythonPath -m music_analyzer.web_server --port $Port
 } else {
     & $pythonPath -m music_analyzer.web_server --port $Port --host 0.0.0.0 --public-access

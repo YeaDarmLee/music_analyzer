@@ -18,7 +18,7 @@ def main() -> None:
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("check-environment")
     prepare_parser = sub.add_parser("prepare-model", help="Explicitly download and pin development model")
-    prepare_parser.add_argument("--model", choices=["demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s"],
+    prepare_parser.add_argument("--model", choices=["demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke"],
                                 default="demucs_htdemucs")
     smoke = sub.add_parser("smoke", help="Run 10s synthetic fixture or short canonical WAV on CUDA")
     smoke.add_argument("--input", type=Path)
@@ -31,7 +31,7 @@ def main() -> None:
     source = separate.add_mutually_exclusive_group(required=True)
     source.add_argument("--input", type=Path)
     source.add_argument("--asset-id")
-    separate.add_argument("--preset", choices=["baseline", "memory_safe", "quality", "quality_6s", "quality_ft", "vocal_roformer", "instrument_roformer_6s"], default="baseline")
+    separate.add_argument("--preset", choices=["baseline", "memory_safe", "quality", "quality_6s", "quality_ft", "vocal_roformer", "instrument_roformer_6s", "karaoke_roformer", "bs_karaoke"], default="baseline")
     for name in ("job-status", "cancel-job", "retry-job", "inspect-result"):
         command = sub.add_parser(name)
         command.add_argument("job_id")

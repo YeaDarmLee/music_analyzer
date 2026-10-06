@@ -1,0 +1,38 @@
+{
+  "repository": "noblebarkrr/BS-Roformer-MVSep-Mega-53-stems",
+  "revision": "0677941f9cdfd891a6bc3336229244e197035327",
+  "models": [
+    {
+      "target": "synth",
+      "checkpoint": "v1/bs_mega_53stem_synth_mvsep.ckpt",
+      "lfs": {
+        "sha256": "04749df7e2fab770a0d26bf9aa4850c1a6cd89547fc8bfe9c9d223602c0afb82",
+        "size": 77616988,
+        "pointerSize": 133
+      },
+      "config_sha256": "3a0489996305cedf1e44f086f9b0fe9c387c86104f972092b4c9ba5ac8e15b42"
+    },
+    {
+      "target": "acoustic-guitar",
+      "checkpoint": "v1/bs_mega_53stem_acoustic-guitar_mvsep.ckpt",
+      "lfs": {
+        "sha256": "fa386b2e7b1ea4f12b9b5c557444c0dc78648ef4ee299de2759d86457e182b3e",
+        "size": 77624038,
+        "pointerSize": 133
+      },
+      "config_sha256": "040148363929b68fd4a4e323358a245938568692ca201fc2f703b6449dc8b569"
+    },
+    {
+      "target": "electric-guitar",
+      "checkpoint": "v1/bs_mega_53stem_electric-guitar_mvsep.ckpt",
+      "lfs": {
+        "sha256": "cd506bfce9474f91a31001967f2c4935ce4e67f643da3df20d04058da927c553",
+        "size": 77624038,
+        "pointerSize": 133
+      },
+      "config_sha256": "e89d0646a99f08e99e56d71de22b5accee2628fd11a91928ad556fc7b8617ecb"
+    }
+  ],
+  "weights_downloaded": false,
+  "inference_performed": false
+}
