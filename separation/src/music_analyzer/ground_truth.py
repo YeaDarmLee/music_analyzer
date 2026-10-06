@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import math
 import os
 from pathlib import Path
 import time
@@ -52,14 +53,28 @@ def prepare(config_path):
         for name in paths:
             path = (folder/name).resolve()
             with sf.SoundFile(path) as handle:
-                if (handle.samplerate, handle.channels) != (RATE, 2):
-                    raise ValueError('Source must be 44.1kHz stereo')
-                handle.seek(round(start*RATE))
-                part = handle.read(len(audio), dtype='float32', always_2d=True)
+                native_rate, channels = handle.samplerate, handle.channels
+                if channels not in (1,2):
+                    raise ValueError('Source must be mono or stereo')
+                handle.seek(round(start*native_rate))
+                part = handle.read(round(seconds*native_rate), dtype='float32', always_2d=True)
+            if len(part) != round(seconds*native_rate):
+                raise ValueError('Source does not cover the clip')
+            if channels == 1:
+                part = np.repeat(part,2,axis=1)
+            if native_rate != RATE:
+                from scipy.signal import resample_poly
+                divisor = math.gcd(native_rate,RATE)
+                part = resample_poly(part,RATE//divisor,native_rate//divisor,axis=0).astype(np.float32)
             if part.shape != audio.shape:
                 raise ValueError('Source does not cover the clip')
             audio += part
-            sources.append({'family': family, 'path': str(path), 'sha256': sha256_file(path)})
+            sources.append({'family': family, 'path': str(path), 'sha256': sha256_file(path),
+                            'native_rate':native_rate,'native_channels':channels})
+        gain = float(config.get('reference_gains',{}).get(family,1))
+        if not math.isfinite(gain) or gain < 0:
+            raise ValueError('Invalid reference gain')
+        audio *= gain
         path = folder/'references'/(family+'.wav')
         write_raw(path, audio)
         references[family] = {'path': str(path.resolve()), 'sha256': sha256_file(path)}
@@ -79,6 +94,9 @@ def evaluate(folder, root, row):
         raise ValueError('Evaluation mixture changed')
     library = WebLibrary(root)
     try:
+        analyzed_mix, analyzed_rate = sf.read(library.track_path(row,'original'),dtype='float32',always_2d=True)
+        if rate != RATE or analyzed_rate != RATE or not np.array_equal(mixture,analyzed_mix):
+            raise ValueError('Prepared mixture differs from the audio actually analyzed')
         outputs = {t['family']: sf.read(library.track_path(row,t['family']), dtype='float32', always_2d=True)[0]
                    for t in row['tracks']}
         if len(outputs) != 12:
@@ -137,10 +155,24 @@ def evaluate(folder, root, row):
                 metrics[family]['before_recovery'] = score(target,before_audio,mixture)
             metrics[family]['windows'] = [score(target[i:i+RATE], estimate[i:i+RATE], mixture[i:i+RATE])
                                          for i in range(0,len(mixture),RATE)]
+        guitar_stage_scores = {}
+        guitar_target = sf.read(folder/'evaluation-references/guitar_total.wav',dtype='float32',always_2d=True)[0]
+        for index,identifier in enumerate(row['job_ids']):
+            result_folder = root/'jobs'/identifier/'result'
+            stems = read_json(result_folder/'manifest.json')['stems']
+            families = {s['family'] for s in stems}
+            if {'piano','guitar','bass','drums'}.issubset(families):
+                stem = next(s for s in stems if s['family']=='guitar')
+                guitar_stage_scores['base_guitar'] = score(guitar_target,sf.read(result_folder/stem['path'],dtype='float32',always_2d=True)[0],mixture)
+            if index == len(row['job_ids'])-1 and {'acoustic-guitar','electric-guitar','synth'}.issubset(families):
+                discarded = sum((sf.read(result_folder/s['path'],dtype='float32',always_2d=True)[0]
+                                 for s in stems if s['family'] in ('acoustic-guitar','electric-guitar')),np.zeros_like(mixture))
+                guitar_stage_scores['discarded_residual_guitars'] = score(guitar_target,discarded,mixture)
         result = {'case': prepared['name'], 'analysis_id': row['id'], 'model': row['model'],
                   'separation_version': row['separation_version'], 'processing_seconds': row['processing_seconds'],
                   'has_bleed': prepared.get('has_bleed'), 'metrics': metrics,
                   'candidate_partition_max_abs_error': candidate_partition_error,
+                  'guitar_stage_scores': guitar_stage_scores,
                   'provenance': {'prepared': str((folder/'prepared.json').resolve()),
                      'prepared_sha256': sha256_file(folder/'prepared.json'),
                      'preset_sha256': sha256_file(project_root()/'separation/configs/presets/demucs.json'),
