@@ -18,6 +18,34 @@ def test_only_allowed_audio_can_be_uploaded(library):
         library.create("track.wav","instrument_roformer_6s",io.BytesIO(),0)
     assert not list(library.web.glob("analysis_*"))
 
+def test_silent_output_is_hidden_but_quiet_and_brief_audio_remain(library):
+    import numpy as np
+    import soundfile as sf
+    folder=library.web/("analysis_"+"e"*32);folder.mkdir()
+    tracks=[]
+    for family,audio in (("piano",np.zeros((44100,2),dtype=np.float32)),
+                         ("synth",np.full((44100,2),.0001,dtype=np.float32)),
+                         ("guitar",np.pad(np.full((1,2),.005,dtype=np.float32),((0,44099),(0,0))))):
+        path=folder/(family+".wav");sf.write(path,audio,44100,subtype="FLOAT")
+        tracks.append(library.track_activity({"family":family,"path":str(path.relative_to(library.root))}))
+    assert [t["silent"] for t in tracks]==[True,False,False]
+    original=folder/"original.wav";sf.write(original,np.ones((44100,2),dtype=np.float32)*.1,44100,subtype="FLOAT")
+    row={"id":folder.name,"state":"SUCCEEDED","tracks":tracks,"original":str(original.relative_to(library.root))}
+    write_json(folder/"record.json",row)
+    detail=library.detail(folder.name)
+    assert [t["family"] for t in detail["tracks"]]==["synth","guitar"]
+    assert detail["track_count"]==library.public(row)["track_count"]==2
+    assert library.track_path(row,"piano").exists()  # Raw data remains available.
+
+@pytest.mark.parametrize("family",["lead","backing","piano","synth","strings","brass","acoustic_guitar","guitar","bass","drums","other"])
+def test_near_silence_rechecks_all_completed_families(library,family):
+    leakage={"family":family,"peak":.00135701,"signal_rms":.0000333421,"silent":False}
+    assert library.track_activity(leakage)["silent"]
+    assert library.public({"tracks":[leakage]})["track_count"]==0
+    assert not library.track_activity({**leakage,"peak":.005})["silent"]  # Brief real note.
+    assert not library.track_activity({**leakage,"signal_rms":.0001})["silent"]  # Quiet sustained note.
+
+
 def test_flat_session_keeps_instrument_parents_and_reconstructs_remaining(library):
     import numpy as np
     import soundfile as sf
@@ -43,12 +71,12 @@ def test_path_cannot_escape_data_root(library,tmp_path):
     outside=tmp_path.parent/"outside.txt";outside.write_text("private")
     with pytest.raises(FileNotFoundError):library.safe("../outside.txt")
 
-def test_final_ten_tracks_preserve_models_and_reconstruct_original(library):
+def test_final_ten_tracks_reconstruct_instrumental_without_subtracting_vocals(library):
     import numpy as np
     import soundfile as sf
     identifier="analysis_"+"d"*32
     folder=library.web/identifier;folder.mkdir()
-    labels=["vocals","lead","backing","piano","synth","bowed_strings","acoustic-guitar","electric-guitar","bass","drums","other","brass"]
+    labels=["vocals","lead","backing","piano","synth","bowed_strings","brass","acoustic-guitar","electric-guitar","bass","drums","other"]
     tracks=[]
     for index,label in enumerate(labels):
         path=folder/(label+".wav")
@@ -56,16 +84,18 @@ def test_final_ten_tracks_preserve_models_and_reconstruct_original(library):
         tracks.append({"family":label,"path":str(path.relative_to(library.root))})
     original=folder/"original.wav";sf.write(original,np.full((200,2),.9),44100,subtype="FLOAT")
     row={"id":identifier,"tracks":tracks,"original":str(original.relative_to(library.root))}
+    instrumental=folder/"instrumental.wav";sf.write(instrumental,np.full((200,2),.7),44100,subtype="FLOAT")
+    row["instrumental"]=str(instrumental.relative_to(library.root))
     result=library.final_session(row)
-    assert [t["family"] for t in result["tracks"]]==["lead","backing","piano","synth","strings","acoustic_guitar","guitar","bass","drums","other"]
-    assert result["track_layout"]=="flat_v2" and "track_note" not in result
+    assert [t["family"] for t in result["tracks"]]==["lead","backing","piano","synth","strings","brass","acoustic_guitar","guitar","bass","drums","other"]
+    assert result["track_layout"]=="flat_v4" and "track_note" not in result
     assert library.track_path(result,"strings")==folder/"bowed_strings.wav"
     assert library.track_path(result,"synth")==folder/"synth.wav"
-    summed=sum(sf.read(library.track_path(result,t["family"]))[0] for t in result["tracks"])
-    np.testing.assert_allclose(summed,sf.read(original)[0],atol=1e-7)
+    summed=sum(sf.read(library.track_path(result,t["family"]))[0] for t in result["tracks"] if t["family"] not in ("lead","backing"))
+    np.testing.assert_allclose(summed,sf.read(instrumental)[0],atol=1e-7)
     with pytest.raises(ValueError,match="누락"):
         library.final_session({**row,"tracks":[t for t in tracks if t["family"]!="synth"]})
-    for family in ("strings","acoustic_guitar"):
+    for family in ("strings","brass","acoustic_guitar"):
         enhanced=library.enhanced(result,family,0)
         np.testing.assert_array_equal(sf.read(enhanced)[0],sf.read(library.track_path(result,family))[0])
 

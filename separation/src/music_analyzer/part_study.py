@@ -119,7 +119,7 @@ def synth_controls(folder, duration=20):
 
 def infer_plan(plan_path):
     """Run in existing clapsep-env, loading pinned weights once for the entire comparison."""
-    cache = project_root() / "data/separation/runtime/part-study-numba-cache"
+    cache = Path(os.environ.get("NUMBA_CACHE_DIR",str(project_root() / "data/separation/runtime/part-study-numba-cache")))
     cache.mkdir(parents=True, exist_ok=True)
     os.environ["NUMBA_CACHE_DIR"] = str(cache)
     import tempfile
@@ -142,6 +142,10 @@ def infer_plan(plan_path):
         sys.path.insert(0, str(repo))
         import torch
         from model.CLAPSep import CLAPSep
+        # LAION's PANN module resets this to /tmp on import, which is not writable on Windows.
+        os.environ["NUMBA_CACHE_DIR"] = str(cache)
+        from numba import config as numba_config
+        numba_config.reload_config()
         if not torch.cuda.is_available(): raise ValueError("CUDA required")
         torch.manual_seed(0); np.random.seed(0)
         torch.set_num_threads(4)
@@ -202,7 +206,14 @@ def infer_plan(plan_path):
                             prediction = model.inference_from_data(torch.from_numpy(channel)[None,:].cuda(), positive, negative)
                             channels.append(prediction[0].float().cpu().numpy())
                         return np.stack(channels)
-                    estimate = overlap_infer(native, 320000, .5, infer)
+                    completed=0
+                    total=math.ceil((native.shape[1]+160000)/160000)
+                    def tick():
+                        nonlocal completed
+                        completed+=1
+                        if case.get("report_progress"):
+                            write_json(out/"progress.json",{"completed":completed,"total":total})
+                    estimate = overlap_infer(native, 320000, .5, infer,tick=tick)
                     restored = np.column_stack([restore_channel(channel, len(source)) for channel in estimate])
                 write_raw(out / (label + ".wav"), restored)
                 results[label] = {"path": label + ".wav", "sha256": sha256_file(out / (label + ".wav")), "positive": texts[0], "negative": texts[1],

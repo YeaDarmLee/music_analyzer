@@ -125,10 +125,10 @@ class WebLibrary:
         raise FileNotFoundError("분석을 찾을 수 없습니다.")
 
     def public(self,row):
-        return {k:v for k,v in row.items() if k not in ("tracks","original","job_ids","input_path")}|{"track_count":len(row.get("tracks",[]))}
+        return {k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path")}|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
 
     def create(self,filename,preset,stream,length,claim=None):
-        if preset not in ("final_10","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
+        if preset not in ("basic_2","basic_6","final_11","final_10","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
         extension=Path(filename).suffix.lower()
         if extension not in (".mp3",".wav",".flac"): raise ValueError("MP3, WAV, FLAC 파일을 선택해 주세요.")
         if not 0<length<=1024**3:raise ValueError("파일은 1GB 이하여야 합니다.")
@@ -201,8 +201,8 @@ class WebLibrary:
         def update(job,base,span,stage):
             p=job.get("progress") or {}
             fraction=p.get("completed",0)/max(1,p.get("total",0)) if p.get("total") else 0
-            percent=max(row["progress"],min(97,base+span*fraction))
-            save(state="RUNNING",stage=stage,progress=round(percent),active_job_id=job["job_id"],
+            percent=max(row["progress"],min(99,base+span*fraction))
+            save(state="RUNNING",stage=stage,progress=round(percent,1),active_job_id=job["job_id"],
                  completed_chunks=p.get("completed",0),total_chunks=p.get("total",0))
         def run_stage(asset_id,preset_name,callback):
             while not self.stopping.is_set():
@@ -217,53 +217,144 @@ class WebLibrary:
             asset=ingest_file(upload,self.root)
             original=load_asset(self.root,asset.name)
             save(duration=original["timeline"]["num_frames"]/RATE,progress=5)
-            vocal=run_stage(asset.name,"vocal_roformer",lambda j:update(j,5,20,"보컬 분리 중"))
+            vocal=run_stage(asset.name,"vocal_roformer",lambda j:update(j,5,27,"보컬·반주 분리 중"))
             row["job_ids"].append(vocal["job_id"])
             if vocal["state"]!="SUCCEEDED":raise ValueError("보컬 분리를 완료하지 못했습니다: "+vocal["state"])
             first_dir=job_folder(self.root,vocal["job_id"])/"result"
             first=verify_result(first_dir,vocal)
             instrumental=next(s for s in first["stems"] if s["family"]=="instrumental")
-            save(stage="악기 분리 준비",progress=26)
+            original_path=str((asset/"canonical.wav").relative_to(self.root))
+            instrumental_path=str((first_dir/instrumental["path"]).relative_to(self.root))
+            if row["model"]=="basic_2":
+                save(stage="길이·합계 검증 및 저장",progress=97)
+                row.update(original=original_path,tracks=[{**s,"path":str((first_dir/s["path"]).relative_to(self.root))} for s in first["stems"] if s["family"] in ("vocals","instrumental")],track_layout="basic_2")
+                self.validate_partition(row["original"],row["tracks"])
+                save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
+                return
+            if row["model"]=="final_11":
+                save(stage="리드 보컬·코러스 준비",progress=32,completed_chunks=0,total_chunks=0)
+                vocal_stem=next(t for t in first["stems"] if t["family"]=="vocals")
+                vocal_asset=ingest_file(first_dir/vocal_stem["path"],self.root)
+                detail_job=run_stage(vocal_asset.name,"bs_karaoke",lambda j:update(j,32,18,"리드 보컬·코러스 분리 중"))
+                row["job_ids"].append(detail_job["job_id"])
+                if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
+                detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
+                detail_result=verify_result(detail_dir,detail_job)
+            save(stage="악기 분리 준비",progress=50 if row["model"]=="final_11" else 32,completed_chunks=0,total_chunks=0)
             second_asset=ingest_file(first_dir/instrumental["path"],self.root)
-            final=row["model"]=="final_10"
-            second=run_stage(second_asset.name,"instrument_roformer_6s" if final else row["model"],lambda j:update(j,27,23,"피아노·베이스·드럼 분리 중" if final else "악기 분리 중"))
+            final=row["model"] in ("final_10","final_11")
+            basic=row["model"]=="basic_6"
+            second=run_stage(second_asset.name,"instrument_roformer_6s" if final or basic else row["model"],lambda j:update(j,50 if row["model"]=="final_11" else 32,52 if basic else 20,"피아노·기타·베이스·드럼 분리 중" if basic else "피아노·베이스·드럼 분리 중" if final else "악기 분리 중"))
             row["job_ids"].append(second["job_id"])
             if second["state"]!="SUCCEEDED":raise ValueError("악기 분리를 완료하지 못했습니다: "+second["state"])
             second_dir=job_folder(self.root,second["job_id"])/"result"
             second_result=verify_result(second_dir,second)
+            if basic:
+                save(stage="반주 구성 정리",progress=84)
+                instruments=[{**s,"path":str((second_dir/s["path"]).relative_to(self.root)),**({"display_name":"기타"} if s["family"]=="guitar" else {})} for s in second_result["stems"] if s["family"] in ("piano","guitar","bass","drums")]
+                if {t["family"] for t in instruments}!={"piano","guitar","bass","drums"}:raise ValueError("6트랙 악기 출력이 누락됐습니다.")
+                instruments.sort(key=lambda t:("piano","guitar","bass","drums").index(t["family"]))
+                vocals=[{**s,"path":str((first_dir/s["path"]).relative_to(self.root))} for s in first["stems"] if s["family"]=="vocals"]
+                row.update(original=original_path,instrumental=instrumental_path)
+                row=self.with_remaining(row,vocals+instruments,"basic_6","remaining-basic6.wav",instrumental_path,instruments)
+                save(stage="길이·합계 검증 및 저장",progress=97)
+                self.validate_partition(instrumental_path,[t for t in row["tracks"] if t["family"]!="vocals"])
+                save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
+                return
             tracks=[]
             for base,stems in [(first_dir,[s for s in first["stems"] if s["family"]=="vocals"]),
                                (second_dir,[s for s in second_result["stems"] if s["family"] in ("piano","bass","drums") or not final and s["family"]!="vocals"])]:
                 tracks.extend({**s,"path":str((base/s["path"]).relative_to(self.root))} for s in stems)
-            if final:
-                instruments=run_stage(asset.name,"instrument_mega4",lambda j:update(j,51,22,"신디사이저·스트링·기타 분리 중"))
+            if row["model"]=="final_11":
+                base_tracks=[{**t,"path":str((second_dir/t["path"]).relative_to(self.root))} for t in second_result["stems"] if t["family"] in ("piano","guitar","bass","drums")]
+                if {t["family"] for t in base_tracks}!={"piano","guitar","bass","drums"}:raise ValueError("기본 악기 출력 누락")
+                row.update(original=original_path,instrumental=instrumental_path)
+                save(stage="추가 악기 분리 준비",progress=70)
+                residual1=self.with_remaining(row,[],"staged_v1","remaining-stage1.wav",instrumental_path,base_tracks)["tracks"][-1]
+                guitar=next(t for t in base_tracks if t["family"]=="guitar")
+                guitar_asset=ingest_file(self.root/guitar["path"],self.root)
+                guitar_job=run_stage(guitar_asset.name,"instrument_mega5",lambda j:update(j,70,7,"어쿠스틱·일렉기타 분리 중"))
+                row["job_ids"].append(guitar_job["job_id"])
+                if guitar_job["state"]!="SUCCEEDED":raise ValueError("기타 재분리 실패")
+                guitar_dir=job_folder(self.root,guitar_job["job_id"])/"result"
+                guitar_result=verify_result(guitar_dir,guitar_job)
+                guitars=[{**t,"path":str((guitar_dir/t["path"]).relative_to(self.root))} for t in guitar_result["stems"] if t["family"] in ("acoustic-guitar","electric-guitar")]
+                if {t["family"] for t in guitars}!={"acoustic-guitar","electric-guitar"}:raise ValueError("기타 재분리 출력 누락")
+                guitar_residual=self.with_remaining(row,[],"staged_v1","guitar-residual.wav",guitar["path"],guitars)["tracks"][-1]
+                guitar_residual.update(family="guitar_residual",display_name="기타 보조")
+                residual_asset=ingest_file(self.root/residual1["path"],self.root)
+                instrument_job=run_stage(residual_asset.name,"instrument_mega5",lambda j:update(j,77,7,"신디·스트링·브라스 분리 중"))
+                row["job_ids"].append(instrument_job["job_id"])
+                if instrument_job["state"]!="SUCCEEDED":raise ValueError("나머지 악기 추출 실패")
+                instrument_dir=job_folder(self.root,instrument_job["job_id"])/"result"
+                result=verify_result(instrument_dir,instrument_job)
+                tracks.extend(guitars)
+                tracks.extend({**t,"path":str((instrument_dir/t["path"]).relative_to(self.root))} for t in result["stems"] if t["family"] in ("synth","bowed_strings","brass"))
+            elif final:
+                instruments=run_stage(second_asset.name,"instrument_mega5",lambda j:update(j,70 if row["model"]=="final_11" else 52,14,"신디사이저·스트링·브라스·기타 분리 중"))
                 row["job_ids"].append(instruments["job_id"])
                 if instruments["state"]!="SUCCEEDED":raise ValueError("전용 악기 분리를 완료하지 못했습니다.")
                 instrument_dir=job_folder(self.root,instruments["job_id"])/"result"
                 result=verify_result(instrument_dir,instruments)
                 tracks.extend({**s,"path":str((instrument_dir/s["path"]).relative_to(self.root))} for s in result["stems"])
-            save(stage="리드 보컬·코러스 준비",progress=74 if final else 51)
-            vocal_track=next(t for t in tracks if t["family"]=="vocals")
-            vocal_asset=ingest_file(self.root/vocal_track["path"],self.root)
-            detail_job=run_stage(vocal_asset.name,"bs_karaoke",lambda j:update(j,75 if final else 52,22 if final else 14,"리드 보컬·코러스 분리 중"))
-            row["job_ids"].append(detail_job["job_id"])
-            if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
-            detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
-            detail_result=verify_result(detail_dir,detail_job)
+            if row["model"]!="final_11":
+                save(stage="리드 보컬·코러스 준비",progress=66 if final else 51,completed_chunks=0,total_chunks=0)
+                vocal_track=next(t for t in tracks if t["family"]=="vocals")
+                vocal_asset=ingest_file(self.root/vocal_track["path"],self.root)
+                detail_job=run_stage(vocal_asset.name,"bs_karaoke",lambda j:update(j,66 if final else 52,18 if final else 14,"리드 보컬·코러스 분리 중"))
+                row["job_ids"].append(detail_job["job_id"])
+                if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
+                detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
+                detail_result=verify_result(detail_dir,detail_job)
             tracks.extend({**t,"parent_family":"vocals","path":str((detail_dir/t["path"]).relative_to(self.root))} for t in detail_result["stems"])
             row["tracks"]=tracks
             row["original"]=str((asset/"canonical.wav").relative_to(self.root))
+            if final:
+                row["instrumental"]=str((first_dir/instrumental["path"]).relative_to(self.root))
+                row["separation_version"]="staged-guitar-residual-v8" if row["model"]=="final_11" else "instrumental-with-brass-v5"
+            if final:save(stage="반주 구성 정리" if row["model"]=="final_11" else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
+            if row["model"]=="final_11":
+                row["tracks"].append(guitar_residual)
             row=self.final_session(row) if final else self.flatten_session(row)
             if final:
                 from .synth_recovery import run_for_library
-                row.update(state="RUNNING",stage="신디사이저 보완 추출 중",progress=98,active_job_id=None)
-                write_json(folder/"record.json",row)
-                row=run_for_library(self,row)
-            tracks=row["tracks"]
+                recoveries=(("synth",85,"신디사이저 보완 추출 중"),("strings",89 if row["model"]=="final_11" else 91,"스트링 보완 추출 중"))
+                if row["model"]=="final_11":recoveries+=(("brass",93,"브라스 보완 추출 중"),)
+                for family,base,stage in recoveries:
+                    row.update(state="RUNNING",stage=stage,progress=base,active_job_id=None,completed_chunks=0,total_chunks=0)
+                    write_json(folder/"record.json",row)
+                    def recovery_progress(p):
+                        fraction=p["completed"]/max(1,p["total"])
+                        save(progress=round(max(row["progress"],base+(3.8 if row["model"]=="final_11" else 5.8)*fraction),1),completed_chunks=p["completed"],total_chunks=p["total"])
+                    row=run_for_library(self,row,family,on_progress=recovery_progress)
+            if row["model"]=="final_11":
+                save(stage="최종 반주 정리",progress=97,completed_chunks=0,total_chunks=0)
+                final_tracks=[t for t in row["tracks"] if t["family"]!="other"]
+                row=self.with_remaining(row,final_tracks,"flat_v4","remaining-final11-v3.wav",row["instrumental"],
+                                        [t for t in final_tracks if t["family"] not in ("lead","backing")])
+            save(stage="최종 결과 저장",progress=98,completed_chunks=0,total_chunks=0)
+            if row["model"]=="final_10":
+                from .leakage_rule import apply as apply_leakage_rule
+                save(stage="악기 누출 억제 및 결과 검증 중",progress=97)
+                row=apply_leakage_rule(self.root,row)
+            if final:
+                self.validate_partition(row["instrumental"],[t for t in row["tracks"] if t["family"] not in ("lead","backing")])
+            tracks=[self.track_activity(t) for t in row["tracks"]]
             save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=tracks,
                  original=str((asset/"canonical.wav").relative_to(self.root)),active_job_id=None)
         except Exception as error:
             save(state="FAILED",stage="분석 실패",error=str(error),active_job_id=None)
+
+    def validate_partition(self,source_path,tracks):
+        import contextlib
+        with contextlib.ExitStack() as stack:
+            source=stack.enter_context(sf.SoundFile(self.safe(source_path)))
+            inputs=[stack.enter_context(sf.SoundFile(self.safe(t["path"]))) for t in tracks]
+            if (source.samplerate,source.channels)!=(RATE,2) or any((f.frames,f.samplerate,f.channels)!=(source.frames,RATE,2) for f in inputs):raise ValueError("최종 트랙 길이가 일치하지 않습니다.")
+            for block in source.blocks(blocksize=RATE,dtype="float32",always_2d=True):
+                total=np.zeros(block.shape,dtype=np.float64)
+                for f in inputs:total+=f.read(len(block),dtype="float32",always_2d=True)
+                if not np.isfinite(block).all() or not np.isfinite(total).all() or np.max(np.abs(total-block))>2e-6:raise ValueError("최종 트랙 합계 검증 실패")
 
     def flatten_session(self,row):
         """Keep the original instrument parents and only split vocal performances."""
@@ -280,21 +371,24 @@ class WebLibrary:
     def final_session(self,row):
         source={t["family"]:t for t in row["tracks"]}
         order=(("lead","lead"),("backing","backing"),("piano","piano"),("synth","synth"),
-               ("bowed_strings","strings"),("acoustic-guitar","acoustic_guitar"),("electric-guitar","guitar"),
+               ("bowed_strings","strings"),("brass","brass"),("acoustic-guitar","acoustic_guitar"),("electric-guitar","guitar"),
                ("bass","bass"),("drums","drums"))
         if any(key not in source for key,_ in order):raise ValueError("최종 트랙에 필요한 악기 출력이 누락됐습니다.")
         tracks=[{**{k:v for k,v in source[key].items() if k not in ("parent_family","display_name")},"family":family} for key,family in order]
-        return self.with_remaining(row,tracks,"flat_v2","remaining-v2.wav")
+        if row.get("separation_version")=="staged-guitar-residual-v8":
+            tracks.append(source["guitar_residual"])
+        return self.with_remaining(row,tracks,"flat_v4","remaining-v4.wav",row["instrumental"],
+                                   [t for t in tracks if t["family"] not in ("lead","backing")])
 
-    def with_remaining(self,row,tracks,layout,filename):
+    def with_remaining(self,row,tracks,layout,filename,residual_source=None,residual_tracks=None):
         folder=self.web/row["id"];folder.mkdir(parents=True,exist_ok=True)
         remaining=folder/filename
         peak=0.
         if not remaining.exists():
             import contextlib
             with contextlib.ExitStack() as stack:
-                original=stack.enter_context(sf.SoundFile(self.safe(row["original"])))
-                inputs=[stack.enter_context(sf.SoundFile(self.safe(t["path"]))) for t in tracks]
+                original=stack.enter_context(sf.SoundFile(self.safe(residual_source or row["original"])))
+                inputs=[stack.enter_context(sf.SoundFile(self.safe(t["path"]))) for t in (tracks if residual_tracks is None else residual_tracks)]
                 if any((f.frames,f.samplerate,f.channels)!=(original.frames,original.samplerate,original.channels) for f in inputs):
                     raise ValueError("잔여 트랙 생성 시 음원 길이가 일치하지 않습니다.")
                 output=stack.enter_context(sf.SoundFile(remaining.with_suffix(".partial.wav"),"w",samplerate=original.samplerate,channels=original.channels,subtype="FLOAT"))
@@ -319,11 +413,32 @@ class WebLibrary:
             if track["family"]==family:return self.safe(track["path"])
         raise FileNotFoundError("트랙을 찾을 수 없습니다.")
 
+    @staticmethod
+    def output_silent(track):
+        """Shared near-silence policy; cached measurements also cover old results."""
+        if "signal_rms" in track and "peak" in track:
+            return track["peak"]<=.002 and track["signal_rms"]<=.00005
+        return track.get("silent",False)
+
+    def track_activity(self,track):
+        """Hide negligible output across all families; not an instrument classifier."""
+        if "signal_rms" in track and "peak" in track:
+            return {**track,"silent":self.output_silent(track)}
+        peak=energy=0.;samples=0
+        with sf.SoundFile(self.safe(track["path"])) as source:
+            for block in source.blocks(blocksize=44100,dtype="float32",always_2d=True):
+                peak=max(peak,float(np.abs(block).max()))
+                energy+=float(np.sum(block.astype(np.float64)**2));samples+=block.size
+        rms=float(np.sqrt(energy/max(1,samples)))
+        measured={**track,"signal_rms":rms,"peak":peak}
+        return {**measured,"silent":self.output_silent(measured)}
+
     def detail(self,identifier):
         row=self.get(identifier)
         if row["state"]!="SUCCEEDED":return self.public(row)
         tracks=[]
         for t in row["tracks"]:
+            if self.track_activity(t)["silent"]:continue
             path=self.track_path(row,t["family"])
             with sf.SoundFile(path) as source:
                 frames=source.frames
@@ -338,7 +453,7 @@ class WebLibrary:
         with sf.SoundFile(self.track_path(row,"original")) as source:
             size=max(1,int(np.ceil(source.frames/1200)))
             for block in source.blocks(blocksize=size,dtype="float32",always_2d=True):original_peaks.append(round(float(np.abs(block).max()),5))
-        return self.public(row)|{"tracks":tracks,"original_waveform":original_peaks,"original_url":f"/api/analyses/{identifier}/audio/original",
+        return self.public(row)|{"track_count":len(tracks),"tracks":tracks,"original_waveform":original_peaks,"original_url":f"/api/analyses/{identifier}/audio/original",
             "archive_url":f"/api/analyses/{identifier}/archive","preview_note":"재생용 음량 조절은 다운로드 WAV에 반영되지 않습니다."}
 
     def fingerprint(self,row):
@@ -384,7 +499,7 @@ class WebLibrary:
     def enhanced(self,row,family,strength):
         from scipy.signal import sosfilt
         profiles={"vocals":((300,-1.5,.8),(3200,1.3,.7)),"guitar":((320,-1.4,.8),(2600,1.2,.7)),"piano":((280,-1.2,.8),(3000,1,.7)),"bass":((300,-.7,.8),(1200,.6,.7)),"drums":((350,-.8,.8),(4500,.8,.7)),"other":((350,-.6,.7),(3000,.5,.7))}
-        profiles.update(lead=profiles["vocals"],backing=profiles["vocals"],synth=profiles["other"],strings=profiles["other"],acoustic_guitar=profiles["guitar"],synth_pad=profiles["other"],other_residual=profiles["other"],lead_guitar=profiles["guitar"],guitar_residual=profiles["guitar"])
+        profiles.update(lead=profiles["vocals"],backing=profiles["vocals"],synth=profiles["other"],brass=profiles["other"],strings=profiles["other"],acoustic_guitar=profiles["guitar"],synth_pad=profiles["other"],other_residual=profiles["other"],lead_guitar=profiles["guitar"],guitar_residual=profiles["guitar"])
         if family not in profiles:raise ValueError("후처리를 지원하지 않는 트랙입니다.")
         if not 0<=strength<=100:raise ValueError("강도는 0–100입니다.")
         folder=self.web/"enhanced"/row["id"]/self.fingerprint(row);target=folder/(family+f"-clarity-v1-{strength}.wav")

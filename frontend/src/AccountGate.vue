@@ -96,10 +96,9 @@ onBeforeUnmount(()=>{disposed=true;if(showAuth.value||closing.value)document.bod
     <Transition :css="false" @enter="enter" @leave="leave" @after-enter="focusModal" @after-leave="afterLeave">
     <div v-if="showAuth" class="modal-backdrop account-backdrop" @click.self="close" @pointerdown="press" @keydown="modalKeydown">
       <form class="account-card" role="dialog" aria-modal="true" :aria-busy="busy" aria-labelledby="account-title" @submit.prevent="submit">
-        <div class="account-modal-top"><span class="tiny-label">{{mode==='register'?'CREATE ACCOUNT':'YOUR WORKSPACE'}}</span><button class="close" type="button" aria-label="로그인 창 닫기" :disabled="busy" @click="close">×</button></div>
+        <div class="account-modal-top"><span class="tiny-label">{{mode==='register'?'회원가입':'로그인'}}</span><button class="close" type="button" aria-label="로그인 창 닫기" :disabled="busy" @click="close">×</button></div>
         <Transition :css="false" mode="out-in" @enter="contentEnter" @leave="contentLeave" @after-enter="focusModal">
         <div :key="mode" class="account-content">
-        <div class="eyebrow">MUSIC ANALYZER</div>
         <h2 id="account-title">{{mode==='register'?'나만의 스튜디오 만들기':'다시 만나 반가워요.'}}</h2>
         <p>내 음원을 분석하고 나만의 라이브러리에서 이어서 들어보세요.</p>
         <label v-if="mode==='register'" class="account-field">이름<input v-model="displayName" autocomplete="name" required maxlength="80" :disabled="busy"></label>
