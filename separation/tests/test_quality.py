@@ -101,7 +101,8 @@ def test_quality_fallback_preserves_model_and_source_contract():
         selected = preset(name)
         fallback = preset(fallback_for(name))
         assert selected["model_id"] == fallback["model_id"]
-        assert selected["segment_sec"] == 7.8 and selected["overlap"] == .5
+        assert selected["segment_sec"] == 7.8 and selected["overlap"] == .4
+        assert fallback["overlap"] == .4
         assert selected["shifts"] == 2 and fallback["shifts"] == 0
 
 

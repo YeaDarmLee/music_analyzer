@@ -2213,3 +2213,75 @@ html {
 .analysis-modal{padding:24px 28px}.analysis-modal .modal-top{margin-bottom:12px}.analysis-modal h2{font-size:24px}.analysis-modal .version-options{margin:16px 0;gap:8px}.analysis-modal .version-option{padding:12px}.analysis-modal .upload-tabs{margin-bottom:16px}.analysis-modal .version-steps{font-size:13px}
 
 .version-option small{white-space:pre-line}
+
+.selected-file{display:grid;gap:6px}.selected-file strong{overflow-wrap:anywhere}.selected-file span{font-size:13px;opacity:.7}.version-estimate{color:#c6b2ff;font-size:13px}.version-estimate small{display:block;margin-top:3px}
+
+/* Analysis wizard motion and expanding process panel. */
+.analysis-modal{width:520px;max-width:calc(100vw - 32px);transition:width .48s cubic-bezier(.22,.75,.18,1);overflow-x:hidden}
+.analysis-modal.has-version{width:960px}
+.analysis-tab-panel{min-width:0}
+.version-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0;transition:gap .48s cubic-bezier(.22,.75,.18,1)}
+.has-version .version-layout{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:28px}
+.version-selection{min-width:0}
+.version-option{transition:border-color .22s,background .22s,box-shadow .22s,transform .22s}
+.version-option:hover{border-color:#85729f;transform:translateY(-2px)}
+.version-option.selected{box-shadow:0 0 0 1px #af8fff26}
+.version-detail-panel{min-width:0;border-left:1px solid #af8fff26;padding-left:26px}
+.detail-eyebrow{color:#af8fff;font-size:11px;letter-spacing:.12em}
+.version-detail-panel h3{margin:10px 0;font-size:22px}
+.version-detail-panel p{font-size:13px;line-height:1.7;white-space:pre-line;color:#aaa8bb}
+.version-detail-panel .version-steps{margin-top:20px}
+.version-detail-panel .version-steps li{padding-left:5px;margin-bottom:16px}
+.version-detail-panel .version-steps li::marker{color:#af8fff}
+.analysis-tab-enter-active,.analysis-tab-leave-active{transition:opacity .22s ease,transform .3s cubic-bezier(.22,.75,.18,1)}
+.analysis-tab-enter-from{opacity:0;transform:translateX(18px)}
+.analysis-tab-leave-to{opacity:0;transform:translateX(-12px)}
+.version-details-enter-active{transition:opacity .35s ease .15s,transform .45s cubic-bezier(.22,.75,.18,1) .1s}
+.version-details-leave-active{transition:opacity .15s ease}
+.version-details-enter-from{opacity:0;transform:translateX(20px)}
+.version-details-leave-to{opacity:0}
+.detail-content-enter-active,.detail-content-leave-active{transition:opacity .16s ease,transform .2s ease}
+.detail-content-enter-from{opacity:0;transform:translateY(8px)}
+.detail-content-leave-to{opacity:0;transform:translateY(-5px)}
+@media(max-width:760px){.analysis-modal.has-version{width:520px}.has-version .version-layout{grid-template-columns:minmax(0,1fr);gap:20px}.version-detail-panel{border-left:0;border-top:1px solid #af8fff26;padding:20px 0 0}}
+@media(prefers-reduced-motion:reduce){.analysis-modal,.version-layout,.version-option,.analysis-tab-enter-active,.analysis-tab-leave-active,.version-details-enter-active,.version-details-leave-active,.detail-content-enter-active,.detail-content-leave-active{transition:none}.version-option:hover{transform:none}}
+
+/* Keep the wizard and action anchored; scroll only the process list. */
+.analysis-modal{height:min(800px,calc(100dvh - 40px));max-height:calc(100dvh - 40px);overflow:hidden;display:flex;flex-direction:column;scrollbar-gutter:auto}
+.analysis-modal>.modal-top,.analysis-modal>.upload-tabs,.analysis-modal>h2,.analysis-modal>.button,.analysis-modal>.error,.analysis-modal>.upload-state{flex-shrink:0}
+.analysis-modal>h2{margin-bottom:16px}
+.analysis-modal>.analysis-tab-panel{flex:1;min-height:0;overflow:hidden}
+.analysis-modal>.button{margin-top:16px}
+.analysis-modal .version-layout{height:100%;min-height:0}
+.analysis-modal .version-selection{min-height:0}
+.analysis-modal .selected-file{margin-top:0;margin-bottom:12px}
+.analysis-modal .version-option{padding:10px 12px}
+.analysis-modal .version-option>span{gap:5px}
+.analysis-modal .version-selection>.modal-note{font-size:11px;line-height:1.5;margin:10px 0}
+.analysis-modal .version-detail-panel{height:100%;min-height:0;overflow:hidden}
+.analysis-modal .version-detail-panel>div{height:100%;min-height:0;display:flex;flex-direction:column}
+.analysis-modal .version-detail-panel>div>h3,.analysis-modal .version-detail-panel>div>p,.analysis-modal .detail-eyebrow{flex-shrink:0}
+.analysis-modal .version-detail-panel .version-steps{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;margin:12px 0 0;padding-right:12px;scrollbar-width:thin;scrollbar-color:#79618f transparent}
+@media(max-height:760px){.analysis-modal{padding:16px 24px}.analysis-modal .version-option small{font-size:11px}.analysis-modal .version-option>span{gap:3px}.analysis-modal .version-options{gap:6px;margin:10px 0}.analysis-modal .version-option{padding:8px 10px}.analysis-modal .version-estimate small{display:inline;margin-left:8px}.analysis-modal .version-selection>.modal-note{margin:6px 0}.analysis-modal .modal-top{margin-bottom:6px}.analysis-modal h2{font-size:21px;margin-top:4px;margin-bottom:10px}}
+@media(max-width:760px){.analysis-modal{height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);padding:14px 18px}.analysis-modal.has-version .version-layout{grid-template-rows:auto minmax(0,1fr);gap:12px}.analysis-modal .version-detail-panel{padding-top:12px}.analysis-modal .version-detail-panel p{display:none}.analysis-modal .version-detail-panel h3{font-size:18px;margin:6px 0}.analysis-modal .version-option small{display:none}.analysis-modal .version-option>span>span:not(.version-estimate){display:none}.analysis-modal .version-options{margin:8px 0;gap:6px}.analysis-modal .version-option>span{gap:3px}.analysis-modal .version-option{padding:8px 10px}.analysis-modal .version-selection>.modal-note{font-size:10px;margin:6px 0}.analysis-modal .selected-file{margin-bottom:8px}}
+
+/* Size each wizard step independently and fit all choices above the action. */
+.analysis-modal.is-upload-step{height:auto;max-height:calc(100dvh - 40px)}
+.analysis-modal.is-upload-step>.analysis-tab-panel{flex:0 0 auto}
+.analysis-modal.is-upload-step>.button{margin-top:12px}
+.analysis-modal.is-upload-step .modal-note{margin:12px 0 0}
+.analysis-modal.is-version-step{height:min(760px,calc(100dvh - 40px))}
+.analysis-modal.is-version-step .version-selection{display:flex;flex-direction:column;height:100%;min-height:0}
+.analysis-modal.is-version-step .selected-file{flex-shrink:0;font-size:13px;gap:4px;margin:0 0 10px}
+.analysis-modal.is-version-step .selected-file span{font-size:11px}
+.analysis-modal.is-version-step .version-options{flex:1;min-height:0;grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;margin:0}
+.analysis-modal.is-version-step .version-option{padding:10px 12px;min-height:0;align-items:center}
+.analysis-modal.is-version-step .version-option>span{width:100%;gap:4px;min-width:0}
+.analysis-modal.is-version-step .version-option strong{font-size:13px}
+.analysis-modal.is-version-step .version-option>span>span:not(.version-estimate){font-size:12px;line-height:1.45}
+.analysis-modal.is-version-step .version-option small{font-size:11px;line-height:1.45}
+.analysis-modal.is-version-step .version-estimate{font-size:12px;line-height:1.5}
+.analysis-modal.is-version-step .version-estimate small{display:inline;margin:0 0 0 8px;font-size:10px;white-space:normal}
+.analysis-modal.is-version-step .version-selection>.modal-note{flex-shrink:0;font-size:10px;line-height:1.4;margin:8px 0 0}
+@media(max-height:700px){.analysis-modal.is-version-step .version-option{padding:7px 10px}.analysis-modal.is-version-step .version-option>span{gap:3px}.analysis-modal.is-version-step .version-option>span>small{display:none}.analysis-modal.is-version-step .version-estimate small{display:none}}
+@media(max-width:760px){.analysis-modal.is-upload-step{height:auto;max-height:calc(100dvh - 24px)}.analysis-modal.is-version-step{height:calc(100dvh - 24px)}.analysis-modal.is-version-step.has-version .version-selection{height:auto}.analysis-modal.is-version-step.has-version .version-options{flex:none;grid-template-rows:repeat(3,auto)}.analysis-modal.is-version-step .version-option>span>span:not(.version-estimate){display:none}.analysis-modal.is-version-step .version-option>span>small{display:none}.analysis-modal.is-version-step .version-estimate small{display:none}.analysis-modal.is-version-step .version-option{padding:8px 10px}}

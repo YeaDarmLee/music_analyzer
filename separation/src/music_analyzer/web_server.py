@@ -195,8 +195,12 @@ class WebLibrary:
         except Exception as error:save(state="FAILED",stage="보컬 세부분리 실패",error=str(error),active_job_id=None)
 
     def analyze(self,folder,upload,row):
+        started=time.monotonic()
+        waiting_seconds=0.
         service=JobService(self.root)
         def save(**values):
+            if values.get("state")=="SUCCEEDED":
+                values.update(processing_seconds=round(time.monotonic()-started-waiting_seconds,3),timing_profile="staged-v8-overlap40")
             row.update(values);write_json(folder/"record.json",row)
         def update(job,base,span,stage):
             p=job.get("progress") or {}
@@ -205,12 +209,15 @@ class WebLibrary:
             save(state="RUNNING",stage=stage,progress=round(percent,1),active_job_id=job["job_id"],
                  completed_chunks=p.get("completed",0),total_chunks=p.get("total",0))
         def run_stage(asset_id,preset_name,callback):
+            nonlocal waiting_seconds
             while not self.stopping.is_set():
                 try:return service.run(asset_id,preset_name,callback)
                 except JobError as error:
                     if error.code!="GPU_BUSY":raise
                     save(state="QUEUED",stage="다른 음원 처리 완료를 기다리는 중")
+                    wait_started=time.monotonic()
                     self.stopping.wait(1)
+                    waiting_seconds+=time.monotonic()-wait_started
             raise ValueError("서버 종료로 분석이 중단됐습니다.")
         try:
             save(state="RUNNING",stage="음원 확인 및 변환",progress=2)

@@ -207,16 +207,20 @@ def infer_plan(plan_path):
                             channels.append(prediction[0].float().cpu().numpy())
                         return np.stack(channels)
                     completed=0
-                    total=math.ceil((native.shape[1]+160000)/160000)
+                    chunk=320000
+                    overlap=.4
+                    stride=int(chunk*(1-overlap))
+                    total=math.ceil((native.shape[1]+chunk-stride)/stride)
                     def tick():
                         nonlocal completed
                         completed+=1
                         if case.get("report_progress"):
                             write_json(out/"progress.json",{"completed":completed,"total":total})
-                    estimate = overlap_infer(native, 320000, .5, infer,tick=tick)
+                    estimate = overlap_infer(native, chunk, overlap, infer,tick=tick)
                     restored = np.column_stack([restore_channel(channel, len(source)) for channel in estimate])
                 write_raw(out / (label + ".wav"), restored)
                 results[label] = {"path": label + ".wav", "sha256": sha256_file(out / (label + ".wav")), "positive": texts[0], "negative": texts[1],
+                                  "overlap": overlap, "chunk_sec": chunk/32000,
                                   "reference": references, "reference_sha256": [sha256_file(Path(p)) for p in references] if references else None,
                                   "wall_sec": time.perf_counter() - started, "peak_allocated_bytes": torch.cuda.max_memory_allocated()}
                 print(case["name"], label, "READY", flush=True)

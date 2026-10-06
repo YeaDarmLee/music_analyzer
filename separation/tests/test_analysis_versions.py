@@ -59,6 +59,8 @@ def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch
         library.analyze(folder,upload,row)
         result=read_json(folder/'record.json')
         assert result['state']=='SUCCEEDED',result.get('error')
+        assert result['processing_seconds']>0
+        assert result['timing_profile']=='staged-v8-overlap40'
         assert len(result['tracks'])==count
         assert calls==presets and recovered==recoveries
         if version=='final_11':
