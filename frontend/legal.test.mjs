@@ -113,5 +113,5 @@ test('user-facing screens do not name internal models or claim the download is t
   const surface=readFileSync(new URL('./src/App.vue',import.meta.url),'utf8');
   for(const word of ['RoFormer','Demucs','CLAPSep','AudioSep','Mega53','원본 FLOAT WAV'])assert.ok(!surface.includes(word),word);
   assert.match(surface,/44\.1kHz FLOAT WAV/);
-  assert.match(surface,/side-legal/);
+  assert.ok(!surface.includes('side-legal'),'legal links live in the footer only');
 });

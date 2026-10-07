@@ -167,7 +167,7 @@ cd frontend; node --test legal.test.mjs trackGroups.test.mjs bufferPlayer.test.m
 
 ## 14. 외부 공개 전 점검표 (2026-10-08 외부 검토 반영)
 
-반영함(코드): 만 14세 이상 확인, 방침 10항에 처리정지·동의 철회·이의제기, 동의 요약의 비밀번호/IP 표현·처리 근거 구분, UI preset ID ↔ commercial preset ID 매핑(`versions.js`의 `commercial`, 상용 모드에서 `/api/release` 목록과 매칭하고 그 id를 서버로 전송), 결과 화면의 "보컬 RoFormer + 악기"와 라이브러리의 모델명(RoFormer/Demucs/CLAPSep/AudioSep) 제거, "원본 FLOAT WAV" → "44.1kHz FLOAT WAV", 사이드바 법적 링크 상시 표시, `/licenses` 문구 정정, API 응답에서 `stage`/`error` 제거(`error_code: ANALYSIS_FAILED`만 제공, 원문은 `record.json`과 서버 stderr).
+반영함(코드): 만 14세 이상 확인, 방침 10항에 처리정지·동의 철회·이의제기, 동의 요약의 비밀번호/IP 표현·처리 근거 구분, UI preset ID ↔ commercial preset ID 매핑(`versions.js`의 `commercial`, 상용 모드에서 `/api/release` 목록과 매칭하고 그 id를 서버로 전송), 결과 화면의 "보컬 RoFormer + 악기"와 라이브러리의 모델명(RoFormer/Demucs/CLAPSep/AudioSep) 제거, "원본 FLOAT WAV" → "44.1kHz FLOAT WAV", `/licenses` 문구 정정, API 응답에서 `stage`/`error` 제거(`error_code: ANALYSIS_FAILED`만 제공, 원문은 `record.json`과 서버 stderr).
 
 공개 전 반드시 사람이 처리(코드로 해결 불가):
 - placeholder 실제값: `[운영자명]`, `[개인정보 보호 담당자]`, `[문의 이메일]`, `[저작권 신고 이메일]`, `[저작권 담당자]`, 시행일. 가능하면 개인정보 문의 전화번호도.
