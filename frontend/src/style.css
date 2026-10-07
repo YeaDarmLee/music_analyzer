@@ -2364,3 +2364,25 @@ html {
 .about h2 { margin: 8px 0 12px; font-size: 22px }
 .about p { margin: 0 0 14px; color: #a5a7b5; font-size: 14px; line-height: 1.75 }
 .about ul { margin: 0; padding-left: 18px; color: #9496a5; font-size: 13px; line-height: 1.9 }
+
+/* home layout rhythm */
+.block { margin: 0 0 76px }
+.block-head { margin-bottom: 26px }
+.block-head .eyebrow { display: block; color: #9a8bd0; margin-bottom: 10px }
+.block-head h2 { margin: 0; font-size: 26px; letter-spacing: -.8px; font-weight: 600 }
+.block-head p { margin: 10px 0 0; color: #8b8e9d; font-size: 14px }
+.about { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; max-width: none }
+.about p { color: #a5a7b5; font-size: 15px; line-height: 1.8; margin: 0 }
+.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
+.about-stats div { border: 1px solid #2c2a38; border-radius: 12px; background: #1b1923; padding: 20px 14px; text-align: center }
+.about-stats b { display: block; font-size: 32px; font-weight: 600; color: #d9ceff; letter-spacing: -1px }
+.about-stats b small { font-size: 14px; margin-left: 2px; color: #9a8bd0 }
+.about-stats span { display: block; margin-top: 6px; color: #7f8190; font-size: 11px }
+.compare-grid article, .feature-grid article, .steps-grid article { transition: transform .25s ease, border-color .25s ease, background .25s ease }
+.compare-grid article:hover, .feature-grid article:hover, .steps-grid article:hover { transform: translateY(-3px); border-color: #4b4266; background: #201d2b }
+.compare-num { color: #5d5478; font-size: 13px; font-weight: 700; letter-spacing: 2px }
+.compare-grid article.featured { background: linear-gradient(160deg, #2a2240 0%, #1f1b2b 70%); box-shadow: 0 10px 40px -18px #6a5a9c }
+.compare-grid small { padding-top: 14px; border-top: 1px solid #2c2a38 }
+.steps-grid article { position: relative }
+.cta-band { margin-bottom: 56px }
+@media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 24px } .block { margin-bottom: 52px } }
