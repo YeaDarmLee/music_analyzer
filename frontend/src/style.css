@@ -2563,3 +2563,11 @@ html {
 .plan-side article > div:first-of-type h3, .plan-side article > div:first-of-type p { margin: 0 }
 .plan-split .lane b, .plan-side .lane b { font-size: 11px }
 .plan-split .plan-panel { align-content: start }
+
+/* hero card: same type scale as plan cards, button pinned to bottom */
+.hero-copy { display: flex; flex-direction: column; align-self: stretch; position: relative; z-index: 1 }
+.hero h2 { font-size: 34px; line-height: 1.25; letter-spacing: -1.4px; margin: 0 0 14px; white-space: nowrap }
+.hero p { font-size: 13px; line-height: 1.7; color: #a5a7b5; margin: 0 }
+.hero-copy .button.white { margin-top: auto; align-self: flex-start }
+.hero-tags { margin-top: 14px }
+@media (max-width: 900px) { .hero h2 { white-space: normal; font-size: 26px } }
