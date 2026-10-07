@@ -2388,7 +2388,7 @@ html {
 @media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 24px } .block { margin-bottom: 52px } }
 
 /* landing sections */
-.lp { text-align: center; padding: 96px 0; border-top: 1px solid #22212c }
+.lp { text-align: center; padding: 96px 0 }
 .lp .eyebrow { display: block; color: #9a8bd0; margin-bottom: 16px }
 .lp h2 { margin: 0 auto; font-size: 38px; line-height: 1.25; letter-spacing: -1.4px; font-weight: 600; max-width: 760px }
 .lp h2 em { font-style: normal; background: linear-gradient(90deg, #c6b2ff, #72d5b5); -webkit-background-clip: text; background-clip: text; color: transparent }
