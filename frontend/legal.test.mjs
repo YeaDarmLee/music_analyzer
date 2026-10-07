@@ -119,3 +119,13 @@ test('user-facing screens do not name internal models or claim the download is t
 test('footer with legal links is rendered on the home page and on the track studio screen',()=>{
   assert.equal(app.match(/<SiteFooter \/>/g).length,2);
 });
+
+test('login does not leave a focused heading; sliders have no native focus box; sample mirrors studio mixer behaviour',()=>{
+  const gate=readFileSync(new URL('./src/AccountGate.vue',import.meta.url),'utf8');
+  assert.ok(!gate.includes("account-workspace h1"),'no heading focus fallback after login');
+  const css=readFileSync(new URL('./src/style.css',import.meta.url),'utf8');
+  assert.match(css,/\.track-settings input\[type=range\]:focus\s*,[^{]*\{\s*outline: none/);
+  const sample=readFileSync(new URL('./src/SamplePlayer.vue',import.meta.url),'utf8');
+  for(const feature of ['solo:solo[r.key]',"'daw-playing':playing","'is-playing':playing",'masterMemory','setTargetAtTime','resetFrame','aria-pressed'])
+    assert.ok(sample.includes(feature),'sample player lacks '+feature);
+});

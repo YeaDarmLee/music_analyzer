@@ -14,11 +14,27 @@ const audible=k=>anySolo.value?!!solo.value[k]:!mute.value[k];
 const level=k=>audible(k)?(vol.value[k]??1):0;
 const allMuted=computed(()=>parts.value.every(r=>mute.value[r.key])),anyMuted=computed(()=>parts.value.some(r=>mute.value[r.key]));
 const allSolo=computed(()=>parts.value.every(r=>solo.value[r.key])),anySoloP=computed(()=>parts.value.some(r=>solo.value[r.key]));
-function apply(){if(!ctx)return;rows.value.forEach(r=>gains[r.key]&&(gains[r.key].gain.value=level(r.key)));out.gain.value=master.value}
+function apply(){if(!ctx)return;const now=ctx.currentTime;rows.value.forEach(r=>gains[r.key]?.gain.setTargetAtTime(level(r.key),now,.015));out.gain.setValueAtTime(master.value,now)} // same smoothing as the studio mixer: no clicks on mute/solo/volume
 const flip=(kind,k)=>{const map=kind==='m'?mute:solo;map.value={...map.value,[k]:!map.value[k]};apply()};
-function masterToggle(kind,any){const map=kind==='m'?mute:solo;const next={...map.value};parts.value.forEach(r=>next[r.key]=!any);map.value=next;apply()}
+// Like the studio: any engaged track releases every track and is remembered; the next press restores that set (or engages all).
+let masterMemory={m:[],s:[]};
+function masterToggle(kind,any){
+  const map=kind==='m'?mute:solo,next={...map.value};
+  if(any){masterMemory[kind]=parts.value.filter(r=>next[r.key]).map(r=>r.key);parts.value.forEach(r=>next[r.key]=false)}
+  else{const saved=masterMemory[kind];parts.value.forEach(r=>next[r.key]=saved.length?saved.includes(r.key):true)}
+  map.value=next;apply();
+}
 function setVol(k,v){vol.value={...vol.value,[k]:v};apply()}
-function resetVolumes(){vol.value={};master.value=1;apply()}
+let resetFrame;
+function resetVolumes(event){
+  event?.currentTarget?.animate([{transform:'rotate(0)'},{transform:'rotate(-360deg)'}],{duration:600,easing:'cubic-bezier(.22,.75,.18,1)'});
+  cancelAnimationFrame(resetFrame);
+  const from={...vol.value},m0=master.value,start=performance.now(),ms=600;
+  const step=now=>{const k=Math.min(1,(now-start)/ms),e=1-Math.pow(1-k,3),next={};
+    master.value=m0+(1-m0)*e;for(const r of rows.value){const v=from[r.key]??1;next[r.key]=v+(1-v)*e}
+    vol.value=next;apply();if(k<1)resetFrame=requestAnimationFrame(step);else vol.value={}};
+  resetFrame=requestAnimationFrame(step);
+}
 async function load(){
   ctx=new AudioContext();out=ctx.createGain();out.connect(ctx.destination);
   await Promise.all(rows.value.map(async r=>{bufs[r.key]=await ctx.decodeAudioData(await (await fetch(r.file)).arrayBuffer());const g=ctx.createGain();g.connect(out);gains[r.key]=g}));
@@ -40,15 +56,15 @@ const seekWave=e=>{const r=e.currentTarget.getBoundingClientRect();seekTo(Math.m
 const stamp=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
 function draw(){root.value?.querySelectorAll('canvas[data-wave]').forEach(c=>{const r=rows.value.find(r=>r.key===c.dataset.wave);if(!r)return;const w=Math.max(300,c.clientWidth),h=c.clientHeight,d=devicePixelRatio||1;c.width=w*d;c.height=h*d;const x=c.getContext('2d');x.scale(d,d);x.fillStyle=r.color;x.globalAlpha=.75;const peak=Math.max(.02,...r.peaks);for(let i=0;i<w;i+=3){const v=r.peaks[Math.floor(i/w*r.peaks.length)]||0,H=Math.max(1,v/peak*(h-12));x.fillRect(i,(h-H)/2,1.5,H)}})}
 onMounted(async()=>{m.value=await (await fetch('/samples/manifest.json')).json();mute.value={original:true};await nextTick();draw();ro=new ResizeObserver(draw);ro.observe(root.value)});
-onBeforeUnmount(()=>{stop();ro?.disconnect();ctx?.close()});
+onBeforeUnmount(()=>{cancelAnimationFrame(resetFrame);stop();ro?.disconnect();ctx?.close()});
 </script>
 <template>
-<div v-if="m" ref="root" class="sp-wrap session">
-<div class="transport master-row"><div class="master-left"><span class="master-label">전체</span><button :class="{selected:allMuted,partial:anyMuted&&!allMuted}" aria-label="전체 음소거" @click="masterToggle('m',anyMuted)" :title="anyMuted?'눌려 있는 음소거를 모두 해제':'모든 트랙 음소거'">M</button><button :class="{selected:allSolo,partial:anySoloP&&!allSolo}" aria-label="전체 솔로" @click="masterToggle('s',anySoloP)" :title="anySoloP?'눌려 있는 솔로를 모두 해제':'모든 트랙 솔로'">S</button></div>
+<div v-if="m" ref="root" class="sp-wrap session" :class="{'is-playing':playing}">
+<div class="transport master-row"><div class="master-left"><span class="master-label">전체</span><button :class="{selected:allMuted,partial:anyMuted&&!allMuted}" aria-label="전체 음소거" :aria-pressed="allMuted?'true':anyMuted?'mixed':'false'" @click="masterToggle('m',anyMuted)" :title="anyMuted?'눌려 있는 음소거를 모두 해제':'모든 트랙 음소거'">M</button><button :class="{selected:allSolo,partial:anySoloP&&!allSolo}" aria-label="전체 솔로" :aria-pressed="allSolo?'true':anySoloP?'mixed':'false'" @click="masterToggle('s',anySoloP)" :title="anySoloP?'눌려 있는 솔로를 모두 해제':'모든 트랙 솔로'">S</button></div>
 <div class="master-main"><div class="play-controls"><button class="reset" aria-label="처음으로" @click="stop();pos=0">↤</button><button class="play" :aria-label="playing?'일시정지':'재생'" @click="toggle">{{busy?'◌':playing?'Ⅱ':'▶'}}</button><button class="reset" aria-label="모든 볼륨 기본값으로" title="모든 볼륨 기본값으로" @click="resetVolumes">↻</button><div class="time"><strong>{{stamp(pos)}}</strong><span>/ {{stamp(m.duration)}}</span></div></div>
 <div class="transport-right"><label class="master">마스터<input v-model.number="master" type="range" min="0" max="2" step=".01" @input="apply" @dblclick="master=1;apply()" title="더블클릭하여 기본 음량(100%)으로 복원" aria-label="마스터 음량"><span>{{Math.round(master*100)}}%</span></label></div></div><span></span></div>
-<div class="daw"><div class="daw-ruler"><span>TRACKS <b>{{parts.length}}</b></span><div class="ruler-scale"><i v-for="t in ticks" :key="t.t" :style="{left:t.left+'%'}">{{t.t}}s</i><input class="timeline" type="range" :value="pos" min="0" :max="m.duration" step=".1" @input="seekTo(+$event.target.value)" aria-label="재생 위치"><div class="ruler-head" :style="{left:pos/m.duration*100+'%'}"></div></div><span></span></div>
-<div v-for="(r,i) in rows" :key="r.key" class="track-row" :style="{'--track':r.color,'--index':i}" :class="{muted:!audible(r.key)}">
+<div class="daw" :class="{'daw-playing':playing}"><div class="daw-ruler"><span>TRACKS <b>{{parts.length}}</b></span><div class="ruler-scale"><i v-for="t in ticks" :key="t.t" :style="{left:t.left+'%'}">{{t.t}}s</i><input class="timeline" type="range" :value="pos" min="0" :max="m.duration" step=".1" @input="seekTo(+$event.target.value)" aria-label="재생 위치"><div class="ruler-head" :style="{left:pos/m.duration*100+'%'}"></div></div><span></span></div>
+<div v-for="(r,i) in rows" :key="r.key" class="track-row" :style="{'--track':r.color,'--index':i}" :class="{muted:!audible(r.key),solo:solo[r.key]}">
 <div class="track-info"><div class="track-title"><span class="track-icon" aria-hidden="true"><Drum v-if="r.key==='drums'" :size="22" :stroke-width="1.8"/><svg v-else viewBox="0 0 24 24"><path :d="icons[r.key]||mdiWaveform"/></svg></span><b>{{r.name}}</b><span class="track-format">{{r.key==='original'?'REF':'MP3'}}</span></div>
 <div class="track-settings"><button :class="{selected:mute[r.key]}" :aria-label="r.name+' 음소거'" :aria-pressed="!!mute[r.key]" @click="flip('m',r.key)">M</button><button :class="{selected:solo[r.key]}" :aria-label="r.name+' 솔로'" :aria-pressed="!!solo[r.key]" @click="flip('s',r.key)">S</button><input type="range" min="0" max="2" step=".01" :value="vol[r.key]??1" @input="setVol(r.key,+$event.target.value)" @dblclick="setVol(r.key,1)" title="더블클릭하여 기본 음량(100%)으로 복원" :aria-label="r.name+' 음량'"><span>{{Math.round((vol[r.key]??1)*100)}}%</span></div></div>
 <div class="waveform" @click="seekWave"><canvas :data-wave="r.key"></canvas><div class="playhead" :style="{left:pos/m.duration*100+'%'}"></div></div><span></span></div>

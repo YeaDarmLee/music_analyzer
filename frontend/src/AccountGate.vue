@@ -35,8 +35,10 @@ function focusModal(el){el.querySelector('input:not(:disabled)')?.focus({prevent
 function afterLeave(){
   closing.value=false;document.body.style.overflow=previousOverflow;
   nextTick(()=>{
-    const target=opener?.isConnected?opener:document.querySelector('[data-account-login]')||document.querySelector('.account-workspace h1');
-    if(target){if(target.tagName==='H1')target.tabIndex=-1;target.focus({preventScroll:true})}
+    // Restore focus only to a control that still exists. After a successful login the page is remounted; focusing a heading
+    // there left a focus ring on part of the home screen, so nothing is focused in that case.
+    const target=opener?.isConnected?opener:!user.value&&document.querySelector('[data-account-login]');
+    if(target)target.focus({preventScroll:true});
     opener=null;modalOrigin=null;
   });
 }

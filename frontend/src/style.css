@@ -2738,3 +2738,6 @@ button.crumb:hover { color: #c7b9ff }
 .version-option strong .beta-badge, .version-option strong .beta-tag { margin-left: 8px }
 .version-detail-panel h3 .beta-badge { font-size: 10px; margin-left: 10px }
 .analysis-modal .rights-box { margin: 8px 0 0; padding: 10px 12px }
+/* range sliders: no native focus box after a click/drag; keyboard focus keeps a visible cue on the slider itself */
+.track-settings input[type=range]:focus, .master input[type=range]:focus { outline: none }
+.track-settings input[type=range]:focus-visible, .master input[type=range]:focus-visible { filter: drop-shadow(0 0 3px var(--track, #ad9bf6)) }
