@@ -2479,3 +2479,17 @@ html {
 .about-points p { margin: 0; color: #9496a5; font-size: 14px; line-height: 1.75 }
 .about-lp .about-stats { margin-top: 48px }
 @media (max-width: 900px) { .about-flow { grid-template-columns: 1fr } .flow-arrow { transform: rotate(90deg); justify-self: center } .about-points { grid-template-columns: 1fr; gap: 22px } }
+
+.about-lp { text-align: left }
+.about-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 72px; align-items: start }
+.about-left .eyebrow { margin-bottom: 18px }
+.about-left h2 { margin: 0; max-width: none; font-size: 40px }
+.about-lp .about-left .about-stats { margin: 44px 0 0; max-width: none; justify-content: start; grid-template-columns: repeat(3, auto); gap: 0 40px }
+.about-lp .about-left .about-stats div { border: 0; padding: 0; text-align: left }
+.about-lp .about-left .about-stats div:first-child { border: 0 }
+.about-lp .about-left .about-stats b { font-size: 40px }
+.about-right > p { max-width: none; margin: 4px 0 0; color: #b4b6c4; font-size: 16px; line-height: 1.85 }
+.about-right .about-points { grid-template-columns: 1fr; gap: 26px; margin-top: 34px }
+.about-right .about-points article { padding-left: 18px; border-left: 2px solid #4b4266 }
+.about-lp .about-flow { margin-top: 64px }
+@media (max-width: 900px) { .about-top { grid-template-columns: 1fr; gap: 32px } .about-left h2 { font-size: 30px } }
