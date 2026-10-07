@@ -2603,3 +2603,15 @@ html {
  .daw-ruler, .daw-row { grid-template-columns: 130px 1fr } .daw-vol { display: none } .daw-playhead { left: calc(130px + (100% - 130px) * .34) }
  .daw-points { grid-template-columns: 1fr 1fr } .steps-lp .timeline { grid-template-columns: 1fr }
 }
+
+/* studio feature grid */
+.studio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+.studio-grid article { padding: 24px; border: 1px solid #2c2a38; border-radius: 16px; background: #1b1923; transition: border-color .25s, transform .25s }
+.studio-grid article:hover { border-color: #4b4266; transform: translateY(-3px) }
+.studio-glyph { display: inline-grid; place-items: center; min-width: 40px; height: 40px; padding: 0 10px; border-radius: 10px; background: #262431; color: #c7b9ff; font-size: 16px; font-weight: 700 }
+.studio-glyph.is-m { background: #e5dcfd; color: #1b1923 }
+.studio-glyph.is-s { background: #72d5b5; color: #10261f }
+.studio-glyph.is-v, .studio-glyph.is-d { color: #edaf72 }
+.studio-grid h3 { margin: 16px 0 6px; font-size: 16px }
+.studio-grid p { margin: 0; color: #9496a5; font-size: 13px; line-height: 1.7 }
+@media (max-width: 900px) { .studio-grid { grid-template-columns: 1fr } }
