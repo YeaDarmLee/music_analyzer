@@ -2571,3 +2571,4 @@ html {
 .hero-copy .button.white { margin-top: auto; align-self: flex-start }
 .hero-tags { margin-top: 14px }
 @media (max-width: 900px) { .hero h2 { white-space: normal; font-size: 26px } }
+.plan-split .plan-panel { align-content: space-between }
