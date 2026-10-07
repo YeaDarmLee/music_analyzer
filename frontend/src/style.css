@@ -2506,3 +2506,25 @@ html {
 @media (max-width: 900px) { .plans-lp, .feature-lp, .steps-lp { grid-template-columns: 1fr; gap: 28px } }
 .lp-head h2, .about-left h2 { word-break: keep-all }
 .plans-lp { grid-template-columns: minmax(0, .8fr) minmax(0, 3fr); gap: 56px }
+
+/* stacked: left-aligned one-line title, full-width content below */
+.lp { text-align: left }
+.lp h2, .lp-head h2, .about-left h2 { white-space: nowrap; max-width: none; font-size: 34px; margin: 0 }
+.lp .eyebrow { margin-bottom: 14px }
+.about-top { display: block }
+.about-left { margin-bottom: 40px }
+.about-right .about-points { grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0; text-align: center }
+.about-right .about-points article { padding: 24px 20px; border: 1px solid #2c2a38; border-radius: 14px; background: #1b1923 }
+.about-lp .about-flow { margin-top: 24px }
+.plans-lp, .feature-lp, .steps-lp { display: block }
+.lp-head { margin-bottom: 36px }
+.plans-lp .plan-split { margin-top: 0 }
+.feature-row { grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center }
+.feature-row .feature-icon { margin: 0 auto }
+.timeline { grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center }
+.timeline:before { display: block }
+@media (max-width: 900px) {
+ .lp h2, .lp-head h2, .about-left h2 { white-space: normal; font-size: 26px }
+ .about-right .about-points, .feature-row, .timeline { grid-template-columns: 1fr }
+ .timeline:before { display: none }
+}
