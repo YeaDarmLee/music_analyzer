@@ -9,8 +9,10 @@ from scipy import signal
 
 CONTEXT = {'synth': 'synth', 'strings': 'bowed_strings', 'brass': 'brass', 'guitar': 'electric-guitar',
            'acoustic_guitar': 'acoustic-guitar', 'percussion': 'percussion', 'timpani': 'timpani'}
-# (target, {source: exponent}); higher exponent is more conservative. Tuned on 32 reference cases (v15 study).
-RULES = (('brass', {'guitar': 1, 'other': 2}), ('guitar', {'other': 2, 'synth': 1}))
+# (target, {source: exponent}); higher exponent is more conservative. Tuned on 32 reference cases (v15 study); the synth rule on 64 synthetic pad cases (v16 study).
+RULES = (('brass', {'guitar': 1, 'other': 2}), ('guitar', {'other': 2, 'synth': 1}),
+         # Pads: unclassified residual and strings. Backing stays untouched so the vocal/instrumental split is unchanged.
+         ('synth', {'other': .3}))
 
 
 def transfer(mixture, tracks, evidence, target, sources):

@@ -99,7 +99,7 @@ def evaluate(folder, root, row):
             raise ValueError('Prepared mixture differs from the audio actually analyzed')
         outputs = {t['family']: sf.read(library.track_path(row,t['family']), dtype='float32', always_2d=True)[0]
                    for t in row['tracks']}
-        expected=13 if row.get('separation_version') in ('staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15') else 12
+        expected=13 if row.get('separation_version') in ('staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15','staged-context-pads-v16') else 12
         if len(outputs) != expected:
             raise ValueError('Expected all raw outputs, including hidden silent tracks')
         candidate = {name: audio.copy() for name,audio in outputs.items()}

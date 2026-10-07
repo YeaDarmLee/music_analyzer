@@ -328,7 +328,7 @@ class WebLibrary:
             row["original"]=str((asset/"canonical.wav").relative_to(self.root))
             if final:
                 row["instrumental"]=str((first_dir/instrumental["path"]).relative_to(self.root))
-                row["separation_version"]="staged-context-families-v15" if row["model"]=="final_11" else "instrumental-with-brass-v5"
+                row["separation_version"]="staged-context-pads-v16" if row["model"]=="final_11" else "instrumental-with-brass-v5"
                 if row["model"]=="final_11":row["recovery_policy"]="base-estimates-only-v1"
             if final:save(stage="반주 구성 정리" if row["model"]=="final_11" else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
             if row["model"]=="final_11":
@@ -421,7 +421,7 @@ class WebLibrary:
                ("bass","bass"),("drums","drums"))
         if any(key not in source for key,_ in order):raise ValueError("최종 트랙에 필요한 악기 출력이 누락됐습니다.")
         tracks=[{**{k:v for k,v in source[key].items() if k not in ("parent_family","display_name")},"family":family} for key,family in order]
-        if row.get("separation_version") in ("staged-guitar-residual-v8","staged-guitar-residual-v9","staged-guitar-residual-v10","staged-context-percussion-v11","staged-context-percussion-v12","staged-context-strings-v13","staged-context-backing-v14","staged-context-families-v15"):
+        if row.get("separation_version") in ("staged-guitar-residual-v8","staged-guitar-residual-v9","staged-guitar-residual-v10","staged-context-percussion-v11","staged-context-percussion-v12","staged-context-strings-v13","staged-context-backing-v14","staged-context-families-v15","staged-context-pads-v16"):
             tracks.append(source["guitar_residual"])
         return self.with_remaining(row,tracks,"flat_v4","remaining-v4.wav",row["instrumental"],
                                    [t for t in tracks if t["family"] not in ("lead","backing")])

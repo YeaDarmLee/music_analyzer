@@ -46,3 +46,13 @@ def test_context_routing_returns_brass_from_guitar_and_keeps_guitar():
     core = slice(4096, -4096)
     assert np.dot(moved['guitar'][core, 0], horn[core, 0])/np.dot(horn[core, 0], horn[core, 0]) > .3
     assert abs(np.dot(moved['guitar'][core, 0], gtr[core, 0]))/np.dot(gtr[core, 0], gtr[core, 0]) < .01
+
+
+def test_pad_routing_moves_residual_pad_to_synth_but_leaves_other_music():
+    from music_analyzer.context_routing import transfer, CONTEXT
+    pad, organ = tone(400), tone(1800); zero = np.zeros_like(pad)
+    evidence = {h: zero for h in CONTEXT.values()}; evidence['synth'] = pad
+    moved = transfer(pad+organ, {'other': pad*.8+organ, 'strings': zero}, evidence, 'synth', {'other': .15, 'strings': .5})
+    core = slice(4096, -4096)
+    assert np.dot(moved['other'][core, 0], pad[core, 0])/np.dot(pad[core, 0], pad[core, 0]) > .5
+    assert abs(np.dot(moved['other'][core, 0], organ[core, 0]))/np.dot(organ[core, 0], organ[core, 0]) < .01

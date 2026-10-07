@@ -70,7 +70,7 @@ def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch
         assert len(result['tracks'])==count
         assert calls==presets and recovered==recoveries
         if version=='final_11':
-            assert result['separation_version']=='staged-context-families-v15'
+            assert result['separation_version']=='staged-context-pads-v16'
             assert result['recovery_policy']=='base-estimates-only-v1'
             other=next(t for t in result['tracks'] if t['family']=='other')
             assert other['path'].endswith('remaining-final11-v3.wav')
