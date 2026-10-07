@@ -2572,3 +2572,5 @@ html {
 .hero-tags { margin-top: 14px }
 @media (max-width: 900px) { .hero h2 { white-space: normal; font-size: 26px } }
 .plan-split .plan-panel { align-content: space-between }
+.plan-split .plan-panel { align-content: stretch; grid-template-rows: auto 1fr }
+.plan-split .plan-lanes { grid-auto-rows: 1fr; align-self: stretch }
