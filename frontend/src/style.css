@@ -2386,3 +2386,52 @@ html {
 .steps-grid article { position: relative }
 .cta-band { margin-bottom: 56px }
 @media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 24px } .block { margin-bottom: 52px } }
+
+/* landing sections */
+.lp { text-align: center; padding: 96px 0; border-top: 1px solid #22212c }
+.lp .eyebrow { display: block; color: #9a8bd0; margin-bottom: 16px }
+.lp h2 { margin: 0 auto; font-size: 38px; line-height: 1.25; letter-spacing: -1.4px; font-weight: 600; max-width: 760px }
+.lp h2 em { font-style: normal; background: linear-gradient(90deg, #c6b2ff, #72d5b5); -webkit-background-clip: text; background-clip: text; color: transparent }
+.lp > p { max-width: 560px; margin: 22px auto 0; color: #9496a5; font-size: 15px; line-height: 1.8 }
+.about-lp .about-stats { max-width: 640px; margin: 52px auto 0; gap: 0 }
+.about-lp .about-stats div { border: 0; background: none; padding: 6px 12px; border-left: 1px solid #2c2a38 }
+.about-lp .about-stats div:first-child { border-left: 0 }
+.about-lp .about-stats b { font-size: 46px }
+.about-lp .about-stats span { font-size: 12px }
+
+.plan-tabs { display: inline-flex; margin: 36px 0 28px; padding: 5px; border: 1px solid #2c2a38; border-radius: 999px; background: #17151e }
+.plan-tabs button { padding: 10px 28px; border-radius: 999px; background: none; color: #8b8e9d; font-size: 14px; transition: background .25s, color .25s }
+.plan-tabs button.active { background: #3a2f5c; color: #e8e0ff }
+.plan-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 48px; align-items: center; text-align: left; max-width: 980px; margin: 0 auto; padding: 40px; border: 1px solid #2c2a38; border-radius: 18px; background: radial-gradient(ellipse at 100% 0%, #2a2240 0%, #1b1923 60%); animation: plan-in .4s ease }
+@keyframes plan-in { from { opacity: 0; transform: translateY(8px) } }
+.plan-info h3 { margin: 0 0 14px; font-size: 24px; letter-spacing: -.6px }
+.plan-info p { margin: 0 0 18px; color: #a5a7b5; font-size: 14px; line-height: 1.75 }
+.plan-info small { color: #9a8bd0; font-size: 12px }
+.plan-lanes { display: grid; gap: 7px }
+.lane { display: flex; align-items: center; gap: 10px; padding: 7px 12px; border-radius: 8px; background: #14131a; animation: plan-in .45s ease backwards; animation-delay: var(--d) }
+.lane-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tint); flex: none }
+.lane b { width: 78px; flex: none; font-size: 12px; font-weight: 500; color: #c9cad6; text-align: left }
+.lane-wave { display: flex; align-items: center; gap: 2px; flex: 1; height: 24px; overflow: hidden }
+.lane-wave i { width: 3px; flex: none; border-radius: 2px; background: var(--tint); opacity: .75 }
+
+.feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 56px; text-align: center }
+.feature-row .feature-icon { width: 54px; height: 54px; border-radius: 16px; font-size: 22px; margin: 0 auto }
+.feature-row h3 { margin: 18px 0 8px; font-size: 16px }
+.feature-row p { margin: 0; color: #8b8e9d; font-size: 13px; line-height: 1.7 }
+
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin: 56px 0 0; padding: 0; list-style: none; position: relative; counter-reset: none }
+.timeline:before { content: ''; position: absolute; top: 21px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, #4b4266, transparent) }
+.timeline b { position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #17151e; border: 1px solid #5d5478; color: #d9ceff; font-size: 16px }
+.timeline h3 { margin: 18px 0 8px; font-size: 16px }
+.timeline p { margin: 0; color: #8b8e9d; font-size: 13px; line-height: 1.7 }
+
+.cta-band { flex-direction: column; text-align: center; justify-content: center; padding: 64px 32px; margin: 0 0 56px; border-radius: 22px }
+.cta-band h3 { font-size: 30px; letter-spacing: -1px; margin-bottom: 10px }
+.cta-band .button { margin-top: 10px }
+
+@media (max-width: 900px) {
+ .lp { padding: 64px 0 } .lp h2 { font-size: 28px }
+ .plan-panel { grid-template-columns: 1fr; gap: 28px; padding: 24px }
+ .feature-row, .timeline { grid-template-columns: repeat(2, 1fr) } .timeline:before { display: none }
+ .about-lp .about-stats b { font-size: 34px }
+}
