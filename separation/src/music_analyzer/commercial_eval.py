@@ -58,3 +58,19 @@ def partition_stats(original: np.ndarray, stems: list[np.ndarray]) -> dict:
 
 
 __all__ = ["load_model", "run", "read_audio", "db", "partition_stats", "raw_sdr", "si_sdr"]
+
+
+def _explained(estimate: np.ndarray, reference: np.ndarray) -> float:
+    r = reference.ravel().astype(np.float64); e = estimate.ravel().astype(np.float64)
+    return float((np.dot(e, r) / (np.dot(r, r) + 1e-12)) ** 2 * np.dot(r, r))
+
+
+def stem_metrics(target: np.ndarray, estimate: np.ndarray, others: list[np.ndarray]) -> dict:
+    """sdr/si_sdr; est_vs_ref_db; leak_db = energy of the estimate explained by the other GT sources vs by the target (lower is better);
+    missing_db = target energy the best scalar fit of the estimate does not reproduce, 10log10(|t-fit|^2/|t|^2) (lower is better)."""
+    t = target.astype(np.float64); e = estimate.astype(np.float64)
+    fit = (np.dot(t.ravel(), e.ravel()) / (np.dot(e.ravel(), e.ravel()) + 1e-12)) * e
+    leak = sum(_explained(estimate, o) for o in others if np.any(o))
+    return {"sdr": raw_sdr(target, estimate), "si_sdr": si_sdr(target, estimate), "est_vs_ref_db": db(estimate) - db(target),
+            "leak_db": float(10 * np.log10((leak + 1e-12) / (_explained(estimate, target) + 1e-12))),
+            "missing_db": float(10 * np.log10((np.sum((t - fit) ** 2) + 1e-12) / (np.sum(t ** 2) + 1e-12)))}
