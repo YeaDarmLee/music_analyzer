@@ -2610,3 +2610,5 @@ html {
 .studio-real { justify-content: center }
 .plan-split .plan-panel { transition: border-color .25s, transform .25s }
 .plan-split .plan-panel:hover { border-color: #4b4266; transform: translateY(-3px) }
+.studio-num { flex: none; width: 28px; align-self: center; color: #5d5478; font-size: 13px; font-weight: 700; letter-spacing: 1px; font-variant-numeric: tabular-nums }
+.studio-item { align-items: center }
