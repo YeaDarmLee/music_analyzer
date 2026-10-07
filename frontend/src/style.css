@@ -2551,3 +2551,15 @@ html {
 .page-heading h1 em, .hero h2 em { font-style: normal; background: linear-gradient(90deg, #c6b2ff, #72d5b5); -webkit-background-clip: text; background-clip: text; color: transparent }
 .page-heading p { margin-top: 12px; color: #9496a5; font-size: 14px }
 @media (max-width: 900px) { .page-heading h1 { white-space: normal; font-size: 26px } }
+
+/* identical type scale across the three plan cards */
+.plan-side b, .plan-big { font-size: 34px; line-height: 1; margin: 0 }
+.plan-side h3, .plan-split .plan-info h3 { margin: 0 0 12px; font-size: 16px; letter-spacing: 0 }
+.plan-side p, .plan-split .plan-info p { margin: 0 0 12px; font-size: 13px; line-height: 1.7; color: #a5a7b5 }
+.plan-split .plan-info { gap: 14px; display: flex; flex-direction: column }
+.plan-split .plan-info h3 { margin-bottom: 0 }
+.plan-split .plan-info p { margin-bottom: 0 }
+.plan-side article > div:first-of-type { display: flex; flex-direction: column; gap: 14px }
+.plan-side article > div:first-of-type h3, .plan-side article > div:first-of-type p { margin: 0 }
+.plan-split .lane b, .plan-side .lane b { font-size: 11px }
+.plan-split .plan-panel { align-content: start }
