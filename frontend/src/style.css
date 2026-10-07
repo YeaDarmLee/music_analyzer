@@ -2307,3 +2307,29 @@ html {
 .ruler-head:before{content:'';position:absolute;top:0;left:-4px;border:5px solid transparent;border-top:7px solid #d9ccff;border-bottom:0}
 @media(max-width:1050px){.transport.master-row,.daw-ruler,.track-row{grid-template-columns:215px minmax(100px,1fr) 35px}}
 @media(max-width:760px){.transport.master-row{grid-template-columns:155px minmax(100px,1fr) 30px;padding:0}.master-left{padding:10px}.master-label{display:none}.master-main{padding:8px 10px}}
+
+.confirm-modal {
+    width: min(360px, calc(100vw - 32px));
+    text-align: center
+}
+
+.confirm-modal h2 {
+    font-size: 20px;
+    margin: 8px 0 22px
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center
+}
+
+.confirm-actions .button {
+    flex: 1;
+    margin: 0;
+    padding: 11px 0
+}
+
+.confirm-actions .confirm-cancel {
+    background: #e5dcfd
+}
