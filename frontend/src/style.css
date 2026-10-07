@@ -2671,3 +2671,33 @@ button.crumb:hover { color: #c7b9ff }
 .pager button:disabled { opacity: .35; cursor: default }
 .pager .gap { color: #696d7c; padding: 0 2px }
 @media (max-width: 900px) { .search input { width: 140px } .table-header, .library-row { grid-template-columns: minmax(0, 1fr) 90px 28px } .model-label, .table-header>span:nth-child(2), .duration, .table-header>span:nth-child(3) { display: none } }
+
+/* session (detail) page: readable sizes and spacing */
+.session { padding: 32px 40px }
+.session .back { font-size: 13px }
+.session-heading { margin: 24px 0 28px; gap: 24px }
+.session-heading h1 { font-size: 28px; margin: 10px 0 8px }
+.session-heading p { font-size: 13px }
+.session-heading p span { margin: 0 8px }
+.session-actions .button { font-size: 13px }
+.session-actions .clarity-toggle>span, .session-actions .clarity-knob-control>span { font-size: 13px }
+.session .transport.master-row { height: 72px }
+.session .master-label { font-size: 12px }
+.session .master-left button { font-size: 12px }
+.session .time strong { font-size: 20px }
+.session .time span, .session .rate { font-size: 12px }
+.session .master { font-size: 12px; gap: 10px }
+.session .master>span { font-size: 12px; min-width: 40px }
+.session .daw-ruler { font-size: 11px }
+.session .daw-ruler>span { padding: 15px 18px }
+.session .ruler-scale>i { font-size: 11px }
+.daw .track-title b { font-size: 14px }
+.daw .track-format { font-size: 10px }
+.daw .track-settings { margin-top: 14px }
+.daw .track-settings button { font-size: 12px; width: 28px; height: 26px }
+.daw .track-settings>span { font-size: 12px; min-width: 38px }
+.daw .track-download { font-size: 20px }
+.session-foot { font-size: 12px; margin-top: 18px; color: #7b7f90 }
+.session-foot span { font-size: 12px }
+.session .track-loading h2 { font-size: 20px }
+.session .track-loading p, .session .progress-caption { font-size: 13px }
