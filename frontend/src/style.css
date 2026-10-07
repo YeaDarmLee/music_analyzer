@@ -2333,3 +2333,18 @@ html {
 .confirm-actions .confirm-cancel {
     background: #e5dcfd
 }
+
+.nav { display: flex; align-items: center }
+.nav-count { margin-left: auto; font-weight: 500; font-size: 11px; color: #afb0be }
+.feature-grid, .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 0 0 40px }
+.feature-grid article, .steps-grid article { border: 1px solid #2c2a38; border-radius: 12px; padding: 22px; background: #1b1923 }
+.feature-grid h3, .steps-grid h3 { margin: 10px 0 8px; font-size: 15px }
+.feature-grid p, .steps-grid p { margin: 0; color: #9496a5; font-size: 13px; line-height: 1.6; white-space: pre-line }
+.feature-icon, .steps-grid b { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: #252331; color: #c7b9ff; font-size: 17px }
+.section-title { margin: 8px 0 14px; font-size: 20px }
+.section-sub { margin: -6px 0 16px; color: #9496a5; font-size: 13px }
+.track-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px }
+.track-chips span { padding: 8px 14px; border: 1px solid #363046; border-radius: 999px; background: #211c2e; color: #c7b9ff; font-size: 13px }
+.cta-band { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin: 10px 0 40px; padding: 28px 32px; border: 1px solid #363046; border-radius: 13px; background: radial-gradient(ellipse at 80% 50%, #39304c 0%, #211c2e 60%, #1b1923 100%) }
+.cta-band h3 { margin: 0 0 6px; font-size: 18px }
+.cta-band p { margin: 0; color: #9496a5; font-size: 13px }
