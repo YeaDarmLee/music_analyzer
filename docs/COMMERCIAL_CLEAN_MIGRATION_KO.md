@@ -292,3 +292,51 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 
 - 합계 오차 최대 5.96e-8(두 쪽 동일), 평균 처리 시간 26.5 s → 24.5 s (같은 세션 순차 실행, 단일 측정).
 - 해석: 13트랙 결과와 같은 방향(드럼이 가장 큼). 합성 데이터이며 실제 곡·보컬 품질은 검증하지 못했다.
+
+## 17-4. 6트랙 손실 원인 진단 (진단만, 튜닝·모델 변경 없음)
+
+재현: `scripts/diagnose-six-track.py [1..5]`, 원자료 `COMMERCIAL_CLEAN_SIX_DIAGNOSIS.json`. 같은 10 case(합성 GT), raw SDR 기준.
+
+**1) head-pruning 무결성 — 통과.** 공식 Mega53 53-head 체크포인트(SHA 일치)에서 head 33/20/4/15를 꺼낸 출력과 `bs_roformer_core4` 출력을 3개 입력, fp32·fp16 모두에서 비교했다. 4 stem 전부 **max abs error 0, RMS 0, correlation 1.0 (비트 단위 동일)**. 파생 checkpoint 문제(B)는 아니다.
+
+**2) 어디서 잃는가 (commercial_6)**
+
+| Stem | basic raw | core4 raw | commercial_6 final | Raw loss | Post loss | Main cause |
+|---|---|---|---|---|---|---|
+| piano | 9.27 | 8.14 | 8.14 | -1.13 | 0.00 | A. core4 모델 자체 |
+| guitar | 3.43 | 3.70 | 3.70 | +0.27 | 0.00 | 손실 없음 (n=4) |
+| bass | 11.97 | 10.96 | 10.96 | -1.01 | 0.00 | A |
+| drums | 15.52 | 13.30 | 13.30 | -2.21 | 0.00 | A |
+| other | 9.54 | 8.63 | 8.63 | -0.91 | 0.00 | C. 잔차(=입력−4 stem)가 A의 오차를 그대로 상속 |
+
+- commercial_6에는 후처리 단계가 없다. final과 raw의 최대 차이는 6e-8(부동소수점 수준)이라 **후처리 손실은 0**이다.
+- KJ 보컬 단계의 영향은 작고 두 파이프라인에 동일하다(깨끗한 믹스 입력 vs 실제 파이프라인 입력의 core4-basic 차이: piano -1.16/-1.13, bass -0.72/-1.01, drums -2.27/-2.21).
+- 손실의 성격: core4는 basic보다 leak가 약간 크고(drums -29.0 vs -30.7 dB) 놓치는 target 에너지도 크다(drums missing -13.2 vs -15.5 dB). 한 방향 편향이 아니라 전반적으로 덜 깨끗하다.
+
+**3) commercial_13 단계 추적 (SDR, 10 case 평균)**
+
+| stem | raw core4 | 중간 단계 | final | 후처리 손실 |
+|---|---|---|---|---|
+| drums | 13.25 | cymbal 이동 13.25 → percussion routing 13.20 | 13.20 | -0.05 |
+| piano | 8.11 | cymbal 이동 8.11 | 8.11 | 0.00 |
+| bass | 10.84 | - | 10.84 | 0.00 |
+
+13트랙의 drums -2.28 dB 중 core4 raw가 -2.2 dB, 후처리가 -0.05 dB다. RULES/STRENGTH/cymbal 이동은 현재 값에서 거의 영향을 주지 않으며 튜닝으로 회복할 여지가 작다.
+
+**4) strings (-1.47 dB)와 other.** strings는 모델 교체가 아니라 **입력 잔차가 달라서** 생긴 손실이다. 같은 mega5를 서로 다른 잔차에 돌린 비교(8 case): oracle(GT로 4악기를 뺀 잔차) 12.57 → basic 잔차 8.84 → core4 잔차 7.42 (-1.42 dB, 최종 -1.47과 일치). core4가 strings 에너지 일부를 가져가 strings 출력 에너지가 -1.7 dB → -3.9 dB로 줄었다. 분류 E(복합): 원인은 A, 전달 경로는 C. strings 라우팅 단계의 손실은 0.
+
+**5) 없는 악기 오탐 (모델 단위, 8 timbre, mix 대비 dB; 낮을수록 좋음).** commercial_6 final = raw이므로 그대로 final 값이다.
+
+| 없는 악기 | basic | core4 |
+|---|---|---|
+| piano | -84.2 | -49.1 |
+| guitar | -83.5 | -46.8 |
+| bass | -92.5 | -50.9 |
+| drums | -90.9 | -55.0 |
+
+**결론**
+- drums -2.21 dB는 전부 core4 모델 자체(A)다. piano -1.13, bass -1.01도 같다. other -0.91은 그 파생, strings -1.47은 잔차 경유 파생이다.
+- core4는 공식 Mega53 head와 비트 단위로 동일하다. 즉 "상용 라이선스를 위해 Mega53 head로 바꿨더니 품질이 낮아졌다"는 말이 정확하다. 파생 과정 오류는 아니다.
+- 6트랙에는 튜닝할 후처리가 없고 13트랙의 후처리 손실도 0.05 dB 이하라서 **RULES/STRENGTH 튜닝으로 복구할 수 있는 범위는 거의 없다**. 복구하려면 모델 단계 변경이 필요하다. 선택지: ① 손실 수용 ② 드럼만 별도 라이선스-클린 분리기 탐색 ③ Mega53 다른 head를 증거로 쓰는 재구성.
+- 아직 확인하지 않은 값싼 레버: core4 추론 파라미터(overlap, segment 길이). 진단만 하라는 지시라 건드리지 않았다.
+- 한계: 합성 데이터 10 case(기타는 4 case). 실제 곡에서는 다를 수 있다.
