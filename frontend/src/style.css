@@ -2453,12 +2453,10 @@ html {
 .plan-split .compare-flag { position: static; justify-self: start; margin-bottom: 14px }
 .plan-split .plan-lanes { grid-template-columns: repeat(2, minmax(0, 1fr)) }
 .plan-split .lane b { width: 62px; font-size: 11px }
-.plan-split .lane-wave i:nth-child(n+22) { display: none }
 @media (max-width: 900px) { .plan-split { grid-template-columns: 1fr } .plan-split .plan-lanes { grid-template-columns: 1fr } }
 
 .plan-side .plan-lanes { grid-template-columns: repeat(2, minmax(0, 1fr)) }
 .plan-side .lane b { width: 62px; font-size: 11px }
-.plan-side .lane-wave i:nth-child(n+22) { display: none }
 .plan-side article > div:first-of-type { margin-bottom: 0 }
 
 .recommend { margin-top: 6px; padding: 14px 16px; border: 1px solid #3a3150; border-radius: 12px; background: #17151f }
@@ -2539,16 +2537,17 @@ html {
 @keyframes bar-pulse { 0%, 100% { transform: scaleY(.35) } 50% { transform: scaleY(1.15) } }
 @keyframes arrow-nudge { 0%, 100% { transform: translateX(0); opacity: .55 } 50% { transform: translateX(8px); opacity: 1 } }
 @keyframes playhead { from { left: 0 } to { left: 100% } }
-.about-flow .lane-wave i { transform-origin: center; animation: bar-pulse 2.2s ease-in-out infinite }
-.about-flow .lane-wave i:nth-child(3n) { animation-duration: 2.9s; animation-delay: -.7s }
-.about-flow .lane-wave i:nth-child(3n+1) { animation-duration: 1.9s; animation-delay: -1.4s }
-.about-flow .lane-wave i:nth-child(5n) { animation-duration: 3.4s; animation-delay: -2s }
-.flow-out .lane:nth-child(odd) .lane-wave i { animation-direction: reverse }
+.about-flow .lane-wave i, .plan-split .lane-wave i { transform-origin: center; animation: bar-pulse 2.2s ease-in-out infinite }
+.about-flow .lane-wave i:nth-child(3n), .plan-split .lane-wave i:nth-child(3n) { animation-duration: 2.9s; animation-delay: -.7s }
+.about-flow .lane-wave i:nth-child(3n+1), .plan-split .lane-wave i:nth-child(3n+1) { animation-duration: 1.9s; animation-delay: -1.4s }
+.about-flow .lane-wave i:nth-child(5n), .plan-split .lane-wave i:nth-child(5n) { animation-duration: 3.4s; animation-delay: -2s }
+.flow-out .lane:nth-child(odd) .lane-wave i, .plan-split .lane:nth-child(odd) .lane-wave i { animation-direction: reverse }
 .flow-out .lane:nth-child(3) .lane-wave i { animation-duration: 2.6s }
 .flow-arrow { display: inline-block; animation: arrow-nudge 2.6s ease-in-out infinite }
 .flow-in .lane-wave { position: relative }
 .flow-in .lane-wave:after { content: ''; position: absolute; top: -4px; bottom: -4px; width: 2px; background: #fff; box-shadow: 0 0 10px #fff8; animation: playhead 7s linear infinite }
-@media (prefers-reduced-motion: reduce) { .about-flow *, .flow-arrow { animation: none !important } }
+@media (prefers-reduced-motion: reduce) { .about-flow *, .plan-split *, .flow-arrow { animation: none !important } }
 
 .about-flow .lane-wave { min-width: 0 }
 .flow-in, .flow-out, .about-flow .lane { min-width: 0 }
+.plan-split .lane, .plan-lanes, .plan-info, .plan-side article { min-width: 0 }
