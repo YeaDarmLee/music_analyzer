@@ -2621,3 +2621,6 @@ button.crumb { background: none; padding: 4px 2px; cursor: pointer; transition: 
 button.crumb:hover { color: #c7b9ff }
 .new-analysis { width: 100%; margin: 22px 0 6px; padding: 13px 12px; background: #b6a2ff; color: #171321; font-weight: 600 }
 .new-analysis:hover { background: #c7b9ff }
+
+.workspace-label { margin: 22px 12px 8px; font-size: 9px; letter-spacing: 1.4px }
+.new-analysis { margin: 38px 0 0 }
