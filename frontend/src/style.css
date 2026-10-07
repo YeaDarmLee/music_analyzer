@@ -2528,3 +2528,24 @@ html {
  .about-right .about-points, .feature-row, .timeline { grid-template-columns: 1fr }
  .timeline:before { display: none }
 }
+
+/* tighter section spacing */
+.lp { padding: 44px 0 }
+.about-lp { padding-top: 32px }
+.cta-band { margin-top: 24px }
+@media (max-width: 900px) { .lp { padding: 32px 0 } }
+
+/* moving waveform in About flow */
+@keyframes bar-pulse { 0%, 100% { transform: scaleY(.35) } 50% { transform: scaleY(1.15) } }
+@keyframes arrow-nudge { 0%, 100% { transform: translateX(0); opacity: .55 } 50% { transform: translateX(8px); opacity: 1 } }
+@keyframes playhead { from { left: 0 } to { left: 100% } }
+.about-flow .lane-wave i { transform-origin: center; animation: bar-pulse 1.3s ease-in-out infinite }
+.about-flow .lane-wave i:nth-child(3n) { animation-duration: 1.7s; animation-delay: -.4s }
+.about-flow .lane-wave i:nth-child(3n+1) { animation-duration: 1.1s; animation-delay: -.8s }
+.about-flow .lane-wave i:nth-child(5n) { animation-duration: 2s; animation-delay: -1.2s }
+.flow-out .lane:nth-child(odd) .lane-wave i { animation-direction: reverse }
+.flow-out .lane:nth-child(3) .lane-wave i { animation-duration: 1.5s }
+.flow-arrow { display: inline-block; animation: arrow-nudge 1.6s ease-in-out infinite }
+.flow-in .lane-wave { position: relative }
+.flow-in .lane-wave:after { content: ''; position: absolute; top: -4px; bottom: -4px; width: 2px; background: #fff; box-shadow: 0 0 10px #fff8; animation: playhead 4s linear infinite }
+@media (prefers-reduced-motion: reduce) { .about-flow *, .flow-arrow { animation: none !important } }
