@@ -2285,3 +2285,25 @@ html {
 .analysis-modal.is-version-step .version-selection>.modal-note{flex-shrink:0;font-size:10px;line-height:1.4;margin:8px 0 0}
 @media(max-height:700px){.analysis-modal.is-version-step .version-option{padding:7px 10px}.analysis-modal.is-version-step .version-option>span{gap:3px}.analysis-modal.is-version-step .version-option>span>small{display:none}.analysis-modal.is-version-step .version-estimate small{display:none}}
 @media(max-width:760px){.analysis-modal.is-upload-step{height:auto;max-height:calc(100dvh - 24px)}.analysis-modal.is-version-step{height:calc(100dvh - 24px)}.analysis-modal.is-version-step.has-version .version-selection{height:auto}.analysis-modal.is-version-step.has-version .version-options{flex:none;grid-template-rows:repeat(3,auto)}.analysis-modal.is-version-step .version-option>span>span:not(.version-estimate){display:none}.analysis-modal.is-version-step .version-option>span>small{display:none}.analysis-modal.is-version-step .version-estimate small{display:none}.analysis-modal.is-version-step .version-option{padding:8px 10px}}
+
+
+/* Master row: global M/S on the track-info column, seek ruler on the waveform column. */
+.transport.master-row{display:grid;grid-template-columns:255px minmax(100px,1fr) 46px;height:auto;padding:0;justify-content:stretch;background:#1b1c27;border-bottom:1px solid #3a3550}
+.master-left{display:flex;align-items:center;gap:8px;padding:14px 17px;border-right:1px solid #2c2e3b;border-left:3px solid #b6a2ff;background:#1d1a2b}
+.master-label{font-size:11px;font-weight:600;letter-spacing:1px;color:#cfc3ff;margin-right:auto}
+.master-left button{width:30px;height:26px;border-radius:5px;background:#272938;color:#9094a6;font-size:11px;font-weight:600}
+.master-left button.selected{background:#b6a2ff;color:#171321;box-shadow:0 0 14px #b6a2ff4d}
+.master-left button.partial{background:#3a3550;color:#d8ccff;outline:1px dashed #b6a2ff99;outline-offset:-3px}
+.master-main{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}
+.daw-ruler{height:44px}
+.daw-ruler>.ruler-scale{position:relative;padding:0;display:block;background:#12131b;border-bottom:1px solid #2b2d38;overflow:hidden}
+.ruler-scale>i{position:absolute;top:22px;bottom:0;padding:0 0 0 4px;border-left:1px solid #4a4d62;font-size:9px;line-height:1;color:#8d91a8;pointer-events:none;font-variant-numeric:tabular-nums}
+.ruler-scale>.timeline{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:1;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.ruler-scale>.timeline::-webkit-slider-runnable-track{height:100%;background:transparent}
+.ruler-scale>.timeline::-moz-range-track{height:100%;background:transparent}
+.ruler-scale>.timeline::-webkit-slider-thumb{-webkit-appearance:none;width:2px;height:100%;background:transparent;border:0}
+.ruler-scale>.timeline::-moz-range-thumb{width:2px;height:100%;background:transparent;border:0;border-radius:0}
+.ruler-head{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:#d9ccff;box-shadow:0 0 8px #b6a2ffaa;pointer-events:none}
+.ruler-head:before{content:'';position:absolute;top:0;left:-4px;border:5px solid transparent;border-top:7px solid #d9ccff;border-bottom:0}
+@media(max-width:1050px){.transport.master-row,.daw-ruler,.track-row{grid-template-columns:215px minmax(100px,1fr) 35px}}
+@media(max-width:760px){.transport.master-row{grid-template-columns:155px minmax(100px,1fr) 30px;padding:0}.master-left{padding:10px}.master-label{display:none}.master-main{padding:8px 10px}}
