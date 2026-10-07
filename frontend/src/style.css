@@ -2534,15 +2534,8 @@ html {
 @media (max-width: 900px) { .lp { padding: 32px 0 } }
 
 /* moving waveform in About flow */
-@keyframes bar-pulse { 0%, 100% { transform: scaleY(.35) } 50% { transform: scaleY(1.15) } }
 @keyframes arrow-nudge { 0%, 100% { transform: translateX(0); opacity: .55 } 50% { transform: translateX(8px); opacity: 1 } }
 @keyframes playhead { from { left: 0 } to { left: 100% } }
-.about-flow .lane-wave i, .plan-split .lane-wave i { transform-origin: center; animation: bar-pulse 2.2s ease-in-out infinite }
-.about-flow .lane-wave i:nth-child(3n), .plan-split .lane-wave i:nth-child(3n) { animation-duration: 2.9s; animation-delay: -.7s }
-.about-flow .lane-wave i:nth-child(3n+1), .plan-split .lane-wave i:nth-child(3n+1) { animation-duration: 1.9s; animation-delay: -1.4s }
-.about-flow .lane-wave i:nth-child(5n), .plan-split .lane-wave i:nth-child(5n) { animation-duration: 3.4s; animation-delay: -2s }
-.flow-out .lane:nth-child(odd) .lane-wave i, .plan-split .lane:nth-child(odd) .lane-wave i { animation-direction: reverse }
-.flow-out .lane:nth-child(3) .lane-wave i { animation-duration: 2.6s }
 .flow-arrow { display: inline-block; animation: arrow-nudge 2.6s ease-in-out infinite }
 .flow-in .lane-wave { position: relative }
 .flow-in .lane-wave:after { content: ''; position: absolute; top: -4px; bottom: -4px; width: 2px; background: #fff; box-shadow: 0 0 10px #fff8; animation: playhead 7s linear infinite }
