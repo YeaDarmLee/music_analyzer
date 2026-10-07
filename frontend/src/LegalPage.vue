@@ -33,11 +33,13 @@ onMounted(async()=>{
 <div class="legal-table-wrap"><table><thead><tr><th>Component</th><th>Version</th><th>Copyright / Author</th><th>License</th><th>Official Project</th><th>License Text</th></tr></thead>
 <tbody><tr v-for="row in rows" :key="row.name"><td>{{row.name}}</td><td>{{row.version}}</td><td>{{row.copyright}}</td><td>{{row.license}}</td><td><a :href="row.url" target="_blank" rel="noopener noreferrer">링크</a></td><td><a :href="row.text" target="_blank" rel="noopener noreferrer">보기</a></td></tr></tbody></table></div>
 </section>
+<p class="legal-lead">위 표에는 직접 사용하는 구성요소만 실었습니다. 이들이 다시 의존하는 하위 패키지는 각각의 라이선스를 따릅니다.</p>
 <section id="models">
 <h2>모델 가중치</h2>
-<p>아래는 저작자가 라이선스를 선언한 것으로 파악한 모델 가중치이며, 근거 링크에서 선언을 확인할 수 있습니다. 저작자의 선언을 그대로 옮긴 것으로, 학습에 사용된 데이터의 권리나 특정 용도의 적법성을 보증하는 것은 아닙니다. 라이선스 근거를 파악하지 못한 가중치는 이 목록에 포함하지 않습니다.</p>
-<div class="legal-table-wrap"><table><thead><tr><th>Component</th><th>Author</th><th>License</th><th>Official Project</th><th>근거</th></tr></thead>
-<tbody><tr v-for="m in models" :key="m.name"><td>{{m.name}}</td><td>{{m.author}}</td><td>{{m.license}}</td><td><a :href="m.url" target="_blank" rel="noopener noreferrer">링크</a></td><td><a :href="m.evidence" target="_blank" rel="noopener noreferrer">보기</a></td></tr><tr v-if="!models.length"><td colspan="5">표시할 항목이 없습니다.</td></tr></tbody></table></div>
+<p v-if="!models.length">상용 공개 구성이 확정되면 그 구성이 실제로 사용하는 모델 가중치의 라이선스 근거가 이곳에 표시됩니다. 현재 확정되어 표시할 항목이 없습니다.</p>
+<p v-else>아래는 상용 공개 구성이 실제로 사용하는 모델 가중치이며, 저작자가 선언한 라이선스를 근거 링크에서 확인할 수 있습니다. 저작자의 선언을 그대로 옮긴 것으로, 학습에 사용된 데이터의 권리나 특정 용도의 적법성을 보증하는 것은 아닙니다.</p>
+<div v-if="models.length" class="legal-table-wrap"><table><thead><tr><th>Component</th><th>Author</th><th>License</th><th>Official Project</th><th>근거</th></tr></thead>
+<tbody><tr v-for="m in models" :key="m.name"><td>{{m.name}}</td><td>{{m.author}}</td><td>{{m.license}}</td><td><a :href="m.url" target="_blank" rel="noopener noreferrer">링크</a></td><td><a :href="m.evidence" target="_blank" rel="noopener noreferrer">보기</a></td></tr></tbody></table></div>
 </section>
 </template>
 <template v-else>

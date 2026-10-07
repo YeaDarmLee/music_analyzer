@@ -1,12 +1,20 @@
 {
  "server": [
   {
-   "name": "PyTorch",
-   "version": "2.5.1",
-   "copyright": "Copyright (c) 2016-     Facebook, Inc            (Adam Paszke)",
-   "license": "BSD-3-Clause",
-   "url": "https://pytorch.org/",
-   "text": "/licenses/texts/pytorch.txt"
+   "name": "beartype",
+   "version": "0.22.9",
+   "copyright": "Copyright (c) 2014-2025 Beartype authors.",
+   "license": "MIT",
+   "url": "https://github.com/beartype/beartype",
+   "text": "/licenses/texts/beartype.txt"
+  },
+  {
+   "name": "cryptography",
+   "version": "50.0.2",
+   "copyright": "The Python Cryptographic Authority and individual contributors",
+   "license": "Apache-2.0 OR BSD-3-Clause",
+   "url": "https://github.com/pyca/cryptography",
+   "text": "/licenses/texts/cryptography.txt"
   },
   {
    "name": "Demucs",
@@ -17,14 +25,6 @@
    "text": "/licenses/texts/demucs.txt"
   },
   {
-   "name": "rotary-embedding-torch",
-   "version": "0.9.1",
-   "copyright": "Copyright (c) 2021 Phil Wang",
-   "license": "MIT",
-   "url": "https://github.com/lucidrains/rotary-embedding-torch",
-   "text": "/licenses/texts/rotary-embedding-torch.txt"
-  },
-  {
    "name": "einops",
    "version": "0.8.2",
    "copyright": "Copyright (c) 2018 Alex Rogozhnikov",
@@ -33,20 +33,20 @@
    "text": "/licenses/texts/einops.txt"
   },
   {
-   "name": "beartype",
-   "version": "0.22.9",
-   "copyright": "Copyright (c) 2014-2025 Beartype authors.",
+   "name": "filelock",
+   "version": "3.32.3",
+   "copyright": "Copyright (c) 2025 Bernát Gábor and contributors",
    "license": "MIT",
-   "url": "https://github.com/beartype/beartype",
-   "text": "/licenses/texts/beartype.txt"
+   "url": "https://github.com/tox-dev/filelock",
+   "text": "/licenses/texts/filelock.txt"
   },
   {
-   "name": "PyYAML",
-   "version": "6.0.3",
-   "copyright": "Copyright (c) 2017-2021 Ingy döt Net",
-   "license": "MIT",
-   "url": "https://pyyaml.org/",
-   "text": "/licenses/texts/pyyaml.txt"
+   "name": "librosa",
+   "version": "0.11.0",
+   "copyright": "Copyright (c) 2013--2023, librosa development team.",
+   "license": "ISC",
+   "url": "https://librosa.org/",
+   "text": "/licenses/texts/librosa.txt"
   },
   {
    "name": "NumPy",
@@ -57,28 +57,12 @@
    "text": "/licenses/texts/numpy.txt"
   },
   {
-   "name": "SciPy",
-   "version": "1.14.1",
-   "copyright": "Copyright (c) 2001-2002 Enthought, Inc. 2003-2024, SciPy Developers.",
-   "license": "BSD-3-Clause",
-   "url": "https://scipy.org/",
-   "text": "/licenses/texts/scipy.txt"
-  },
-  {
-   "name": "python-soundfile",
-   "version": "0.13.1",
-   "copyright": "Copyright (c) 2013, Bastian Bechtold",
-   "license": "BSD-3-Clause",
-   "url": "https://github.com/bastibe/python-soundfile",
-   "text": "/licenses/texts/python-soundfile.txt"
-  },
-  {
-   "name": "filelock",
-   "version": "3.32.3",
-   "copyright": "Copyright (c) 2025 Bernát Gábor and contributors",
-   "license": "MIT",
-   "url": "https://github.com/tox-dev/filelock",
-   "text": "/licenses/texts/filelock.txt"
+   "name": "packaging",
+   "version": "26.3",
+   "copyright": "copyright notice that is included in or attached to the work",
+   "license": "Apache-2.0 OR BSD-2-Clause",
+   "url": "https://github.com/pypa/packaging",
+   "text": "/licenses/texts/packaging.txt"
   },
   {
    "name": "psutil",
@@ -97,12 +81,44 @@
    "text": "/licenses/texts/pymysql.txt"
   },
   {
-   "name": "cryptography",
-   "version": "50.0.2",
-   "copyright": "The Python Cryptographic Authority and individual contributors",
-   "license": "Apache-2.0 OR BSD-3-Clause",
-   "url": "https://github.com/pyca/cryptography",
-   "text": "/licenses/texts/cryptography.txt"
+   "name": "PyYAML",
+   "version": "6.0.3",
+   "copyright": "Copyright (c) 2017-2021 Ingy döt Net",
+   "license": "MIT",
+   "url": "https://pyyaml.org/",
+   "text": "/licenses/texts/pyyaml.txt"
+  },
+  {
+   "name": "rotary-embedding-torch",
+   "version": "0.9.1",
+   "copyright": "Copyright (c) 2021 Phil Wang",
+   "license": "MIT",
+   "url": "https://github.com/lucidrains/rotary-embedding-torch",
+   "text": "/licenses/texts/rotary-embedding-torch.txt"
+  },
+  {
+   "name": "SciPy",
+   "version": "1.14.1",
+   "copyright": "Copyright (c) 2001-2002 Enthought, Inc. 2003-2024, SciPy Developers.",
+   "license": "BSD-3-Clause",
+   "url": "https://scipy.org/",
+   "text": "/licenses/texts/scipy.txt"
+  },
+  {
+   "name": "python-soundfile",
+   "version": "0.13.1",
+   "copyright": "Copyright (c) 2013, Bastian Bechtold",
+   "license": "BSD-3-Clause",
+   "url": "https://github.com/bastibe/python-soundfile",
+   "text": "/licenses/texts/python-soundfile.txt"
+  },
+  {
+   "name": "PyTorch",
+   "version": "2.5.1",
+   "copyright": "Copyright (c) 2016-     Facebook, Inc            (Adam Paszke)",
+   "license": "BSD-3-Clause",
+   "url": "https://pytorch.org/",
+   "text": "/licenses/texts/pytorch.txt"
   },
   {
    "name": "Music-Source-Separation-Training (일부 수정하여 포함)",
@@ -153,6 +169,22 @@
    "license": "Apache-2.0",
    "url": "https://pictogrammers.com/library/mdi/",
    "text": "/licenses/texts/mdi-js.txt"
+  },
+  {
+   "name": "Manrope (웹 폰트)",
+   "version": "5.3.0",
+   "copyright": "Copyright 2019 The Manrope Project Authors",
+   "license": "OFL-1.1",
+   "url": "https://github.com/sharanda/manrope",
+   "text": "/licenses/texts/manrope.txt"
+  },
+  {
+   "name": "Noto Sans KR (웹 폰트)",
+   "version": "5.3.0",
+   "copyright": "Google Inc.",
+   "license": "OFL-1.1",
+   "url": "https://fonts.google.com/noto/specimen/Noto+Sans+KR",
+   "text": "/licenses/texts/noto-sans-kr.txt"
   }
  ]
 }

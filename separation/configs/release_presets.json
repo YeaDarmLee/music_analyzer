@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "note": "Production preset allowlist. A preset is served under MUSIC_RELEASE_PROFILE=commercial only when status is APPROVED here AND every model it runs passes release.validate_preset (approval, pinned hash, license). Add a preset by (1) building its pipeline, (2) registering a stage resolver in release.STAGE_RESOLVERS, (3) listing it here as VALIDATING, (4) promoting it to APPROVED after validation. Nothing here is approved yet.",
+  "commercial": {
+    "presets": {
+      "commercial_13": {"status": "VALIDATING"}
+    },
+    "runtime_modules": [
+      "web_server.py", "auth.py", "legal.py", "release.py", "worker.py", "roformer_runner.py", "ingest.py",
+      "job_service.py", "job_contracts.py", "registry.py", "common.py", "audio.py", "environment.py",
+      "commercial_pipeline.py", "commercial_cymbal.py", "piano_drum_refinement.py", "percussion_refinement.py",
+      "string_routing.py", "context_routing.py", "instrumental_restoration.py",
+      "vendor/msst/attend.py", "vendor/msst/bs_roformer.py", "vendor/msst/mel_band_roformer.py"
+    ],
+    "extra_distributions": {
+      "cryptography": "PyMySQL[rsa] (sha256_password / caching_sha2_password)"
+    },
+    "external_tools": ["FFmpeg", "libsndfile"]
+  }
+}

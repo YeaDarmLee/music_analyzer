@@ -14,6 +14,7 @@ from .ingest import ingest_file,load_asset
 from .job_service import JobService
 from .job_contracts import job_folder,verify_result,JobError
 from .audio import RATE
+from . import release
 from .legal import RIGHTS_CONFIRMATION_VERSION,public_versions,require_consents,ConsentError
 
 BUSY_STATES=("QUEUED","RUNNING")
@@ -134,6 +135,7 @@ class WebLibrary:
 
     def create(self,filename,preset,stream,length,claim=None,rights=None):
         if preset not in ("basic_2","basic_6","final_11","final_10","commercial_13","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
+        release.require_allowed(preset,self.root)  # commercial profile: allowlist + approval gate, fail closed
         extension=Path(filename).suffix.lower()
         if extension not in (".mp3",".wav",".flac"): raise ValueError("MP3, WAV, FLAC 파일을 선택해 주세요.")
         if not 0<length<=1024**3:raise ValueError("파일은 1GB 이하여야 합니다.")
@@ -163,6 +165,7 @@ class WebLibrary:
         return self.public(row)
 
     def create_vocal_detail(self,identifier,preset="bs_karaoke",claim=None,visible=None):
+        release.require_development("vocal_detail")
         if preset not in ("bs_karaoke","karaoke_roformer"):raise ValueError("지원하지 않는 보컬 분리 모델입니다.")
         parent=self.get(identifier)
         if parent["state"]!="SUCCEEDED" or not any(t["family"]=="vocals" for t in parent["tracks"]):raise ValueError("완료한 보컬 트랙이 필요합니다.")
@@ -225,6 +228,7 @@ class WebLibrary:
         def run_stage(asset_id,preset_name,callback):
             nonlocal waiting_seconds
             preset_name=STAGE_PRESETS.get(preset_name,preset_name)
+            release.require_stage(preset_name)
             while not self.stopping.is_set():
                 try:return service.run(asset_id,preset_name,callback)
                 except JobError as error:
@@ -356,14 +360,15 @@ class WebLibrary:
                 row["tracks"].append(guitar_residual)
             row=self.final_session(row) if final else self.flatten_session(row)
             if is11:
-                from .synth_recovery import run_for_library
                 save(stage="피아노 내 심벌 혼입 보완 중",progress=85,completed_chunks=0,total_chunks=0)
                 def cymbal_progress(p):
                     save(progress=round(85+10*p["completed"]/max(1,p["total"]),1),completed_chunks=p["completed"],total_chunks=p["total"])
                 if commercial:
                     from .commercial_cymbal import apply as commercial_cymbal
                     row=commercial_cymbal(self.root,row)
-                else:row=run_for_library(self,row,'cymbal',on_progress=cymbal_progress)
+                else:
+                    from .synth_recovery import run_for_library  # CLAPSep path: development-only, never imported for commercial_13
+                    row=run_for_library(self,row,'cymbal',on_progress=cymbal_progress)
                 from .percussion_refinement import apply as route_percussion,prepare_source
                 context_sources={s['family']:context_dir/s['path'] for s in context['stems']}
                 percussion_asset=ingest_file(prepare_source(self.root,row),self.root)
@@ -788,6 +793,7 @@ def make_handler(library,dist,port,public_access=False,auth=None):
             path=urllib.parse.urlsplit(self.path).path
             try:
                 if path=="/api/legal":return self.json(200,public_versions())
+                if path=="/api/release":return self.json(200,release.public_status())
                 if path=="/api/auth/me":return self.json(200,{"user":self.member(self.user())})
                 if path.startswith("/api/"):user=self.user();self.consented(user)
                 if path=="/api/analyses":
@@ -833,6 +839,8 @@ def main():
     parser.add_argument("--public-access",action="store_true",help="Allow external Host headers; requires explicit network exposure")
     parser.add_argument("--data-root",type=Path,default=project_root()/"data/separation")
     args=parser.parse_args()
+    try:print("release profile: "+release.startup_check(args.data_root),flush=True)
+    except release.ReleaseError as error:raise SystemExit("refusing to start: "+error.detail)
     auth=AuthStore()
     auth.check()
     library=WebLibrary(args.data_root)

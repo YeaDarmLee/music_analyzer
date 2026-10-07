@@ -1,0 +1,155 @@
+{
+ "presets": {
+  "commercial_13": {
+   "models": [
+    {
+     "approval_evidence_url": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md",
+     "approval_status": "APPROVED",
+     "approved_sha256": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "melband_roformer_kj",
+     "problems": [],
+     "registry_sha256_prefix": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "PUBLISHER_DECLARED"
+    },
+    {
+     "approval_evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
+     "approval_status": "APPROVED",
+     "approved_sha256": "46e2e801cccb08a318947ef596683170603cd6f66717cc7e613242919c877a27",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "bs_roformer_mega7",
+     "problems": [],
+     "registry_sha256_prefix": "46e2e801cccb08a318947ef596683170603cd6f66717cc7e613242919c877a27",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "VERIFIED_DECLARATION"
+    },
+    {
+     "approval_evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
+     "approval_status": "APPROVED",
+     "approved_sha256": "8a73fb568f5a4cc28e464dbf7ec3ac2b961a7fe6c010fc97215468582e3d32d3",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "bs_roformer_mega5",
+     "problems": [],
+     "registry_sha256_prefix": "8a73fb568f5a4cc28e464dbf7ec3ac2b961a7fe6c010fc97215468582e3d32d3",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "VERIFIED_DECLARATION"
+    },
+    {
+     "approval_evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
+     "approval_status": "APPROVED",
+     "approved_sha256": "24b900e2cc5b405b24cc87b898beb7c57fdcd3bc8fbde5cb514a9a4f716393ed",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "bs_roformer_core4",
+     "problems": [],
+     "registry_sha256_prefix": "24b900e2cc5b405b24cc87b898beb7c57fdcd3bc8fbde5cb514a9a4f716393ed",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "VERIFIED_DECLARATION"
+    },
+    {
+     "approval_evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
+     "approval_status": "APPROVED",
+     "approved_sha256": "fb4d0d09c900bc40b184b6132efe6ea541c7db969e17e7a60a80ca32898952f6",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "bs_roformer_vocal2",
+     "problems": [],
+     "registry_sha256_prefix": "fb4d0d09c900bc40b184b6132efe6ea541c7db969e17e7a60a80ca32898952f6",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "VERIFIED_DECLARATION"
+    }
+   ],
+   "preset": "commercial_13",
+   "problems": [],
+   "stage_presets": [
+    "vocal_roformer",
+    "instrument_mega7",
+    "instrument_mega5",
+    "instrument_core4",
+    "vocal2_mega"
+   ],
+   "status": "VALIDATING"
+  }
+ },
+ "production_presets": [],
+ "profile_env": "MUSIC_RELEASE_PROFILE",
+ "runtime": {
+  "direct": {
+   "beartype": "0.22.9",
+   "cryptography": "50.0.2",
+   "demucs": "4.0.1",
+   "einops": "0.8.2",
+   "filelock": "3.32.3",
+   "librosa": "0.11.0",
+   "numpy": "1.26.4",
+   "packaging": "26.3",
+   "psutil": "7.1.0",
+   "pymysql": "1.1.2",
+   "pyyaml": "6.0.3",
+   "rotary-embedding-torch": "0.9.1",
+   "scipy": "1.14.1",
+   "soundfile": "0.13.1",
+   "torch": "2.5.1+cu121"
+  },
+  "external_tools": [
+   "FFmpeg",
+   "libsndfile"
+  ],
+  "optional_not_installed": [
+   "PoPE_pytorch"
+  ],
+  "transitive": {
+   "antlr4-python3-runtime": "4.9.3",
+   "audioread": "3.1.0",
+   "certifi": "2026.7.22",
+   "cffi": "2.1.1",
+   "charset-normalizer": "3.5.2",
+   "cloudpickle": "3.1.2",
+   "colorama": "0.4.6",
+   "decorator": "5.3.1",
+   "dora-search": "0.1.13",
+   "fsspec": "2026.7.0",
+   "idna": "3.20",
+   "jinja2": "3.1.6",
+   "joblib": "1.6.0",
+   "julius": "0.2.8",
+   "lameenc": "1.8.4",
+   "lazy-loader": "0.6",
+   "llvmlite": "0.50.0",
+   "markupsafe": "3.0.3",
+   "mpmath": "1.3.0",
+   "msgpack": "1.2.3",
+   "narwhals": "2.26.0",
+   "networkx": "3.6.1",
+   "numba": "0.68.0",
+   "omegaconf": "2.3.1",
+   "openunmix": "1.3.0",
+   "platformdirs": "4.12.3",
+   "pooch": "1.9.0",
+   "pycparser": "3.0",
+   "requests": "2.34.2",
+   "retrying": "1.4.2",
+   "scikit-learn": "1.9.1",
+   "setuptools": "78.1.0",
+   "soxr": "1.1.0",
+   "submitit": "1.5.4",
+   "sympy": "1.13.1",
+   "threadpoolctl": "3.7.0",
+   "torchaudio": "2.5.1+cu121",
+   "tqdm": "4.70.1",
+   "treetable": "0.2.6",
+   "typing-extensions": "4.16.0",
+   "urllib3": "2.8.0"
+  }
+ },
+ "schema_version": "1.0"
+}

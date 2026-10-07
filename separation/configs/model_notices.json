@@ -1,0 +1,14 @@
+{
+  "note": "Display data for /licenses. Groups collapse models that ship under one upstream license notice. A production model without an entry here fails the notice build. Roles and pipeline details never go here.",
+  "groups": {
+    "melband-kj": {"name": "Mel-Band RoFormer 가중치", "author": "Kimberley Jensen (KimberleyJSN)", "url": "https://huggingface.co/KimberleyJSN/melbandroformer"},
+    "mega53": {"name": "MVSep Mega53 계열 가중치", "author": "MVSep / Roman Solovyev (ZFTurbo)", "url": "https://github.com/ZFTurbo/Music-Source-Separation-Training"}
+  },
+  "models": {
+    "melband_roformer_kj": "melband-kj",
+    "bs_roformer_mega5": "mega53",
+    "bs_roformer_mega7": "mega53",
+    "bs_roformer_core4": "mega53",
+    "bs_roformer_vocal2": "mega53"
+  }
+}
