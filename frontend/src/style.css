@@ -2455,3 +2455,8 @@ html {
 .plan-split .lane b { width: 62px; font-size: 11px }
 .plan-split .lane-wave i:nth-child(n+22) { display: none }
 @media (max-width: 900px) { .plan-split { grid-template-columns: 1fr } .plan-split .plan-lanes { grid-template-columns: 1fr } }
+
+.plan-side .plan-lanes { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+.plan-side .lane b { width: 62px; font-size: 11px }
+.plan-side .lane-wave i:nth-child(n+22) { display: none }
+.plan-side article > div:first-of-type { margin-bottom: 0 }
