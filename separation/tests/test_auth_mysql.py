@@ -59,6 +59,11 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
         assert request("/api/auth/register", {**credentials[0], "email": f"test-{run}-nc@example.invalid", "consents": {}})[0] == 400
         assert not auth.query("SELECT 1 FROM users WHERE email=%s", (f"test-{run}-nc@example.invalid",))
         assert AuthStore().consents(users[0]["id"]) == {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}
+        assert auth.has_current_consents(users[0]["id"])
+        auth.query("DELETE FROM user_consents WHERE user_id=%s AND consent_type='PRIVACY'", (users[0]["id"],))
+        assert not auth.has_current_consents(users[0]["id"])  # legacy-style member: gated
+        auth.record_consents(users[0]["id"], {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION})  # idempotent re-accept
+        assert auth.has_current_consents(users[0]["id"])
         assert request("/api/auth/login", {**credentials[0], "password": "wrong-password"})[0] == 401
         status, result, _ = request("/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION, cookie=cookies[0], raw=b"test audio")
         assert status == 202 and len(queued) == 1

@@ -14,7 +14,7 @@ from pathlib import Path
 from uuid import uuid4
 
 from .common import project_root
-from .legal import ConsentError, require_consents
+from .legal import REQUIRED_CONSENTS, ConsentError, require_consents
 
 SESSION_SECONDS = 7 * 24 * 60 * 60
 COOKIE_NAME = "music_session"
@@ -166,6 +166,14 @@ class AuthStore:
     def consents(self, user_id):
         return {row["consent_type"]: row["policy_version"] for row in
                 self.query("SELECT consent_type,policy_version FROM user_consents WHERE user_id=%s", (user_id,))}
+
+    def has_current_consents(self, user_id):
+        """True when the member has accepted the current version of every required policy."""
+        return all(self.consents(user_id).get(kind) == version for kind, version in REQUIRED_CONSENTS.items())
+
+    def record_consents(self, user_id, consents):
+        self.transaction([("INSERT IGNORE INTO user_consents (user_id,consent_type,policy_version) VALUES (%s,%s,%s)", (user_id, kind, version))
+                          for kind, version in consents.items()])
 
     def delete_account(self, user_id):
         """Remove sessions, ownership rows, consents and the account itself in one transaction."""

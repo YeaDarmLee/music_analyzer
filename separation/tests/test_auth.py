@@ -35,6 +35,9 @@ class MemoryAccounts:
     def logout(self, token):
         self.sessions.pop(token, None)
 
+    def has_current_consents(self, user_id):
+        return True
+
     def release(self, identifier):
         self.owners.pop(identifier, None)
 

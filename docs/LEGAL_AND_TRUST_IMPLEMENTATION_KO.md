@@ -66,7 +66,7 @@ Auth Provider (현재: 이메일/비밀번호)  →  legal.require_consents()  �
 - 서버: `register`가 `consents={"TERMS": <현재 버전>, "PRIVACY": <현재 버전>}`를 검증한다. 누락·구버전·`true` 같은 값이면 400이며 계정을 만들지 않는다. 계정과 동의 행은 **한 트랜잭션**으로 저장된다.
 - DB: `user_consents(user_id, consent_type, policy_version, accepted_at)`, PK `(user_id, consent_type, policy_version)`, `users` 삭제 시 CASCADE.
 - SNS 로그인으로 바꿀 때: 새 Provider가 사용자 id만 확보하면 `require_consents` + `consent_statements`를 그대로 재사용한다. 이메일/비밀번호에 종속된 코드는 `register`뿐이다.
-- 알려진 한계: 이 작업 이전에 가입한 계정은 동의 기록이 없다. 정책 개정 시 재동의 화면은 아직 없다(14절).
+- **현재 정책 동의 게이트**: `/api/auth/me`·로그인 응답에 `consent_required`(현재 TERMS/PRIVACY 버전 둘 다 없으면 true)가 실린다. true면 화면이 동의 대화상자(`ConsentFields` 재사용)로 막고, 서버도 `/api/analyses*` 조회·생성을 403으로 거부한다. 동의는 `POST /api/auth/consent`로 `user_consents`에 기록한다. 분석 삭제·회원 탈퇴는 동의 없이도 가능하다. 정책 버전을 올리면 모든 회원에게 같은 게이트가 다시 적용된다.
 
 ## 7. 업로드 권리 확인
 
@@ -83,14 +83,14 @@ Auth Provider (현재: 이메일/비밀번호)  →  legal.require_consents()  �
 | 단계별 job 결과·중간 asset (`jobs/job_*`, `inputs/asset_*`) | 분석 삭제 전까지 | 분석 삭제·회원 탈퇴 |
 | 분석 record, 잔여 트랙, previews/enhanced/bundles/archives 캐시 | 분석 삭제 전까지 | 분석 삭제·회원 탈퇴 |
 
-`inputs/asset_*/original.*`는 `load_asset`의 무결성 검증이 요구하므로 분석 삭제 전에는 지울 수 없다. 방침에는 "검증용 원본 사본을 분석 삭제 전까지 보관"으로 적었다.
+`inputs/asset_*/original.*`는 `load_asset`의 무결성 검증이 요구하므로 분석 삭제 전에는 지울 수 없다. 방침에는 "임시 파일은 삭제, 분석용 오디오 사본(검증용 원본 사본·변환 오디오)과 결과는 분석 삭제·탈퇴까지 보관"으로 구분해 적었다.
 
 **분석 삭제**(`DELETE /api/analyses/<id>`, 라이브러리 행의 "삭제"와 트랙 스튜디오의 "분석 삭제"):
 1. 소유자 검증(다른 사용자·비로그인은 404/401, CSRF 헤더 필수).
 2. `QUEUED`/`RUNNING`이면 거부(진행 중 삭제로 인한 고아 파일 방지).
 3. 이 분석 record 전체에서 `job_*`/`asset_*` ID를 모으고, 각 job의 `job.json`이 가리키는 중간 asset을 더한다.
 4. **다른 분석 record, pipeline manifest, 삭제 대상이 아닌 job**이 참조하는 job/asset은 지우지 않는다.
-5. 남은 job·asset 폴더, previews/enhanced/bundles/archives 캐시, 분석 폴더를 삭제한 뒤 `analysis_owners` 행을 제거한다.
+5. 남은 job·asset 폴더, previews/enhanced/bundles/archives 캐시, 분석 폴더를 삭제한 뒤 `analysis_owners` 행을 제거한다. MySQL과 파일시스템은 하나의 트랜잭션이 아니므로 순서는 파일 → DB이고, 파일 삭제가 중간에 실패하면 record와 소유 행이 남아 같은 요청을 다시 보내면 이어서 정리된다. record가 이미 없으면 소유 행만 해제해 200을 돌려준다(멱등). 테스트: `test_delete_is_retryable_after_a_file_failure_and_repeat_safe`.
 
 ## 9. 계정 삭제
 
@@ -176,9 +176,8 @@ cd frontend; node --test legal.test.mjs trackGroups.test.mjs bufferPlayer.test.m
 - **Payment 도입 시**: 전자상거래·환불·사업자 표시 정책, 법정 보존 거래 기록, 방침 개정.
 
 권고(이번 범위 밖에서 발견):
-- **Google Fonts 자체 호스팅**하면 방침 6항의 폰트 문장을 삭제할 수 있다.
-- **재동의 절차**: 정책 버전이 바뀌면 기존 회원에게 새 버전 동의를 받는 화면과 `user_consents` 갱신이 필요하다. 이전 가입자는 동의 기록이 없다.
-- **정책 이전 버전 보관**(`legalDocs.js`는 현재 버전만 보유). 방침 13항의 "이전 버전 제공"을 위해 개정 시 이전 본문을 별도로 보관해야 한다.
+- **Google Fonts 자체 호스팅**(진행 중, 폰트 파일 다운로드 승인 대기)하면 방침 6항의 폰트 문장을 삭제한다.
+- 정책 이전 버전 아카이브(`/privacy/<버전>`)는 없다. 방침 13항은 "시행일과 변경사항 안내"만 약속한다. 아카이브를 만들 때 문구를 추가한다.
 - **서버 `stage`/`error` 문자열**이 API 응답에 내부 단계명을 포함한다(12절). 파이프라인 작업이 정리된 뒤 일반화.
 - 분석 실패 시 `error`에 서버 절대 경로가 들어가 사용자 화면에 표시된다(기존 동작).
 - **CLAPSep**(UNKNOWN 가중치)을 쓰는 심벌 단계가 `commercial_13` 경로에서 `commercial_gate`의 검사 대상(`MODELS`)에 없다. commercial-clean 작업에서 확인하고, 결론에 따라 `/licenses` 목록을 재생성해야 한다. `bs_roformer_vocal2`는 승인 대기(`UNKNOWN`)이므로 현재 `/licenses`에 없다.

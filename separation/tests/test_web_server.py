@@ -126,6 +126,7 @@ def test_http_download_range_and_host_guard(library,tmp_path):
     class OwnerSession:
         def session_user(self,token):return {"id":"test-owner"}
         def owns(self,user_id,analysis_id):return analysis_id==identifier
+        def has_current_consents(self,user_id):return True
     server=ThreadingHTTPServer(("127.0.0.1",0),make_handler(library,dist,0,auth=OwnerSession()))
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     base=f"http://127.0.0.1:{server.server_port}"

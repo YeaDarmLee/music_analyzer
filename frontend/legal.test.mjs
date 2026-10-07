@@ -65,4 +65,13 @@ test('privacy policy states the implemented retention and no AI training',()=>{
   assert.match(text,/비밀번호 원문은 저장하지 않습니다/);
   assert.doesNotMatch(text,/암호화 저장|암호화하여 저장/);
   assert.doesNotMatch(text,/항상 Secure/);
+  assert.doesNotMatch(text,/이전 버전/,'no archive of old versions exists');
+  assert.match(text,/임시 파일은 분석 준비가 완료되거나 실패하면 삭제/);
+});
+
+test('legacy members get a consent gate and signup/gate share the consent fields',()=>{
+  const gate=readFileSync(new URL('./src/AccountGate.vue',import.meta.url),'utf8');
+  assert.match(gate,/user\?\.consent_required/);
+  assert.match(gate,/acceptPolicies/);
+  assert.equal(gate.match(/<ConsentFields/g).length,2);
 });

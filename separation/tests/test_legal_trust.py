@@ -51,6 +51,12 @@ class MemoryStore(AuthStore):
     def assign(self, user_id, identifier):
         self.owners[identifier] = user_id
 
+    def has_current_consents(self, user_id):
+        return {(row[1], row[2]) for row in self.consent_rows if row[0] == user_id} == {("TERMS", TERMS_VERSION), ("PRIVACY", PRIVACY_VERSION)}
+
+    def record_consents(self, user_id, consents):
+        self.transaction(self.consent_statements(user_id, consents))
+
     def release(self, identifier):
         self.owners.pop(identifier, None)
 
@@ -83,7 +89,9 @@ def served(tmp_path):
         with response:
             return response.status, response.read(), response.headers
 
-    store.sessions.update(alice={"id": "alice"}, bob={"id": "bob"})
+    store.sessions.update(alice={"id": "alice"}, bob={"id": "bob"}, carol={"id": "carol"})
+    for member in ("alice", "bob"):  # carol is a legacy member with no consent record
+        store.consent_rows += [(member, "TERMS", TERMS_VERSION), (member, "PRIVACY", PRIVACY_VERSION)]
     yield request, library, store
     server.shutdown()
     server.server_close()
@@ -97,12 +105,12 @@ def signup(extra=None):
 
 def test_signup_without_required_consent_creates_no_account(served):
     request, _, store = served
-    before = dict(store.sessions)
+    before, rows = dict(store.sessions), list(store.consent_rows)
     for consents in (None, {}, {"TERMS": TERMS_VERSION}, {"PRIVACY": PRIVACY_VERSION},
                      {"TERMS": "old", "PRIVACY": PRIVACY_VERSION}, {"TERMS": True, "PRIVACY": True}):
         status, body, _ = request("/api/auth/register", "POST", signup({} if consents is None else {"consents": consents}))
         assert status == 400 and "동의" in json.loads(body)["error"]
-    assert store.users == {} and store.consent_rows == [] and store.sessions == before
+    assert store.users == {} and store.consent_rows == rows and store.sessions == before
 
 
 def test_signup_records_terms_and_privacy_versions(served):
@@ -256,3 +264,56 @@ def test_upload_copy_is_removed_when_preparation_fails_or_finishes(tmp_path, mon
     library.analyze(folder, upload, row)
     assert seen == [True] and row["state"] == "FAILED" and not upload.exists()
     library.executor.shutdown()
+
+
+def test_member_without_current_consent_is_gated_until_accepting(served):
+    request, library, store = served
+    status, body, _ = request("/api/auth/me", token="carol")
+    assert status == 200 and json.loads(body)["user"]["consent_required"] is True
+    for call in (("/api/analyses",), (UPLOAD, "POST", b"audio", "carol", {"X-Filename": "my.wav"})):
+        args = call if len(call) > 1 else (call[0], "GET", None, "carol")
+        status, body, _ = request(*args)
+        assert status == 403 and "동의" in json.loads(body)["error"]
+    assert request("/api/auth/consent", "POST", {"consents": {"TERMS": TERMS_VERSION}}, "carol")[0] == 400
+    assert request("/api/auth/consent", "POST", {"consents": {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}}, "carol")[0] == 200
+    assert json.loads(request("/api/auth/me", token="carol")[1])["user"]["consent_required"] is False
+    assert request("/api/analyses", token="carol")[0] == 200
+
+
+def test_outdated_consent_version_gates_again(served, monkeypatch):
+    request, _, store = served
+    store.consent_rows[:] = [("alice", "TERMS", "2020-01-01"), ("alice", "PRIVACY", "2020-01-01")]
+    assert request("/api/analyses", token="alice")[0] == 403
+
+
+def test_legacy_member_can_still_delete_data_and_withdraw_without_consent(served):
+    request, library, store = served
+    identifier, _, _, _ = stored_analysis(library, store, "carol", "1")
+    assert request("/api/analyses/" + identifier, "DELETE", token="carol")[0] == 200
+    assert request("/api/auth/account", "DELETE", token="carol")[0] == 200
+
+
+def test_delete_is_retryable_after_a_file_failure_and_repeat_safe(served, monkeypatch):
+    import shutil
+    request, library, store = served
+    identifier, job, asset, stage_asset = stored_analysis(library, store, "alice", "1")
+    real = shutil.rmtree
+    def flaky(path, *args, **kwargs):
+        if path.name == job:
+            raise OSError("file is locked")
+        return real(path, *args, **kwargs)
+    monkeypatch.setattr(shutil, "rmtree", flaky)
+    status, _, _ = request("/api/analyses/" + identifier, "DELETE", token="alice")
+    assert status == 400 and store.owns("alice", identifier) and (library.web / identifier / "record.json").exists()
+    monkeypatch.setattr(shutil, "rmtree", real)
+    assert request("/api/analyses/" + identifier, "DELETE", token="alice")[0] == 200
+    assert not (library.web / identifier).exists() and not (library.root / "jobs" / job).exists()
+    assert request("/api/analyses/" + identifier, "DELETE", token="alice")[0] == 404  # already gone and released
+
+
+def test_owned_record_that_vanished_is_released_by_delete(served):
+    request, library, store = served
+    identifier, _, _, _ = stored_analysis(library, store, "alice", "1")
+    (library.web / identifier / "record.json").unlink()
+    assert request("/api/analyses/" + identifier, "DELETE", token="alice")[0] == 200
+    assert not store.owns("alice", identifier)

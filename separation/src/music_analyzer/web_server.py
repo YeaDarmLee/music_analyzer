@@ -14,7 +14,7 @@ from .ingest import ingest_file,load_asset
 from .job_service import JobService
 from .job_contracts import job_folder,verify_result,JobError
 from .audio import RATE
-from .legal import RIGHTS_CONFIRMATION_VERSION,public_versions
+from .legal import RIGHTS_CONFIRMATION_VERSION,public_versions,require_consents,ConsentError
 
 BUSY_STATES=("QUEUED","RUNNING")
 STORED_ID=re.compile(r"(?:job|asset)_[0-9a-f]{32}")
@@ -484,7 +484,7 @@ class WebLibrary:
                ("bass","bass"),("drums","drums"))
         if any(key not in source for key,_ in order):raise ValueError("최종 트랙에 필요한 악기 출력이 누락됐습니다.")
         tracks=[{**{k:v for k,v in source[key].items() if k not in ("parent_family","display_name")},"family":family} for key,family in order]
-        if row.get("separation_version") in ("staged-guitar-residual-v8","staged-guitar-residual-v9","staged-guitar-residual-v10","staged-context-percussion-v11","staged-context-percussion-v12","staged-context-strings-v13","staged-context-backing-v14","staged-context-families-v15","staged-context-pads-v16"):
+        if row.get("separation_version") in ("staged-guitar-residual-v8","staged-guitar-residual-v9","staged-guitar-residual-v10","staged-context-percussion-v11","staged-context-percussion-v12","staged-context-strings-v13","staged-context-backing-v14","staged-context-families-v15","staged-context-pads-v16","commercial-13-v1"):
             tracks.append(source["guitar_residual"])
         return self.with_remaining(row,tracks,"flat_v4","remaining-v4.wav",row["instrumental"],
                                    [t for t in tracks if t["family"] not in ("lead","backing")])
@@ -687,6 +687,10 @@ def make_handler(library,dist,port,public_access=False,auth=None):
             user=auth.session_user(self.session_token())
             if not user:raise AuthError("로그인이 필요합니다.",401)
             return user
+        def member(self,user):
+            return {**user,"consent_required":not auth.has_current_consents(user["id"])}
+        def consented(self,user):
+            if not auth.has_current_consents(user["id"]):raise AuthError("현재 이용약관과 개인정보 수집·이용에 동의해야 이용할 수 있습니다.",403)
         def authorize(self,user,identifier):
             if not auth.owns(user["id"],identifier):raise FileNotFoundError("분석을 찾을 수 없습니다.")
         def allowed(self):
@@ -708,6 +712,7 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                     if not 0<length<=8192:raise ValueError("잘못된 요청 크기입니다.")
                     data=json.loads(self.rfile.read(length))
                     user=auth.register(data) if path.endswith("register") else auth.login(data)
+                    user=self.member(user)
                     auth.logout(self.session_token())
                     token=auth.new_session(user["id"])
                     return self.json(201 if path.endswith("register") else 200,{"user":user},self.cookie(token))
@@ -715,6 +720,13 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                     auth.logout(self.session_token())
                     return self.json(200,{"ok":True},self.cookie("",True))
                 user=self.user()
+                if path=="/api/auth/consent":
+                    length=int(self.headers.get("Content-Length","0"))
+                    if not 0<length<=8192:raise ValueError("잘못된 요청 크기입니다.")
+                    try:auth.record_consents(user["id"],require_consents(json.loads(self.rfile.read(length)).get("consents")))
+                    except ConsentError as error:raise AuthError(str(error)) from None
+                    return self.json(200,{"ok":True})
+                self.consented(user)
                 match=re.fullmatch(r"/api/analyses/([^/]+)/vocal-detail",path)
                 if match:
                     self.authorize(user,match[1])
@@ -740,7 +752,8 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                 match=re.fullmatch(r"/api/analyses/([^/]+)",path)
                 if not match:return self.json(404,{"error":"없는 경로입니다."})
                 self.authorize(user,match[1])
-                library.delete(match[1])
+                try:library.delete(match[1])
+                except FileNotFoundError:pass  # record already gone (interrupted earlier delete): finish by releasing ownership
                 auth.release(match[1])
                 self.json(200,{"ok":True})
             except AuthError as error:self.json(error.status,{"error":str(error)})
@@ -775,8 +788,8 @@ def make_handler(library,dist,port,public_access=False,auth=None):
             path=urllib.parse.urlsplit(self.path).path
             try:
                 if path=="/api/legal":return self.json(200,public_versions())
-                if path=="/api/auth/me":return self.json(200,{"user":self.user()})
-                if path.startswith("/api/"):user=self.user()
+                if path=="/api/auth/me":return self.json(200,{"user":self.member(self.user())})
+                if path.startswith("/api/"):user=self.user();self.consented(user)
                 if path=="/api/analyses":
                     owned=auth.owned_ids(user["id"])
                     return self.json(200,[library.public(r) for r in library.entries(owned)])
