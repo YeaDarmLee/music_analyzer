@@ -2607,3 +2607,6 @@ html {
 .studio-real .master-left { display: flex; align-items: center }
 .studio-real .reset { font-size: 20px }
 .studio-real .master-left { background: none; border: 0; padding: 0; min-height: 0; box-shadow: none }
+.studio-real { justify-content: center }
+.plan-split .plan-panel { transition: border-color .25s, transform .25s }
+.plan-split .plan-panel:hover { border-color: #4b4266; transform: translateY(-3px) }
