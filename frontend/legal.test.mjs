@@ -75,3 +75,10 @@ test('legacy members get a consent gate and signup/gate share the consent fields
   assert.match(gate,/acceptPolicies/);
   assert.equal(gate.match(/<ConsentFields/g).length,2);
 });
+
+test('fonts are self-hosted: no third-party font host is referenced',()=>{
+  for(const file of ['./src/style.css','./src/fonts.css','./index.html','./src/legalDocs.js']){
+    const text=readFileSync(new URL(file,import.meta.url),'utf8');
+    assert.doesNotMatch(text,/googleapis|gstatic|Google Fonts/,file);
+  }
+});
