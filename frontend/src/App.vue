@@ -18,8 +18,9 @@ for(const animation of el.getAnimations())animation.cancel();
 el.animate([{opacity},{opacity:0}],{duration:380,easing:'cubic-bezier(.22,.75,.18,1)',fill:'forwards'});
 collapse(el.querySelector('.modal'),modalOrigin,done)
 }
-function pageEnter(el,done){expand(el,pageOrigin,done);pageOrigin=null}
-function pageLeave(el,done){collapse(el,null,done)}
+function fade(el,from,to,done){el.animate([{opacity:from},{opacity:to}],{duration:260,easing:'ease'}).onfinish=done}
+function pageEnter(el,done){fade(el,0,1,done)}
+function pageLeave(el,done){fade(el,1,0,done)}
 function visit(row,event){pageOrigin=originOf(event);open(row)}
 const page=ref('home'),rows=ref([]),selected=ref(null),modal=ref(false),file=ref(null),preset=ref(''),uploadStep=ref(1),uploading=ref(false),uploadPercent=ref(0),error=ref(''),search=ref(''),loading=ref(false),tracks=ref([]),playing=ref(false),position=ref(0),master=ref(1),loop=ref(false),loaded=ref(0),loadStage=ref(''),clarity=ref(false),clarityControl=ref({clarityStrength:100}),exporting=ref(''),downloadDialog=ref(null),logoutDialog=ref(false);
 let bufferedPlayer=null,windowed=false,startRevision=0,disposed=false;
