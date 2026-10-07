@@ -11,6 +11,7 @@ from uuid import uuid4
 import pytest
 
 from music_analyzer.auth import AuthStore
+from music_analyzer.legal import PRIVACY_VERSION, RIGHTS_CONFIRMATION_VERSION, TERMS_VERSION
 from music_analyzer.web_server import WebLibrary, make_handler
 
 
@@ -44,7 +45,8 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
             return response.status, json.loads(response.read()), response.headers
 
     try:
-        credentials = [{"email": email, "password": "test-password-" + run, "display_name": f"Test {i}"} for i, email in enumerate(emails)]
+        credentials = [{"email": email, "password": "test-password-" + run, "display_name": f"Test {i}",
+                        "consents": {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}} for i, email in enumerate(emails)]
         cookies, users = [], []
         for data in credentials:
             status, result, headers = request("/api/auth/register", data)
@@ -54,8 +56,11 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
             cookies.append(headers["Set-Cookie"].split(";")[0])
             users.append(result["user"])
         assert request("/api/auth/register", credentials[0])[0] == 409
+        assert request("/api/auth/register", {**credentials[0], "email": f"test-{run}-nc@example.invalid", "consents": {}})[0] == 400
+        assert not auth.query("SELECT 1 FROM users WHERE email=%s", (f"test-{run}-nc@example.invalid",))
+        assert AuthStore().consents(users[0]["id"]) == {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}
         assert request("/api/auth/login", {**credentials[0], "password": "wrong-password"})[0] == 401
-        status, result, _ = request("/api/analyses", cookie=cookies[0], raw=b"test audio")
+        status, result, _ = request("/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION, cookie=cookies[0], raw=b"test audio")
         assert status == 202 and len(queued) == 1
         identifier = result["id"]
         assert AuthStore().owns(users[0]["id"], identifier)  # Survives store/server reconstruction.
@@ -74,6 +79,11 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
         assert request("/api/auth/me", cookie=replacement)[0] == 401
         stored = auth.query("SELECT password_hash FROM users WHERE id=%s", (users[0]["id"],))[0]["password_hash"]
         assert stored.startswith("pbkdf2_sha256$") and credentials[0]["password"] not in stored
+        auth.assign(users[1]["id"], "analysis_" + "9" * 32)
+        auth.delete_account(users[1]["id"])  # sessions, ownership, consents and the user row go together
+        for table, column in (("users", "id"), ("sessions", "user_id"), ("analysis_owners", "user_id"), ("user_consents", "user_id")):
+            assert not auth.query(f"SELECT 1 FROM {table} WHERE {column}=%s", (users[1]["id"],))
+        assert request("/api/auth/me", cookie=cookies[1])[0] == 401
     finally:
         server.shutdown()
         server.server_close()

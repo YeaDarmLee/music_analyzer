@@ -14,6 +14,7 @@ from pathlib import Path
 from uuid import uuid4
 
 from .common import project_root
+from .legal import ConsentError, require_consents
 
 SESSION_SECONDS = 7 * 24 * 60 * 60
 COOKIE_NAME = "music_session"
@@ -95,8 +96,25 @@ class AuthStore:
         finally:
             connection.close()
 
+    def transaction(self, statements):
+        import pymysql
+        connection = self.connect()
+        try:
+            with connection.cursor() as cursor:
+                for sql, args in statements:
+                    cursor.execute(sql, args)
+            connection.commit()
+        except pymysql.IntegrityError:
+            connection.rollback()
+            raise
+        except pymysql.MySQLError:
+            connection.rollback()
+            raise DatabaseUnavailable("회원 DB를 사용할 수 없습니다. 연결 및 DDL 적용을 확인해 주세요.") from None
+        finally:
+            connection.close()
+
     def check(self):
-        for table in ("users", "sessions", "analysis_owners", "auth_attempts"):
+        for table in ("users", "sessions", "analysis_owners", "auth_attempts", "user_consents"):
             self.query(f"SELECT 1 FROM {table} LIMIT 1")
 
     def throttle(self, address):
@@ -121,18 +139,43 @@ class AuthStore:
         return email, password
 
     def register(self, data):
+        """Email/password account creation. Consent is validated and stored independently of the provider."""
         import pymysql
         email, password = self.credentials(data)
         name = data.get("display_name", "")
         if not isinstance(name, str) or not 1 <= len(name.strip()) <= 80:
-            raise AuthError("이름은 1~80자로 입력해 주세요.")
+            raise AuthError("닉네임은 1~80자로 입력해 주세요.")
+        try:
+            consents = require_consents(data.get("consents"))
+        except ConsentError as error:
+            raise AuthError(str(error)) from None
         user = {"id": uuid4().hex, "email": email, "display_name": name.strip()}
         try:
-            self.query("INSERT INTO users (id,email,display_name,password_hash) VALUES (%s,%s,%s,%s)",
-                       (user["id"], email, user["display_name"], password_hash(password)))
+            self.transaction([("INSERT INTO users (id,email,display_name,password_hash) VALUES (%s,%s,%s,%s)",
+                               (user["id"], email, user["display_name"], password_hash(password))),
+                              *self.consent_statements(user["id"], consents)])
         except pymysql.IntegrityError:
             raise AuthError("이미 가입된 이메일입니다.", 409) from None
         return user
+
+    @staticmethod
+    def consent_statements(user_id, consents):
+        return [("INSERT INTO user_consents (user_id,consent_type,policy_version) VALUES (%s,%s,%s)", (user_id, kind, version))
+                for kind, version in consents.items()]
+
+    def consents(self, user_id):
+        return {row["consent_type"]: row["policy_version"] for row in
+                self.query("SELECT consent_type,policy_version FROM user_consents WHERE user_id=%s", (user_id,))}
+
+    def delete_account(self, user_id):
+        """Remove sessions, ownership rows, consents and the account itself in one transaction."""
+        self.transaction([("DELETE FROM analysis_owners WHERE user_id=%s", (user_id,)),
+                          ("DELETE FROM user_consents WHERE user_id=%s", (user_id,)),
+                          ("DELETE FROM sessions WHERE user_id=%s", (user_id,)),
+                          ("DELETE FROM users WHERE id=%s", (user_id,))])
+
+    def release(self, identifier):
+        self.query("DELETE FROM analysis_owners WHERE analysis_id=%s", (identifier,))
 
     def login(self, data):
         email, password = self.credentials(data)
@@ -178,11 +221,11 @@ def main():
         parser.error("The supplied DDL targets music_analyzer.")
     connection = store.connect(with_database=False)
     try:
-        ddl = (project_root() / "separation/sql/001_accounts.sql").read_text(encoding="utf-8")
         with connection.cursor() as cursor:
-            for statement in ddl.split(";"):
-                if statement.strip():
-                    cursor.execute(statement)
+            for script in sorted((project_root() / "separation/sql").glob("*.sql")):
+                for statement in script.read_text(encoding="utf-8").split(";"):
+                    if statement.strip():
+                        cursor.execute(statement)
         connection.commit()
     finally:
         connection.close()

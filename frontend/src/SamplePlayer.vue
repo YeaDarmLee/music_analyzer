@@ -53,6 +53,6 @@ onBeforeUnmount(()=>{stop();ro?.disconnect();ctx?.close()});
 <div class="track-settings"><button :class="{selected:mute[r.key]}" :aria-label="r.name+' 음소거'" :aria-pressed="!!mute[r.key]" @click="flip('m',r.key)">M</button><button :class="{selected:solo[r.key]}" :aria-label="r.name+' 솔로'" :aria-pressed="!!solo[r.key]" @click="flip('s',r.key)">S</button><input type="range" min="0" max="2" step=".01" :value="vol[r.key]??1" @input="setVol(r.key,+$event.target.value)" @dblclick="setVol(r.key,1)" title="더블클릭하여 기본 음량(100%)으로 복원" :aria-label="r.name+' 음량'"><span>{{Math.round((vol[r.key]??1)*100)}}%</span></div></div>
 <div class="waveform" @click="seekWave"><canvas :data-wave="r.key"></canvas><div class="playhead" :style="{left:pos/m.duration*100+'%'}"></div></div><span></span></div>
 </div>
-<p class="sp-note">Mureka AI로 직접 만든 음원이라 저작권 문제가 없는 샘플이에요. 이 곡의 45초 구간을 6트랙으로 분리한 결과입니다.</p>
+<p class="sp-note">서비스 내 데모 사용 권한을 확인한 샘플 음원입니다. 이 곡의 45초 구간을 6트랙으로 분리한 결과입니다.</p>
 </div>
 </template>

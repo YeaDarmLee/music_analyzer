@@ -8,6 +8,7 @@ import pytest
 
 from music_analyzer.auth import AuthStore, AuthError, DatabaseUnavailable, password_hash, password_matches
 from music_analyzer.common import write_json
+from music_analyzer.legal import RIGHTS_CONFIRMATION_VERSION
 from music_analyzer.web_server import WebLibrary, make_handler
 
 
@@ -33,6 +34,17 @@ class MemoryAccounts:
 
     def logout(self, token):
         self.sessions.pop(token, None)
+
+    def release(self, identifier):
+        self.owners.pop(identifier, None)
+
+    def delete_account(self, user_id):
+        self.sessions.pop(user_id, None)
+        for key in self.owned_ids(user_id):
+            self.owners.pop(key)
+
+
+UPLOAD = "/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION
 
 
 @pytest.fixture
@@ -131,7 +143,7 @@ def test_owner_is_saved_before_analysis_is_enqueued(tenant_server, monkeypatch):
         assert accounts.owns("alice", row["id"])
         calls.append(row["id"])
     monkeypatch.setattr(library.executor, "submit", submit)
-    status, body, _ = request("/api/analyses", method="POST", body=b"audio", headers={"X-Filename": "my.wav"})
+    status, body, _ = request(UPLOAD, method="POST", body=b"audio", headers={"X-Filename": "my.wav"})
     assert status == 202 and calls == [json.loads(body)["id"]]
     assert request("/api/analyses/" + calls[0], "bob")[0] == 404
 
@@ -143,7 +155,7 @@ def test_database_failure_never_enqueues_analysis(tenant_server, monkeypatch):
     def fail(*args):
         raise DatabaseUnavailable("DB unavailable")
     monkeypatch.setattr(accounts, "assign", fail)
-    assert request("/api/analyses", method="POST", body=b"audio", headers={"X-Filename": "my.wav"})[0] == 503
+    assert request(UPLOAD, method="POST", body=b"audio", headers={"X-Filename": "my.wav"})[0] == 503
     assert calls == []
 
 

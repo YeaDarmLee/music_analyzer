@@ -5,16 +5,18 @@ import {originOf,expand,collapse,press} from './motion';
 const user=ref(null),ready=ref(false),busy=ref(false),error=ref('');
 const email=ref(''),password=ref(''),displayName=ref(''),reveal=ref(false),generation=ref(0);
 const errorBox=ref(null),showAuth=ref(false),mode=ref('login'),closing=ref(false);
+const agreeTerms=ref(false),agreePrivacy=ref(false),policy=ref(null); // consent is collected here, independent of how the user authenticates
+const resetConsent=()=>{agreeTerms.value=false;agreePrivacy.value=false};
 let modalOrigin=null,opener=null,previousOverflow='',disposed=false;
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function login(event){
   if(showAuth.value||closing.value)return;
   modalOrigin=originOf(event);opener=event?.currentTarget||document.activeElement;
-  mode.value='login';error.value='';password.value='';reveal.value=false;
+  mode.value='login';error.value='';password.value='';reveal.value=false;resetConsent();
   previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';showAuth.value=true;
 }
-function close(){if(busy.value||!showAuth.value)return;closing.value=true;showAuth.value=false;password.value='';reveal.value=false;error.value=''}
-function switchMode(){if(busy.value)return;mode.value=mode.value==='login'?'register':'login';password.value='';reveal.value=false;error.value=''}
+function close(){if(busy.value||!showAuth.value)return;closing.value=true;showAuth.value=false;password.value='';reveal.value=false;error.value='';resetConsent()}
+function switchMode(){if(busy.value)return;mode.value=mode.value==='login'?'register':'login';password.value='';reveal.value=false;error.value='';resetConsent()}
 function enter(el,done){
   el.inert=true;
   el.animate([{opacity:0},{opacity:1}],{duration:reduced()?0:420,easing:'cubic-bezier(.22,.75,.18,1)'});
@@ -59,9 +61,15 @@ async function authRequest(path,data){
 async function submit(event){
   if(busy.value)return;
   const submittedMode=mode.value;
+  if(submittedMode==='register'&&!(agreeTerms.value&&agreePrivacy.value)){await showError('이용약관과 개인정보 수집·이용에 동의해 주세요.');return}
   busy.value=true;error.value='';
   try{
-    const result=await authRequest(mode.value,{email:email.value,password:password.value,display_name:displayName.value});
+    const body={email:email.value,password:password.value,display_name:displayName.value};
+    if(submittedMode==='register'){
+      policy.value||=await (await fetch('/api/legal')).json();
+      body.consents={TERMS:policy.value.terms,PRIVACY:policy.value.privacy};
+    }
+    const result=await authRequest(mode.value,body);
     if(disposed)return;
     user.value=result.user;password.value='';reveal.value=false;generation.value++;
     closing.value=true;showAuth.value=false;
@@ -73,6 +81,16 @@ async function logout(){
   busy.value=true;error.value='';
   try{await authRequest('logout',{});if(disposed)return;user.value=null;password.value='';generation.value++;error.value=''}
   catch(e){if(!disposed)await showError(e.message)}finally{busy.value=false}
+}
+async function withdraw(){
+  if(busy.value)return;
+  busy.value=true;error.value='';
+  try{
+    const response=await fetch('/api/auth/account',{method:'DELETE',headers:{'X-Requested-With':'MusicAnalyzer'}});
+    const result=await response.json();
+    if(!response.ok)throw new Error(result.error||'요청을 처리하지 못했습니다.');
+    if(disposed)return;user.value=null;password.value='';generation.value++;
+  }catch(e){if(!disposed)await showError(e.message)}finally{busy.value=false}
 }
 function expired(){user.value=null;generation.value++;login();error.value='로그인이 만료되었습니다. 다시 로그인해 주세요.'}
 onMounted(async()=>{
@@ -90,7 +108,7 @@ onBeforeUnmount(()=>{disposed=true;if(showAuth.value||closing.value)document.bod
   <template v-else>
     <div class="account-workspace" :inert="showAuth||closing" @keydown="keyboardPress">
       <Transition name="account-feedback"><div v-if="error&&!showAuth&&!closing" ref="errorBox" tabindex="-1" class="error" role="alert">{{error}}<button @pointerdown="press" @click="error=''">닫기</button></div></Transition>
-      <App :key="(user?.id||'guest')+generation" :user="user" :account-busy="busy" @logout="logout" @login="login" />
+      <App :key="(user?.id||'guest')+generation" :user="user" :account-busy="busy" @logout="logout" @withdraw="withdraw" @login="login" />
     </div>
     <Teleport to="body">
     <Transition :css="false" @enter="enter" @leave="leave" @after-enter="focusModal" @after-leave="afterLeave">
@@ -101,15 +119,28 @@ onBeforeUnmount(()=>{disposed=true;if(showAuth.value||closing.value)document.bod
         <div :key="mode" class="account-content">
         <h2 id="account-title">{{mode==='register'?'나만의 스튜디오 만들기':'다시 만나 반가워요.'}}</h2>
         <p>내 음원을 분석하고 나만의 라이브러리에서 이어서 들어보세요.</p>
-        <label v-if="mode==='register'" class="account-field">이름<input v-model="displayName" autocomplete="name" required maxlength="80" :disabled="busy"></label>
+        <label v-if="mode==='register'" class="account-field">닉네임<input v-model="displayName" autocomplete="nickname" required maxlength="80" :disabled="busy"></label>
         <label class="account-field">이메일<input v-model="email" type="email" autocomplete="username" required maxlength="254" :disabled="busy"></label>
         <div class="account-field">
           <label for="account-password">비밀번호</label>
           <div class="password-control"><input id="account-password" v-model="password" :type="reveal?'text':'password'" :autocomplete="mode==='register'?'new-password':'current-password'" required minlength="10" maxlength="128" :disabled="busy" :aria-describedby="mode==='register'?'password-help':undefined"><button class="password-reveal" type="button" :disabled="busy" :aria-pressed="reveal" :aria-label="reveal?'비밀번호 숨기기':'비밀번호 보기'" @click="reveal=!reveal">{{reveal?'숨기기':'보기'}}</button></div>
           <small v-if="mode==='register'" id="password-help">10~128자로 입력해 주세요.</small>
         </div>
+        <fieldset v-if="mode==='register'" class="consent-box">
+          <legend class="sr-only">약관 동의</legend>
+          <div class="consent-row"><label><input v-model="agreeTerms" type="checkbox" :disabled="busy"><span><b>[필수]</b> 이용약관에 동의합니다.</span></label><a href="/terms" target="_blank" rel="noopener">내용 보기</a></div>
+          <div class="consent-row"><label><input v-model="agreePrivacy" type="checkbox" :disabled="busy"><span><b>[필수]</b> 개인정보 수집·이용에 동의합니다.</span></label><a href="/privacy" target="_blank" rel="noopener">내용 보기</a></div>
+          <details class="consent-summary"><summary>개인정보 수집·이용 요약</summary>
+            <dl>
+              <dt>수집 목적</dt><dd>회원 식별 및 로그인 · 개인 분석 라이브러리 제공 · 서비스 보안 및 부정 이용 방지</dd>
+              <dt>수집 항목</dt><dd>이메일, 닉네임, 비밀번호의 단방향 해시값, 로그인/세션 정보</dd>
+              <dt>보유 기간</dt><dd>회원 탈퇴 시까지. 단, 법령상 별도의 보존 의무가 있는 경우 해당 기간</dd>
+              <dt>동의 거부</dt><dd>개인정보 수집·이용에 동의하지 않을 수 있으나, 필수 정보 수집에 동의하지 않으면 회원 서비스 이용이 어렵습니다.</dd>
+            </dl>
+          </details>
+        </fieldset>
         <Transition name="account-feedback"><div v-if="error" ref="errorBox" tabindex="-1" class="error" role="alert"><span>{{error}}</span><button type="button" aria-label="오류 메시지 닫기" @click="error=''">닫기</button></div></Transition>
-        <button class="button full" :disabled="busy"><span v-if="busy" class="account-spinner" aria-hidden="true"></span><span aria-live="polite">{{busy?'잠시만 기다려 주세요…':mode==='register'?'회원가입':'로그인'}}</span><span v-if="!busy" class="account-submit-arrow" aria-hidden="true">→</span></button>
+        <button class="button full" :disabled="busy||(mode==='register'&&!(agreeTerms&&agreePrivacy))"><span v-if="busy" class="account-spinner" aria-hidden="true"></span><span aria-live="polite">{{busy?'잠시만 기다려 주세요…':mode==='register'?'회원가입':'로그인'}}</span><span v-if="!busy" class="account-submit-arrow" aria-hidden="true">→</span></button>
         <button class="account-switch" type="button" :disabled="busy" @click="switchMode">{{mode==='login'?'처음 오셨나요? 회원가입':'이미 계정이 있나요? 로그인'}}</button>
         </div></Transition>
       </form>
@@ -141,6 +172,16 @@ input:disabled{opacity:.55}input:user-invalid{border-color:#e499ab}small{font-we
 .account-spinner{width:16px;height:16px;display:inline-block;flex-shrink:0;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:account-spin .8s linear infinite}
 @keyframes account-spin{to{transform:rotate(360deg)}}
 .account-feedback-enter-active,.account-feedback-leave-active{transition:opacity .2s,transform .2s}.account-feedback-enter-from,.account-feedback-leave-to{opacity:0;transform:translateY(-6px)}
+.consent-box{margin:0 0 18px;padding:0;border:0;display:flex;flex-direction:column;gap:10px;font-size:13px}
+.consent-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.consent-row label{display:flex;align-items:center;gap:9px;cursor:pointer;color:#d6d7e0;flex:1}
+.consent-row input{width:18px;height:18px;padding:0;margin:0;flex-shrink:0;accent-color:#a793fa}
+.consent-row b{color:#c6b5ff;font-weight:600}
+.consent-row a{flex-shrink:0;color:#b6a2ff;font-size:12px}
+.consent-summary{border:1px solid #2c2e39;border-radius:9px;padding:9px 12px;color:#aaa2b8;font-size:12px}
+.consent-summary summary{cursor:pointer;color:#c6b5ff}
+.consent-summary dl{margin:8px 0 0}.consent-summary dt{margin-top:8px;color:#d6d7e0;font-weight:600}.consent-summary dd{margin:2px 0 0;line-height:1.6}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:480px){.account-screen{padding:20px}.account-card{padding:24px}h2{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.account-spinner{animation:none}.account-back span,.account-submit-arrow,.account-field,.account-feedback-enter-active,.account-feedback-leave-active{transition:none}.account-back:hover span,.button.full:hover .account-submit-arrow{transform:none}}
 </style>

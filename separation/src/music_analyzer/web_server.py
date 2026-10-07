@@ -14,6 +14,11 @@ from .ingest import ingest_file,load_asset
 from .job_service import JobService
 from .job_contracts import job_folder,verify_result,JobError
 from .audio import RATE
+from .legal import RIGHTS_CONFIRMATION_VERSION,public_versions
+
+BUSY_STATES=("QUEUED","RUNNING")
+STORED_ID=re.compile(r"(?:job|asset)_[0-9a-f]{32}")
+stored_ids=lambda text:set(STORED_ID.findall(text))
 
 class WebLibrary:
     def __init__(self,root):
@@ -127,11 +132,12 @@ class WebLibrary:
     def public(self,row):
         return {k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path")}|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
 
-    def create(self,filename,preset,stream,length,claim=None):
-        if preset not in ("basic_2","basic_6","final_11","final_10","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
+    def create(self,filename,preset,stream,length,claim=None,rights=None):
+        if preset not in ("basic_2","basic_6","final_11","final_10","commercial_13","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
         extension=Path(filename).suffix.lower()
         if extension not in (".mp3",".wav",".flac"): raise ValueError("MP3, WAV, FLAC 파일을 선택해 주세요.")
         if not 0<length<=1024**3:raise ValueError("파일은 1GB 이하여야 합니다.")
+        if rights!=RIGHTS_CONFIRMATION_VERSION:raise ValueError("업로드한 음원의 이용 권한을 확인해 주세요.")
         if shutil.disk_usage(self.web).free<length+3*1024**3:raise ValueError("분석을 위한 디스크 공간이 부족합니다.")
         identifier="analysis_"+uuid4().hex
         folder=self.web/identifier
@@ -149,7 +155,8 @@ class WebLibrary:
             raise
         row={"id":identifier,"name":Path(filename).stem[:160],"filename":filename[:200],"state":"QUEUED",
              "stage":"분석 대기 중","progress":0,"created":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime()),
-             "model":preset,"duration":0,"tracks":[],"job_ids":[],"vocal_source":"roformer","secondary_vocals_excluded":True}
+             "model":preset,"duration":0,"tracks":[],"job_ids":[],"vocal_source":"roformer","secondary_vocals_excluded":True,
+             "rights_confirmation_version":rights,"rights_confirmed_at":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())}
         write_json(folder/"record.json",row)
         if claim:claim(identifier)
         self.executor.submit(self.analyze,folder,upload,row)
@@ -167,7 +174,8 @@ class WebLibrary:
             if existing.get("parent_analysis_id")==identifier and existing.get("model")==preset and existing["state"] in ("QUEUED","RUNNING"):return self.public(existing)
         row={"id":"analysis_"+uuid4().hex,"name":parent["name"]+" · 리드/코러스", "state":"QUEUED","stage":"보컬 세부분리 대기 중","progress":0,
              "created":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime()),"model":preset,"duration":parent["duration"],
-             "tracks":[],"job_ids":[],"parent_analysis_id":identifier,"kind":"vocal_detail","quality_improvement_verified":False}
+             "tracks":[],"job_ids":[],"parent_analysis_id":identifier,"kind":"vocal_detail","quality_improvement_verified":False,
+             "rights_confirmation_version":parent.get("rights_confirmation_version"),"rights_confirmed_at":parent.get("rights_confirmed_at")}
         folder=self.web/row["id"];write_json(folder/"record.json",row)
         if claim:claim(row["id"])
         self.executor.submit(self.analyze_vocal_detail,folder,self.track_path(parent,"vocals"),row)
@@ -198,6 +206,12 @@ class WebLibrary:
         started=time.monotonic()
         waiting_seconds=0.
         service=JobService(self.root)
+        commercial=row["model"]=="commercial_13"
+        is11=row["model"] in ("final_11","commercial_13")
+        if commercial:
+            from .commercial_pipeline import STAGE_PRESETS,MODELS as COMMERCIAL_MODELS
+            from .registry import commercial_gate
+        else:STAGE_PRESETS={}
         def save(**values):
             if values.get("state")=="SUCCEEDED":
                 values.update(processing_seconds=round(time.monotonic()-started-waiting_seconds,3),timing_profile="staged-v8-overlap40")
@@ -210,6 +224,7 @@ class WebLibrary:
                  completed_chunks=p.get("completed",0),total_chunks=p.get("total",0))
         def run_stage(asset_id,preset_name,callback):
             nonlocal waiting_seconds
+            preset_name=STAGE_PRESETS.get(preset_name,preset_name)
             while not self.stopping.is_set():
                 try:return service.run(asset_id,preset_name,callback)
                 except JobError as error:
@@ -220,8 +235,10 @@ class WebLibrary:
                     waiting_seconds+=time.monotonic()-wait_started
             raise ValueError("서버 종료로 분석이 중단됐습니다.")
         try:
+            if commercial:commercial_gate(COMMERCIAL_MODELS,self.root)
             save(state="RUNNING",stage="음원 확인 및 변환",progress=2)
             asset=ingest_file(upload,self.root)
+            upload.unlink(missing_ok=True)  # the validated asset keeps the only retained copy of the upload
             original=load_asset(self.root,asset.name)
             save(duration=original["timeline"]["num_frames"]/RATE,progress=5)
             vocal=run_stage(asset.name,"vocal_roformer",lambda j:update(j,5,27,"보컬·반주 분리 중"))
@@ -238,7 +255,7 @@ class WebLibrary:
                 self.validate_partition(row["original"],row["tracks"])
                 save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
                 return
-            if row["model"]=="final_11":
+            if is11:
                 context_job=run_stage(asset.name,"instrument_mega7",lambda j:update(j,32,8,"원곡 악기 근거 확인 중"))
                 row["job_ids"].append(context_job["job_id"])
                 if context_job["state"]!="SUCCEEDED":raise ValueError("원곡 악기 근거 추출 실패")
@@ -256,11 +273,11 @@ class WebLibrary:
                 if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
                 detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
                 detail_result=verify_result(detail_dir,detail_job)
-            save(stage="악기 분리 준비",progress=50 if row["model"]=="final_11" else 32,completed_chunks=0,total_chunks=0)
+            save(stage="악기 분리 준비",progress=50 if is11 else 32,completed_chunks=0,total_chunks=0)
             second_asset=ingest_file(first_dir/instrumental["path"],self.root)
-            final=row["model"] in ("final_10","final_11")
+            final=row["model"] in ("final_10","final_11","commercial_13")
             basic=row["model"]=="basic_6"
-            second=run_stage(second_asset.name,"instrument_roformer_6s" if final or basic else row["model"],lambda j:update(j,50 if row["model"]=="final_11" else 32,52 if basic else 20,"피아노·기타·베이스·드럼 분리 중" if basic else "피아노·베이스·드럼 분리 중" if final else "악기 분리 중"))
+            second=run_stage(second_asset.name,"instrument_roformer_6s" if final or basic else row["model"],lambda j:update(j,50 if is11 else 32,52 if basic else 20,"피아노·기타·베이스·드럼 분리 중" if basic else "피아노·베이스·드럼 분리 중" if final else "악기 분리 중"))
             row["job_ids"].append(second["job_id"])
             if second["state"]!="SUCCEEDED":raise ValueError("악기 분리를 완료하지 못했습니다: "+second["state"])
             second_dir=job_folder(self.root,second["job_id"])/"result"
@@ -281,7 +298,7 @@ class WebLibrary:
             for base,stems in [(first_dir,[s for s in first["stems"] if s["family"]=="vocals"]),
                                (second_dir,[s for s in second_result["stems"] if s["family"] in ("piano","bass","drums") or not final and s["family"]!="vocals"])]:
                 tracks.extend({**s,"path":str((base/s["path"]).relative_to(self.root))} for s in stems)
-            if row["model"]=="final_11":
+            if is11:
                 base_tracks=[{**t,"path":str((second_dir/t["path"]).relative_to(self.root))} for t in second_result["stems"] if t["family"] in ("piano","guitar","bass","drums")]
                 if {t["family"] for t in base_tracks}!={"piano","guitar","bass","drums"}:raise ValueError("기본 악기 출력 누락")
                 row.update(original=original_path,instrumental=instrumental_path)
@@ -308,13 +325,13 @@ class WebLibrary:
                 tracks.extend(guitars)
                 tracks.extend({**t,"path":str((instrument_dir/t["path"]).relative_to(self.root))} for t in result["stems"] if t["family"] in ("synth","bowed_strings","brass"))
             elif final:
-                instruments=run_stage(second_asset.name,"instrument_mega5",lambda j:update(j,70 if row["model"]=="final_11" else 52,14,"신디사이저·스트링·브라스·기타 분리 중"))
+                instruments=run_stage(second_asset.name,"instrument_mega5",lambda j:update(j,70 if is11 else 52,14,"신디사이저·스트링·브라스·기타 분리 중"))
                 row["job_ids"].append(instruments["job_id"])
                 if instruments["state"]!="SUCCEEDED":raise ValueError("전용 악기 분리를 완료하지 못했습니다.")
                 instrument_dir=job_folder(self.root,instruments["job_id"])/"result"
                 result=verify_result(instrument_dir,instruments)
                 tracks.extend({**s,"path":str((instrument_dir/s["path"]).relative_to(self.root))} for s in result["stems"])
-            if row["model"]!="final_11":
+            if not is11:
                 save(stage="리드 보컬·코러스 준비",progress=66 if final else 51,completed_chunks=0,total_chunks=0)
                 vocal_track=next(t for t in tracks if t["family"]=="vocals")
                 vocal_asset=ingest_file(self.root/vocal_track["path"],self.root)
@@ -323,23 +340,30 @@ class WebLibrary:
                 if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
                 detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
                 detail_result=verify_result(detail_dir,detail_job)
-            tracks.extend({**t,"parent_family":"vocals","path":str((detail_dir/t["path"]).relative_to(self.root))} for t in detail_result["stems"])
+            if commercial:
+                from .vocal_split import publish as publish_vocal_split
+                detail_stems=publish_vocal_split(self.root,folder,first_dir/vocal_stem["path"],detail_dir,detail_result)
+            else:detail_stems=[{**t,"path":str((detail_dir/t["path"]).relative_to(self.root))} for t in detail_result["stems"]]
+            tracks.extend({**t,"parent_family":"vocals"} for t in detail_stems)
             row["tracks"]=tracks
             row["original"]=str((asset/"canonical.wav").relative_to(self.root))
             if final:
                 row["instrumental"]=str((first_dir/instrumental["path"]).relative_to(self.root))
-                row["separation_version"]="staged-context-pads-v16" if row["model"]=="final_11" else "instrumental-with-brass-v5"
-                if row["model"]=="final_11":row["recovery_policy"]="base-estimates-only-v1"
-            if final:save(stage="반주 구성 정리" if row["model"]=="final_11" else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
-            if row["model"]=="final_11":
+                row["separation_version"]=("commercial-13-v1" if commercial else "staged-context-pads-v16") if is11 else "instrumental-with-brass-v5"
+                if is11:row["recovery_policy"]="base-estimates-only-v1"
+            if final:save(stage="반주 구성 정리" if is11 else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
+            if is11:
                 row["tracks"].append(guitar_residual)
             row=self.final_session(row) if final else self.flatten_session(row)
-            if row["model"]=="final_11":
+            if is11:
                 from .synth_recovery import run_for_library
                 save(stage="피아노 내 심벌 혼입 보완 중",progress=85,completed_chunks=0,total_chunks=0)
                 def cymbal_progress(p):
                     save(progress=round(85+10*p["completed"]/max(1,p["total"]),1),completed_chunks=p["completed"],total_chunks=p["total"])
-                row=run_for_library(self,row,'cymbal',on_progress=cymbal_progress)
+                if commercial:
+                    from .commercial_cymbal import apply as commercial_cymbal
+                    row=commercial_cymbal(self.root,row)
+                else:row=run_for_library(self,row,'cymbal',on_progress=cymbal_progress)
                 from .percussion_refinement import apply as route_percussion,prepare_source
                 context_sources={s['family']:context_dir/s['path'] for s in context['stems']}
                 percussion_asset=ingest_file(prepare_source(self.root,row),self.root)
@@ -372,7 +396,7 @@ class WebLibrary:
                         fraction=p["completed"]/max(1,p["total"])
                         save(progress=round(max(row["progress"],base+5.8*fraction),1),completed_chunks=p["completed"],total_chunks=p["total"])
                     row=run_for_library(self,row,family,on_progress=recovery_progress)
-            if row["model"]=="final_11":
+            if is11:
                 save(stage="최종 반주 정리",progress=97,completed_chunks=0,total_chunks=0)
                 final_tracks=[t for t in row["tracks"] if t["family"]!="other"]
                 row=self.with_remaining(row,final_tracks,"flat_v4","remaining-final11-v3.wav",row["instrumental"],
@@ -384,12 +408,51 @@ class WebLibrary:
                 row=apply_leakage_rule(self.root,row)
             if final:
                 self.validate_partition(row["instrumental"],[t for t in row["tracks"] if t["family"] not in ("lead","backing")])
-            if row["model"]=="final_11":self.validate_partition(row["original"],row["tracks"])
+            if is11:self.validate_partition(row["original"],row["tracks"])
             tracks=[self.track_activity(t) for t in row["tracks"]]
             save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=tracks,
                  original=str((asset/"canonical.wav").relative_to(self.root)),active_job_id=None)
         except Exception as error:
+            upload.unlink(missing_ok=True)
             save(state="FAILED",stage="분석 실패",error=str(error),active_job_id=None)
+
+    def delete(self,identifier):
+        """Remove one analysis and every job/asset directory no other analysis or job still uses."""
+        if not re.fullmatch(r"analysis_[0-9a-f]{32}",identifier):raise ValueError("잘못된 분석 ID입니다.")
+        folder=self.web/identifier
+        row=read_json(folder/"record.json")
+        if row.get("state") in BUSY_STATES:raise ValueError("진행 중인 분석은 완료된 뒤에 삭제할 수 있습니다.")
+        mine=stored_ids(json.dumps(row))
+        kept=set()
+        for path in (*self.web.glob("analysis_*/record.json"),*(self.root/"pipelines").glob("*/manifest.json")):
+            if path.parent.name!=identifier:kept|=stored_ids(path.read_text(encoding="utf-8",errors="replace"))
+        doomed_jobs={x for x in mine if x.startswith("job_")}-kept
+        mine_assets={x for x in mine if x.startswith("asset_")}
+        kept_assets={x for x in kept if x.startswith("asset_")}
+        for path in (self.root/"jobs").glob("job_*/job.json"):
+            try:assets={x for x in stored_ids(path.read_text(encoding="utf-8",errors="replace")) if x.startswith("asset_")}
+            except OSError:continue
+            if path.parent.name in doomed_jobs:mine_assets|=assets
+            else:kept_assets|=assets
+        doomed=[self.root/"jobs"/x for x in doomed_jobs]+[self.root/"inputs"/x for x in mine_assets-kept_assets]
+        doomed+=[self.web/sub/identifier for sub in ("previews","enhanced","bundles")]+list((self.web/"archives").glob(identifier+"_*.zip"))
+        with self.cache_lock:
+            for path in doomed:
+                if path.is_dir() and not path.is_symlink():shutil.rmtree(path)
+                elif path.exists():path.unlink()
+            shutil.rmtree(folder)
+            for key in [k for k in self.gain_cache if k[0]==identifier]:self.gain_cache.pop(key)
+
+    def delete_many(self,identifiers):
+        """All-or-nothing busy check, then delete; missing records are already gone."""
+        identifiers=list(identifiers)
+        for identifier in identifiers:
+            try:
+                if read_json(self.web/identifier/"record.json").get("state") in BUSY_STATES:raise ValueError("진행 중인 분석이 있습니다. 분석이 끝난 뒤 다시 시도해 주세요.")
+            except FileNotFoundError:pass
+        for identifier in identifiers:
+            try:self.delete(identifier)
+            except FileNotFoundError:pass
 
     def validate_partition(self,source_path,tracks):
         import contextlib
@@ -659,8 +722,27 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                 if path!="/api/analyses":return self.json(404,{"error":"없는 경로입니다."})
                 query=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
                 name=urllib.parse.unquote(self.headers.get("X-Filename",""))
-                result=library.create(name,query.get("preset",["final_10"])[0],self.rfile,int(self.headers.get("Content-Length","0")),claim=lambda identifier:auth.assign(user["id"],identifier))
+                result=library.create(name,query.get("preset",["final_10"])[0],self.rfile,int(self.headers.get("Content-Length","0")),claim=lambda identifier:auth.assign(user["id"],identifier),rights=query.get("rights",[""])[0])
                 self.json(202,result)
+            except AuthError as error:self.json(error.status,{"error":str(error)})
+            except DatabaseUnavailable as error:self.json(503,{"error":str(error)})
+            except FileNotFoundError:self.json(404,{"error":"분석을 찾을 수 없습니다."})
+            except (ValueError,OSError) as error:self.json(400,{"error":str(error)})
+        def do_DELETE(self):
+            if not self.allowed() or self.headers.get("X-Requested-With")!="MusicAnalyzer":return self.json(403,{"error":"허용되지 않는 요청입니다."})
+            path=urllib.parse.urlsplit(self.path).path
+            try:
+                user=self.user()
+                if path=="/api/auth/account":
+                    library.delete_many(auth.owned_ids(user["id"]))
+                    auth.delete_account(user["id"])
+                    return self.json(200,{"ok":True},self.cookie("",True))
+                match=re.fullmatch(r"/api/analyses/([^/]+)",path)
+                if not match:return self.json(404,{"error":"없는 경로입니다."})
+                self.authorize(user,match[1])
+                library.delete(match[1])
+                auth.release(match[1])
+                self.json(200,{"ok":True})
             except AuthError as error:self.json(error.status,{"error":str(error)})
             except DatabaseUnavailable as error:self.json(503,{"error":str(error)})
             except FileNotFoundError:self.json(404,{"error":"분석을 찾을 수 없습니다."})
@@ -692,6 +774,7 @@ def make_handler(library,dist,port,public_access=False,auth=None):
             if not self.allowed():return self.json(403,{"error":"허용되지 않는 요청입니다."})
             path=urllib.parse.urlsplit(self.path).path
             try:
+                if path=="/api/legal":return self.json(200,public_versions())
                 if path=="/api/auth/me":return self.json(200,{"user":self.user()})
                 if path.startswith("/api/"):user=self.user()
                 if path=="/api/analyses":

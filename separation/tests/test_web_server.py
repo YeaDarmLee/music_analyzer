@@ -4,6 +4,7 @@ from http.server import ThreadingHTTPServer
 import pytest
 from music_analyzer.web_server import WebLibrary,make_handler
 from music_analyzer.common import write_json
+from music_analyzer.legal import RIGHTS_CONFIRMATION_VERSION
 
 @pytest.fixture
 def library(tmp_path):
@@ -113,7 +114,7 @@ def test_public_record_omits_local_file_paths(library):
 
 def test_truncated_upload_is_not_enqueued(library):
     with pytest.raises(ValueError,match="중단"):
-        library.create("song.wav","instrument_roformer_6s",io.BytesIO(b"x"),100)
+        library.create("song.wav","instrument_roformer_6s",io.BytesIO(b"x"),100,rights=RIGHTS_CONFIRMATION_VERSION)
     assert not list(library.web.glob("analysis_*/source.wav"))
 
 def test_http_download_range_and_host_guard(library,tmp_path):

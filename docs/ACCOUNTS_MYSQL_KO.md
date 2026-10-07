@@ -26,6 +26,8 @@ cd C:\workspace\music_analyzer
 
 DDL: [separation/sql/001_accounts.sql](../separation/sql/001_accounts.sql)
 
+약관·개인정보 동의 기록 테이블(`user_consents`)은 [separation/sql/002_consents.sql](../separation/sql/002_consents.sql)에 있으며 `--init-db`가 `separation/sql/*.sql`을 순서대로 적용합니다. 서버는 이 테이블이 없으면 시작하지 않습니다. 정책 반영 방식은 [Legal & Trust 구현](LEGAL_AND_TRUST_IMPLEMENTATION_KO.md)을 참고하세요.
+
 | 테이블 | 역할 |
 | --- | --- |
 | `users` | 회원 ID, 정규화한 이메일, 이름, salt를 포함한 비밀번호 해시 |
