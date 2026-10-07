@@ -2613,3 +2613,4 @@ html {
 .studio-num { flex: none; width: 28px; align-self: center; color: #5d5478; font-size: 13px; font-weight: 700; letter-spacing: 1px; font-variant-numeric: tabular-nums }
 .studio-item { align-items: center }
 .shot img { height: 450px; object-fit: cover; object-position: top left }
+.modal-top .close { margin-left: auto }
