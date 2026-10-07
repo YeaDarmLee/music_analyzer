@@ -359,3 +359,11 @@ def test_build_refuses_a_production_preset_with_an_unknown_model(commercial):
     with pytest.raises(release.ReleaseError):
         license_notices.build(commercial.tmp / "out")
     assert not (commercial.tmp / "out").exists()
+
+
+def test_ui_versions_map_to_runtime_presets_in_the_allowlist():
+    """The UI keeps its own ids and sends `commercial:` ids under the commercial profile; they must match the server allowlist."""
+    text = (Path(release.__file__).parents[3] / "frontend/src/versions.js").read_text(encoding="utf-8")
+    ui_presets = set(__import__("re").findall(r"commercial:'(commercial_\d+)'", text))
+    assert "commercial_13" in ui_presets and ui_presets >= set(release.STAGE_RESOLVERS)
+    assert set(release.STAGE_RESOLVERS) <= set(read_json(release.CONFIG)["commercial"]["presets"])

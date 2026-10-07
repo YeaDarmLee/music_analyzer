@@ -1,6 +1,6 @@
 """Loopback-only web API and built Vue frontend. No external audio uploads."""
 from __future__ import annotations
-import argparse,hashlib,io,json,mimetypes,re,shutil,threading,time,urllib.parse,zipfile
+import argparse,hashlib,io,json,mimetypes,re,shutil,sys,threading,time,urllib.parse,zipfile
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from http.cookies import SimpleCookie, CookieError
@@ -131,10 +131,13 @@ class WebLibrary:
         raise FileNotFoundError("분석을 찾을 수 없습니다.")
 
     def public(self,row):
-        return {k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path")}|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
+        """API view of a record: no file paths, and no internal stage names or error text (those stay in record.json and the server log)."""
+        view={k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path","stage","error")}
+        if row.get("state")=="FAILED":view["error_code"]="ANALYSIS_FAILED"
+        return view|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
 
     def create(self,filename,preset,stream,length,claim=None,rights=None):
-        if preset not in ("basic_2","basic_6","final_11","final_10","commercial_13","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
+        if preset not in ("basic_2","basic_6","final_11","final_10","commercial_2","commercial_6","commercial_13","instrument_roformer_6s","quality_6s"): raise ValueError("지원하지 않는 모델입니다.")
         release.require_allowed(preset,self.root)  # commercial profile: allowlist + approval gate, fail closed
         extension=Path(filename).suffix.lower()
         if extension not in (".mp3",".wav",".flac"): raise ValueError("MP3, WAV, FLAC 파일을 선택해 주세요.")
@@ -209,10 +212,10 @@ class WebLibrary:
         started=time.monotonic()
         waiting_seconds=0.
         service=JobService(self.root)
-        commercial=row["model"]=="commercial_13"
+        commercial=row["model"] in ("commercial_2","commercial_6","commercial_13")
         is11=row["model"] in ("final_11","commercial_13")
         if commercial:
-            from .commercial_pipeline import STAGE_PRESETS,MODELS as COMMERCIAL_MODELS
+            from .commercial_pipeline import STAGE_PRESETS,models_for
             from .registry import commercial_gate
         else:STAGE_PRESETS={}
         def save(**values):
@@ -239,7 +242,7 @@ class WebLibrary:
                     waiting_seconds+=time.monotonic()-wait_started
             raise ValueError("서버 종료로 분석이 중단됐습니다.")
         try:
-            if commercial:commercial_gate(COMMERCIAL_MODELS,self.root)
+            if commercial:commercial_gate(models_for(row["model"]),self.root)
             save(state="RUNNING",stage="음원 확인 및 변환",progress=2)
             asset=ingest_file(upload,self.root)
             upload.unlink(missing_ok=True)  # the validated asset keeps the only retained copy of the upload
@@ -253,7 +256,7 @@ class WebLibrary:
             instrumental=next(s for s in first["stems"] if s["family"]=="instrumental")
             original_path=str((asset/"canonical.wav").relative_to(self.root))
             instrumental_path=str((first_dir/instrumental["path"]).relative_to(self.root))
-            if row["model"]=="basic_2":
+            if row["model"] in ("basic_2","commercial_2"):
                 save(stage="길이·합계 검증 및 저장",progress=97)
                 row.update(original=original_path,tracks=[{**s,"path":str((first_dir/s["path"]).relative_to(self.root))} for s in first["stems"] if s["family"] in ("vocals","instrumental")],track_layout="basic_2")
                 self.validate_partition(row["original"],row["tracks"])
@@ -280,7 +283,7 @@ class WebLibrary:
             save(stage="악기 분리 준비",progress=50 if is11 else 32,completed_chunks=0,total_chunks=0)
             second_asset=ingest_file(first_dir/instrumental["path"],self.root)
             final=row["model"] in ("final_10","final_11","commercial_13")
-            basic=row["model"]=="basic_6"
+            basic=row["model"] in ("basic_6","commercial_6")
             second=run_stage(second_asset.name,"instrument_roformer_6s" if final or basic else row["model"],lambda j:update(j,50 if is11 else 32,52 if basic else 20,"피아노·기타·베이스·드럼 분리 중" if basic else "피아노·베이스·드럼 분리 중" if final else "악기 분리 중"))
             row["job_ids"].append(second["job_id"])
             if second["state"]!="SUCCEEDED":raise ValueError("악기 분리를 완료하지 못했습니다: "+second["state"])
@@ -353,7 +356,7 @@ class WebLibrary:
             row["original"]=str((asset/"canonical.wav").relative_to(self.root))
             if final:
                 row["instrumental"]=str((first_dir/instrumental["path"]).relative_to(self.root))
-                row["separation_version"]=("commercial-13-v1" if commercial else "staged-context-pads-v16") if is11 else "instrumental-with-brass-v5"
+                row["separation_version"]=("commercial-13-v1" if row["model"]=="commercial_13" else "staged-context-pads-v16") if is11 else "instrumental-with-brass-v5"
                 if is11:row["recovery_policy"]="base-estimates-only-v1"
             if final:save(stage="반주 구성 정리" if is11 else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
             if is11:
@@ -419,6 +422,7 @@ class WebLibrary:
                  original=str((asset/"canonical.wav").relative_to(self.root)),active_job_id=None)
         except Exception as error:
             upload.unlink(missing_ok=True)
+            print(f"[analysis] {row['id']} failed: {error}",file=sys.stderr,flush=True)
             save(state="FAILED",stage="분석 실패",error=str(error),active_job_id=None)
 
     def delete(self,identifier):

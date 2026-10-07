@@ -19,6 +19,8 @@
 
 ## 2. 이용약관 (`/terms`)
 
+(2026-10-08.2: 제3조의2 이용연령 추가 — 만 14세 미만은 가입할 수 없음.)
+
 요청서의 제1~15조를 그대로 반영했다. `[운영자명]`, 시행일 `[YYYY-MM-DD]`는 placeholder다. 제8조에 13트랙 BETA 조항이 있다. 정책 버전(`2026-10-08`)은 페이지 상단에 표시되며 시행일과는 별개다.
 
 ## 3. 개인정보처리방침 (`/privacy`)
@@ -62,6 +64,7 @@ Auth Provider (현재: 이메일/비밀번호)  →  legal.require_consents()  �
 
 - UI: 닉네임(라벨만 변경, DB 필드 `display_name` 유지), [필수] 이용약관, [필수] 개인정보 수집·이용 체크박스와 "내용 보기"(새 탭), 개인정보 요약(목적·항목·보유기간·동의 거부).
 - 서버: `register`가 `consents={"TERMS": <현재 버전>, "PRIVACY": <현재 버전>}`를 검증한다. 누락·구버전·`true` 같은 값이면 400이며 계정을 만들지 않는다. 계정과 동의 행은 **한 트랜잭션**으로 저장된다.
+- **만 14세 이상 확인**: 가입 화면의 [필수] "만 14세 이상입니다" 체크박스를 `AGE14` 동의 항목으로 같은 `user_consents`에 기록한다(서버가 없으면 거부, 생년월일은 받지 않음). 법정대리인 동의 절차는 만들지 않고 14세 미만 가입을 제한한다. 정책 버전을 `2026-10-08.2`로 올렸으므로 기존 회원은 동의 게이트에서 새 약관·방침과 연령 확인을 다시 받는다.
 - DB: `user_consents(user_id, consent_type, policy_version, accepted_at)`, PK `(user_id, consent_type, policy_version)`, `users` 삭제 시 CASCADE.
 - SNS 로그인으로 바꿀 때: 새 Provider가 사용자 id만 확보하면 `require_consents` + `consent_statements`를 그대로 재사용한다. 이메일/비밀번호에 종속된 코드는 `register`뿐이다.
 - **현재 정책 동의 게이트**: `/api/auth/me`·로그인 응답에 `consent_required`(현재 TERMS/PRIVACY 버전 둘 다 없으면 true)가 실린다. true면 화면이 동의 대화상자(`ConsentFields` 재사용)로 막고, 서버도 `/api/analyses*` 조회·생성을 403으로 거부한다. 동의는 `POST /api/auth/consent`로 `user_consents`에 기록한다. 분석 삭제·회원 탈퇴는 동의 없이도 가능하다. 정책 버전을 올리면 모든 회원에게 같은 게이트가 다시 적용된다.
@@ -162,7 +165,17 @@ cd frontend; node --test legal.test.mjs trackGroups.test.mjs bufferPlayer.test.m
 
 기존 테스트는 업로드에 `rights`가 필요해져 `test_auth.py`(업로드 요청 URL), `test_web_server.py::test_truncated_upload_is_not_enqueued`, `test_auth_mysql.py`(가입 payload)를 최소한으로 수정했다. UI는 브라우저에서 직접 확인했다(가입 → DB 동의 행 확인, 권리 확인 후 업로드, 실패 분석 삭제, 회원 탈퇴 후 DB 행 제거).
 
-## 14. Remaining TODO
+## 14. 외부 공개 전 점검표 (2026-10-08 외부 검토 반영)
+
+반영함(코드): 만 14세 이상 확인, 방침 10항에 처리정지·동의 철회·이의제기, 동의 요약의 비밀번호/IP 표현·처리 근거 구분, UI preset ID ↔ commercial preset ID 매핑(`versions.js`의 `commercial`, 상용 모드에서 `/api/release` 목록과 매칭하고 그 id를 서버로 전송), 결과 화면의 "보컬 RoFormer + 악기"와 라이브러리의 모델명(RoFormer/Demucs/CLAPSep/AudioSep) 제거, "원본 FLOAT WAV" → "44.1kHz FLOAT WAV", 사이드바 법적 링크 상시 표시, `/licenses` 문구 정정, API 응답에서 `stage`/`error` 제거(`error_code: ANALYSIS_FAILED`만 제공, 원문은 `record.json`과 서버 stderr).
+
+공개 전 반드시 사람이 처리(코드로 해결 불가):
+- placeholder 실제값: `[운영자명]`, `[개인정보 보호 담당자]`, `[문의 이메일]`, `[저작권 신고 이메일]`, `[저작권 담당자]`, 시행일. 가능하면 개인정보 문의 전화번호도.
+- **복구 불가능한 파기**: 현재 삭제는 `unlink`/`rmtree`/`DELETE`이다(방침은 이를 과장하지 않음). 운영 스토리지가 정해지면 영구 삭제 방식(암호화 저장 + 키 삭제 등)을 결정하고 방침 9항을 갱신한다. SSD에서는 덮어쓰기 삭제가 신뢰할 수 없다.
+- HTTPS + `AUTH_COOKIE_SECURE=1`.
+- commercial preset 승격 후 `build-license-notices.py` 재생성과 `--check`.
+
+## 14-1. Remaining TODO
 
 운영 전 필수:
 - **HTTPS / Secure Cookie**: `.env`의 `AUTH_COOKIE_SECURE=1` 설정과 HTTPS 종단. 방침 8항은 Secure를 단정하지 않으므로 적용 후 문구 재확인.
@@ -175,8 +188,7 @@ cd frontend; node --test legal.test.mjs trackGroups.test.mjs bufferPlayer.test.m
 
 권고(이번 범위 밖에서 발견):
 - 정책 이전 버전 아카이브(`/privacy/<버전>`)는 없다. 방침 13항은 "시행일과 변경사항 안내"만 약속한다. 아카이브를 만들 때 문구를 추가한다.
-- **서버 `stage`/`error` 문자열**이 API 응답에 내부 단계명을 포함한다(12절). 파이프라인 작업이 정리된 뒤 일반화.
-- 분석 실패 시 `error`에 서버 절대 경로가 들어가 사용자 화면에 표시된다(기존 동작).
+- API는 `stage`/`error`를 내려주지 않는다. 내부 값은 `record.json`과 서버 로그에만 남는다. 로그 보관 정책은 운영 환경에서 정한다.
 - **CLAPSep**(UNKNOWN 가중치)을 쓰는 심벌 단계가 `commercial_13` 경로에서 `commercial_gate`의 검사 대상(`MODELS`)에 없다. commercial-clean 작업에서 확인하고, 결론에 따라 `/licenses` 목록을 재생성해야 한다. `bs_roformer_vocal2`는 승인 대기(`UNKNOWN`)이므로 현재 `/licenses`에 없다.
 - Mega53 가중치의 MIT 근거는 승인 파일에 "assumed per project owner"로 기록되어 있다. 출시 전 원문 선언 재확인 필요(감사 문서 NEEDS MANUAL VERIFICATION).
 - 진단 스크립트(`scripts/diagnose-instrument-leakage.py`, `apply-synth-recovery.py`)는 `web/analysis_*` 기록을 읽을 수 있다. 운영 데이터 디렉터리에서 실행하지 말 것. 학습 코드는 저장소에 없으며 사용자 음원을 데이터셋으로 복사하는 경로는 확인되지 않았다.

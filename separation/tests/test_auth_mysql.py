@@ -11,7 +11,7 @@ from uuid import uuid4
 import pytest
 
 from music_analyzer.auth import AuthStore
-from music_analyzer.legal import PRIVACY_VERSION, RIGHTS_CONFIRMATION_VERSION, TERMS_VERSION
+from music_analyzer.legal import REQUIRED_CONSENTS, RIGHTS_CONFIRMATION_VERSION
 from music_analyzer.web_server import WebLibrary, make_handler
 
 
@@ -46,7 +46,7 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
 
     try:
         credentials = [{"email": email, "password": "test-password-" + run, "display_name": f"Test {i}",
-                        "consents": {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}} for i, email in enumerate(emails)]
+                        "consents": dict(REQUIRED_CONSENTS)} for i, email in enumerate(emails)]
         cookies, users = [], []
         for data in credentials:
             status, result, headers = request("/api/auth/register", data)
@@ -58,11 +58,11 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
         assert request("/api/auth/register", credentials[0])[0] == 409
         assert request("/api/auth/register", {**credentials[0], "email": f"test-{run}-nc@example.invalid", "consents": {}})[0] == 400
         assert not auth.query("SELECT 1 FROM users WHERE email=%s", (f"test-{run}-nc@example.invalid",))
-        assert AuthStore().consents(users[0]["id"]) == {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}
+        assert AuthStore().consents(users[0]["id"]) == dict(REQUIRED_CONSENTS)
         assert auth.has_current_consents(users[0]["id"])
         auth.query("DELETE FROM user_consents WHERE user_id=%s AND consent_type='PRIVACY'", (users[0]["id"],))
         assert not auth.has_current_consents(users[0]["id"])  # legacy-style member: gated
-        auth.record_consents(users[0]["id"], {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION})  # idempotent re-accept
+        auth.record_consents(users[0]["id"], dict(REQUIRED_CONSENTS))  # idempotent re-accept
         assert auth.has_current_consents(users[0]["id"])
         assert request("/api/auth/login", {**credentials[0], "password": "wrong-password"})[0] == 401
         status, result, _ = request("/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION, cookie=cookies[0], raw=b"test audio")

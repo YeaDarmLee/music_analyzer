@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {versions,compare,isBeta,betaNotice,defaultSteps} from './src/versions.js';
+import {versions,compare,isBeta,betaNotice,defaultSteps,versionFor} from './src/versions.js';
 import {docs} from './src/legalDocs.js';
 
 const app=readFileSync(new URL('./src/App.vue',import.meta.url),'utf8');
@@ -46,7 +46,7 @@ test('marketing copy follows the practice/analysis positioning',()=>{
 
 test('legal pages exist with placeholders instead of invented operator details',()=>{
   assert.deepEqual(Object.keys(docs),['terms','privacy','copyright']);
-  assert.equal(docs.terms.sections.length,15);
+  assert.equal(docs.terms.sections.length,16);
   assert.match(flat(docs.terms),/\[운영자명\]/);
   assert.match(flat(docs.privacy),/\[문의 이메일\]/);
   assert.match(flat(docs.copyright),/\[저작권 신고 이메일\]/);
@@ -81,4 +81,37 @@ test('fonts are self-hosted: no third-party font host is referenced',()=>{
     const text=readFileSync(new URL(file,import.meta.url),'utf8');
     assert.doesNotMatch(text,/googleapis|gstatic|Google Fonts/,file);
   }
+});
+
+test('minimum age 14 is stated in terms, privacy policy and the signup form',()=>{
+  assert.match(flat(docs.terms),/만 14세 이상 이용자를 대상으로/);
+  assert.match(flat(docs.privacy),/만 14세 미만 아동을 대상으로 회원가입 서비스를 제공하지 않으며/);
+  const fields=readFileSync(new URL('./src/ConsentFields.vue',import.meta.url),'utf8');
+  assert.match(fields,/\[필수\]<\/b> 만 14세 이상입니다/);
+  const gate=readFileSync(new URL('./src/AccountGate.vue',import.meta.url),'utf8');
+  assert.equal(gate.match(/AGE14/g).length,2);
+});
+
+test('privacy rights list withdrawal of consent, suspension and objection',()=>{
+  const text=flat(docs.privacy);
+  for(const phrase of ['처리정지 및 동의 철회','이의를 제기할 수 있습니다','[문의 이메일]'])assert.ok(text.includes(phrase),phrase);
+  const summary=readFileSync(new URL('./src/ConsentFields.vue',import.meta.url),'utf8');
+  assert.match(summary,/비밀번호\(단방향 해시값으로 변환하여 저장\)/);
+  assert.match(summary,/접속 IP의 해시값/);
+});
+
+test('every version maps to a commercial runtime preset and the UI sends the mapped id in commercial mode',()=>{
+  assert.deepEqual(versions.map(v=>v.commercial),['commercial_2','commercial_6','commercial_13']);
+  assert.equal(versionFor('commercial_13').id,'final_11');
+  assert.equal(versionFor('final_11').id,'final_11');
+  assert.ok(isBeta('commercial_13')&&!isBeta('commercial_6'));
+  assert.match(app,/releaseInfo\.value\.presets\.includes\(v\.commercial\)/);
+  assert.match(app,/releaseInfo\.value\?\.presets\?chosenVersion\.value\.commercial:preset\.value/);
+});
+
+test('user-facing screens do not name internal models or claim the download is the original file',()=>{
+  const surface=readFileSync(new URL('./src/App.vue',import.meta.url),'utf8');
+  for(const word of ['RoFormer','Demucs','CLAPSep','AudioSep','Mega53','원본 FLOAT WAV'])assert.ok(!surface.includes(word),word);
+  assert.match(surface,/44\.1kHz FLOAT WAV/);
+  assert.match(surface,/side-legal/);
 });

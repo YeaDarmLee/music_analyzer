@@ -6,8 +6,9 @@ import {originOf,expand,collapse,press} from './motion';
 const user=ref(null),ready=ref(false),busy=ref(false),error=ref('');
 const email=ref(''),password=ref(''),displayName=ref(''),reveal=ref(false),generation=ref(0);
 const errorBox=ref(null),showAuth=ref(false),mode=ref('login'),closing=ref(false);
-const agreeTerms=ref(false),agreePrivacy=ref(false),policy=ref(null); // consent is collected here, independent of how the user authenticates
-const resetConsent=()=>{agreeTerms.value=false;agreePrivacy.value=false};
+const agreeTerms=ref(false),agreePrivacy=ref(false),agreeAge=ref(false),policy=ref(null); // consent is collected here, independent of how the user authenticates
+const resetConsent=()=>{agreeTerms.value=false;agreePrivacy.value=false;agreeAge.value=false};
+const allAgreed=()=>agreeTerms.value&&agreePrivacy.value&&agreeAge.value;
 let modalOrigin=null,opener=null,previousOverflow='',disposed=false;
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function login(event){
@@ -62,13 +63,13 @@ async function authRequest(path,data){
 async function submit(event){
   if(busy.value)return;
   const submittedMode=mode.value;
-  if(submittedMode==='register'&&!(agreeTerms.value&&agreePrivacy.value)){await showError('이용약관과 개인정보 수집·이용에 동의해 주세요.');return}
+  if(submittedMode==='register'&&!allAgreed()){await showError('이용약관, 개인정보 수집·이용 동의와 만 14세 이상 확인이 필요합니다.');return}
   busy.value=true;error.value='';
   try{
     const body={email:email.value,password:password.value,display_name:displayName.value};
     if(submittedMode==='register'){
       policy.value||=await (await fetch('/api/legal')).json();
-      body.consents={TERMS:policy.value.terms,PRIVACY:policy.value.privacy};
+      body.consents={TERMS:policy.value.terms,PRIVACY:policy.value.privacy,AGE14:policy.value.age};
     }
     const result=await authRequest(mode.value,body);
     if(disposed)return;
@@ -84,11 +85,11 @@ async function logout(){
   catch(e){if(!disposed)await showError(e.message)}finally{busy.value=false}
 }
 async function acceptPolicies(){
-  if(busy.value||!(agreeTerms.value&&agreePrivacy.value))return;
+  if(busy.value||!allAgreed())return;
   busy.value=true;error.value='';
   try{
     policy.value||=await (await fetch('/api/legal')).json();
-    await authRequest('consent',{consents:{TERMS:policy.value.terms,PRIVACY:policy.value.privacy}});
+    await authRequest('consent',{consents:{TERMS:policy.value.terms,PRIVACY:policy.value.privacy,AGE14:policy.value.age}});
     if(disposed)return;user.value={...user.value,consent_required:false};resetConsent();generation.value++;
   }catch(e){if(!disposed)await showError(e.message)}finally{busy.value=false}
 }
@@ -125,10 +126,10 @@ onBeforeUnmount(()=>{disposed=true;if(showAuth.value||closing.value)document.bod
       <form class="account-card" role="alertdialog" aria-modal="true" :aria-busy="busy" aria-labelledby="consent-title" @submit.prevent="acceptPolicies">
         <span class="tiny-label">정책 동의</span>
         <h2 id="consent-title">서비스 정책에 동의해 주세요</h2>
-        <p>이용을 계속하려면 현재 이용약관과 개인정보 수집·이용에 동의해야 합니다. 동의하기 전에는 분석을 만들거나 라이브러리를 볼 수 없으며, 이미 만든 분석은 삭제하거나 회원 탈퇴할 수 있습니다.</p>
-        <ConsentFields v-model:terms="agreeTerms" v-model:privacy="agreePrivacy" :disabled="busy" />
+        <p>이용을 계속하려면 현재 이용약관, 개인정보 수집·이용 동의와 만 14세 이상 확인이 필요합니다. 동의하기 전에는 분석을 만들거나 라이브러리를 볼 수 없으며, 이미 만든 분석은 삭제하거나 회원 탈퇴할 수 있습니다.</p>
+        <ConsentFields v-model:terms="agreeTerms" v-model:privacy="agreePrivacy" v-model:age="agreeAge" :disabled="busy" />
         <Transition name="account-feedback"><div v-if="error" ref="errorBox" tabindex="-1" class="error" role="alert"><span>{{error}}</span></div></Transition>
-        <button class="button full" :disabled="busy||!(agreeTerms&&agreePrivacy)">동의하고 계속 <span class="account-submit-arrow" aria-hidden="true">→</span></button>
+        <button class="button full" :disabled="busy||!(agreeTerms&&agreePrivacy&&agreeAge)">동의하고 계속 <span class="account-submit-arrow" aria-hidden="true">→</span></button>
         <button class="account-switch" type="button" :disabled="busy" @click="logout">로그아웃</button>
       </form>
     </div>
@@ -147,9 +148,9 @@ onBeforeUnmount(()=>{disposed=true;if(showAuth.value||closing.value)document.bod
           <div class="password-control"><input id="account-password" v-model="password" :type="reveal?'text':'password'" :autocomplete="mode==='register'?'new-password':'current-password'" required minlength="10" maxlength="128" :disabled="busy" :aria-describedby="mode==='register'?'password-help':undefined"><button class="password-reveal" type="button" :disabled="busy" :aria-pressed="reveal" :aria-label="reveal?'비밀번호 숨기기':'비밀번호 보기'" @click="reveal=!reveal">{{reveal?'숨기기':'보기'}}</button></div>
           <small v-if="mode==='register'" id="password-help">10~128자로 입력해 주세요.</small>
         </div>
-        <ConsentFields v-if="mode==='register'" v-model:terms="agreeTerms" v-model:privacy="agreePrivacy" :disabled="busy" />
+        <ConsentFields v-if="mode==='register'" v-model:terms="agreeTerms" v-model:privacy="agreePrivacy" v-model:age="agreeAge" :disabled="busy" />
         <Transition name="account-feedback"><div v-if="error" ref="errorBox" tabindex="-1" class="error" role="alert"><span>{{error}}</span><button type="button" aria-label="오류 메시지 닫기" @click="error=''">닫기</button></div></Transition>
-        <button class="button full" :disabled="busy||(mode==='register'&&!(agreeTerms&&agreePrivacy))"><span v-if="busy" class="account-spinner" aria-hidden="true"></span><span aria-live="polite">{{busy?'잠시만 기다려 주세요…':mode==='register'?'회원가입':'로그인'}}</span><span v-if="!busy" class="account-submit-arrow" aria-hidden="true">→</span></button>
+        <button class="button full" :disabled="busy||(mode==='register'&&!(agreeTerms&&agreePrivacy&&agreeAge))"><span v-if="busy" class="account-spinner" aria-hidden="true"></span><span aria-live="polite">{{busy?'잠시만 기다려 주세요…':mode==='register'?'회원가입':'로그인'}}</span><span v-if="!busy" class="account-submit-arrow" aria-hidden="true">→</span></button>
         <button class="account-switch" type="button" :disabled="busy" @click="switchMode">{{mode==='login'?'처음 오셨나요? 회원가입':'이미 계정이 있나요? 로그인'}}</button>
         </div></Transition>
       </form>

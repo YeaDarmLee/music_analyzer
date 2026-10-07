@@ -2,6 +2,8 @@
 // worker; labels and texts deliberately describe outcomes, not the internal processing order.
 export const BETA_MODELS=['final_11','commercial_13'];
 export const isBeta=id=>BETA_MODELS.includes(id);
+// A version keeps its UI id; `commercial` is the runtime preset served (and sent) when the server runs the commercial release profile.
+export const versionFor=model=>versions.find(v=>v.id===model||v.commercial===model);
 
 const prepare=['01','음원 준비',5,'업로드한 오디오를 분석에 적합한 형식으로 준비합니다.'];
 const base=['02','기본 파트 분리',50,'보컬과 주요 악기 파트를 분석합니다.'];
@@ -16,9 +18,9 @@ export const betaNotice='13트랙 분석은 현재 연구 및 개선 중인 기�
 export const betaResultNote='세부 악기 분리는 실험 기능으로 결과가 곡마다 다를 수 있습니다.';
 
 export const versions=[
-{id:'basic_2',title:'2트랙',description:'보컬 + 전체 반주',note:'메인보컬과 코러스를 함께 유지합니다.',steps:[prepare,[...base.slice(0,2),32,base[3]],verify].map(step)},
-{id:'basic_6',title:'6트랙',description:'보컬 · 기타 · 베이스 · 드럼 · 피아노 · 추가 반주',note:'기타는 통기타와 일렉을 구분하지 않습니다.\n신디·스트링·브라스는 별도 추출하지 않습니다.',steps:[prepare,[...base.slice(0,2),32,base[3]],detail,verify].map(step)},
-{id:'final_11',title:'13트랙',beta:true,badge:'실험 기능',description:'보컬·코러스와 세부 악기까지 나누는 실험적 분석 기능입니다. 음원에 따라 일부 악기의 오분류, 누락 또는 다른 트랙으로의 혼입이 발생할 수 있습니다.',note:'2·6트랙보다 처리 시간이 길고 결과 편차가 클 수 있습니다.',steps:defaultSteps}
+{id:'basic_2',commercial:'commercial_2',title:'2트랙',description:'보컬 + 전체 반주',note:'메인보컬과 코러스를 함께 유지합니다.',steps:[prepare,[...base.slice(0,2),32,base[3]],verify].map(step)},
+{id:'basic_6',commercial:'commercial_6',title:'6트랙',description:'보컬 · 기타 · 베이스 · 드럼 · 피아노 · 추가 반주',note:'기타는 통기타와 일렉을 구분하지 않습니다.\n신디·스트링·브라스는 별도 추출하지 않습니다.',steps:[prepare,[...base.slice(0,2),32,base[3]],detail,verify].map(step)},
+{id:'final_11',commercial:'commercial_13',title:'13트랙',beta:true,badge:'실험 기능',description:'보컬·코러스와 세부 악기까지 나누는 실험적 분석 기능입니다. 음원에 따라 일부 악기의 오분류, 누락 또는 다른 트랙으로의 혼입이 발생할 수 있습니다.',note:'2·6트랙보다 처리 시간이 길고 결과 편차가 클 수 있습니다.',steps:defaultSteps}
 ];
 
 export const compare=[

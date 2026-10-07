@@ -33,7 +33,7 @@ onMounted(async()=>{
 <div class="legal-table-wrap"><table><thead><tr><th>Component</th><th>Version</th><th>Copyright / Author</th><th>License</th><th>Official Project</th><th>License Text</th></tr></thead>
 <tbody><tr v-for="row in rows" :key="row.name"><td>{{row.name}}</td><td>{{row.version}}</td><td>{{row.copyright}}</td><td>{{row.license}}</td><td><a :href="row.url" target="_blank" rel="noopener noreferrer">링크</a></td><td><a :href="row.text" target="_blank" rel="noopener noreferrer">보기</a></td></tr></tbody></table></div>
 </section>
-<p class="legal-lead">위 표에는 직접 사용하는 구성요소만 실었습니다. 이들이 다시 의존하는 하위 패키지는 각각의 라이선스를 따릅니다.</p>
+<p class="legal-lead">Music Analyzer가 직접 사용하거나 별도 고지가 필요한 주요 구성요소를 표시합니다. 각 구성요소의 추가 의존성에는 해당 라이선스가 적용됩니다.</p>
 <section id="models">
 <h2>모델 가중치</h2>
 <p v-if="!models.length">상용 공개 구성이 확정되면 그 구성이 실제로 사용하는 모델 가중치의 라이선스 근거가 이곳에 표시됩니다. 현재 확정되어 표시할 항목이 없습니다.</p>

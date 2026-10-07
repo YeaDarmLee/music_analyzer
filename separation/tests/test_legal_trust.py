@@ -9,7 +9,9 @@ import pytest
 
 from music_analyzer.auth import AuthStore
 from music_analyzer.common import write_json
-from music_analyzer.legal import PRIVACY_VERSION, RIGHTS_CONFIRMATION_VERSION, TERMS_VERSION
+from music_analyzer.legal import AGE_CONFIRMATION_VERSION, PRIVACY_VERSION, REQUIRED_CONSENTS, RIGHTS_CONFIRMATION_VERSION, TERMS_VERSION
+
+ALL_CONSENTS = dict(REQUIRED_CONSENTS)
 from music_analyzer.web_server import WebLibrary, make_handler
 
 UPLOAD = "/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION
@@ -52,7 +54,7 @@ class MemoryStore(AuthStore):
         self.owners[identifier] = user_id
 
     def has_current_consents(self, user_id):
-        return {(row[1], row[2]) for row in self.consent_rows if row[0] == user_id} == {("TERMS", TERMS_VERSION), ("PRIVACY", PRIVACY_VERSION)}
+        return {(row[1], row[2]) for row in self.consent_rows if row[0] == user_id} == set(ALL_CONSENTS.items())
 
     def record_consents(self, user_id, consents):
         self.transaction(self.consent_statements(user_id, consents))
@@ -91,7 +93,7 @@ def served(tmp_path):
 
     store.sessions.update(alice={"id": "alice"}, bob={"id": "bob"}, carol={"id": "carol"})
     for member in ("alice", "bob"):  # carol is a legacy member with no consent record
-        store.consent_rows += [(member, "TERMS", TERMS_VERSION), (member, "PRIVACY", PRIVACY_VERSION)]
+        store.consent_rows += [(member, kind, version) for kind, version in ALL_CONSENTS.items()]
     yield request, library, store
     server.shutdown()
     server.server_close()
@@ -107,7 +109,8 @@ def test_signup_without_required_consent_creates_no_account(served):
     request, _, store = served
     before, rows = dict(store.sessions), list(store.consent_rows)
     for consents in (None, {}, {"TERMS": TERMS_VERSION}, {"PRIVACY": PRIVACY_VERSION},
-                     {"TERMS": "old", "PRIVACY": PRIVACY_VERSION}, {"TERMS": True, "PRIVACY": True}):
+                     {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION},  # the under-14 statement is required too
+                     {**ALL_CONSENTS, "AGE14": "old"}, {"TERMS": True, "PRIVACY": True, "AGE14": True}):
         status, body, _ = request("/api/auth/register", "POST", signup({} if consents is None else {"consents": consents}))
         assert status == 400 and "동의" in json.loads(body)["error"]
     assert store.users == {} and store.consent_rows == rows and store.sessions == before
@@ -116,18 +119,19 @@ def test_signup_without_required_consent_creates_no_account(served):
 def test_signup_records_terms_and_privacy_versions(served):
     request, _, store = served
     status, body, headers = request("/api/auth/register", "POST",
-                                    signup({"consents": {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}}))
+                                    signup({"consents": ALL_CONSENTS}))
     user = json.loads(body)["user"]
     assert status == 201 and "music_session=" in headers["Set-Cookie"]
     assert {(row[1], row[2]) for row in store.consent_rows if row[0] == user["id"]} == {
-        ("TERMS", TERMS_VERSION), ("PRIVACY", PRIVACY_VERSION)}
+        ("TERMS", TERMS_VERSION), ("PRIVACY", PRIVACY_VERSION), ("AGE14", AGE_CONFIRMATION_VERSION)}
 
 
 def test_policy_versions_are_public(served):
     request, _, _ = served
     status, body, _ = request("/api/legal")
     assert status == 200 and json.loads(body) == {
-        "terms": TERMS_VERSION, "privacy": PRIVACY_VERSION, "copyright": RIGHTS_CONFIRMATION_VERSION}
+        "terms": TERMS_VERSION, "privacy": PRIVACY_VERSION, "copyright": RIGHTS_CONFIRMATION_VERSION,
+        "age": AGE_CONFIRMATION_VERSION}
 
 
 @pytest.mark.parametrize("path", ["/terms", "/privacy", "/copyright", "/licenses"])
@@ -275,14 +279,14 @@ def test_member_without_current_consent_is_gated_until_accepting(served):
         status, body, _ = request(*args)
         assert status == 403 and "동의" in json.loads(body)["error"]
     assert request("/api/auth/consent", "POST", {"consents": {"TERMS": TERMS_VERSION}}, "carol")[0] == 400
-    assert request("/api/auth/consent", "POST", {"consents": {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}}, "carol")[0] == 200
+    assert request("/api/auth/consent", "POST", {"consents": ALL_CONSENTS}, "carol")[0] == 200
     assert json.loads(request("/api/auth/me", token="carol")[1])["user"]["consent_required"] is False
     assert request("/api/analyses", token="carol")[0] == 200
 
 
 def test_outdated_consent_version_gates_again(served, monkeypatch):
     request, _, store = served
-    store.consent_rows[:] = [("alice", "TERMS", "2020-01-01"), ("alice", "PRIVACY", "2020-01-01")]
+    store.consent_rows[:] = [("alice", "TERMS", "2020-01-01"), ("alice", "PRIVACY", "2020-01-01"), ("alice", "AGE14", AGE_CONFIRMATION_VERSION)]
     assert request("/api/analyses", token="alice")[0] == 403
 
 
@@ -317,3 +321,32 @@ def test_owned_record_that_vanished_is_released_by_delete(served):
     (library.web / identifier / "record.json").unlink()
     assert request("/api/analyses/" + identifier, "DELETE", token="alice")[0] == 200
     assert not store.owns("alice", identifier)
+
+
+def test_signup_requires_the_age_statement_and_stores_it(served):
+    request, _, store = served
+    without_age = {"TERMS": TERMS_VERSION, "PRIVACY": PRIVACY_VERSION}
+    status, body, _ = request("/api/auth/register", "POST", signup({"consents": without_age}))
+    assert status == 400 and "14세" in json.loads(body)["error"] and store.users == {}
+    status, body, _ = request("/api/auth/register", "POST", signup({"consents": ALL_CONSENTS}))
+    user = json.loads(body)["user"]
+    assert status == 201 and ("AGE14", AGE_CONFIRMATION_VERSION) in {(r[1], r[2]) for r in store.consent_rows if r[0] == user["id"]}
+
+
+def test_member_without_the_age_record_is_gated(served):
+    request, _, store = served
+    store.consent_rows[:] = [r for r in store.consent_rows if r[1] != "AGE14"]
+    assert json.loads(request("/api/auth/me", token="alice")[1])["user"]["consent_required"] is True
+    assert request("/api/analyses", token="alice")[0] == 403
+
+
+def test_api_hides_internal_stage_and_error_text(served):
+    request, library, store = served
+    identifier, *_ = stored_analysis(library, store, "alice", "1")
+    path = library.web / identifier / "record.json"
+    write_json(path, {**json.loads(path.read_text(encoding="utf-8")), "state": "FAILED", "stage": "원곡 악기 근거 확인 중",
+                      "error": "/secret/path/Mega53.ckpt failed", "tracks": []})
+    for route in ("/api/analyses", "/api/analyses/" + identifier):
+        body = request(route, token="alice")[1].decode("utf-8")
+        assert "원곡 악기" not in body and "secret" not in body and "Mega53" not in body and "stage" not in body
+        assert "ANALYSIS_FAILED" in body
