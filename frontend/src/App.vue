@@ -260,7 +260,7 @@ onBeforeUnmount(()=>{clearMetadata();disposed=true;buffers.clear();loadControlle
 <div class="waveform" @click="seekWave"><canvas :data-wave="track.family"></canvas><div class="playhead" :style="{left:(position/duration*100)+'%'}"></div></div><button class="track-download" @click="downloadChoice(track,$event)" :aria-label="trackTitle(track)+' WAV 다운로드'">↓</button></div>
 <div v-if="loading&&!tracks.length" class="empty">파형을 준비하고 있습니다…</div>
 </div><div class="session-foot"><span>원본은 기본 음소거입니다. 원본의 S 버튼으로 분리 결과와 비교하세요.</span><span>다운로드는 44.1kHz FLOAT WAV · 음량 조절은 재생에만 적용</span></div>
-</template></template></section></Transition>
+</template></template><SiteFooter /></section></Transition>
 </main>
 <Transition :css="false" @enter="modalEnter" @leave="modalLeave"><div v-if="modal" class="modal-backdrop" @pointerdown="backdropDown=$event.target===$event.currentTarget" @click.self="backdropDown&&!uploading&&(modal=false)" @keydown.esc="!uploading&&(modal=false)">
 <form class="modal analysis-modal" :class="{'has-version':uploadStep===2&&chosenVersion,'is-upload-step':uploadStep===1,'is-version-step':uploadStep===2}" role="dialog" aria-modal="true" aria-labelledby="modal-title" @submit.prevent="submit">

@@ -115,3 +115,7 @@ test('user-facing screens do not name internal models or claim the download is t
   assert.match(surface,/44\.1kHz FLOAT WAV/);
   assert.ok(!surface.includes('side-legal'),'legal links live in the footer only');
 });
+
+test('footer with legal links is rendered on the home page and on the track studio screen',()=>{
+  assert.equal(app.match(/<SiteFooter \/>/g).length,2);
+});
