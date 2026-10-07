@@ -277,3 +277,18 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 - 단계 목록은 `commercial_pipeline.PIPELINES`에 있고 `release.STAGE_RESOLVERS`가 이를 읽는다. 실행 전 `commercial_gate(models_for(preset))`가 APPROVED·SHA를 검사한다.
 - `configs/release_presets.json`에는 둘 다 `VALIDATING`으로 등록(승인 전). 스모크(5 입력): 2/2, 6/6 stem 계약 일치, 합계 오차 ≤5.4e-8, 0.5초 입력은 의도대로 거부.
 - 아직 안 한 것: 6트랙의 GT 품질 비교(basic_6 대비), UI 공개 preset ↔ runtime preset 매핑.
+
+## 17-3. 6트랙 SDR 비교 (basic_6 vs commercial_6)
+
+합성 GT 10 case(pad-eval, GeneralUser GS), 동일 입력·동일 채점(`ground_truth.score`). `other` 정답 = strings+brass+synth. vocals는 정답이 없어 N/A. 재현: `scripts/eval-six-track.py`, `scripts/summarize-six-track.py`, 원자료 `COMMERCIAL_CLEAN_SIX_RESULTS.json`.
+
+| stem | basic_6 SDR | commercial_6 SDR | Delta | worst case delta | n |
+|---|---|---|---|---|---|
+| piano | 9.27 | 8.14 | -1.13 | -2.41 (pad01-mix) | 10 |
+| guitar | 3.43 | 3.70 | +0.27 | -1.01 (pad03-mix) | 4 |
+| bass | 11.97 | 10.96 | -1.01 | -2.55 (pad03-mix) | 10 |
+| drums | 15.52 | 13.30 | -2.21 | -2.87 (pad06-mix) | 10 |
+| other | 9.54 | 8.63 | -0.91 | -2.18 (pad05-mix) | 10 |
+
+- 합계 오차 최대 5.96e-8(두 쪽 동일), 평균 처리 시간 26.5 s → 24.5 s (같은 세션 순차 실행, 단일 측정).
+- 해석: 13트랙 결과와 같은 방향(드럼이 가장 큼). 합성 데이터이며 실제 곡·보컬 품질은 검증하지 못했다.
