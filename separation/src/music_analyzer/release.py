@@ -31,13 +31,15 @@ class ReleaseError(ValueError):
         self.detail = detail
 
 
-def _stage_presets_commercial_13():
-    from .commercial_pipeline import stage_presets
-    return stage_presets()
+def _resolver(preset_id):
+    def stage_presets():
+        from .commercial_pipeline import stage_presets as stages
+        return stages(preset_id)
+    return stage_presets
 
 
-# preset id -> function returning the stage preset names it executes. Extend when commercial_2/6 exist.
-STAGE_RESOLVERS = {"commercial_13": _stage_presets_commercial_13}
+# preset id -> function returning the stage preset names it executes.
+STAGE_RESOLVERS = {name: _resolver(name) for name in ("commercial_2", "commercial_6", "commercial_13")}
 
 
 def profile(settings=None):

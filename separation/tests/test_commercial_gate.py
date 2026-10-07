@@ -86,3 +86,14 @@ def test_commercial_modules_do_not_import_clap_or_medleydb():
 def test_worker_gate_is_wired():
     text = (Path(__file__).parents[1] / "src/music_analyzer/worker.py").read_text(encoding="utf8")
     assert 'selected.get("profile") == "commercial"' in text and "commercial_gate" in text
+
+
+def test_commercial_2_and_6_run_only_approved_models():
+    from music_analyzer import release
+    from music_analyzer.commercial_pipeline import models_for
+    assert models_for("commercial_2") == ("melband_roformer_kj",)
+    assert models_for("commercial_6") == ("melband_roformer_kj", "bs_roformer_core4")
+    for name in ("commercial_2", "commercial_6", "commercial_13"):
+        plan = release.preset_plan(name)
+        assert not plan["problems"], plan["problems"]
+        assert "bs_roformer_6s" not in {m["model_id"] for m in plan["models"]}

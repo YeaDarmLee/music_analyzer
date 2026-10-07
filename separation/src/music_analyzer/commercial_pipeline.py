@@ -18,11 +18,23 @@ STAGE_PRESETS = {
 SHARED_PRESETS = ("vocal_roformer", "instrument_mega7", "instrument_mega5")
 
 
-def stage_presets() -> list[str]:
-    return [*SHARED_PRESETS, *STAGE_PRESETS.values()]
+# Stage presets each public commercial analysis executes (after STAGE_PRESETS remapping).
+PIPELINES = {
+    "commercial_2": ("vocal_roformer",),
+    "commercial_6": ("vocal_roformer", "instrument_core4"),
+    "commercial_13": (*SHARED_PRESETS, *STAGE_PRESETS.values()),
+}
 
 
-MODELS = tuple(dict.fromkeys(preset(name)["model_id"] for name in stage_presets()))
+def stage_presets(preset_id: str = "commercial_13") -> list[str]:
+    return list(PIPELINES[preset_id])
+
+
+def models_for(preset_id: str) -> tuple[str, ...]:
+    return tuple(dict.fromkeys(preset(name)["model_id"] for name in stage_presets(preset_id)))
+
+
+MODELS = models_for("commercial_13")
 
 
 def blocked_models() -> dict[str, str]:

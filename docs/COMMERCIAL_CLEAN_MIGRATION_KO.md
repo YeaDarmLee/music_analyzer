@@ -227,7 +227,7 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 
 ## 16. Regression Test Results
 
-`separation/tests` 전체: **256 passed, 3 failed, 1 skipped** (baseline 227 passed, 1 skipped). 3 실패는 `test_quality.py::test_chunk_progress_matches_upstream_execution[0-1,2-1,2-4]`이며, 이 작업의 변경을 stash로 빼도 동일하게 실패한다(기존 문제, 원인 미해결 → 릴리스 후보 선언 전 해결 필요). 직전에 보고한 259 passed는 다른 세션의 작업트리 변경 시점의 값이다. 증가분은 이번 작업의 신규 테스트 14개(`test_commercial_gate.py` 9, `test_commercial_modules.py` 5)와 다른 세션이 추가한 테스트다. 실패한 테스트를 삭제하거나 허용치를 바꾸지 않았다.
+`separation/tests` 전체: **307 passed, 1 skipped, 0 failed** (프로젝트 `.venv` 인터프리터, commercial_2/6 테스트 포함). 앞서 보고한 `test_quality.py` 3 실패는 시스템 Python으로 실행해서 생긴 환경 문제였고 `.venv`에서는 발생하지 않는다. 증가분은 이번 작업의 신규 테스트 14개(`test_commercial_gate.py` 9, `test_commercial_modules.py` 5)와 다른 세션이 추가한 테스트다. 실패한 테스트를 삭제하거나 허용치를 바꾸지 않았다.
 
 엣지 입력 스모크(commercial_13):
 
@@ -269,3 +269,11 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 - 수정: 목록에 `commercial-13-v1` 추가, 평가기에 stem 계약 검증(`stem_contract`) 추가·완화 제거.
 - 재사용 검토: 중간 산출물에 `guitar-residual.wav`는 있었지만 이후 단계(`other` 재계산, 라우팅)가 이를 포함하지 않은 채 진행됐기 때문에 재조립이 안전하지 않다고 판단해 GPU로 전부 재실행했다.
 - 이전 12 stem 결과는 `data/commercial-eval/pad-invalid-12stem`, `smoke-invalid-12stem`에 보존(invalidated). SDR 차이는 ≤0.01 dB, 합계 오차는 동일 범위였다.
+
+## 17-2. commercial_2 / commercial_6
+
+- `commercial_2` = KJ vocal (`vocal_roformer`) → vocals + instrumental. 모델 1개(`melband_roformer_kj`).
+- `commercial_6` = KJ vocal + Mega53 core4 → vocals / piano / guitar / bass / drums / other(잔차). 모델 2개. `bs_roformer_6s`(UNKNOWN)는 실행되지 않는다(`instrument_roformer_6s` stage가 `instrument_core4`로 치환).
+- 단계 목록은 `commercial_pipeline.PIPELINES`에 있고 `release.STAGE_RESOLVERS`가 이를 읽는다. 실행 전 `commercial_gate(models_for(preset))`가 APPROVED·SHA를 검사한다.
+- `configs/release_presets.json`에는 둘 다 `VALIDATING`으로 등록(승인 전). 스모크(5 입력): 2/2, 6/6 stem 계약 일치, 합계 오차 ≤5.4e-8, 0.5초 입력은 의도대로 거부.
+- 아직 안 한 것: 6트랙의 GT 품질 비교(basic_6 대비), UI 공개 preset ↔ runtime preset 매핑.
