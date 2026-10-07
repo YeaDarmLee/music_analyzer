@@ -7,7 +7,7 @@ from pathlib import Path
 from .common import project_root, read_json, sha256_file, write_json
 
 CONFIG = project_root() / "separation/configs/models/demucs_htdemucs.json"
-MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke", "bs_roformer_mega4", "bs_roformer_mega5", "bs_roformer_mega7")
+MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke", "bs_roformer_mega4", "bs_roformer_mega5", "bs_roformer_mega7", "bs_roformer_core4", "bs_roformer_vocal2")
 FILES = {"955717e8-8726e21a.th", "5c90dfd2-34c22ccb.th",
          "f7e0c4bc-ba3fe64a.th", "d12395a8-e57c48e6.th",
          "92cfc3b6-ef3bcb9c.th", "04573f0d-f3cf25b2.th"}
@@ -130,3 +130,20 @@ def resolve(data_root: Path, model_id="demucs_htdemucs") -> tuple[Path, dict]:
     registration = read_json(registration_path)
     validate_registration(checkpoint, registration, config(model_id))
     return checkpoint, registration
+
+
+APPROVAL = project_root() / "separation/configs/commercial_approval.json"
+
+
+def commercial_gate(model_ids, data_root: Path | None = None) -> None:
+    """Refuse to run unless every model is APPROVED in commercial_approval.json (missing = UNKNOWN) and its pinned hash matches."""
+    approvals = read_json(APPROVAL)["models"]
+    bad = {m: approvals.get(m, {}).get("status", "UNKNOWN") for m in model_ids if approvals.get(m, {}).get("status") != "APPROVED"}
+    if bad:
+        raise ValueError("COMMERCIAL_GATE_BLOCKED: " + ", ".join(f"{m}={s}" for m, s in bad.items()))
+    if data_root is not None:
+        for m in model_ids:
+            pinned = approvals[m].get("checkpoint_sha256")
+            actual = read_json(paths(data_root, m)[1])["checkpoint_sha256"]
+            if pinned != actual:
+                raise ValueError(f"COMMERCIAL_GATE_BLOCKED: {m} checkpoint differs from the approved hash")

@@ -1,0 +1,1156 @@
+{
+  "rows": [
+    {
+      "case": "pad00-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "piano",
+      "base": 2.095294045324363,
+      "com": 3.1071986780608047,
+      "base_si": 0.9124837980613725,
+      "com_si": 1.255836303712399
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "synth",
+      "base": 2.1477847826631096,
+      "com": 3.611361232077408,
+      "base_si": -0.8468605401235285,
+      "com_si": 1.7894896009754782
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "strings",
+      "base": 8.237093447989473,
+      "com": 7.557404100590396,
+      "base_si": 7.650253736998582,
+      "com_si": 6.848685586388275
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "brass",
+      "base": 4.608642158759163,
+      "com": 4.542324166918243,
+      "base_si": 2.855432357962557,
+      "com_si": 2.703212958252771
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "guitar",
+      "base": 2.823148843809589,
+      "com": 2.5246076480771062,
+      "base_si": 0.10719335157747559,
+      "com_si": -0.5365445955153048
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "bass",
+      "base": 12.678952450061837,
+      "com": 10.852822646234866,
+      "base_si": 12.496078306347826,
+      "com_si": 10.57044869318691
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "drums",
+      "base": 14.816394272914259,
+      "com": 12.755345527006208,
+      "base_si": 14.675930067940037,
+      "com_si": 12.53183761345938
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-mix",
+      "stem": "guitar_total",
+      "base": 2.834408381846333,
+      "com": 2.533427240194803,
+      "base_si": 0.10746848782063492,
+      "com_si": -0.5327616034019058
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "piano",
+      "base": 9.457994201719837,
+      "com": 7.322756305723983,
+      "base_si": 8.935978771334474,
+      "com_si": 6.4832680487642635
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "synth",
+      "base": 0.7939691559439715,
+      "com": 0.14515036560432182,
+      "base_si": -5.9327851571947114,
+      "com_si": -7.228898210447604
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "strings",
+      "base": 9.173308599708658,
+      "com": 7.911823408203549,
+      "base_si": 8.733266972548128,
+      "com_si": 7.345092028895371
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "brass",
+      "base": 5.016457754775367,
+      "com": 5.07089300758023,
+      "base_si": 3.463213869435579,
+      "com_si": 3.4745509034306936
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "guitar",
+      "base": 3.9508362331824847,
+      "com": 3.1053390517953723,
+      "base_si": 2.0652079803889096,
+      "com_si": 0.5111962892552714
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "bass",
+      "base": 13.838991993414556,
+      "com": 11.391280646042024,
+      "base_si": 13.678651352982973,
+      "com_si": 11.122908007537005
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "drums",
+      "base": 15.220858487343719,
+      "com": 13.055315722900133,
+      "base_si": 15.092230746504558,
+      "com_si": 12.841924017656797
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad00-quiet",
+      "stem": "guitar_total",
+      "base": 3.969266855236758,
+      "com": 3.1221024352018096,
+      "base_si": 2.0503944157703247,
+      "com_si": 0.5170448030852374
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "piano",
+      "base": 10.391344008273176,
+      "com": 8.51002257901221,
+      "base_si": 9.975551814324312,
+      "com_si": 7.850838960544406
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "synth",
+      "base": 6.368686310730048,
+      "com": 6.04620422636102,
+      "base_si": 5.302853734779864,
+      "com_si": 4.870992227122789
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "strings",
+      "base": 8.639264710428554,
+      "com": 7.754357043261204,
+      "base_si": 8.027065702219554,
+      "com_si": 7.17147784853105
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "bass",
+      "base": 12.356737658135176,
+      "com": 11.582976693537399,
+      "base_si": 12.396169051098816,
+      "com_si": 11.492634685573089
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "drums",
+      "base": 15.185584777444113,
+      "com": 13.364692264992996,
+      "base_si": 15.054612143385352,
+      "com_si": 13.160796941412716
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-mix",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "piano",
+      "base": 14.472457605835093,
+      "com": 12.068481233585732,
+      "base_si": 14.319197111167588,
+      "com_si": 11.796313129755486
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "synth",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "strings",
+      "base": 14.715034856125776,
+      "com": 10.734184045002822,
+      "base_si": 14.789868285154029,
+      "com_si": 11.483516705443186
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "bass",
+      "base": 15.098569057114585,
+      "com": 12.612130534404562,
+      "base_si": 15.0899593888671,
+      "com_si": 12.568576637725977
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "drums",
+      "base": 16.031651868662657,
+      "com": 13.856714323091147,
+      "base_si": 15.92560954916469,
+      "com_si": 13.679057103338558
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad01-nopad",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "piano",
+      "base": 11.687590493120254,
+      "com": 9.848958470751532,
+      "base_si": 11.387860436020347,
+      "com_si": 9.387881692212769
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "synth",
+      "base": 8.094213852126352,
+      "com": 7.356909317393194,
+      "base_si": 7.623776397690235,
+      "com_si": 6.631448075332111
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "strings",
+      "base": 10.741993258702621,
+      "com": 9.05097852720159,
+      "base_si": 10.751953240609957,
+      "com_si": 9.089014642408188
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "bass",
+      "base": 11.167648543008799,
+      "com": 9.387054058320691,
+      "base_si": 10.822432349668112,
+      "com_si": 8.865044280449725
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "drums",
+      "base": 15.100816886599587,
+      "com": 12.170616486936076,
+      "base_si": 14.980890497487593,
+      "com_si": 11.946219623216962
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad02-mix",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "piano",
+      "base": 11.366150494937044,
+      "com": 9.375689426295997,
+      "base_si": 11.043865704012926,
+      "com_si": 8.842945205520591
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "synth",
+      "base": 2.5782645745854604,
+      "com": 4.654469072122451,
+      "base_si": 0.43728802738464423,
+      "com_si": 3.259710748008296
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "strings",
+      "base": 3.634219025472304,
+      "com": 3.3321273056805274,
+      "base_si": 1.4046049323152983,
+      "com_si": 0.7875904373871984
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "guitar",
+      "base": 3.3837205779827917,
+      "com": 2.43581620756953,
+      "base_si": 0.727534457976619,
+      "com_si": -1.1763488082807725
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "bass",
+      "base": 14.674896822692382,
+      "com": 12.119295538657099,
+      "base_si": 14.525052346315588,
+      "com_si": 11.945523856113955
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "drums",
+      "base": 15.551542699581493,
+      "com": 13.339205144966382,
+      "base_si": 15.433849120652269,
+      "com_si": 13.136684185439409
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad03-mix",
+      "stem": "guitar_total",
+      "base": 3.411533928893725,
+      "com": 2.438673629495423,
+      "base_si": 0.7757059697315171,
+      "com_si": -1.1756181901465022
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "piano",
+      "base": 9.935789917454015,
+      "com": 9.05526266885686,
+      "base_si": 9.516486482659408,
+      "com_si": 8.481073827493441
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "synth",
+      "base": 4.423675387971641,
+      "com": 4.947452695676869,
+      "base_si": 2.640030073581939,
+      "com_si": 3.507601041035367
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "strings",
+      "base": 6.384258109932745,
+      "com": 6.164850744491643,
+      "base_si": 5.938068193292242,
+      "com_si": 5.156780388941623
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "bass",
+      "base": 10.611240583214265,
+      "com": 11.755864803002979,
+      "base_si": 10.61473190784007,
+      "com_si": 11.586886851773828
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "drums",
+      "base": 15.97600760927736,
+      "com": 13.851101653269595,
+      "base_si": 15.90348277433045,
+      "com_si": 13.67227360082515
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad04-mix",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "piano",
+      "base": 7.852115781582744,
+      "com": 6.0860981531671685,
+      "base_si": 7.0937258852079434,
+      "com_si": 4.86479875418598
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "synth",
+      "base": 1.0571223753856265,
+      "com": 1.1218703577841982,
+      "base_si": -3.581273936203303,
+      "com_si": -3.2629400831811326
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "strings",
+      "base": 4.572945728497816,
+      "com": 1.8957261411000634,
+      "base_si": 2.85366238703054,
+      "com_si": -1.0320660799119488
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "brass",
+      "base": 3.779623954670514,
+      "com": 3.38309155460611,
+      "base_si": 1.704421322298471,
+      "com_si": 1.2299592947315672
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "bass",
+      "base": 11.123924467751053,
+      "com": 9.692370387787788,
+      "base_si": 10.780333658541512,
+      "com_si": 9.20245123355204
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "drums",
+      "base": 14.6169978446634,
+      "com": 12.737221565186157,
+      "base_si": 14.468391650151567,
+      "com_si": 12.501631736397805
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad05-mix",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "piano",
+      "base": 9.093269994408605,
+      "com": 8.113977040899634,
+      "base_si": 8.52239345433162,
+      "com_si": 7.484371003162248
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "synth",
+      "base": 12.481575330127736,
+      "com": 10.397740333894044,
+      "base_si": 12.280866595974489,
+      "com_si": 9.987094701438867
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "strings",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "guitar",
+      "base": 5.950541087651264,
+      "com": 6.872309159295864,
+      "base_si": 5.011268429814687,
+      "com_si": 5.989179854406958
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "bass",
+      "base": 9.518907730117911,
+      "com": 9.102843385436897,
+      "base_si": 9.426877850778514,
+      "com_si": 8.580733631948918
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "drums",
+      "base": 16.769501113414677,
+      "com": 13.896034741379726,
+      "base_si": 16.68263625172819,
+      "com_si": 13.717681874268187
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad06-mix",
+      "stem": "guitar_total",
+      "base": 5.973778727673603,
+      "com": 6.9401605841411875,
+      "base_si": 5.018116934721356,
+      "com_si": 6.032715329139693
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "lead",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "backing",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "piano",
+      "base": 6.601047082589338,
+      "com": 7.59776615475162,
+      "base_si": 5.799893732337909,
+      "com_si": 6.795882668116114
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "synth",
+      "base": 2.8074490307110587,
+      "com": 5.976704726692756,
+      "base_si": 0.12514852961926784,
+      "com_si": 4.941525553067014
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "strings",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "brass",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "acoustic_guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "guitar",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "bass",
+      "base": 5.63112569521431,
+      "com": 9.866058322102356,
+      "base_si": 5.352565152811135,
+      "com_si": 9.632349084777713
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "drums",
+      "base": 15.49905968146465,
+      "com": 12.940555320737312,
+      "base_si": 15.387164406436506,
+      "com_si": 12.716574349481215
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "percussion",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "other",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    },
+    {
+      "case": "pad07-mix",
+      "stem": "guitar_total",
+      "base": null,
+      "com": null,
+      "base_si": null,
+      "com_si": null
+    }
+  ],
+  "partition": [
+    {
+      "max_abs_error": 8.381007887692249e-08,
+      "rms_error": 5.702771940915668e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.0007840340840630233,
+      "case": "pad00-mix",
+      "seconds": 96.843
+    },
+    {
+      "max_abs_error": 7.219610154152178e-08,
+      "rms_error": 5.006581700911085e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.0010163530241698027,
+      "case": "pad00-quiet",
+      "seconds": 82.484
+    },
+    {
+      "max_abs_error": 1.0424874119507876e-07,
+      "rms_error": 5.3389522783036865e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.0003890669613610953,
+      "case": "pad01-mix",
+      "seconds": 85.047
+    },
+    {
+      "max_abs_error": 8.84296014191932e-08,
+      "rms_error": 4.770619439242248e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.0003545428335200995,
+      "case": "pad01-nopad",
+      "seconds": 81.797
+    },
+    {
+      "max_abs_error": 1.0001799433112524e-07,
+      "rms_error": 5.177082404771648e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.00011364951205905527,
+      "case": "pad02-mix",
+      "seconds": 82.172
+    },
+    {
+      "max_abs_error": 7.684241154493066e-08,
+      "rms_error": 5.296292585953311e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.00035720589221455157,
+      "case": "pad03-mix",
+      "seconds": 82.172
+    },
+    {
+      "max_abs_error": 8.51670809431937e-08,
+      "rms_error": 5.300969037345476e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.0019115024479106069,
+      "case": "pad04-mix",
+      "seconds": 82.312
+    },
+    {
+      "max_abs_error": 7.825322589916084e-08,
+      "rms_error": 5.284599067537295e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.00016527796105947345,
+      "case": "pad05-mix",
+      "seconds": 81.891
+    },
+    {
+      "max_abs_error": 5.914495204706327e-08,
+      "rms_error": 4.7857603001699446e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.00022632163017988205,
+      "case": "pad06-mix",
+      "seconds": 82.672
+    },
+    {
+      "max_abs_error": 6.268160535061185e-08,
+      "rms_error": 4.814023263820461e-09,
+      "samples_over_2e-6": 0,
+      "nan": 0,
+      "inf": 0,
+      "clipping_samples": 0,
+      "dc_offset": 0.00018640534835867584,
+      "case": "pad07-mix",
+      "seconds": 81.765
+    }
+  ]
+}

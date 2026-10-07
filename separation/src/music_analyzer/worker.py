@@ -58,6 +58,9 @@ def run(request_path: Path) -> int:
         asset = load_asset(root, request["asset_id"])
         selected = preset(request["preset_name"])
         checkpoint, registration = resolve(root, selected.get("model_id", "demucs_htdemucs"))
+        if selected.get("profile") == "commercial":
+            from .registry import commercial_gate
+            commercial_gate([selected["model_id"]], root)
         env = inspect_environment(attempt / "environment")
         if not env["cuda_available"] or not env["gpu_tensor_test"]["passed"]:
             raise JobError("CUDA_NOT_AVAILABLE", "CUDA GPU is required")

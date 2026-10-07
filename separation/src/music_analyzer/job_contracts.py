@@ -11,6 +11,7 @@ from .common import project_root, read_json, sha256_file
 TERMINAL = {"SUCCEEDED", "FAILED", "CANCELLED", "INTERRUPTED"}
 WORKER_STAGES = {"PREPARING_MODEL", "PREPROCESSING", "SEPARATING", "VALIDATING_OUTPUT", "EXPORTING"}
 PRESETS = project_root() / "separation/configs/presets/demucs.json"
+COMMERCIAL_PRESETS = project_root() / "separation/configs/presets/commercial.json"
 
 
 class JobError(ValueError):
@@ -26,12 +27,14 @@ class WorkCancelled(Exception):
 def preset(name: str) -> dict:
     config = read_json(PRESETS)
     if name not in config["presets"]:
+        config = read_json(COMMERCIAL_PRESETS)
+    if name not in config["presets"]:
         raise JobError("PRESET", "Unknown separation preset")
     return dict(config["presets"][name])
 
 
 def fallback_for(name: str) -> str | None:
-    return read_json(PRESETS)["oom_fallback"].get(name)
+    return {**read_json(PRESETS)["oom_fallback"], **read_json(COMMERCIAL_PRESETS)["oom_fallback"]}.get(name)
 
 
 def job_folder(data_root: Path, job_id: str) -> Path:

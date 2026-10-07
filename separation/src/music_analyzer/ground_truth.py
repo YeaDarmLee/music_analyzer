@@ -115,9 +115,9 @@ def evaluate(folder, root, row):
         if candidate_partition_error > 2e-6:
             raise ValueError('Candidate changed the output sum')
         groups = {family: [family] for family in outputs}
-        groups['guitar_total'] = ['acoustic_guitar', 'guitar', 'guitar_residual']
+        groups['guitar_total'] = [f for f in ('acoustic_guitar', 'guitar', 'guitar_residual') if f in outputs]
         # Residual has no independent instrument truth; evaluate its guitar parent jointly.
-        groups.pop('guitar_residual')
+        groups.pop('guitar_residual',None)
         metrics = {}
         listening_rows = []
         peak = max(float(np.abs(a).max()) for a in [mixture,*outputs.values(),*candidate.values()])
