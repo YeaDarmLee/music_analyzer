@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import argparse
-import html
+import html, json
 import math
 import os
 from pathlib import Path
@@ -99,9 +99,15 @@ def evaluate(folder, root, row):
             raise ValueError('Prepared mixture differs from the audio actually analyzed')
         outputs = {t['family']: sf.read(library.track_path(row,t['family']), dtype='float32', always_2d=True)[0]
                    for t in row['tracks']}
-        expected=13 if row.get('separation_version') in ('staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15','staged-context-pads-v16') else 12
-        if len(outputs) != expected:
-            raise ValueError('Expected all raw outputs, including hidden silent tracks')
+        thirteen=row.get('separation_version') in ('staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15','staged-context-pads-v16','commercial-13-v1')
+        expected_stems=sorted(['lead','backing','piano','synth','strings','brass','acoustic_guitar','guitar','bass','drums','other']+['guitar_residual']+(['percussion'] if thirteen else []))
+        actual_stems=sorted(outputs)
+        stem_contract={'expected_stems':expected_stems,'actual_stems':actual_stems,
+                       'missing_required_stems':sorted(set(expected_stems)-set(actual_stems)),
+                       'unexpected_stems':sorted(set(actual_stems)-set(expected_stems))}
+        expected=len(expected_stems)
+        if stem_contract['missing_required_stems'] or stem_contract['unexpected_stems'] or len(row['tracks'])!=len(actual_stems):
+            raise ValueError('Stem contract violated: '+json.dumps(stem_contract))
         candidate = {name: audio.copy() for name,audio in outputs.items()}
         for family in ('synth','strings','brass'):
             recovery = row.get(family+'_recovery')
@@ -117,7 +123,7 @@ def evaluate(folder, root, row):
         groups = {family: [family] for family in outputs}
         groups['guitar_total'] = [f for f in ('acoustic_guitar', 'guitar', 'guitar_residual') if f in outputs]
         # Residual has no independent instrument truth; evaluate its guitar parent jointly.
-        groups.pop('guitar_residual',None)
+        groups.pop('guitar_residual')  # required: count check above fails the run if it is missing
         metrics = {}
         listening_rows = []
         peak = max(float(np.abs(a).max()) for a in [mixture,*outputs.values(),*candidate.values()])
@@ -173,7 +179,7 @@ def evaluate(folder, root, row):
                   'separation_version': row['separation_version'], 'processing_seconds': row['processing_seconds'],
                   'has_bleed': prepared.get('has_bleed'), 'metrics': metrics,
                   'candidate_partition_max_abs_error': candidate_partition_error,
-                  'guitar_stage_scores': guitar_stage_scores,
+                  'guitar_stage_scores': guitar_stage_scores, 'stem_contract': stem_contract,
                   'provenance': {'prepared': str((folder/'prepared.json').resolve()),
                      'prepared_sha256': sha256_file(folder/'prepared.json'),
                      'preset_sha256': sha256_file(project_root()/'separation/configs/presets/demucs.json'),

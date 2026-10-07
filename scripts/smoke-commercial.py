@@ -44,6 +44,10 @@ try:
         item = {"case": name, "state": row["state"], "error": row.get("error"), "seconds": round(time.monotonic() - started, 1), "stems": len(row.get("tracks", []))}
         if row["state"] == "SUCCEEDED":
             original = read_audio(library.track_path(row, "original"))
+            expected = sorted("lead backing piano synth strings brass acoustic_guitar guitar bass drums percussion guitar_residual other".split())
+            actual = sorted(t["family"] for t in row["tracks"])
+            item["stem_contract"] = {"expected": len(expected), "actual": len(actual), "missing": sorted(set(expected) - set(actual)), "unexpected": sorted(set(actual) - set(expected))}
+            assert not item["stem_contract"]["missing"] and not item["stem_contract"]["unexpected"] and len(actual) == 13, item["stem_contract"]
             item["partition"] = partition_stats(original, [read_audio(library.track_path(row, t["family"])) for t in row["tracks"]])
         results.append(item); print(item, flush=True)
 finally:

@@ -7,7 +7,8 @@
 
 - `commercial_13`은 `final_11`과 같은 구조(원곡 mega7 증거 → 복원 → 리드/코러스 → 기본 4악기 → 기타/신디/현악/브라스 재분리 → 증거 기반 재배분 → 잔차 `other`)를 유지하면서 UNKNOWN 가중치 3종(`bs_6stem_fixed`, becruily karaoke, CLAPSep+LAION-CLAP)을 제거했다.
 - 대체: 4악기 → Mega53 head 4개(`bs_roformer_core4`), 리드/코러스 → Mega53 `lead-vocal`/`back-vocal` head를 소유권 증거로 쓰는 합계 보존 분리(`vocal_split.py`), 심벌 이동 → core4 드럼 stem을 증거로 쓴 `commercial_cymbal.py`.
-- 합성 GT 10 case(GeneralUser GS 렌더링) 기준 final_11 대비 stem SDR은 −2.3 ~ +0.4 dB. 합계 오차 최대 1.04e-7(허용 2e-6), NaN/Inf 0. 처리 시간은 4 case 평균 109 s → 87 s(CLAPSep 제거).
+- 합성 GT 10 case(GeneralUser GS 렌더링) 기준 final_11 대비 stem SDR은 −2.3 ~ +0.4 dB. 합계 오차 최대 1.04e-7(허용 2e-6), NaN/Inf 0. 처리 시간은 10 case 평균 92 s(commercial_13 단독 재측정, 아래 15절 참조).
+- **정정(stem 조립 버그)**: 이전 결과는 `guitar_residual`이 빠진 12 stem 상태에서 측정됐다(원인·수정은 17-1절). 그 측정은 무효 처리하고 13 stem으로 전부 재실행했다.
 - **출시 후보 판정: 아직 아님** (17·19장). 가중치 라이선스는 프로젝트 소유자의 가정(Mega53 MIT 허락)에 의존하고, 라우팅 파라미터는 MedleyDB가 섞인 데이터로 튜닝된 값을 그대로 쓰고 있다.
 
 ## 2. 기존 License Blockers
@@ -175,15 +176,15 @@ cases: 10
 | backing | N/A | N/A | N/A | 0 |
 | piano | 9.30 | 8.11 | -1.19 | 10 |
 | synth | 4.53 | 4.92 | 0.39 | 9 |
-| strings | 8.26 | 6.80 | -1.46 | 8 |
-| brass | 4.47 | 4.33 | -0.14 | 3 |
+| strings | 8.26 | 6.79 | -1.47 | 8 |
+| brass | 4.47 | 4.34 | -0.13 | 3 |
 | acoustic_guitar | N/A | N/A | N/A | 0 |
-| guitar | 4.03 | 3.73 | -0.29 | 4 |
+| guitar | 4.03 | 3.73 | -0.30 | 4 |
 | bass | 11.67 | 10.84 | -0.83 | 10 |
 | drums | 15.48 | 13.20 | -2.28 | 10 |
 | percussion | N/A | N/A | N/A | 0 |
 | other | N/A | N/A | N/A | 0 |
-| guitar_total | 4.05 | 3.76 | -0.29 | 4 |
+| guitar_total | 4.05 | 3.77 | -0.28 | 4 |
 
 | Partition (original vs sum of all stems) | value |
 |---|---|
@@ -201,8 +202,8 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 
 ## 11. Objective Benchmark
 
-위 표가 객관 지표다. final_11 수치는 같은 case의 기존 v16 리포트, commercial_13은 이번에 새로 돌린 결과이며 둘 다 `ground_truth.evaluate`로 채점했다. 피아노 −1.19, 스트링 −1.46, 베이스 −0.83, 드럼 −2.28, 브라스 −0.14, 기타 −0.29, 신디 +0.39 dB.
-`ground_truth.evaluate`는 `guitar_residual`이 무음이면 KeyError가 나서 두 줄을 "있는 stem만"으로 고쳤다(기준선 동작은 동일).
+위 표가 객관 지표다. final_11 수치는 같은 case의 기존 v16 리포트, commercial_13은 이번에 새로 돌린 결과이며 둘 다 `ground_truth.evaluate`로 채점했다. 피아노 −1.19, 스트링 −1.47, 베이스 −0.83, 드럼 −2.28, 브라스 −0.13, 기타 −0.30, 신디 +0.39 dB.
+`ground_truth.evaluate`는 이제 `stem_contract`(expected/actual/missing_required/unexpected)를 report.json에 기록하고, 하나라도 어긋나면 실패한다. 이전의 "있는 stem만" 완화는 제거했다(누락을 가렸다).
 
 ## 12. Synthetic Ground Truth Test
 
@@ -216,27 +217,27 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 
 ## 14. Partition Integrity
 
-10 case 최악값: max abs error 1.04e-7, RMS 5.7e-9, 2e-6 초과 샘플 0, NaN 0, Inf 0, 클리핑 0, DC offset 최대 0.0019. 스모크에서도 9.3e-8 이하(16장 표). 실패 0건.
+10 case 최악값: max abs error 1.04e-7, RMS 5.7e-9, 2e-6 초과 샘플 0, NaN 0, Inf 0, 클리핑 0, DC offset 최대 0.0019. 스모크에서도 9.6e-8 이하(16장 표). 실패 0건.
 
 ## 15. Runtime / VRAM
 
-- 같은 세션 4 case(pad00–03): final_11 109.1 s → commercial_13 86.6 s (−21%). CLAPSep 서브프로세스 제거가 주요인.
+- 10 case 평균 92.4 s(commercial_13, 13 stem 재실행, 직전 측정 83.9 s와 다름 = 기기 부하 변동). final_11은 이번에 재실행하지 않았다. 이전 동일 세션 비교(109.1 s → 86.6 s, 4 case)는 12 stem 상태의 값이라 무효이며, 속도 개선 주장은 같은 세션에서 final_11과 다시 비교하기 전까지 보류한다.
 - stage별 PyTorch 최대 할당: 6stem 1.66 GB → core4 1.02 GB, karaoke 0.92 GB → vocal2 0.92 GB. KJ 1.67 GB가 전체 최대이며 두 파이프라인이 같다. 전체 장치 피크와 CLAPSep venv 메모리는 측정하지 못했다.
 - RTF: core4 0.20, 6stem 0.23 (job 매니페스트).
 
 ## 16. Regression Test Results
 
-`separation/tests` 전체: **259 passed, 1 skipped, 0 failed** (baseline 227 passed, 1 skipped). 증가분은 이번 작업의 신규 테스트 14개(`test_commercial_gate.py` 9, `test_commercial_modules.py` 5)와 다른 세션이 추가한 테스트다. 실패한 테스트를 삭제하거나 허용치를 바꾸지 않았다.
+`separation/tests` 전체: **256 passed, 3 failed, 1 skipped** (baseline 227 passed, 1 skipped). 3 실패는 `test_quality.py::test_chunk_progress_matches_upstream_execution[0-1,2-1,2-4]`이며, 이 작업의 변경을 stash로 빼도 동일하게 실패한다(기존 문제, 원인 미해결 → 릴리스 후보 선언 전 해결 필요). 직전에 보고한 259 passed는 다른 세션의 작업트리 변경 시점의 값이다. 증가분은 이번 작업의 신규 테스트 14개(`test_commercial_gate.py` 9, `test_commercial_modules.py` 5)와 다른 세션이 추가한 테스트다. 실패한 테스트를 삭제하거나 허용치를 바꾸지 않았다.
 
 엣지 입력 스모크(commercial_13):
 
-| case | state | seconds | stems | max abs partition error |
-|---|---|---|---|---|
-| stereo44k_5s | SUCCEEDED | 65.6 | 12 | 9.34e-08 |
-| mono48k_5s | SUCCEEDED | 65.6 | 12 | 8.25e-08 |
-| short_0.5s | FAILED (Decoded duration must be between 1s and 15min) | 0.5 | - | - |
-| silence_3s | SUCCEEDED | 53.6 | 12 | 0.00e+00 |
-| long_90s | SUCCEEDED | 191.9 | 12 | 8.87e-08 |
+| case | state | seconds | stems (expected/actual) | missing | unexpected | max abs partition error |
+|---|---|---|---|---|---|---|
+| stereo44k_5s | SUCCEEDED | 68.7 | 13/13 | [] | [] | 9.53e-08 |
+| mono48k_5s | SUCCEEDED | 66.6 | 13/13 | [] | [] | 8.23e-08 |
+| short_0.5s | FAILED (Decoded duration must be between 1s and 15min) | 0.5 | - | - | - | - |
+| silence_3s | SUCCEEDED | 55.1 | 13/13 | [] | [] | 0.00e+00 |
+| long_90s | SUCCEEDED | 222.2 | 13/13 | [] | [] | 8.82e-08 |
 
 44.1/48 kHz, 모노/스테레오, 무음, 90 s 장편은 통과. 0.5 s는 ingest가 1초 미만을 거부(final_11 동일). OOM 재시도 경로는 새로 검증하지 않았다(preset에 memory_safe fallback만 추가).
 
@@ -260,3 +261,11 @@ lead/backing/acoustic_guitar/percussion/other는 이 합성 세트에 정답이 
 ## 19. Final Recommendation
 
 현 상태의 commercial_13은 **개발/검증용 상용 후보**다. 출시 전 필수: (a) Mega53 허락 근거의 법무 확인, (b) 깨끗한 데이터로 RULES/STRENGTH 재튜닝 또는 현재 값의 영향 평가, (c) 실제 권리 보유 음원으로 청취 검증과 코러스 품질 판단, (d) 감사 문서의 FFmpeg/LGPL 항목 정리. 합성 기준 품질 하락(−0.1 ~ −2.3 dB)은 실사용 불가 수준은 아니다.
+
+## 17-1. Stem 조립 버그 (13 → 12) 및 재측정
+
+- 증상: commercial_13 결과가 12 stem(`guitar_residual` 없음). 이전 스모크 표의 `stems=12`가 그 증거.
+- 원인: `web_server.final_session()`이 버전 문자열 목록으로 `guitar_residual` 추가 여부를 정하는데 `commercial-13-v1`이 목록에 없었다. 평가기도 같은 방식으로 기대 개수를 12로 계산했고, `groups.pop('guitar_residual',None)` 완화가 누락을 가려서 통과했다.
+- 수정: 목록에 `commercial-13-v1` 추가, 평가기에 stem 계약 검증(`stem_contract`) 추가·완화 제거.
+- 재사용 검토: 중간 산출물에 `guitar-residual.wav`는 있었지만 이후 단계(`other` 재계산, 라우팅)가 이를 포함하지 않은 채 진행됐기 때문에 재조립이 안전하지 않다고 판단해 GPU로 전부 재실행했다.
+- 이전 12 stem 결과는 `data/commercial-eval/pad-invalid-12stem`, `smoke-invalid-12stem`에 보존(invalidated). SDR 차이는 ≤0.01 dB, 합계 오차는 동일 범위였다.
