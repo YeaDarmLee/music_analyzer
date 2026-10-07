@@ -2595,7 +2595,5 @@ html {
 .studio-item h3 { margin: 2px 0 4px; font-size: 15px }
 .studio-item p { margin: 0; color: #9496a5; font-size: 13px; line-height: 1.6 }
 .shot { margin: 0; border: 1px solid #363046; border-radius: 14px; overflow: hidden; background: #14131a; box-shadow: 0 24px 60px -24px #6a5a9c88 }
-.shot-bar { display: flex; gap: 6px; padding: 10px 14px; background: #1b1923; border-bottom: 1px solid #25232f }
-.shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3750 }
 .shot img { display: block; width: 100%; height: auto }
 @media (max-width: 900px) { .studio-split { grid-template-columns: 1fr } }
