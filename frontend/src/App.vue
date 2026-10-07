@@ -1,7 +1,7 @@
 <script setup>
 import {ref,computed,onMounted,onBeforeUnmount,nextTick} from 'vue';
 import {Drum} from '@lucide/vue';
-import {mdiMicrophone,mdiAccountGroup,mdiPiano,mdiTune,mdiViolin,mdiTrumpet,mdiGuitarAcoustic,mdiGuitarElectric,mdiWaveform,mdiDisc,mdiMusicNote} from '@mdi/js';
+import {mdiBellRing,mdiMicrophone,mdiAccountGroup,mdiPiano,mdiTune,mdiViolin,mdiTrumpet,mdiGuitarAcoustic,mdiGuitarElectric,mdiWaveform,mdiDisc,mdiMusicNote} from '@mdi/js';
 import {filters,updateFilters} from './clarity';
 import {estimateAnalysis,formatEstimate} from './analysisEstimate';
 import {trackLevels} from './trackGroups';
@@ -30,10 +30,10 @@ function clearMetadata(){clearTimeout(metadataTimer);if(metadataAudio){metadataA
 function versionEstimate(model){return estimateAnalysis(fileDuration.value,model,rows.value)}
 let context,masterNode,sources=[],buffers=new Map(),origin=0,raf,timer,revision=0,loadController;
 const expandedGroups=ref({});
-const trackOrder=['lead','vocals','backing','piano','synth','strings','brass','acoustic_guitar','guitar','guitar_residual','bass','drums','other','instrumental','original'];
+const trackOrder=['lead','vocals','backing','piano','synth','strings','brass','acoustic_guitar','guitar','guitar_residual','bass','drums','percussion','other','instrumental','original'];
 const visibleTracks=computed(()=>[...tracks.value].sort((a,b)=>(trackOrder.indexOf(a.family)<0?99:trackOrder.indexOf(a.family))-(trackOrder.indexOf(b.family)<0?99:trackOrder.indexOf(b.family))));
 function trackTitle(t){return ['other','guitar_residual'].includes(t.family)?names[t.family]:(t.display_name||names[t.family]||t.family)}
-const trackIcons={lead:mdiMicrophone,vocals:mdiMicrophone,backing:mdiAccountGroup,piano:mdiPiano,synth:mdiTune,strings:mdiViolin,brass:mdiTrumpet,acoustic_guitar:mdiGuitarAcoustic,guitar:mdiGuitarElectric,bass:mdiGuitarElectric,other:mdiWaveform,instrumental:mdiMusicNote,original:mdiDisc};
+const trackIcons={lead:mdiMicrophone,vocals:mdiMicrophone,backing:mdiAccountGroup,piano:mdiPiano,synth:mdiTune,strings:mdiViolin,brass:mdiTrumpet,acoustic_guitar:mdiGuitarAcoustic,guitar:mdiGuitarElectric,bass:mdiGuitarElectric,percussion:mdiBellRing,other:mdiWaveform,instrumental:mdiMusicNote,original:mdiDisc};
 const names={lead:'보컬',backing:'코러스',original:'원본 음원',vocals:'보컬',drums:'드럼',bass:'베이스',guitar:'일렉기타',piano:'피아노',synth:'신디사이저',strings:'스트링',brass:'브라스',acoustic_guitar:'어쿠스틱기타',guitar_residual:'기타 보조',percussion:'기타 타악기',other:'추가 반주',instrumental:'전체 반주'};
 const colors={brass:'#e6aa5b',strings:'#93c5c0',acoustic_guitar:'#cda76c',synth:'#d090c7',synth_pad:'#d090c7',other_residual:'#8da9d7',lead_guitar:'#73a9ff',guitar_residual:'#6ad6b3',lead:'#af8fff',backing:'#e4a6d3',original:'#c7ccd9',vocals:'#af8fff',drums:'#ef9b63',bass:'#6ad6b3',guitar:'#73a9ff',piano:'#e6c66d',other:'#d090c7',instrumental:'#8da9d7'};
 const filtered=computed(()=>rows.value.filter(r=>r.name.toLowerCase().includes(search.value.toLowerCase())));
@@ -146,8 +146,13 @@ metadataTimer=setTimeout(()=>{readingFile.value=false;clearMetadata()},10000);au
 async function splitVocals(){if(loading.value)return;error.value='';try{const row=await request('/api/analyses/'+selected.value.id+'/vocal-detail',{method:'POST'});await refresh();await open(row)}catch(e){error.value=e.message}}
 function newAnalysis(event){if(!props.user){emit('login',event);return}modalOrigin=originOf(event);modal.value=true;uploadStep.value=1;preset.value='';file.value=null;fileDuration.value=null;readingFile.value=false;clearMetadata();error.value=''}
 async function submit(){if(uploadStep.value===1){if(file.value&&!readingFile.value)uploadStep.value=2;return}if(!chosenVersion.value||!file.value||uploading.value)return;if(!/\.(mp3|wav|flac)$/i.test(file.value.name)){error.value='MP3, WAV, FLAC 파일을 선택해 주세요.';return}uploading.value=true;uploadPercent.value=0;error.value='';try{const row=await new Promise((resolve,reject)=>{const xhr=new XMLHttpRequest();xhr.open('POST','/api/analyses?preset='+preset.value);xhr.setRequestHeader('X-Requested-With','MusicAnalyzer');xhr.setRequestHeader('X-Filename',encodeURIComponent(file.value.name));xhr.upload.onprogress=e=>{if(e.lengthComputable)uploadPercent.value=Math.round(e.loaded/e.total*100)};xhr.onload=()=>{if(xhr.status===401)window.dispatchEvent(new Event('music-session-expired'));try{const data=JSON.parse(xhr.responseText);xhr.status<300?resolve(data):reject(Error(data.error))}catch{reject(Error('업로드 응답을 확인할 수 없습니다.'))}};xhr.onerror=()=>reject(Error('서버에 연결하지 못했습니다.'));xhr.send(file.value)});modal.value=false;await refresh();await open(row)}catch(e){error.value=e.message}finally{uploading.value=false}}
-onMounted(()=>{if(props.user){refresh();timer=setInterval(refresh,1800);}window.addEventListener('resize',draw)});
-onBeforeUnmount(()=>{clearMetadata();disposed=true;buffers.clear();loadController?.abort();revision++;stop();clearMedia();clearInterval(timer);window.removeEventListener('resize',draw);context?.close()});
+function spaceKey(event){
+if(event.key!==' '||!selected.value||modal.value||downloadDialog.value||event.ctrlKey||event.metaKey||event.altKey)return;
+if(event.target.closest?.('input:not([type=range]),textarea,select,[contenteditable]'))return;
+event.preventDefault();event.stopPropagation();
+if(event.type==='keydown'&&!event.repeat&&!loading.value)toggle()}
+onMounted(()=>{if(props.user){refresh();timer=setInterval(refresh,1800);}window.addEventListener('resize',draw);window.addEventListener('keydown',spaceKey,true);window.addEventListener('keyup',spaceKey,true)});
+onBeforeUnmount(()=>{clearMetadata();disposed=true;buffers.clear();loadController?.abort();revision++;stop();clearMedia();clearInterval(timer);window.removeEventListener('resize',draw);window.removeEventListener('keydown',spaceKey,true);window.removeEventListener('keyup',spaceKey,true);context?.close()});
 </script>
 
 <template>
