@@ -52,8 +52,12 @@ const analysisSteps=computed(()=>versions.find(v=>v.id===selected.value?.model)?
 const mixable=computed(()=>tracks.value.filter(t=>t.family!=='original'));
 const allMuted=computed(()=>mixable.value.length>0&&mixable.value.every(t=>t.mute)),anyMuted=computed(()=>mixable.value.some(t=>t.mute));
 const allSolo=computed(()=>mixable.value.length>0&&mixable.value.every(t=>t.solo)),anySolo=computed(()=>mixable.value.some(t=>t.solo));
-// Any engaged track means the first press releases every track; only a clean state engages all (original stays a reference).
-function masterToggle(key,any){const next=!any;for(const t of mixable.value)t[key]=next;mix()}
+// Any engaged track means the press releases every track and remembers them; the next press restores that set (or engages all if none was remembered). Original stays a reference.
+let masterMemory={mute:[],solo:[]};
+function masterToggle(key,any){
+if(any){masterMemory[key]=mixable.value.filter(t=>t[key]).map(t=>t.family);for(const t of mixable.value)t[key]=false}
+else{const saved=mixable.value.filter(t=>masterMemory[key].includes(t.family));for(const t of mixable.value)t[key]=saved.length?saved.includes(t):true}
+mix()}
 const rulerTicks=computed(()=>{const d=duration.value;if(!d)return[];const step=[1,2,5,10,15,20,30,60,120,300].find(n=>d/n<=12)||600;const out=[];for(let t=0;t<d;t+=step)out.push({t,left:t/d*100});return out});
 const stamp=s=>{s=Math.max(0,s||0);return Math.floor(s/60).toString().padStart(2,'0')+':'+Math.floor(s%60).toString().padStart(2,'0')};
 const modelName=(m,v)=>m==='final_11'&&v&&!['staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15'].includes(v)?'12트랙 분리':({basic_2:'2트랙 분리',basic_6:'6트랙 분리',final_11:'13트랙 분리',final_10:'악기별 분리',clapsep:'CLAPSep · 패드 비교',audiosep_base:'AudioSep · 목표 소리 실험',bs_karaoke:'BS-RoFormer · 리드/코러스',karaoke_roformer:'RoFormer · 리드/코러스',instrument_roformer_6s:'RoFormer · 6 tracks',vocal_roformer:'RoFormer · vocals',quality_6s:'Demucs · 6 tracks',quality_ft:'Demucs · fine-tuned',baseline:'Demucs · 4 tracks'}[m]||m);
@@ -68,7 +72,7 @@ function audioContext(){if(!context){context=new AudioContext();masterNode=conte
 async function open(row){
 if(disposed)return;
 clarity.value=false;clarityControl.value.clarityStrength=100;expandedGroups.value={};
-stop();clearMedia();loadController?.abort();revision++;const token=revision;selected.value=row;tracks.value=[];position.value=0;buffers.clear();loaded.value=0;error.value='';loading.value=false;
+masterMemory={mute:[],solo:[]};stop();clearMedia();loadController?.abort();revision++;const token=revision;selected.value=row;tracks.value=[];position.value=0;buffers.clear();loaded.value=0;error.value='';loading.value=false;
 windowed=(row.duration||0)>120;
 if(row.state!=='SUCCEEDED')return;
 loadController=new AbortController();const signal=loadController.signal;loading.value=true;loadStage.value='파형과 트랙 정보를 준비하고 있습니다';
