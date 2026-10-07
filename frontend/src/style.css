@@ -2628,15 +2628,20 @@ button.crumb:hover { color: #c7b9ff }
 /* FAQ */
 .faq-lp { padding-bottom: 72px }
 .faq-tabs { display: inline-flex; gap: 6px; margin-bottom: 20px; padding: 5px; border: 1px solid #2c2a38; border-radius: 999px; background: #17151e; flex-wrap: wrap }
-.faq-tabs button { padding: 9px 22px; border-radius: 999px; background: none; color: #8b8e9d; font-size: 13px; transition: background .25s, color .25s }
+.faq-tabs button { padding: 9px 22px; border-radius: 999px; background: none; color: #8b8e9d; font-size: 13px; transition: background .3s ease, color .3s ease, transform .2s ease }
+.faq-tabs button:hover { color: #e8e0ff }
+.faq-tabs button:active { transform: scale(.96) }
 .faq-tabs button.active { background: #3a2f5c; color: #e8e0ff }
 .faq-list { display: grid; gap: 10px }
-.faq-item { border: 1px solid #2c2a38; border-radius: 14px; background: #1b1923; transition: border-color .25s }
-.faq-item.open { border-color: #4b4266 }
+@keyframes faq-in { from { opacity: 0; transform: translateY(10px) } }
+.faq-item { border: 1px solid #2c2a38; border-radius: 14px; background: #1b1923; transition: border-color .3s ease, background .3s ease, transform .3s ease; animation: faq-in .45s cubic-bezier(.22,.75,.18,1) backwards; animation-delay: calc(var(--i) * 70ms) }
+.faq-item:hover { border-color: #3d3752; transform: translateY(-2px) }
+.faq-item.open { border-color: #4b4266; background: #1f1c29 }
 .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; padding: 20px 24px; background: none; color: #e8e8f0; font-size: 15px; text-align: left }
-.faq-q i { flex: none; font-style: normal; font-size: 22px; color: #9a8bd0; transition: transform .3s }
-.faq-item.open .faq-q i { transform: rotate(45deg) }
-.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease }
-.faq-item.open .faq-a { grid-template-rows: 1fr }
-.faq-a p { overflow: hidden; margin: 0; padding: 0 24px; color: #a5a7b5; font-size: 14px; line-height: 1.8 }
-.faq-item.open .faq-a p { padding-bottom: 22px }
+.faq-q i { flex: none; font-style: normal; font-size: 22px; line-height: 1; color: #9a8bd0; transition: transform .35s cubic-bezier(.22,.75,.18,1), color .3s ease }
+.faq-item.open .faq-q i { transform: rotate(135deg); color: #d9ceff }
+.faq-a { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .4s cubic-bezier(.22,.75,.18,1), opacity .3s ease }
+.faq-item.open .faq-a { grid-template-rows: 1fr; opacity: 1 }
+.faq-a-in { min-height: 0; overflow: hidden }
+.faq-a p { margin: 0; padding: 0 24px 22px; color: #a5a7b5; font-size: 14px; line-height: 1.8 }
+@media (prefers-reduced-motion: reduce) { .faq-item, .faq-a, .faq-q i { animation: none; transition: none } }
