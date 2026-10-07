@@ -2465,3 +2465,17 @@ html {
 .recommend > span { display: block; margin-bottom: 10px; color: #c7b9ff; font-size: 12px; font-weight: 600 }
 .recommend ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none }
 .recommend li { padding: 5px 11px; border-radius: 999px; background: #2a2240; color: #d9ceff; font-size: 12px }
+
+.about-flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr); gap: 22px; align-items: center; margin: 52px 0 0; padding: 28px; border: 1px solid #2c2a38; border-radius: 18px; background: radial-gradient(ellipse at 100% 0%, #2a2240 0%, #1b1923 60%); text-align: left }
+.flow-label { display: block; margin-bottom: 12px; color: #8b8e9d; font-size: 12px }
+.flow-in .lane-wave { height: 44px }
+.flow-in .lane { padding: 14px 12px }
+.flow-arrow { font-size: 26px; color: #9a8bd0 }
+.flow-out { display: grid; gap: 7px }
+.flow-out .flow-label { margin-bottom: 5px }
+.about-flow .lane b { width: 56px; font-size: 11px }
+.about-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 44px; text-align: left }
+.about-points h3 { margin: 0 0 10px; font-size: 16px; color: #e8e0ff }
+.about-points p { margin: 0; color: #9496a5; font-size: 14px; line-height: 1.75 }
+.about-lp .about-stats { margin-top: 48px }
+@media (max-width: 900px) { .about-flow { grid-template-columns: 1fr } .flow-arrow { transform: rotate(90deg); justify-self: center } .about-points { grid-template-columns: 1fr; gap: 22px } }
