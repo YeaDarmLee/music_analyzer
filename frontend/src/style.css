@@ -2544,3 +2544,10 @@ html {
 .about-flow .lane-wave { min-width: 0 }
 .flow-in, .flow-out, .about-flow .lane { min-width: 0 }
 .plan-split .lane, .plan-lanes, .plan-info, .plan-side article { min-width: 0 }
+
+/* hero heading matches section headings */
+.page-heading .eyebrow { display: block; margin-bottom: 14px; color: #9a8bd0 }
+.page-heading h1 { margin: 0; font-size: 34px; line-height: 1.25; letter-spacing: -1.4px; font-weight: 600; white-space: nowrap }
+.page-heading h1 em, .hero h2 em { font-style: normal; background: linear-gradient(90deg, #c6b2ff, #72d5b5); -webkit-background-clip: text; background-clip: text; color: transparent }
+.page-heading p { margin-top: 12px; color: #9496a5; font-size: 14px }
+@media (max-width: 900px) { .page-heading h1 { white-space: normal; font-size: 26px } }
