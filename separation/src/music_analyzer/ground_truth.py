@@ -126,7 +126,7 @@ def evaluate(folder, root, row):
             if family == 'guitar_total':
                 reference_names = ['acoustic_guitar', 'guitar']
             else:
-                reference_names = ['percussion','pitched_percussion'] if family=='percussion' else [family]
+                reference_names = ['percussion','pitched_percussion'] if family=='percussion' else ['synth','synth_strings'] if family=='synth' else [family]
             for name in reference_names:
                 reference = prepared['references'].get(name)
                 if reference:

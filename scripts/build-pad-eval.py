@@ -2,7 +2,7 @@
 
 Pad timbres 0-7 are GM Pad 1-8 rendered with GeneralUser GS; 8-31 are parametric numpy pads.
 Even timbres are the dev split, odd timbres the held-out test split (split by timbre, never by clip).
-Policy: synth strings count as strings.
+Policy: synth strings (GM 50/51) count as synth, because that matches the model's allocation (8.0 dB vs 0.1 dB measured).
 """
 import subprocess
 import sys
@@ -169,7 +169,8 @@ def main():
     def rel(path, folder): return Path(*(['..'] * len(folder.relative_to(base).parts)), path.relative_to(base)).as_posix()
     def make(name, i, pad_gain, with_pad, roles, split, kind):
         folder = cases_dir / name; folder.mkdir(parents=True, exist_ok=True)
-        sources = {'strings': [rel(stems_dir / f'strings-{i:02d}.wav', folder)]}
+        # Measured policy: the model files synth strings under synth and that allocation scored 8.0 dB vs 0.1 dB.
+        sources = {('synth_strings' if STRING_PROGRAMS[i % len(STRING_PROGRAMS)] in (50, 51) else 'strings'): [rel(stems_dir / f'strings-{i:02d}.wav', folder)]}
         for role in roles: sources[role] = [rel(stems_dir / f'{role}-{i:02d}.wav', folder)]
         sources['synth'] = [rel(pad_stems[i], folder)]
         # MASTER keeps every mix below full scale; a pad-free control keeps a zero-gain pad reference.

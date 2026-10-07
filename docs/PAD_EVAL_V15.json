@@ -5,26 +5,26 @@
     "pad_with_strings/dev": {
       "synth_sdr": {
         "n": 16,
-        "median": 1.878,
-        "min": -0.573,
-        "max": 10.084
+        "median": 3.868,
+        "min": 0.156,
+        "max": 15.498
       },
       "synth_capture": {
         "n": 16,
         "median": 0.45,
         "min": 0.028,
-        "max": 0.986
+        "max": 0.966
       },
       "strings_sdr": {
-        "n": 16,
-        "median": 7.027,
-        "min": -0.017,
+        "n": 12,
+        "median": 8.074,
+        "min": 2.615,
         "max": 13.337
       },
       "strings_capture": {
-        "n": 16,
-        "median": 0.864,
-        "min": 0.001,
+        "n": 12,
+        "median": 0.883,
+        "min": 0.526,
         "max": 0.972
       },
       "synth_to_mix_db": {
@@ -37,9 +37,9 @@
     "pad_with_strings/test": {
       "synth_sdr": {
         "n": 16,
-        "median": 3.108,
-        "min": -0.308,
-        "max": 13.492
+        "median": 5.484,
+        "min": 0.504,
+        "max": 13.676
       },
       "synth_capture": {
         "n": 16,
@@ -48,15 +48,15 @@
         "max": 0.946
       },
       "strings_sdr": {
-        "n": 16,
-        "median": 8.254,
-        "min": 0.166,
+        "n": 12,
+        "median": 8.614,
+        "min": 3.634,
         "max": 11.438
       },
       "strings_capture": {
-        "n": 16,
-        "median": 0.792,
-        "min": 0.022,
+        "n": 12,
+        "median": 0.851,
+        "min": 0.492,
         "max": 0.921
       },
       "synth_to_mix_db": {
@@ -69,26 +69,26 @@
     "pad_with_strings/all": {
       "synth_sdr": {
         "n": 32,
-        "median": 2.516,
-        "min": -0.573,
-        "max": 13.492
+        "median": 4.846,
+        "min": 0.156,
+        "max": 15.498
       },
       "synth_capture": {
         "n": 32,
         "median": 0.519,
         "min": 0.028,
-        "max": 0.986
+        "max": 0.966
       },
       "strings_sdr": {
-        "n": 32,
-        "median": 7.571,
-        "min": -0.017,
+        "n": 24,
+        "median": 8.497,
+        "min": 2.615,
         "max": 13.337
       },
       "strings_capture": {
-        "n": 32,
-        "median": 0.839,
-        "min": 0.001,
+        "n": 24,
+        "median": 0.87,
+        "min": 0.492,
         "max": 0.972
       },
       "synth_to_mix_db": {
@@ -101,26 +101,26 @@
     "quiet_pad/dev": {
       "synth_sdr": {
         "n": 16,
-        "median": 0.432,
-        "min": -12.198,
-        "max": 7.026
+        "median": 1.42,
+        "min": 0.0,
+        "max": 14.536
       },
       "synth_capture": {
         "n": 16,
-        "median": 0.133,
+        "median": 0.173,
         "min": 0.0,
-        "max": 0.96
+        "max": 1.0
       },
       "strings_sdr": {
-        "n": 16,
-        "median": 11.493,
-        "min": 0.005,
+        "n": 12,
+        "median": 12.196,
+        "min": 6.955,
         "max": 17.017
       },
       "strings_capture": {
-        "n": 16,
-        "median": 0.912,
-        "min": 0.001,
+        "n": 12,
+        "median": 0.935,
+        "min": 0.726,
         "max": 0.968
       },
       "synth_to_mix_db": {
@@ -133,26 +133,26 @@
     "quiet_pad/all": {
       "synth_sdr": {
         "n": 16,
-        "median": 0.432,
-        "min": -12.198,
-        "max": 7.026
+        "median": 1.42,
+        "min": 0.0,
+        "max": 14.536
       },
       "synth_capture": {
         "n": 16,
-        "median": 0.133,
+        "median": 0.173,
         "min": 0.0,
-        "max": 0.96
+        "max": 1.0
       },
       "strings_sdr": {
-        "n": 16,
-        "median": 11.493,
-        "min": 0.005,
+        "n": 12,
+        "median": 12.196,
+        "min": 6.955,
         "max": 17.017
       },
       "strings_capture": {
-        "n": 16,
-        "median": 0.912,
-        "min": 0.001,
+        "n": 12,
+        "median": 0.935,
+        "min": 0.726,
         "max": 0.968
       },
       "synth_to_mix_db": {
@@ -165,26 +165,26 @@
     "pad_piano_only/dev": {
       "synth_sdr": {
         "n": 4,
-        "median": 1.833,
-        "min": 0.059,
-        "max": 9.424
+        "median": 6.455,
+        "min": 0.18,
+        "max": 15.23
       },
       "synth_capture": {
         "n": 4,
         "median": 0.62,
         "min": 0.029,
-        "max": 0.929
+        "max": 0.932
       },
       "strings_sdr": {
-        "n": 4,
-        "median": 8.607,
-        "min": 1.773,
+        "n": 3,
+        "median": 10.542,
+        "min": 6.671,
         "max": 14.887
       },
       "strings_capture": {
-        "n": 4,
-        "median": 0.904,
-        "min": 0.438,
+        "n": 3,
+        "median": 0.955,
+        "min": 0.852,
         "max": 0.965
       },
       "synth_to_mix_db": {
@@ -198,26 +198,26 @@
       "synth_sdr": {
         "n": 4,
         "median": 1.88,
-        "min": 0.602,
+        "min": 0.451,
         "max": 6.744
       },
       "synth_capture": {
         "n": 4,
         "median": 0.257,
-        "min": 0.082,
+        "min": 0.058,
         "max": 0.737
       },
       "strings_sdr": {
-        "n": 4,
-        "median": 8.201,
-        "min": 0.127,
+        "n": 3,
+        "median": 9.254,
+        "min": 7.147,
         "max": 10.697
       },
       "strings_capture": {
-        "n": 4,
-        "median": 0.913,
+        "n": 3,
+        "median": 0.91,
         "min": 0.875,
-        "max": 0.964
+        "max": 0.916
       },
       "synth_to_mix_db": {
         "n": 4,
@@ -229,26 +229,26 @@
     "pad_piano_only/all": {
       "synth_sdr": {
         "n": 8,
-        "median": 1.88,
-        "min": 0.059,
-        "max": 9.424
+        "median": 3.07,
+        "min": 0.18,
+        "max": 15.23
       },
       "synth_capture": {
         "n": 8,
         "median": 0.4,
         "min": 0.029,
-        "max": 0.929
+        "max": 0.932
       },
       "strings_sdr": {
-        "n": 8,
-        "median": 8.201,
-        "min": 0.127,
+        "n": 6,
+        "median": 9.898,
+        "min": 6.671,
         "max": 14.887
       },
       "strings_capture": {
-        "n": 8,
+        "n": 6,
         "median": 0.913,
-        "min": 0.438,
+        "min": 0.852,
         "max": 0.965
       },
       "synth_to_mix_db": {
@@ -259,18 +259,28 @@
       }
     },
     "no_pad_control/dev": {
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": {
+        "n": 2,
+        "median": 7.266,
+        "min": 6.03,
+        "max": 8.502
+      },
+      "synth_capture": {
+        "n": 2,
+        "median": 0.726,
+        "min": 0.685,
+        "max": 0.767
+      },
       "strings_sdr": {
-        "n": 8,
-        "median": 11.049,
-        "min": 0.983,
+        "n": 6,
+        "median": 12.783,
+        "min": 9.178,
         "max": 17.027
       },
       "strings_capture": {
-        "n": 8,
-        "median": 0.892,
-        "min": 0.117,
+        "n": 6,
+        "median": 0.948,
+        "min": 0.813,
         "max": 0.968
       },
       "synth_to_mix_db": {
@@ -281,18 +291,28 @@
       }
     },
     "no_pad_control/test": {
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": {
+        "n": 2,
+        "median": 0.378,
+        "min": 0.002,
+        "max": 0.754
+      },
+      "synth_capture": {
+        "n": 2,
+        "median": 0.05,
+        "min": 0.0,
+        "max": 0.099
+      },
       "strings_sdr": {
-        "n": 8,
-        "median": 9.574,
-        "min": 2.036,
+        "n": 6,
+        "median": 12.63,
+        "min": 8.221,
         "max": 15.673
       },
       "strings_capture": {
-        "n": 8,
-        "median": 0.866,
-        "min": 0.247,
+        "n": 6,
+        "median": 0.9,
+        "min": 0.796,
         "max": 0.97
       },
       "synth_to_mix_db": {
@@ -303,18 +323,28 @@
       }
     },
     "no_pad_control/all": {
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": {
+        "n": 4,
+        "median": 3.392,
+        "min": 0.002,
+        "max": 8.502
+      },
+      "synth_capture": {
+        "n": 4,
+        "median": 0.392,
+        "min": 0.0,
+        "max": 0.767
+      },
       "strings_sdr": {
-        "n": 16,
-        "median": 10.437,
-        "min": 0.983,
+        "n": 12,
+        "median": 12.783,
+        "min": 8.221,
         "max": 17.027
       },
       "strings_capture": {
-        "n": 16,
-        "median": 0.866,
-        "min": 0.117,
+        "n": 12,
+        "median": 0.936,
+        "min": 0.796,
         "max": 0.97
       },
       "synth_to_mix_db": {
@@ -583,11 +613,11 @@
       "split": "dev",
       "kind": "pad_with_strings",
       "timbre": 6,
-      "synth_sdr": -0.2693734347134741,
-      "synth_capture": 0.986244566494469,
+      "synth_sdr": 12.617424788507526,
+      "synth_capture": 0.9663528725995784,
       "synth_to_mix": -3.420727807109269,
-      "strings_sdr": 1.56133066715711,
-      "strings_capture": 0.21667876831732447,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -595,11 +625,11 @@
       "split": "dev",
       "kind": "no_pad_control",
       "timbre": 6,
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": 8.501773726693205,
+      "synth_capture": 0.7674280890548963,
       "synth_to_mix": -6.9690012966877735,
-      "strings_sdr": 0.9826590353370602,
-      "strings_capture": 0.11691731008585879,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -607,11 +637,11 @@
       "split": "dev",
       "kind": "pad_piano_only",
       "timbre": 6,
-      "synth_sdr": 0.059227047693426335,
-      "synth_capture": 0.9287462315284586,
+      "synth_sdr": 15.22967362745021,
+      "synth_capture": 0.932046082577042,
       "synth_to_mix": -1.6246442104440764,
-      "strings_sdr": 1.7733015928063853,
-      "strings_capture": 0.43815228627344793,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -619,11 +649,11 @@
       "split": "dev",
       "kind": "quiet_pad",
       "timbre": 6,
-      "synth_sdr": -10.649550718973265,
-      "synth_capture": 0.7008046083361721,
+      "synth_sdr": 8.48514852523087,
+      "synth_capture": 0.7804997235334099,
       "synth_to_mix": -6.587950440362915,
-      "strings_sdr": 2.364109879104737,
-      "strings_capture": 0.2722891451475385,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -631,11 +661,11 @@
       "split": "test",
       "kind": "pad_with_strings",
       "timbre": 7,
-      "synth_sdr": 1.4611903366449595,
-      "synth_capture": 0.42856838660500957,
+      "synth_sdr": 2.5749708260058055,
+      "synth_capture": 0.36590650474846387,
       "synth_to_mix": -8.353557443382485,
-      "strings_sdr": 1.774283946754121,
-      "strings_capture": 0.7430596318448853,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -643,11 +673,11 @@
       "split": "test",
       "kind": "no_pad_control",
       "timbre": 7,
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": 0.7535821866211107,
+      "synth_capture": 0.09914960406038607,
       "synth_to_mix": -18.713922659702778,
-      "strings_sdr": 3.7209451602051127,
-      "strings_capture": 0.4408114759941597,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -655,11 +685,11 @@
       "split": "test",
       "kind": "pad_piano_only",
       "timbre": 7,
-      "synth_sdr": 0.6019506635519123,
-      "synth_capture": 0.0816011743732517,
+      "synth_sdr": 0.4510084128476861,
+      "synth_capture": 0.05772767264750834,
       "synth_to_mix": -18.908680487836186,
-      "strings_sdr": 0.12701558460115714,
-      "strings_capture": 0.964207199854488,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -847,11 +877,11 @@
       "split": "dev",
       "kind": "pad_with_strings",
       "timbre": 14,
-      "synth_sdr": 0.03762464748424481,
-      "synth_capture": 0.9145839429969272,
+      "synth_sdr": 15.497653133535426,
+      "synth_capture": 0.9375061099750893,
       "synth_to_mix": -3.4049228235513436,
-      "strings_sdr": 0.012366882038701408,
-      "strings_capture": 0.0014296033165974464,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -859,11 +889,11 @@
       "split": "dev",
       "kind": "no_pad_control",
       "timbre": 14,
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": 6.029672620429986,
+      "synth_capture": 0.6852246348881365,
       "synth_to_mix": -6.756456141091385,
-      "strings_sdr": 1.9289488905505925,
-      "strings_capture": 0.22517615500141164,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -871,11 +901,11 @@
       "split": "dev",
       "kind": "quiet_pad",
       "timbre": 14,
-      "synth_sdr": -12.197690018116845,
-      "synth_capture": 0.9598042563751631,
+      "synth_sdr": 14.536338127283537,
+      "synth_capture": 1.0000134696832363,
       "synth_to_mix": -4.358221526304461,
-      "strings_sdr": 0.3769169748242302,
-      "strings_capture": 0.047311053471068204,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -883,11 +913,11 @@
       "split": "test",
       "kind": "pad_with_strings",
       "timbre": 15,
-      "synth_sdr": 0.8397645882517392,
-      "synth_capture": 0.14865613274224454,
+      "synth_sdr": 0.88248228393338,
+      "synth_capture": 0.12234614599058441,
       "synth_to_mix": -15.999449201311144,
-      "strings_sdr": 1.846207439374969,
-      "strings_capture": 0.2470639441472902,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -895,11 +925,11 @@
       "split": "test",
       "kind": "no_pad_control",
       "timbre": 15,
-      "synth_sdr": null,
-      "synth_capture": null,
+      "synth_sdr": 0.002018946639238421,
+      "synth_capture": 0.00023258512869972137,
       "synth_to_mix": -69.81050057874468,
-      "strings_sdr": 2.0358909535961027,
-      "strings_capture": 0.2465593307761574,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1015,11 +1045,11 @@
       "split": "dev",
       "kind": "pad_with_strings",
       "timbre": 22,
-      "synth_sdr": -0.0005923578490100287,
-      "synth_capture": 0.12929043353744452,
+      "synth_sdr": 2.15142755392776,
+      "synth_capture": 0.2613883183449464,
       "synth_to_mix": -11.751350430676592,
-      "strings_sdr": -0.017425945195055404,
-      "strings_capture": 0.17384661116803365,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1027,11 +1057,11 @@
       "split": "dev",
       "kind": "quiet_pad",
       "timbre": 22,
-      "synth_sdr": -3.3349010114131383,
-      "synth_capture": 0.030353065552137504,
+      "synth_sdr": 1.730111239792702,
+      "synth_capture": 0.20073619228860642,
       "synth_to_mix": -15.859222305698053,
-      "strings_sdr": 1.5398286642791283,
-      "strings_capture": 0.21351803132343106,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1039,11 +1069,11 @@
       "split": "test",
       "kind": "pad_with_strings",
       "timbre": 23,
-      "synth_sdr": 0.13965131766157987,
-      "synth_capture": 0.9419762441744239,
+      "synth_sdr": 13.675571066825029,
+      "synth_capture": 0.9379797552446076,
       "synth_to_mix": -3.22067949479023,
-      "strings_sdr": 0.16648831628456173,
-      "strings_capture": 0.021643944205699713,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1159,11 +1189,11 @@
       "split": "dev",
       "kind": "pad_with_strings",
       "timbre": 30,
-      "synth_sdr": -0.5731479816699718,
-      "synth_capture": 0.8984100344449766,
+      "synth_sdr": 6.9230698332424225,
+      "synth_capture": 0.8822964724606999,
       "synth_to_mix": -3.783266162495413,
-      "strings_sdr": 0.005887866587308327,
-      "strings_capture": 0.0007458932235637447,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1171,11 +1201,11 @@
       "split": "dev",
       "kind": "quiet_pad",
       "timbre": 30,
-      "synth_sdr": -11.8788030550906,
-      "synth_capture": 0.6392175729562235,
+      "synth_sdr": 6.560101352793428,
+      "synth_capture": 0.8549587442776687,
       "synth_to_mix": -5.779632412611351,
-      "strings_sdr": 0.005478175374347322,
-      "strings_capture": 0.0006327940615087757,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     },
     {
@@ -1183,11 +1213,11 @@
       "split": "test",
       "kind": "pad_with_strings",
       "timbre": 31,
-      "synth_sdr": -0.30811113666440215,
-      "synth_capture": 0.6902913780428442,
+      "synth_sdr": 9.918797547467463,
+      "synth_capture": 0.80831041931596,
       "synth_to_mix": -4.315563761887952,
-      "strings_sdr": 0.31110573236544253,
-      "strings_capture": 0.03904708810972308,
+      "strings_sdr": null,
+      "strings_capture": null,
       "strings_pad_leak": null
     }
   ]
