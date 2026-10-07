@@ -2435,3 +2435,23 @@ html {
  .feature-row, .timeline { grid-template-columns: repeat(2, 1fr) } .timeline:before { display: none }
  .about-lp .about-stats b { font-size: 34px }
 }
+
+/* plans: 2/6 left, 13 right */
+.plan-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 20px; max-width: 1080px; margin: 44px auto 0; text-align: left; align-items: stretch }
+.plan-side { display: grid; gap: 20px }
+.plan-side article { display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #2c2a38; border-radius: 18px; background: #1b1923; transition: border-color .25s, transform .25s }
+.plan-side article:hover { border-color: #4b4266; transform: translateY(-3px) }
+.plan-side b, .plan-big { font-size: 34px; font-weight: 600; letter-spacing: -1px; color: #d9ceff; line-height: 1 }
+.plan-side h3 { margin: 0 0 12px; font-size: 16px }
+.plan-side .track-chips { margin: 0 0 12px; gap: 6px }
+.plan-side .track-chips span { padding: 4px 10px; font-size: 12px }
+.plan-side p { margin: 0 0 12px; color: #a5a7b5; font-size: 13px; line-height: 1.7 }
+.plan-side small { color: #9a8bd0; font-size: 12px }
+.plan-split .plan-panel { grid-template-columns: 1fr; gap: 24px; margin: 0; max-width: none; padding: 32px; align-items: start; position: relative }
+.plan-split .plan-info { display: grid; gap: 4px }
+.plan-split .plan-info h3 { margin: 12px 0 10px }
+.plan-split .compare-flag { position: static; justify-self: start; margin-bottom: 14px }
+.plan-split .plan-lanes { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+.plan-split .lane b { width: 62px; font-size: 11px }
+.plan-split .lane-wave i:nth-child(n+22) { display: none }
+@media (max-width: 900px) { .plan-split { grid-template-columns: 1fr } .plan-split .plan-lanes { grid-template-columns: 1fr } }
