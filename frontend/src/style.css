@@ -2645,3 +2645,29 @@ button.crumb:hover { color: #c7b9ff }
 .faq-a-in { min-height: 0; overflow: hidden }
 .faq-a p { margin: 0; padding: 0 24px 22px; color: #a5a7b5; font-size: 14px; line-height: 1.8 }
 @media (prefers-reduced-motion: reduce) { .faq-item, .faq-a, .faq-q i { animation: none; transition: none } }
+
+/* library page */
+.library-heading { margin: 36px 0 16px }
+.lib-count { font-size: 13px; color: #8e919f }
+.lib-count b { color: #d8caff; font-weight: 600; margin: 0 2px }
+.search { padding: 10px 14px; gap: 10px; font-size: 14px }
+.search input { width: 220px; font-size: 13px }
+.table-header, .library-row { grid-template-columns: minmax(200px, 1fr) 190px 80px 120px 28px; gap: 20px }
+.table-header { padding: 14px 24px; font-size: 12px; letter-spacing: .2px }
+.library-row { padding: 16px 24px }
+.song-icon { width: 42px; height: 44px; font-size: 26px }
+.song-cell { gap: 16px }
+.song-cell strong { font-size: 15px; max-width: 520px }
+.song-cell small { font-size: 12px; margin-top: 6px }
+.model-label { font-size: 13px }
+.duration { font-size: 13px }
+.badge { font-size: 12px; padding: 6px 11px }
+.arrow { font-size: 15px; text-align: right }
+.empty { font-size: 14px }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 24px }
+.pager button { min-width: 36px; height: 36px; padding: 0 10px; border: 1px solid #282a33; border-radius: 8px; background: #14151c; color: #a2a4b1; font-size: 13px; font-variant-numeric: tabular-nums; cursor: pointer }
+.pager button:hover:not(:disabled):not(.active) { background: #1c1b26; color: #d8caff }
+.pager button.active { background: #292536; border-color: #4a3d66; color: #d8caff }
+.pager button:disabled { opacity: .35; cursor: default }
+.pager .gap { color: #696d7c; padding: 0 2px }
+@media (max-width: 900px) { .search input { width: 140px } .table-header, .library-row { grid-template-columns: minmax(0, 1fr) 90px 28px } .model-label, .table-header>span:nth-child(2), .duration, .table-header>span:nth-child(3) { display: none } }
