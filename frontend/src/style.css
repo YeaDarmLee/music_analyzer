@@ -2701,3 +2701,24 @@ button.crumb:hover { color: #c7b9ff }
 .session-foot span { font-size: 12px }
 .session .track-loading h2 { font-size: 20px }
 .session .track-loading p, .session .progress-caption { font-size: 13px }
+
+/* home sample player */
+.sp { border: 1px solid #2b2d38; border-radius: 12px; background: #101117; overflow: hidden }
+.sp-bar { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: #171820; border-bottom: 1px solid #2b2d38 }
+.sp-play { width: 40px; height: 40px; border-radius: 50%; background: #b6a2ff; color: #171321; font-size: 14px; flex-shrink: 0 }
+.sp-time { font-size: 14px; color: #8e919f; font-variant-numeric: tabular-nums }
+.sp-time b { font-size: 18px; color: #f0ecff; font-weight: 600 }
+.sp-hint { margin-left: auto; font-size: 12px; color: #7b7f90 }
+.sp-row { display: grid; grid-template-columns: 180px minmax(0, 1fr); height: 68px; border-top: 1px solid #262833 }
+.sp-bar + .sp-row { border-top: 0 }
+.sp-info { display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 0 18px; background: #171820; border-left: 3px solid var(--c); border-right: 1px solid #2c2e3b }
+.sp-info b { font-size: 14px; font-weight: 600; color: var(--c) }
+.sp-info div { display: flex; gap: 6px }
+.sp-info button { width: 28px; height: 24px; border-radius: 4px; background: #252733; color: #82889d; font-size: 12px }
+.sp-info button.on { background: var(--c); color: #14151b }
+.sp-wave { position: relative; display: flex; align-items: center; gap: 1px; padding: 8px 6px; cursor: pointer; overflow: hidden; transition: opacity .25s }
+.sp-wave i { flex: 1; min-width: 0; align-self: center; border-radius: 1px; background: var(--c) }
+.sp-row.off .sp-wave { opacity: .3 }
+.sp-head { position: absolute; top: 0; bottom: 0; width: 2px; background: #efe9ff; box-shadow: 0 0 8px #fff8; pointer-events: none }
+.sp-note { margin: 0; padding: 14px 20px; border-top: 1px solid #262833; font-size: 12px; color: #7b7f90 }
+@media (max-width: 700px) { .sp-row { grid-template-columns: 110px minmax(0, 1fr) } .sp-hint { display: none } .sp-info { padding: 0 10px } }
