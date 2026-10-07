@@ -99,8 +99,9 @@ def evaluate(folder, root, row):
             raise ValueError('Prepared mixture differs from the audio actually analyzed')
         outputs = {t['family']: sf.read(library.track_path(row,t['family']), dtype='float32', always_2d=True)[0]
                    for t in row['tracks']}
-        if len(outputs) != 12:
-            raise ValueError('Expected all twelve raw outputs, including hidden silent tracks')
+        expected=13 if row.get('separation_version') in ('staged-context-percussion-v11','staged-context-percussion-v12','staged-context-strings-v13','staged-context-backing-v14','staged-context-families-v15') else 12
+        if len(outputs) != expected:
+            raise ValueError('Expected all raw outputs, including hidden silent tracks')
         candidate = {name: audio.copy() for name,audio in outputs.items()}
         for family in ('synth','strings','brass'):
             recovery = row.get(family+'_recovery')
@@ -125,7 +126,7 @@ def evaluate(folder, root, row):
             if family == 'guitar_total':
                 reference_names = ['acoustic_guitar', 'guitar']
             else:
-                reference_names = [family]
+                reference_names = ['percussion','pitched_percussion'] if family=='percussion' else [family]
             for name in reference_names:
                 reference = prepared['references'].get(name)
                 if reference:
@@ -164,7 +165,7 @@ def evaluate(folder, root, row):
             if {'piano','guitar','bass','drums'}.issubset(families):
                 stem = next(s for s in stems if s['family']=='guitar')
                 guitar_stage_scores['base_guitar'] = score(guitar_target,sf.read(result_folder/stem['path'],dtype='float32',always_2d=True)[0],mixture)
-            if index == len(row['job_ids'])-1 and {'acoustic-guitar','electric-guitar','synth'}.issubset(families):
+            if identifier == row.get('tonal_job_id',row['job_ids'][-1]) and {'acoustic-guitar','electric-guitar','synth'}.issubset(families):
                 discarded = sum((sf.read(result_folder/s['path'],dtype='float32',always_2d=True)[0]
                                  for s in stems if s['family'] in ('acoustic-guitar','electric-guitar')),np.zeros_like(mixture))
                 guitar_stage_scores['discarded_residual_guitars'] = score(guitar_target,discarded,mixture)
@@ -177,7 +178,8 @@ def evaluate(folder, root, row):
                      'prepared_sha256': sha256_file(folder/'prepared.json'),
                      'preset_sha256': sha256_file(project_root()/'separation/configs/presets/demucs.json'),
                      'implementation_sha256': {name: sha256_file(Path(__file__).parent/name)
-                         for name in ('web_server.py','synth_recovery.py','part_study.py','roformer_runner.py')},
+                         for name in ('web_server.py','synth_recovery.py','part_study.py','roformer_runner.py',
+                                      'instrumental_restoration.py','percussion_refinement.py','piano_drum_refinement.py')},
                      'job_ids': row['job_ids']},
                   'outputs': {t['family']: str(library.track_path(row,t['family'])) for t in row['tracks']},
                   'sum_error_rms': float(np.sqrt(np.mean((sum(outputs.values())-mixture)**2)))}
@@ -186,7 +188,7 @@ def evaluate(folder, root, row):
             '<!doctype html><meta charset="utf-8"><title>Reference comparison</title>'
             '<style>body{font:16px system-ui;max-width:1200px;margin:32px auto;padding:16px;background:#111;color:#eee}'
             'table{border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #444}audio{width:280px}</style>'
-            '<h1>'+html.escape(prepared['name'])+'</h1><p>정답 / 현재 12트랙 / 보완 제거 후보. 모든 플레이어는 같은 고정 재생 음량입니다. 새 트랙을 재생하면 이전 트랙의 위치를 이어 듣습니다.</p>'
+            '<h1>'+html.escape(prepared['name'])+f'</h1><p>정답 / 현재 {expected}트랙 / 보완 제거 후보. 모든 플레이어는 같은 고정 재생 음량입니다. 새 트랙을 재생하면 이전 트랙의 위치를 이어 듣습니다.</p>'
             '<p>입력 믹스 <audio controls src="mix.wav"></audio></p>'
             '<table><thead><tr><th>트랙</th><th>정답 stem</th><th>현재 결과</th><th>보완 제거 후보</th></tr></thead><tbody>'
             +''.join(listening_rows)+'</tbody></table><script>let previous;const players=[...document.querySelectorAll("audio")];'
@@ -205,7 +207,7 @@ def run(folder):
     from .web_server import WebLibrary
     prepared = read_json(folder/'prepared.json')
     root = folder/'library'
-    for model_id in ('melband_roformer_kj','bs_roformer_6s','bs_karaoke','bs_roformer_mega5'):
+    for model_id in ('melband_roformer_kj','bs_roformer_6s','bs_karaoke','bs_roformer_mega5','bs_roformer_mega7'):
         checkpoint, registration = paths(project_root()/'data/separation',model_id)
         destination = root/'models'/model_id
         destination.mkdir(parents=True,exist_ok=True)

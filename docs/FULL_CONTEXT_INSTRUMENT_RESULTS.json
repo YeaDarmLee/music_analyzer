@@ -1,0 +1,1136 @@
+[
+  {
+    "case": "phoenix-30-50",
+    "job_id": "job_4f71260018a94426bd20fe7e96d6fd70",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03282972661795049,
+          "output_rms": 0.03183045922531218,
+          "error_rms": 0.013277868100986972,
+          "raw_sdr_db": 7.862778321929572,
+          "si_sdr_db": 7.17833456811649,
+          "output_to_mix_db": -5.9696441628636325,
+          "target_gain": 0.8882368623224546,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03282972661795049,
+          "output_rms": 0.03205334972703526,
+          "error_rms": 0.013806244907481164,
+          "raw_sdr_db": 7.523833864659321,
+          "si_sdr_db": 6.812388184110944,
+          "output_to_mix_db": -5.909033808319382,
+          "target_gain": 0.8882036819970947,
+          "silence_output_dbfs": null
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.859546902330421e-05,
+          "error_rms": 5.859546902330421e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -60.669221551754106,
+          "target_gain": null,
+          "silence_output_dbfs": -84.6427193022509
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0013017200349507284,
+          "error_rms": 0.0013017200349507284,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -33.73615046578397,
+          "target_gain": null,
+          "silence_output_dbfs": -57.70964821628077
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0025356787025243607,
+          "error_rms": 0.0025356787025243607,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -27.944617790236773,
+          "target_gain": null,
+          "silence_output_dbfs": -51.91811554073357
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.001668321880818622,
+          "error_rms": 0.001668321880818622,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -31.580905333336133,
+          "target_gain": null,
+          "silence_output_dbfs": -55.55440308383293
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03662895093448057,
+          "output_rms": 0.02803483389596748,
+          "error_rms": 0.021320325649538972,
+          "raw_sdr_db": 4.700612932484301,
+          "si_sdr_db": 2.9510944455830437,
+          "output_to_mix_db": -7.072542503825922,
+          "target_gain": 0.6235002438255061,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03662895093448057,
+          "output_rms": 0.027617641089736723,
+          "error_rms": 0.021074024836972103,
+          "raw_sdr_db": 4.801539858906158,
+          "si_sdr_db": 3.1431116313980354,
+          "output_to_mix_db": -7.2027706223342705,
+          "target_gain": 0.6187390307208422,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00010655087558661032,
+          "error_rms": 0.00010655087558661032,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -55.475361791516924,
+          "target_gain": null,
+          "silence_output_dbfs": -79.44885954201372
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00017842799145718476,
+          "error_rms": 0.00017842799145718476,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -50.99724251531565,
+          "target_gain": null,
+          "silence_output_dbfs": -74.97074026581244
+        }
+      }
+    }
+  },
+  {
+    "case": "rainfall-40-60",
+    "job_id": "job_fdf9b6e405d0470c9c018a0749861139",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.04487647753354885,
+          "output_rms": 0.04389638444687777,
+          "error_rms": 0.005079021462518746,
+          "raw_sdr_db": 18.92477425383438,
+          "si_sdr_db": 18.952463190137266,
+          "output_to_mix_db": -3.473497542215162,
+          "target_gain": 0.9719940845765048,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.04487647753354885,
+          "output_rms": 0.043913396164101684,
+          "error_rms": 0.005024546547909233,
+          "raw_sdr_db": 19.018437736055297,
+          "si_sdr_db": 19.046443341698364,
+          "output_to_mix_db": -3.4701320423999613,
+          "target_gain": 0.9725016043025555,
+          "silence_output_dbfs": null
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.015074629929976139,
+          "output_rms": 0.014265171935074055,
+          "error_rms": 0.0023281779655193436,
+          "raw_sdr_db": 16.22460969443587,
+          "si_sdr_db": 16.471788145445693,
+          "output_to_mix_db": -13.236532348126165,
+          "target_gain": 0.9358185698748975,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.015074629929976139,
+          "output_rms": 0.014507422488136764,
+          "error_rms": 0.002084613353267349,
+          "raw_sdr_db": 17.184422879860858,
+          "si_sdr_db": 17.29165735168964,
+          "output_to_mix_db": -13.090267380871348,
+          "target_gain": 0.9535197196678411,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00013736818891834957,
+          "error_rms": 0.00013736818891834957,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -53.564349108090354,
+          "target_gain": null,
+          "silence_output_dbfs": -77.2422765502966
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.251580862409497e-05,
+          "error_rms": 2.251580862409497e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -69.27232158451186,
+          "target_gain": null,
+          "silence_output_dbfs": -92.9502490267181
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.1166865496052252e-06,
+          "error_rms": 1.1166865496052252e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.36344685520609,
+          "target_gain": null,
+          "silence_output_dbfs": -119.04137429741232
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.595688952828e-05,
+          "error_rms": 6.595688952828e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -59.936869227973105,
+          "target_gain": null,
+          "silence_output_dbfs": -83.61479667017935
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.7986680389362063e-07,
+          "error_rms": 2.7986680389362063e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -107.38304479503066,
+          "target_gain": null,
+          "silence_output_dbfs": -131.0609722372369
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.346031004967422e-06,
+          "error_rms": 3.346031004967422e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -85.83147333976788,
+          "target_gain": null,
+          "silence_output_dbfs": -109.50940078197412
+        }
+      }
+    }
+  },
+  {
+    "case": "rainfall-guitars-only-40-60",
+    "job_id": "job_c4ea522d122b4a0c94945b5c9f6cf725",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.04487647753354885,
+          "output_rms": 0.04449459404752573,
+          "error_rms": 0.0021812409916265882,
+          "raw_sdr_db": 26.266302200594673,
+          "si_sdr_db": 26.35686151443794,
+          "output_to_mix_db": -0.5318579421253454,
+          "target_gain": 0.9903453044605467,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.04487647753354885,
+          "output_rms": 0.04448660241172396,
+          "error_rms": 0.002123419734901864,
+          "raw_sdr_db": 26.499658227817026,
+          "si_sdr_db": 26.603584690161245,
+          "output_to_mix_db": -0.5334181474170373,
+          "target_gain": 0.9902305507917399,
+          "silence_output_dbfs": null
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.015074629929976139,
+          "output_rms": 0.014424954726570422,
+          "error_rms": 0.0020706316477313107,
+          "raw_sdr_db": 17.24287623678395,
+          "si_sdr_db": 17.44342448375887,
+          "output_to_mix_db": -10.315713742216401,
+          "target_gain": 0.9483977226419017,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.015074629929976139,
+          "output_rms": 0.014466421405315743,
+          "error_rms": 0.0020645715931262394,
+          "raw_sdr_db": 17.268334237330013,
+          "si_sdr_db": 17.42530813737194,
+          "output_to_mix_db": -10.290780679775047,
+          "target_gain": 0.9510888529988489,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.708995721254939e-07,
+          "error_rms": 5.708995721254939e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.3668085674371,
+          "target_gain": null,
+          "silence_output_dbfs": -124.86880564971418
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.4314071514018222e-05,
+          "error_rms": 1.4314071514018222e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -70.382739264795,
+          "target_gain": null,
+          "silence_output_dbfs": -96.88473634707209
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.0379367314563953e-06,
+          "error_rms": 2.0379367314563953e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -87.31418897697307,
+          "target_gain": null,
+          "silence_output_dbfs": -113.81618605925014
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.054391034629387e-05,
+          "error_rms": 4.054391034629387e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -61.33949026051908,
+          "target_gain": null,
+          "silence_output_dbfs": -87.84148734279617
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.26165345335107e-07,
+          "error_rms": 7.26165345335107e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.27729253152424,
+          "target_gain": null,
+          "silence_output_dbfs": -122.77928961380132
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.0921745279900496e-06,
+          "error_rms": 3.0921745279900496e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -83.69272295145223,
+          "target_gain": null,
+          "silence_output_dbfs": -110.19472003372931
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-brass-60-75",
+    "job_id": "job_33e91bdf6d3145ed963f9e2e78f3bb69",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0006378719670643398,
+          "error_rms": 0.0006378719670643398,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -46.06957087630417,
+          "target_gain": null,
+          "silence_output_dbfs": -63.90532967251943
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0015789334314100856,
+          "error_rms": 0.0015789334314100856,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -38.1969647971679,
+          "target_gain": null,
+          "silence_output_dbfs": -56.03272359338316
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05537359065836526,
+          "error_rms": 0.02577085557511588,
+          "raw_sdr_db": 7.299095714252183,
+          "si_sdr_db": 6.421895616428673,
+          "output_to_mix_db": -7.298187485377689,
+          "target_gain": 0.8368165306936228,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05228572003947838,
+          "error_rms": 0.021708764466403428,
+          "raw_sdr_db": 8.788970321723632,
+          "si_sdr_db": 8.30132274270434,
+          "output_to_mix_db": -7.796579340345875,
+          "target_gain": 0.8172461424103167,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016035170050820762,
+          "error_rms": 0.016035170050820762,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -18.06276980531626,
+          "target_gain": null,
+          "silence_output_dbfs": -35.89852860153152
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.010444163500019117,
+          "error_rms": 0.010444163500019117,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -21.786767964894732,
+          "target_gain": null,
+          "silence_output_dbfs": -39.62252676110999
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.02258620239811278,
+          "error_rms": 0.015127137094024315,
+          "raw_sdr_db": 4.38903846003221,
+          "si_sdr_db": 2.6027522961806744,
+          "output_to_mix_db": -15.087376891875525,
+          "target_gain": 0.7237340440493656,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.02104212804945773,
+          "error_rms": 0.016177678833759885,
+          "raw_sdr_db": 3.805849129409269,
+          "si_sdr_db": 1.560282124288159,
+          "output_to_mix_db": -15.702448021335453,
+          "target_gain": 0.6439993268367123,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.04605914569241847,
+          "output_rms": 0.03520549291725922,
+          "error_rms": 0.02392498453408499,
+          "raw_sdr_db": 5.689284253568871,
+          "si_sdr_db": 4.526715913198622,
+          "output_to_mix_db": -11.232032617435763,
+          "target_gain": 0.6572093260562034,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.04605914569241847,
+          "output_rms": 0.03842620810708894,
+          "error_rms": 0.023233477430192995,
+          "raw_sdr_db": 5.944033229016467,
+          "si_sdr_db": 4.689032571418252,
+          "output_to_mix_db": -10.471690594600542,
+          "target_gain": 0.7207879627569433,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-no-brass-60-75",
+    "job_id": "job_5382bd8834fa48149c644f13f6edf611",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0005241897949114226,
+          "error_rms": 0.0005241897949114226,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -47.14164661340134,
+          "target_gain": null,
+          "silence_output_dbfs": -65.61022876572038
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0008106714884030291,
+          "error_rms": 0.0008106714884030291,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -43.354519867709904,
+          "target_gain": null,
+          "silence_output_dbfs": -61.82310202002895
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05292990083386302,
+          "error_rms": 0.01906094664731909,
+          "raw_sdr_db": 9.918783140949863,
+          "si_sdr_db": 9.646742811542877,
+          "output_to_mix_db": -7.057396241177503,
+          "target_gain": 0.8418864049528746,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05424406769585399,
+          "error_rms": 0.016567116233894792,
+          "raw_sdr_db": 11.13673407096464,
+          "si_sdr_db": 10.969701398486224,
+          "output_to_mix_db": -6.844372861907511,
+          "target_gain": 0.8740936790173078,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016016305120325692,
+          "error_rms": 0.016016305120325692,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -17.440171171934704,
+          "target_gain": null,
+          "silence_output_dbfs": -35.90875332425375
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.012647836514642083,
+          "error_rms": 0.012647836514642083,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -19.491092981885583,
+          "target_gain": null,
+          "silence_output_dbfs": -37.95967513420463
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.02328785977235375,
+          "error_rms": 0.012658916926507894,
+          "raw_sdr_db": 5.936242319926166,
+          "si_sdr_db": 4.750579178879756,
+          "output_to_mix_db": -14.188826300917746,
+          "target_gain": 0.803880406205311,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.022425031994758995,
+          "error_rms": 0.013856312366803297,
+          "raw_sdr_db": 5.151220012547258,
+          "si_sdr_db": 3.639933816983085,
+          "output_to_mix_db": -14.516756420816673,
+          "target_gain": 0.7472589247926313,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.002207396399600188,
+          "error_rms": 0.002207396399600188,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -34.65381125059625,
+          "target_gain": null,
+          "silence_output_dbfs": -53.1223934029153
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0011541161661491098,
+          "error_rms": 0.0011541161661491098,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -40.28642735970179,
+          "target_gain": null,
+          "silence_output_dbfs": -58.755009512020834
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-quiet-brass-60-75",
+    "job_id": "job_a2c43ce069e340e793a9ca41c49e574d",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0005488968781968769,
+          "error_rms": 0.0005488968781968769,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -46.75143706231567,
+          "target_gain": null,
+          "silence_output_dbfs": -65.210184784467
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0008043045133689984,
+          "error_rms": 0.0008043045133689984,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -43.43284216263778,
+          "target_gain": null,
+          "silence_output_dbfs": -61.89158988478912
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05413544620430617,
+          "error_rms": 0.01859955478487007,
+          "raw_sdr_db": 10.1316214819327,
+          "si_sdr_db": 9.788863395314563,
+          "output_to_mix_db": -6.871617862945154,
+          "target_gain": 0.8624210564976885,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.05971502559521593,
+          "output_rms": 0.05438166365161376,
+          "error_rms": 0.016804348354633417,
+          "raw_sdr_db": 11.013238937834025,
+          "si_sdr_db": 10.807602942719983,
+          "output_to_mix_db": -6.832202488779347,
+          "target_gain": 0.8750793641170989,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.02208669513421258,
+          "error_rms": 0.02208669513421258,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -14.65863754607093,
+          "target_gain": null,
+          "silence_output_dbfs": -33.117385268222264
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.012435920913369692,
+          "error_rms": 0.012435920913369692,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -19.647693248438365,
+          "target_gain": null,
+          "silence_output_dbfs": -38.1064409705897
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.023091433686200497,
+          "error_rms": 0.012281473711517433,
+          "raw_sdr_db": 6.199163657513063,
+          "si_sdr_db": 5.062629270980425,
+          "output_to_mix_db": -14.27223431878954,
+          "target_gain": 0.8041217744189079,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.022241664861807633,
+          "error_rms": 0.013895485321630492,
+          "raw_sdr_db": 5.126698920816474,
+          "si_sdr_db": 3.5908473185999683,
+          "output_to_mix_db": -14.597906427890589,
+          "target_gain": 0.7398801413956231,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.004605914648360485,
+          "output_rms": 0.002359044870655122,
+          "error_rms": 0.004969271166260138,
+          "raw_sdr_db": -0.6595362079372253,
+          "si_sdr_db": -20.315624012616794,
+          "output_to_mix_db": -34.08652824697364,
+          "target_gain": 0.04916192856050822,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.004605914648360485,
+          "output_rms": 0.0014538908500103301,
+          "error_rms": 0.00482630161004692,
+          "raw_sdr_db": -0.40597145878285196,
+          "si_sdr_db": -51.641143461061404,
+          "output_to_mix_db": -38.290616210903465,
+          "target_gain": 0.0008263499878729878,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-no-pad-15-30",
+    "job_id": "job_451a527a5e5d4bb6bc0ff0999a1dab77",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3723059331011748e-09,
+          "error_rms": 1.3723059331011748e-09,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -154.37960272892727,
+          "target_gain": null,
+          "silence_output_dbfs": -177.25098118007037
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00013730314061263923,
+          "error_rms": 0.00013730314061263923,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.37501212456759,
+          "target_gain": null,
+          "silence_output_dbfs": -77.24639057571069
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 3.3756875238621146e-10,
+          "error_rms": 0.014193462113202328,
+          "raw_sdr_db": -1.62496410600628e-09,
+          "si_sdr_db": null,
+          "output_to_mix_db": -166.56137677641476,
+          "target_gain": -1.87080392627224e-10,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 0.0063310288915598605,
+          "error_rms": 0.011315099334706851,
+          "raw_sdr_db": 1.968599435892928,
+          "si_sdr_db": -1.7811638376739605,
+          "output_to_mix_db": -21.099135640403823,
+          "target_gain": 0.28171347790470463,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.004668372555031827,
+          "error_rms": 0.004668372555031827,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -23.745311404568213,
+          "target_gain": null,
+          "silence_output_dbfs": -46.616689855711314
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0070546061362900874,
+          "error_rms": 0.0070546061362900874,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -20.159166112948228,
+          "target_gain": null,
+          "silence_output_dbfs": -43.03054456409132
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.037025159555209124,
+          "error_rms": 0.007741779751136159,
+          "raw_sdr_db": 13.646152488531552,
+          "si_sdr_db": 13.480191785949122,
+          "output_to_mix_db": -5.758682774176281,
+          "target_gain": 0.9723367480063021,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.035383770060749324,
+          "error_rms": 0.009448350788408902,
+          "raw_sdr_db": 11.91584854484616,
+          "si_sdr_db": 11.649722105622715,
+          "output_to_mix_db": -6.152539466161464,
+          "target_gain": 0.918943724606563,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.2998082579976465e-05,
+          "error_rms": 3.2998082579976465e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.75884744774086,
+          "target_gain": null,
+          "silence_output_dbfs": -89.63022589888396
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.107149978379802e-05,
+          "error_rms": 5.107149978379802e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -62.9650493150813,
+          "target_gain": null,
+          "silence_output_dbfs": -85.83642776622439
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "job_id": "job_807422b40d29456e8a301da3a5784036",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3930780652443108e-09,
+          "error_rms": 1.3930780652443108e-09,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -155.3707351535716,
+          "target_gain": null,
+          "silence_output_dbfs": -177.12049091839972
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00041431160666742956,
+          "error_rms": 0.00041431160666742956,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -45.9037022363066,
+          "target_gain": null,
+          "silence_output_dbfs": -67.65345800113472
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 3.5469240524038546e-10,
+          "error_rms": 0.014193462108233485,
+          "raw_sdr_db": 1.4157937633563663e-09,
+          "si_sdr_db": null,
+          "output_to_mix_db": -167.25320644811276,
+          "target_gain": 1.6299966651337417e-10,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 0.004298486435604962,
+          "error_rms": 0.014276853856469152,
+          "raw_sdr_db": -0.05088342357145896,
+          "si_sdr_db": -17.51482602925121,
+          "output_to_mix_db": -25.58393302302086,
+          "target_gain": 0.03996636197747749,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03790042783967011,
+          "output_rms": 0.0032722426258376346,
+          "error_rms": 0.037855377715891834,
+          "raw_sdr_db": 0.010330573256462354,
+          "si_sdr_db": -24.879450228750173,
+          "output_to_mix_db": -27.953334281666006,
+          "target_gain": 0.004915052605109548,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03790042783967011,
+          "output_rms": 0.005321642528998121,
+          "error_rms": 0.03806462172211369,
+          "raw_sdr_db": -0.03754811380548498,
+          "si_sdr_db": -28.109062261358858,
+          "output_to_mix_db": -23.72933026903686,
+          "target_gain": 0.005516017368036747,
+          "silence_output_dbfs": null
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.05054901719981773,
+          "error_rms": 0.035009447148079825,
+          "raw_sdr_db": 0.5392636703978146,
+          "si_sdr_db": 0.3574460642534058,
+          "output_to_mix_db": -4.175989910556396,
+          "target_gain": 0.9790436763204817,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.04734391309552561,
+          "error_rms": 0.03305828044907107,
+          "raw_sdr_db": 1.0373635300174548,
+          "si_sdr_db": 0.29598449564541224,
+          "output_to_mix_db": -4.744961222642821,
+          "target_gain": 0.9138476633807785,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.499880970724864e-05,
+          "error_rms": 3.499880970724864e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.36917874608869,
+          "target_gain": null,
+          "silence_output_dbfs": -89.1189345109168
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.783015080279226e-05,
+          "error_rms": 5.783015080279226e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.007157739010026,
+          "target_gain": null,
+          "silence_output_dbfs": -84.75691350383813
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-quiet-pad-15-30",
+    "job_id": "job_79b5a7aa3fc2454a892ecd6df484aae4",
+    "metrics": {
+      "acoustic_guitar": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.465255169423971e-09,
+          "error_rms": 1.465255169423971e-09,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -153.8295356541126,
+          "target_gain": null,
+          "silence_output_dbfs": -176.68173475503204
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00014567455799972289,
+          "error_rms": 0.00014567455799972289,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -53.880126718197204,
+          "target_gain": null,
+          "silence_output_dbfs": -76.73232581911665
+        }
+      },
+      "guitar": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 3.208100524357572e-10,
+          "error_rms": 0.014193462110686124,
+          "raw_sdr_db": -8.513806120415786e-11,
+          "si_sdr_db": null,
+          "output_to_mix_db": -167.0228415342084,
+          "target_gain": -9.801490085640906e-12,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.014193462110547006,
+          "output_rms": 0.006905076886963458,
+          "error_rms": 0.011254181234925479,
+          "raw_sdr_db": 2.0154887618522257,
+          "si_sdr_db": -1.934832420507552,
+          "output_to_mix_db": -20.364430524211006,
+          "target_gain": 0.3039841236657412,
+          "silence_output_dbfs": null
+        }
+      },
+      "synth": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.0037900428490706193,
+          "output_rms": 0.0047068119611215755,
+          "error_rms": 0.006015398349600383,
+          "raw_sdr_db": -4.012405446560749,
+          "si_sdr_db": -40.58706818199067,
+          "output_to_mix_db": -23.693263930520363,
+          "target_gain": 0.011608064209599518,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.0037900428490706193,
+          "output_rms": 0.007202719575651358,
+          "error_rms": 0.00809258106372155,
+          "raw_sdr_db": -6.58885876890554,
+          "si_sdr_db": -37.19852895792518,
+          "output_to_mix_db": -19.997870765751248,
+          "target_gain": 0.026235850755186075,
+          "silence_output_dbfs": null
+        }
+      },
+      "strings": {
+        "staged": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.03696721923973323,
+          "error_rms": 0.008181601430557055,
+          "raw_sdr_db": 13.16620234595467,
+          "si_sdr_db": 12.97780937731276,
+          "output_to_mix_db": -5.791465235879201,
+          "target_gain": 0.9682686653366951,
+          "silence_output_dbfs": null
+        },
+        "full_context": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.035463701371963446,
+          "error_rms": 0.009786514832610116,
+          "raw_sdr_db": 11.61040755023922,
+          "si_sdr_db": 11.311403151460118,
+          "output_to_mix_db": -6.152119673935386,
+          "target_gain": 0.9186404868131266,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "staged": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.190300979061574e-05,
+          "error_rms": 3.190300979061574e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.0711677559336,
+          "target_gain": null,
+          "silence_output_dbfs": -89.92336685685302
+        },
+        "full_context": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.7638275878380545e-05,
+          "error_rms": 4.7638275878380545e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.588680196373375,
+          "target_gain": null,
+          "silence_output_dbfs": -86.44087929729281
+        }
+      }
+    }
+  }
+]

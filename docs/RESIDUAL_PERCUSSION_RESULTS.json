@@ -1,0 +1,127 @@
+[
+  {
+    "case": "mallet-quiet-94-109",
+    "before": {
+      "reference_absent": false,
+      "reference_rms": 0.0014537722428299932,
+      "output_rms": 0.000983193030633639,
+      "error_rms": 0.0009166762142484378,
+      "raw_sdr_db": 4.005608200536659,
+      "si_sdr_db": 2.0142256058663883,
+      "output_to_mix_db": -33.80434868718985,
+      "target_gain": 0.5298973314824265,
+      "silence_output_dbfs": null
+    },
+    "after": {
+      "reference_absent": false,
+      "reference_rms": 0.0014537722428299932,
+      "output_rms": 0.0011834900951300947,
+      "error_rms": 0.0007493686633837802,
+      "raw_sdr_db": 5.756016888729022,
+      "si_sdr_db": 4.458158654522762,
+      "output_to_mix_db": -32.193831963399774,
+      "target_gain": 0.698512841350975,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "real-no-timpani",
+    "before": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 1.1815112369998584e-07,
+      "error_rms": 1.1815112369998584e-07,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -108.51899827413209,
+      "target_gain": null,
+      "silence_output_dbfs": -138.55124287134194
+    },
+    "after": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 6.517823823122492e-06,
+      "error_rms": 6.517823823122492e-06,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -73.68570305676425,
+      "target_gain": null,
+      "silence_output_dbfs": -103.71794765397411
+    }
+  },
+  {
+    "case": "real-quiet-timpani",
+    "before": {
+      "reference_absent": false,
+      "reference_rms": 0.004510404597663918,
+      "output_rms": 0.0001715484383520764,
+      "error_rms": 0.004474694449598763,
+      "raw_sdr_db": 0.0690423191938049,
+      "si_sdr_db": -12.675714034952104,
+      "output_to_mix_db": -45.37275058753551,
+      "target_gain": 0.008609231099232707,
+      "silence_output_dbfs": null
+    },
+    "after": {
+      "reference_absent": false,
+      "reference_rms": 0.004510404597663918,
+      "output_rms": 0.00017154843835704098,
+      "error_rms": 0.004474694449588114,
+      "raw_sdr_db": 0.06904231921447668,
+      "si_sdr_db": -12.675714032341553,
+      "output_to_mix_db": -45.372750587284145,
+      "target_gain": 0.008609231101617014,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "real-timpani",
+    "before": {
+      "reference_absent": false,
+      "reference_rms": 0.0451040452177841,
+      "output_rms": 0.04000583472865789,
+      "error_rms": 0.010100159315851115,
+      "raw_sdr_db": 12.997745393884292,
+      "si_sdr_db": 13.61508586810909,
+      "output_to_mix_db": -2.7830675058947913,
+      "target_gain": 0.8682835444460413,
+      "silence_output_dbfs": null
+    },
+    "after": {
+      "reference_absent": false,
+      "reference_rms": 0.0451040452177841,
+      "output_rms": 0.04000583472865789,
+      "error_rms": 0.010100159315851115,
+      "raw_sdr_db": 12.997745393884292,
+      "si_sdr_db": 13.615085868109087,
+      "output_to_mix_db": -2.7830675058947913,
+      "target_gain": 0.8682835444460413,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "before": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 0.00010805115827519964,
+      "error_rms": 0.00010805115827519964,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -57.577655700220916,
+      "target_gain": null,
+      "silence_output_dbfs": -79.32741146504904
+    },
+    "after": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 0.000108534174770939,
+      "error_rms": 0.000108534174770939,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -57.538914065487376,
+      "target_gain": null,
+      "silence_output_dbfs": -79.2886698303155
+    }
+  }
+]

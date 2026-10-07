@@ -1,0 +1,290 @@
+[
+  {
+    "case": "mallet-94-109",
+    "group": "stability-v11",
+    "analysis_id": "analysis_135046ffeddf4759bbdf3b00be094175",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_b9b9f008c7ca4d6696676f9c01c9a54f"
+  },
+  {
+    "case": "mallet-no-94-109",
+    "group": "stability-v11",
+    "analysis_id": "analysis_d12ef6a2e5cf4a9bb5b24d79fabeb2dd",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_7831c8d7166e4428a9dc09110ec175b2"
+  },
+  {
+    "case": "mallet-quiet-94-109",
+    "group": "stability-v11",
+    "analysis_id": "analysis_ececf56e3d574e0e890951108eb8c980",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_ed7888eb8422459e89d5b8ac678e625d"
+  },
+  {
+    "case": "percussion-bell_tree",
+    "group": "stability-v11",
+    "analysis_id": "analysis_64f4c65d89684a7e824792a3034e79c9",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_99bf4c2cbb2d45d688069eb9604a0517"
+  },
+  {
+    "case": "percussion-cowbell",
+    "group": "stability-v11",
+    "analysis_id": "analysis_05c1a9ec98d34a2186a91da8f7b8f8a2",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_02345af6fc054f9eb1a7ecdbcc9eac66"
+  },
+  {
+    "case": "percussion-sleigh_bells",
+    "group": "stability-v11",
+    "analysis_id": "analysis_089c2f2670af4e3aab1df2959630043a",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_0dab1d1b906c43b3b930e9dabca3aa15"
+  },
+  {
+    "case": "rainfall-40-60",
+    "group": "stability-v11",
+    "analysis_id": "analysis_be6f14b19ee84afb8fe84333bc1a4e92",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_f3df448de62246998e5010a4eccb59ac"
+  },
+  {
+    "case": "real-brass",
+    "group": "stability-v11",
+    "analysis_id": "analysis_41db8dd339394ff994e1f1bd9386fbdc",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_7f871be88e18439eaa15f45bc93a5753"
+  },
+  {
+    "case": "real-no-timpani",
+    "group": "stability-v11",
+    "analysis_id": "analysis_6960225612ef4b8d80cd4c011ad1790f",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_ad36823a9bcc4b2aa62d35bb39067c23"
+  },
+  {
+    "case": "real-quiet-brass",
+    "group": "stability-v11",
+    "analysis_id": "analysis_50c5538e6d244d0b94a3de0abb9410d8",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_5e186fd889f840b1a8eecb26528b69c5"
+  },
+  {
+    "case": "real-quiet-strings",
+    "group": "stability-v11",
+    "analysis_id": "analysis_2d435c1c3fff426f8612bb5bd5b66cd3",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_7af0a4eedff14948bf11b368ece1546f"
+  },
+  {
+    "case": "real-quiet-timpani",
+    "group": "stability-v11",
+    "analysis_id": "analysis_f82c2709d3fd475abc422a331a4d7681",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_06b1eae44d044ff68fcf07d91fd3d816"
+  },
+  {
+    "case": "real-strings",
+    "group": "stability-v11",
+    "analysis_id": "analysis_019eca7d52c74b78845f41a6efdfa336",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_1a824b515d6b4064a0c7e8faf6d815e6"
+  },
+  {
+    "case": "real-timpani",
+    "group": "stability-v11",
+    "analysis_id": "analysis_7b577b14400d441797b923ab9730b5f7",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_053b9e5599154e70823c635692f1a7e3"
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "group": "stability-v11",
+    "analysis_id": "analysis_8e2aebaff052478780b38cf1ed525cec",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_46c58f6443bc4988a807d8e2c6742e5d"
+  },
+  {
+    "case": "slakh20-quiet-pad-15-30",
+    "group": "stability-v11",
+    "analysis_id": "analysis_4323868082784900bd48f853c677dfe2",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_f68061cec408481894eed9e3a93dec44"
+  },
+  {
+    "case": "piano-only",
+    "group": "controls-v11",
+    "analysis_id": "analysis_713ca55910f24e67af788f3ab967547d",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_abf2e430cedc4903bdae4098b0cd3523"
+  },
+  {
+    "case": "quiet-piano-only",
+    "group": "controls-v11",
+    "analysis_id": "analysis_00abf2c19d074815893e0cf8868c8407",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_f6ee16bb95fd4956bf948b4a5d797811"
+  },
+  {
+    "case": "quiet-vocal-violin",
+    "group": "controls-v11",
+    "analysis_id": "analysis_df82223600eb4929a7084479f34bef17",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_6d010d8842a94a4589fb75920efd82a6"
+  },
+  {
+    "case": "very-quiet-piano-only",
+    "group": "controls-v11",
+    "analysis_id": "analysis_5b004d933bbd4798b449c7f359c751e7",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_3aa285b362554ee4af1a9c7e14207336"
+  },
+  {
+    "case": "very-quiet-vocal-violin",
+    "group": "controls-v11",
+    "analysis_id": "analysis_080697faae7b4fe88f58bb03dc020390",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_7b16ddb4b43b42fe90cb86fad38c58cb"
+  },
+  {
+    "case": "vocal-no-violin",
+    "group": "controls-v11",
+    "analysis_id": "analysis_0f309f0d92054337831a4a6f6fdd5cf6",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_1815ac464c7d4075b6a4879a30f82de8"
+  },
+  {
+    "case": "vocal-quiet-violin",
+    "group": "controls-v11",
+    "analysis_id": "analysis_cf2aff7c4ed544958175311515d72b0a",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_af2953c415854659b814fc24bbbcdfff"
+  },
+  {
+    "case": "vocal-violin",
+    "group": "controls-v11",
+    "analysis_id": "analysis_6e883b8ddb00452ebf9394c13e0dfaf9",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_86a4345198634dcd83477b8076b60be3"
+  },
+  {
+    "case": "phoenix-30-50",
+    "group": "stability-v11",
+    "analysis_id": "analysis_ee89a0755e254a62b4cc1d7502470e01",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_9fdd27867f174d65933835217ab85528"
+  },
+  {
+    "case": "rainfall-guitars-only-40-60",
+    "group": "stability-v11",
+    "analysis_id": "analysis_47cc7039f5fb4229819f8679e3aaf28b",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_dfc99768502d4b0787f113e17c1a8cd3"
+  },
+  {
+    "case": "slakh16-brass-60-75",
+    "group": "stability-v11",
+    "analysis_id": "analysis_16f08560a92e47c3840d418651071145",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_0a19e52c744c40659b4c9c5abf929492"
+  },
+  {
+    "case": "slakh16-no-brass-60-75",
+    "group": "stability-v11",
+    "analysis_id": "analysis_15d9dad69f124ebfbf4ed5080b2c6f78",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_df5ca387b38046a08496640daf8ed47d"
+  },
+  {
+    "case": "slakh16-quiet-brass-60-75",
+    "group": "stability-v11",
+    "analysis_id": "analysis_23c7859c9be44793b78b9748a418581a",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_4bbd72d07bcd4dcfabe8c83b46e65bc9"
+  },
+  {
+    "case": "slakh20-no-pad-15-30",
+    "group": "stability-v11",
+    "analysis_id": "analysis_0084550a357a4f7b8b43b3fb662bcdd4",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_4056ca2f28154645bb0367d96167b15e"
+  },
+  {
+    "case": "real-no-strings",
+    "group": "stability-v11",
+    "analysis_id": "analysis_677f563d70464ba19733e70cafa5520b",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_b9ff72baf4974159bdb0dcff98106e63"
+  },
+  {
+    "case": "real-no-brass",
+    "group": "stability-v11",
+    "analysis_id": "analysis_d90c8d036279439688cbcc8395f01447",
+    "method": "cached-core-plus-new-registered-percussion-inference",
+    "unchanged_other_ten_tracks": true,
+    "original_and_instrumental_sums_verified": true,
+    "percussion_job_id": "job_d3c2b06d30ba4ce58fce880dda6029eb"
+  }
+]

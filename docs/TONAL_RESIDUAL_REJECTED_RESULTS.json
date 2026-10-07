@@ -1,0 +1,1874 @@
+[
+  {
+    "case": "mallet-94-109",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.906999623951214e-06,
+          "error_rms": 9.906999623951214e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -74.12155858492319,
+          "target_gain": null,
+          "silence_output_dbfs": -100.081157069847
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.906999623951214e-06,
+          "error_rms": 9.906999623951214e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -74.12155858492319,
+          "target_gain": null,
+          "silence_output_dbfs": -100.081157069847
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.9764054743043244e-06,
+          "error_rms": 3.9764054743043244e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -82.05058825472362,
+          "target_gain": null,
+          "silence_output_dbfs": -108.01018673964742
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.97672155260859e-06,
+          "error_rms": 3.97672155260859e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -82.04989785426604,
+          "target_gain": null,
+          "silence_output_dbfs": -108.00949633918987
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.74110485173509e-06,
+          "error_rms": 3.74110485173509e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -82.58040390876064,
+          "target_gain": null,
+          "silence_output_dbfs": -108.54000239368446
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.746366383161005e-06,
+          "error_rms": 3.746366383161005e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -82.56819655934149,
+          "target_gain": null,
+          "silence_output_dbfs": -108.52779504426529
+        }
+      }
+    }
+  },
+  {
+    "case": "mallet-no-94-109",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.3584919989370966e-05,
+          "error_rms": 2.3584919989370966e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.19945401655994,
+          "target_gain": null,
+          "silence_output_dbfs": -92.54731185474984
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.3584919989370966e-05,
+          "error_rms": 2.3584919989370966e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.19945401655994,
+          "target_gain": null,
+          "silence_output_dbfs": -92.54731185474984
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.008548553486408e-07,
+          "error_rms": 6.008548553486408e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.0767506629897,
+          "target_gain": null,
+          "silence_output_dbfs": -124.42460850117959
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.023990651614097e-07,
+          "error_rms": 6.023990651614097e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.05445637722535,
+          "target_gain": null,
+          "silence_output_dbfs": -124.40231421541526
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.083262316232631e-07,
+          "error_rms": 7.083262316232631e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.64747565315318,
+          "target_gain": null,
+          "silence_output_dbfs": -122.99533349134308
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.36227562189189e-07,
+          "error_rms": 7.36227562189189e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.31190071941218,
+          "target_gain": null,
+          "silence_output_dbfs": -122.65975855760209
+        }
+      }
+    }
+  },
+  {
+    "case": "mallet-quiet-94-109",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.4016672303474216e-05,
+          "error_rms": 5.4016672303474216e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -59.00656799565374,
+          "target_gain": null,
+          "silence_output_dbfs": -85.34944348062906
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.4016672303474216e-05,
+          "error_rms": 5.4016672303474216e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -59.00656799565374,
+          "target_gain": null,
+          "silence_output_dbfs": -85.34944348062906
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.525595350523187e-07,
+          "error_rms": 8.525595350523187e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.04263019652775,
+          "target_gain": null,
+          "silence_output_dbfs": -121.38550568150308
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.532284817502271e-07,
+          "error_rms": 8.532284817502271e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.03581762962916,
+          "target_gain": null,
+          "silence_output_dbfs": -121.37869311460449
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.609337277182957e-07,
+          "error_rms": 5.609337277182957e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.67889343558438,
+          "target_gain": null,
+          "silence_output_dbfs": -125.02176892055971
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.717492956557406e-07,
+          "error_rms": 5.717492956557406e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.51301174968555,
+          "target_gain": null,
+          "silence_output_dbfs": -124.85588723466087
+        }
+      }
+    }
+  },
+  {
+    "case": "percussion-bell_tree",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.8607631377689915e-07,
+          "error_rms": 1.8607631377689915e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -104.64436795217634,
+          "target_gain": null,
+          "silence_output_dbfs": -134.60617812047772
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.8607631377689915e-07,
+          "error_rms": 1.8607631377689915e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -104.64436795217634,
+          "target_gain": null,
+          "silence_output_dbfs": -134.60617812047772
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.538637478389169e-08,
+          "error_rms": 5.538637478389169e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -115.17013102953243,
+          "target_gain": null,
+          "silence_output_dbfs": -145.1319411978338
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7065994661138829e-07,
+          "error_rms": 1.7065994661138829e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.39555772302663,
+          "target_gain": null,
+          "silence_output_dbfs": -135.357367891328
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.3855776447030675e-08,
+          "error_rms": 5.3855776447030675e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -115.41354400045665,
+          "target_gain": null,
+          "silence_output_dbfs": -145.37535416875807
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.177395318003156e-07,
+          "error_rms": 3.177395318003156e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -99.99676480650095,
+          "target_gain": null,
+          "silence_output_dbfs": -129.95857497480233
+        }
+      }
+    }
+  },
+  {
+    "case": "percussion-cowbell",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.6348553614695907e-07,
+          "error_rms": 1.6348553614695907e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.75974245285298,
+          "target_gain": null,
+          "silence_output_dbfs": -135.73041328202197
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.6348553614695907e-07,
+          "error_rms": 1.6348553614695907e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.75974245285298,
+          "target_gain": null,
+          "silence_output_dbfs": -135.73041328202197
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.503819994783731e-08,
+          "error_rms": 5.503819994783731e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -115.21604473804976,
+          "target_gain": null,
+          "silence_output_dbfs": -145.18671556721873
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.204121900683828e-07,
+          "error_rms": 1.204121900683828e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -108.41592006172256,
+          "target_gain": null,
+          "silence_output_dbfs": -138.38659089089154
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.593318521023853e-08,
+          "error_rms": 8.593318521023853e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -111.34611097673806,
+          "target_gain": null,
+          "silence_output_dbfs": -141.31678180590706
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.748794955232706e-07,
+          "error_rms": 2.748794955232706e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -101.24648226870305,
+          "target_gain": null,
+          "silence_output_dbfs": -131.21715309787203
+        }
+      }
+    }
+  },
+  {
+    "case": "percussion-sleigh_bells",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.665212633577327e-07,
+          "error_rms": 1.665212633577327e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.54988657602031,
+          "target_gain": null,
+          "silence_output_dbfs": -135.57060605764963
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.665212633577327e-07,
+          "error_rms": 1.665212633577327e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.54988657602031,
+          "target_gain": null,
+          "silence_output_dbfs": -135.57060605764963
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.3085063676800056e-08,
+          "error_rms": 5.3085063676800056e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -115.4798336655687,
+          "target_gain": null,
+          "silence_output_dbfs": -145.50055314719802
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.1538724967185643e-07,
+          "error_rms": 1.1538724967185643e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -108.73612408254593,
+          "target_gain": null,
+          "silence_output_dbfs": -138.75684356417526
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.251436479708248e-07,
+          "error_rms": 1.251436479708248e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -108.03110430584303,
+          "target_gain": null,
+          "silence_output_dbfs": -138.05182378747236
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.2938766104042533e-07,
+          "error_rms": 3.2938766104042533e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -99.62513399160636,
+          "target_gain": null,
+          "silence_output_dbfs": -129.64585347323572
+        }
+      }
+    }
+  },
+  {
+    "case": "phoenix-30-50",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0025356787025243607,
+          "error_rms": 0.0025356787025243607,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -27.944617790236773,
+          "target_gain": null,
+          "silence_output_dbfs": -51.91811554073357
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0025356787025243607,
+          "error_rms": 0.0025356787025243607,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -27.944617790236773,
+          "target_gain": null,
+          "silence_output_dbfs": -51.91811554073357
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.03662895093448057,
+          "output_rms": 0.02803483389596748,
+          "error_rms": 0.021320325649538972,
+          "raw_sdr_db": 4.700612932484301,
+          "si_sdr_db": 2.9510944455830437,
+          "output_to_mix_db": -7.072542503825922,
+          "target_gain": 0.6235002438255061,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.03662895093448057,
+          "output_rms": 0.028061552491617615,
+          "error_rms": 0.02131471755914508,
+          "raw_sdr_db": 4.702897966149403,
+          "si_sdr_db": 2.9533057629667274,
+          "output_to_mix_db": -7.064268359782233,
+          "target_gain": 0.6241479086119208,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00010655087558661032,
+          "error_rms": 0.00010655087558661032,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -55.475361791516924,
+          "target_gain": null,
+          "silence_output_dbfs": -79.44885954201372
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00010664172674687291,
+          "error_rms": 0.00010664172674687291,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -55.46795887799496,
+          "target_gain": null,
+          "silence_output_dbfs": -79.44145662849175
+        }
+      }
+    }
+  },
+  {
+    "case": "rainfall-40-60",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00012087799147787402,
+          "error_rms": 0.00012087799147787402,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.675127855681836,
+          "target_gain": null,
+          "silence_output_dbfs": -78.35305529788809
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00012087799147787402,
+          "error_rms": 0.00012087799147787402,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.675127855681836,
+          "target_gain": null,
+          "silence_output_dbfs": -78.35305529788809
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.1366944232739284e-06,
+          "error_rms": 1.1366944232739284e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.20919797155952,
+          "target_gain": null,
+          "silence_output_dbfs": -118.88712541376574
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.152647104044875e-06,
+          "error_rms": 3.152647104044875e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -86.34856535560704,
+          "target_gain": null,
+          "silence_output_dbfs": -110.02649279781326
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.081145921318735e-07,
+          "error_rms": 3.081145921318735e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -106.54782722291976,
+          "target_gain": null,
+          "silence_output_dbfs": -130.225754665126
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.463669172083527e-07,
+          "error_rms": 7.463669172083527e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.86302493745893,
+          "target_gain": null,
+          "silence_output_dbfs": -122.54095237966516
+        }
+      }
+    }
+  },
+  {
+    "case": "rainfall-guitars-only-40-60",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.708995721254939e-07,
+          "error_rms": 5.708995721254939e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.3668085674371,
+          "target_gain": null,
+          "silence_output_dbfs": -124.86880564971418
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.708995721254939e-07,
+          "error_rms": 5.708995721254939e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.3668085674371,
+          "target_gain": null,
+          "silence_output_dbfs": -124.86880564971418
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.0379367314563953e-06,
+          "error_rms": 2.0379367314563953e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -87.31418897697307,
+          "target_gain": null,
+          "silence_output_dbfs": -113.81618605925014
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.202780221869981e-06,
+          "error_rms": 5.202780221869981e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -79.17329330522239,
+          "target_gain": null,
+          "silence_output_dbfs": -105.67529038749947
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.26165345335107e-07,
+          "error_rms": 7.26165345335107e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.27729253152424,
+          "target_gain": null,
+          "silence_output_dbfs": -122.77928961380132
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 7.378933929966647e-07,
+          "error_rms": 7.378933929966647e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.1381304828238,
+          "target_gain": null,
+          "silence_output_dbfs": -122.64012756510087
+        }
+      }
+    }
+  },
+  {
+    "case": "real-brass",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.1592734143736603e-06,
+          "error_rms": 2.1592734143736603e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -83.96260086575222,
+          "target_gain": null,
+          "silence_output_dbfs": -113.31384724747323
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.1592734143736603e-06,
+          "error_rms": 2.1592734143736603e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -83.96260086575222,
+          "target_gain": null,
+          "silence_output_dbfs": -113.31384724747323
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.7458695604283754e-06,
+          "error_rms": 2.7458695604283754e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -81.87515556428238,
+          "target_gain": null,
+          "silence_output_dbfs": -111.22640194600338
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.8258269384257695e-06,
+          "error_rms": 3.8258269384257695e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -78.99424720244937,
+          "target_gain": null,
+          "silence_output_dbfs": -108.34549358417037
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.013045582659719824,
+          "output_rms": 0.011538344521061675,
+          "error_rms": 0.0021011026758278803,
+          "raw_sdr_db": 15.860324101513806,
+          "si_sdr_db": 18.419571850718334,
+          "output_to_mix_db": -9.405883571767928,
+          "target_gain": 0.878168103896803,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.013045582659719824,
+          "output_rms": 0.011555010492424024,
+          "error_rms": 0.002092143660708597,
+          "raw_sdr_db": 15.897439562306058,
+          "si_sdr_db": 18.40059144955292,
+          "output_to_mix_db": -9.393346734828379,
+          "target_gain": 0.879409209231967,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "real-no-brass",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.088015596747262e-08,
+          "error_rms": 6.088015596747262e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -114.27824027533023,
+          "target_gain": null,
+          "silence_output_dbfs": -144.3104848725401
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3180612899152292e-07,
+          "error_rms": 1.3180612899152292e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -107.56904329394133,
+          "target_gain": null,
+          "silence_output_dbfs": -137.60128789115117
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.803293805316478e-08,
+          "error_rms": 9.803293805316478e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -110.14031502948514,
+          "target_gain": null,
+          "silence_output_dbfs": -140.172559626695
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.127597974141571e-07,
+          "error_rms": 3.127597974141571e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -100.06353693979692,
+          "target_gain": null,
+          "silence_output_dbfs": -130.09578153700676
+        }
+      }
+    }
+  },
+  {
+    "case": "real-no-strings",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.088015596747262e-08,
+          "error_rms": 6.088015596747262e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -114.27824027533023,
+          "target_gain": null,
+          "silence_output_dbfs": -144.3104848725401
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3180612899152292e-07,
+          "error_rms": 1.3180612899152292e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -107.56904329394133,
+          "target_gain": null,
+          "silence_output_dbfs": -137.60128789115117
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.803293805316478e-08,
+          "error_rms": 9.803293805316478e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -110.14031502948514,
+          "target_gain": null,
+          "silence_output_dbfs": -140.172559626695
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.127597974141571e-07,
+          "error_rms": 3.127597974141571e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -100.06353693979692,
+          "target_gain": null,
+          "silence_output_dbfs": -130.09578153700676
+        }
+      }
+    }
+  },
+  {
+    "case": "real-no-timpani",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7298654295236448e-07,
+          "error_rms": 1.7298654295236448e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -105.20750901060117,
+          "target_gain": null,
+          "silence_output_dbfs": -135.23975360781102
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.088015596747262e-08,
+          "error_rms": 6.088015596747262e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -114.27824027533023,
+          "target_gain": null,
+          "silence_output_dbfs": -144.3104848725401
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3180612899152292e-07,
+          "error_rms": 1.3180612899152292e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -107.56904329394133,
+          "target_gain": null,
+          "silence_output_dbfs": -137.60128789115117
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.803293805316478e-08,
+          "error_rms": 9.803293805316478e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -110.14031502948514,
+          "target_gain": null,
+          "silence_output_dbfs": -140.172559626695
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.127597974141571e-07,
+          "error_rms": 3.127597974141571e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -100.06353693979692,
+          "target_gain": null,
+          "silence_output_dbfs": -130.09578153700676
+        }
+      }
+    }
+  },
+  {
+    "case": "real-quiet-brass",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.2019496917998906e-07,
+          "error_rms": 2.2019496917998906e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -103.1183158169844,
+          "target_gain": null,
+          "silence_output_dbfs": -133.1438521525468
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.2019496917998906e-07,
+          "error_rms": 2.2019496917998906e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -103.1183158169844,
+          "target_gain": null,
+          "silence_output_dbfs": -133.1438521525468
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.841840109301361e-07,
+          "error_rms": 3.841840109301361e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -98.28367793801094,
+          "target_gain": null,
+          "silence_output_dbfs": -128.30921427357336
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.447726454969306e-07,
+          "error_rms": 5.447726454969306e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.25015781732665,
+          "target_gain": null,
+          "silence_output_dbfs": -125.27569415288907
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.0013045582879701824,
+          "output_rms": 0.0010960017240521616,
+          "error_rms": 0.0003158976608467659,
+          "raw_sdr_db": 12.318341563725623,
+          "si_sdr_db": 13.918271368415223,
+          "output_to_mix_db": -29.17823891822694,
+          "target_gain": 0.8235931478846593,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.0013045582879701824,
+          "output_rms": 0.0011447625320059344,
+          "error_rms": 0.0002859168356161408,
+          "raw_sdr_db": 13.184475192240761,
+          "si_sdr_db": 14.119393667256128,
+          "output_to_mix_db": -28.800155533284403,
+          "target_gain": 0.8609944172986262,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "real-quiet-strings",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.0755851007917684e-07,
+          "error_rms": 2.0755851007917684e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -103.62790124632781,
+          "target_gain": null,
+          "silence_output_dbfs": -133.6571891093894
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.0755851007917684e-07,
+          "error_rms": 2.0755851007917684e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -103.62790124632781,
+          "target_gain": null,
+          "silence_output_dbfs": -133.6571891093894
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.0008229922281470431,
+          "output_rms": 0.0007116080319232952,
+          "error_rms": 0.00014455580771800198,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -32.925895310469045,
+          "target_gain": 0.8583921395295414,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.0008229922281470431,
+          "output_rms": 0.0007673507526207402,
+          "error_rms": 0.00010538542249462152,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -32.27083366870902,
+          "target_gain": 0.9264781233631634,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.319180522444956e-06,
+          "error_rms": 1.319180522444956e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -87.56462752946574,
+          "target_gain": null,
+          "silence_output_dbfs": -117.59391539252734
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3598757243132416e-06,
+          "error_rms": 1.3598757243132416e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -87.30072771528572,
+          "target_gain": null,
+          "silence_output_dbfs": -117.33001557834733
+        }
+      }
+    }
+  },
+  {
+    "case": "real-quiet-timpani",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0047950692012935e-07,
+          "error_rms": 1.0047950692012935e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -110.01893606195596,
+          "target_gain": null,
+          "silence_output_dbfs": -139.9584500960214
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0047950692012935e-07,
+          "error_rms": 1.0047950692012935e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -110.01893606195596,
+          "target_gain": null,
+          "silence_output_dbfs": -139.9584500960214
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.89646623634095e-05,
+          "error_rms": 1.89646623634095e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -64.50158366266264,
+          "target_gain": null,
+          "silence_output_dbfs": -94.44109769672808
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.8963933767322844e-05,
+          "error_rms": 1.8963933767322844e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -64.50191736893419,
+          "target_gain": null,
+          "silence_output_dbfs": -94.44143140299965
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.139680476780627e-08,
+          "error_rms": 2.139680476780627e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -123.45350748522831,
+          "target_gain": null,
+          "silence_output_dbfs": -153.39302151929377
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.274453557909107e-07,
+          "error_rms": 5.274453557909107e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -95.61693651242634,
+          "target_gain": null,
+          "silence_output_dbfs": -125.55645054649177
+        }
+      }
+    }
+  },
+  {
+    "case": "real-strings",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.002162468967659018,
+          "error_rms": 0.002162468967659018,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -23.555377713488966,
+          "target_gain": null,
+          "silence_output_dbfs": -53.30100232254527
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.002162468967659018,
+          "error_rms": 0.002162468967659018,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -23.555377713488966,
+          "target_gain": null,
+          "silence_output_dbfs": -53.30100232254527
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.00822992213754757,
+          "output_rms": 0.002194325678061788,
+          "error_rms": 0.0075212048699996896,
+          "raw_sdr_db": 0.7821661567071853,
+          "si_sdr_db": -6.138157988051166,
+          "output_to_mix_db": -23.428353685618912,
+          "target_gain": 0.11795200863919039,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.00822992213754757,
+          "output_rms": 0.003190661940923992,
+          "error_rms": 0.006549732544854256,
+          "raw_sdr_db": 1.983443205325227,
+          "si_sdr_db": -0.9686168332592883,
+          "output_to_mix_db": -20.176759551315584,
+          "target_gain": 0.25846824890982784,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.314103430401094e-05,
+          "error_rms": 6.314103430401094e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.24814155637168,
+          "target_gain": null,
+          "silence_output_dbfs": -83.99376616542799
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.310434267865632e-05,
+          "error_rms": 6.310434267865632e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.25319044489436,
+          "target_gain": null,
+          "silence_output_dbfs": -83.99881505395066
+        }
+      }
+    }
+  },
+  {
+    "case": "real-timpani",
+    "baseline_version": "staged-guitar-residual-v10",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0947581205554971e-06,
+          "error_rms": 1.0947581205554971e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -94.03917072869223,
+          "target_gain": null,
+          "silence_output_dbfs": -119.21363649340663
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0947581205554971e-06,
+          "error_rms": 1.0947581205554971e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -94.03917072869223,
+          "target_gain": null,
+          "silence_output_dbfs": -119.21363649340663
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.042356268959993e-08,
+          "error_rms": 8.042356268959993e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -116.7178680745306,
+          "target_gain": null,
+          "silence_output_dbfs": -141.89233383924497
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.527538062953614e-08,
+          "error_rms": 8.527538062953614e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -116.20906090384919,
+          "target_gain": null,
+          "silence_output_dbfs": -141.38352666856355
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.343583260924718e-08,
+          "error_rms": 2.343583260924718e-08,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -127.42792648743922,
+          "target_gain": null,
+          "silence_output_dbfs": -152.6023922521536
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 8.614283852772747e-07,
+          "error_rms": 8.614283852772747e-07,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -96.12115066975421,
+          "target_gain": null,
+          "silence_output_dbfs": -121.29561643446861
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-brass-60-75",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016035170050820762,
+          "error_rms": 0.016035170050820762,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -18.06276980531626,
+          "target_gain": null,
+          "silence_output_dbfs": -35.89852860153152
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016035170050820762,
+          "error_rms": 0.016035170050820762,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -18.06276980531626,
+          "target_gain": null,
+          "silence_output_dbfs": -35.89852860153152
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.02258620239811278,
+          "error_rms": 0.015127137094024315,
+          "raw_sdr_db": 4.38903846003221,
+          "si_sdr_db": 2.6027522961806744,
+          "output_to_mix_db": -15.087376891875525,
+          "target_gain": 0.7237340440493656,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.022559101041799787,
+          "error_rms": 0.015082887411167893,
+          "raw_sdr_db": 4.414483532849733,
+          "si_sdr_db": 2.6353054552490462,
+          "output_to_mix_db": -15.09780541490306,
+          "target_gain": 0.723824144148687,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.04605914569241847,
+          "output_rms": 0.03520549291725922,
+          "error_rms": 0.02392498453408499,
+          "raw_sdr_db": 5.689284253568871,
+          "si_sdr_db": 4.526715913198622,
+          "output_to_mix_db": -11.232032617435763,
+          "target_gain": 0.6572093260562034,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.04605914569241847,
+          "output_rms": 0.03510013090049458,
+          "error_rms": 0.023971965170657184,
+          "raw_sdr_db": 5.672244807099899,
+          "si_sdr_db": 4.511003834810118,
+          "output_to_mix_db": -11.258066481729534,
+          "target_gain": 0.6549331011366658,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-no-brass-60-75",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016016305120325692,
+          "error_rms": 0.016016305120325692,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -17.440171171934704,
+          "target_gain": null,
+          "silence_output_dbfs": -35.90875332425375
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.016016305120325692,
+          "error_rms": 0.016016305120325692,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -17.440171171934704,
+          "target_gain": null,
+          "silence_output_dbfs": -35.90875332425375
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.02328785977235375,
+          "error_rms": 0.012658916926507894,
+          "raw_sdr_db": 5.936242319926166,
+          "si_sdr_db": 4.750579178879756,
+          "output_to_mix_db": -14.188826300917746,
+          "target_gain": 0.803880406205311,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.023319427817980003,
+          "error_rms": 0.012673794282437905,
+          "raw_sdr_db": 5.926040246764346,
+          "si_sdr_db": 4.7411703618939445,
+          "output_to_mix_db": -14.177060046475331,
+          "target_gain": 0.8047508396917108,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.002207396399600188,
+          "error_rms": 0.002207396399600188,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -34.65381125059625,
+          "target_gain": null,
+          "silence_output_dbfs": -53.1223934029153
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0022056419741831343,
+          "error_rms": 0.0022056419741831343,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -34.660717488459085,
+          "target_gain": null,
+          "silence_output_dbfs": -53.12929964077813
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh16-quiet-brass-60-75",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.02208669513421258,
+          "error_rms": 0.02208669513421258,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -14.65863754607093,
+          "target_gain": null,
+          "silence_output_dbfs": -33.117385268222264
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.02208669513421258,
+          "error_rms": 0.02208669513421258,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -14.65863754607093,
+          "target_gain": null,
+          "silence_output_dbfs": -33.117385268222264
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.023091433686200497,
+          "error_rms": 0.012281473711517433,
+          "raw_sdr_db": 6.199163657513063,
+          "si_sdr_db": 5.062629270980425,
+          "output_to_mix_db": -14.27223431878954,
+          "target_gain": 0.8041217744189079,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.023134659843514073,
+          "error_rms": 0.01229753197842093,
+          "raw_sdr_db": 6.187814105321461,
+          "si_sdr_db": 5.052219375265886,
+          "output_to_mix_db": -14.255989911673561,
+          "target_gain": 0.8053970858800241,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.004605914648360485,
+          "output_rms": 0.002359044870655122,
+          "error_rms": 0.004969271166260138,
+          "raw_sdr_db": -0.6595362079372253,
+          "si_sdr_db": -20.315624012616794,
+          "output_to_mix_db": -34.08652824697364,
+          "target_gain": 0.04916192856050822,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.004605914648360485,
+          "output_rms": 0.0023558607997498982,
+          "error_rms": 0.00496997500418436,
+          "raw_sdr_db": -0.6607663733719605,
+          "si_sdr_db": -20.39676500696494,
+          "output_to_mix_db": -34.09825976171442,
+          "target_gain": 0.04864322049547707,
+          "silence_output_dbfs": null
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-no-pad-15-30",
+    "baseline_version": "staged-guitar-residual-v8",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.004668372555031827,
+          "error_rms": 0.004668372555031827,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -23.745311404568213,
+          "target_gain": null,
+          "silence_output_dbfs": -46.616689855711314
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.004668372555031827,
+          "error_rms": 0.004668372555031827,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -23.745311404568213,
+          "target_gain": null,
+          "silence_output_dbfs": -46.616689855711314
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.037025159555209124,
+          "error_rms": 0.007741779751136159,
+          "raw_sdr_db": 13.646152488531552,
+          "si_sdr_db": 13.480191785949122,
+          "output_to_mix_db": -5.758682774176281,
+          "target_gain": 0.9723367480063021,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.036984602891270216,
+          "error_rms": 0.0077389776631335404,
+          "raw_sdr_db": 13.64929686018745,
+          "si_sdr_db": 13.480030999946088,
+          "output_to_mix_db": -5.768202349180397,
+          "target_gain": 0.9712708829516368,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.2998082579976465e-05,
+          "error_rms": 3.2998082579976465e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.75884744774086,
+          "target_gain": null,
+          "silence_output_dbfs": -89.63022589888396
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.3182705914018634e-05,
+          "error_rms": 3.3182705914018634e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.71038558741641,
+          "target_gain": null,
+          "silence_output_dbfs": -89.5817640385595
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.03790042783967011,
+          "output_rms": 0.0028166385133011266,
+          "error_rms": 0.037824408741892565,
+          "raw_sdr_db": 0.017439290602709073,
+          "si_sdr_db": -23.842235604194517,
+          "output_to_mix_db": -29.25562196888423,
+          "target_gain": 0.004765240144986284,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.03790042783967011,
+          "output_rms": 0.0028166385133011266,
+          "error_rms": 0.037824408741892565,
+          "raw_sdr_db": 0.017439290602709073,
+          "si_sdr_db": -23.842235604194517,
+          "output_to_mix_db": -29.25562196888423,
+          "target_gain": 0.004765240144986284,
+          "silence_output_dbfs": null
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.05061502022575851,
+          "error_rms": 0.03507332174149639,
+          "raw_sdr_db": 0.5234307393790766,
+          "si_sdr_db": 0.34847735407882474,
+          "output_to_mix_db": -4.164655940599593,
+          "target_gain": 0.9798365774200223,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.051004195759243434,
+          "error_rms": 0.03563062893723281,
+          "raw_sdr_db": 0.3864989553656615,
+          "si_sdr_db": 0.21193248631846134,
+          "output_to_mix_db": -4.098126156297417,
+          "target_gain": 0.9798884228072073,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.5156802518280765e-05,
+          "error_rms": 3.5156802518280765e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.33005684559734,
+          "target_gain": null,
+          "silence_output_dbfs": -89.07981261042548
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.543491589497732e-05,
+          "error_rms": 3.543491589497732e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.26161610921699,
+          "target_gain": null,
+          "silence_output_dbfs": -89.01137187404512
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-quiet-pad-15-30",
+    "baseline_version": "staged-context-percussion-v11",
+    "metrics": {
+      "synth": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.0037900428490706193,
+          "output_rms": 0.0047478655941389294,
+          "error_rms": 0.006047648322759084,
+          "raw_sdr_db": -4.058848170802606,
+          "si_sdr_db": -40.68556333275849,
+          "output_to_mix_db": -23.617832576116953,
+          "target_gain": 0.011577291353843278,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.0037900428490706193,
+          "output_rms": 0.0047478655941389294,
+          "error_rms": 0.006047648322759084,
+          "raw_sdr_db": -4.058848170802606,
+          "si_sdr_db": -40.68556333275849,
+          "output_to_mix_db": -23.617832576116953,
+          "target_gain": 0.011577291353843278,
+          "silence_output_dbfs": null
+        }
+      },
+      "strings": {
+        "before": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.03696013795682699,
+          "error_rms": 0.008181278942296534,
+          "raw_sdr_db": 13.16654471812595,
+          "si_sdr_db": 12.977577347953462,
+          "output_to_mix_db": -5.793129227244242,
+          "target_gain": 0.9680819455262955,
+          "silence_output_dbfs": null
+        },
+        "after": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.036929002165195374,
+          "error_rms": 0.008187752633039419,
+          "raw_sdr_db": 13.159674456312782,
+          "si_sdr_db": 12.967933460416813,
+          "output_to_mix_db": -5.800449438725019,
+          "target_gain": 0.9672148424768321,
+          "silence_output_dbfs": null
+        }
+      },
+      "brass": {
+        "before": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.1405526898483525e-05,
+          "error_rms": 3.1405526898483525e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.20767921768464,
+          "target_gain": null,
+          "silence_output_dbfs": -90.05987831860409
+        },
+        "after": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.170186055742903e-05,
+          "error_rms": 3.170186055742903e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.12610587168899,
+          "target_gain": null,
+          "silence_output_dbfs": -89.97830497260843
+        }
+      }
+    }
+  }
+]

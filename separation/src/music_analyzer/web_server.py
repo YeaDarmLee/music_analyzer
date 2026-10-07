@@ -239,10 +239,19 @@ class WebLibrary:
                 save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
                 return
             if row["model"]=="final_11":
-                save(stage="리드 보컬·코러스 준비",progress=32,completed_chunks=0,total_chunks=0)
+                context_job=run_stage(asset.name,"instrument_mega7",lambda j:update(j,32,8,"원곡 악기 근거 확인 중"))
+                row["job_ids"].append(context_job["job_id"])
+                if context_job["state"]!="SUCCEEDED":raise ValueError("원곡 악기 근거 추출 실패")
+                context_dir=job_folder(self.root,context_job["job_id"])/"result"
+                context=verify_result(context_dir,context_job)
+                from .instrumental_restoration import apply as restore_instrumental
+                row,first=restore_instrumental(self.root,row,first_dir,first,context_dir,context)
+                instrumental=next(s for s in first["stems"] if s["family"]=="instrumental")
+                instrumental_path=str((first_dir/instrumental["path"]).relative_to(self.root))
+                save(stage="리드 보컬·코러스 준비",progress=40,completed_chunks=0,total_chunks=0)
                 vocal_stem=next(t for t in first["stems"] if t["family"]=="vocals")
                 vocal_asset=ingest_file(first_dir/vocal_stem["path"],self.root)
-                detail_job=run_stage(vocal_asset.name,"bs_karaoke",lambda j:update(j,32,18,"리드 보컬·코러스 분리 중"))
+                detail_job=run_stage(vocal_asset.name,"bs_karaoke",lambda j:update(j,40,10,"리드 보컬·코러스 분리 중"))
                 row["job_ids"].append(detail_job["job_id"])
                 if detail_job["state"]!="SUCCEEDED":raise ValueError("리드·코러스 분리 실패")
                 detail_dir=job_folder(self.root,detail_job["job_id"])/"result"
@@ -292,6 +301,7 @@ class WebLibrary:
                 residual_asset=ingest_file(self.root/residual1["path"],self.root)
                 instrument_job=run_stage(residual_asset.name,"instrument_mega5",lambda j:update(j,77,7,"신디·스트링·브라스 분리 중"))
                 row["job_ids"].append(instrument_job["job_id"])
+                row["tonal_job_id"]=instrument_job["job_id"]
                 if instrument_job["state"]!="SUCCEEDED":raise ValueError("나머지 악기 추출 실패")
                 instrument_dir=job_folder(self.root,instrument_job["job_id"])/"result"
                 result=verify_result(instrument_dir,instrument_job)
@@ -318,21 +328,49 @@ class WebLibrary:
             row["original"]=str((asset/"canonical.wav").relative_to(self.root))
             if final:
                 row["instrumental"]=str((first_dir/instrumental["path"]).relative_to(self.root))
-                row["separation_version"]="staged-guitar-residual-v8" if row["model"]=="final_11" else "instrumental-with-brass-v5"
+                row["separation_version"]="staged-context-families-v15" if row["model"]=="final_11" else "instrumental-with-brass-v5"
+                if row["model"]=="final_11":row["recovery_policy"]="base-estimates-only-v1"
             if final:save(stage="반주 구성 정리" if row["model"]=="final_11" else "반주 구성 정리 중",progress=84,completed_chunks=0,total_chunks=0)
             if row["model"]=="final_11":
                 row["tracks"].append(guitar_residual)
             row=self.final_session(row) if final else self.flatten_session(row)
-            if final:
+            if row["model"]=="final_11":
                 from .synth_recovery import run_for_library
-                recoveries=(("synth",85,"신디사이저 보완 추출 중"),("strings",89 if row["model"]=="final_11" else 91,"스트링 보완 추출 중"))
-                if row["model"]=="final_11":recoveries+=(("brass",93,"브라스 보완 추출 중"),)
+                save(stage="피아노 내 심벌 혼입 보완 중",progress=85,completed_chunks=0,total_chunks=0)
+                def cymbal_progress(p):
+                    save(progress=round(85+10*p["completed"]/max(1,p["total"]),1),completed_chunks=p["completed"],total_chunks=p["total"])
+                row=run_for_library(self,row,'cymbal',on_progress=cymbal_progress)
+                from .percussion_refinement import apply as route_percussion,prepare_source
+                context_sources={s['family']:context_dir/s['path'] for s in context['stems']}
+                percussion_asset=ingest_file(prepare_source(self.root,row),self.root)
+                percussion_job=run_stage(percussion_asset.name,"instrument_mega7",lambda j:update(j,95,1,"종소리·팀파니 근거 확인 중"))
+                row['job_ids'].append(percussion_job['job_id'])
+                if percussion_job['state']!='SUCCEEDED':raise ValueError('추가 타악기 근거 추출 실패')
+                percussion_dir=job_folder(self.root,percussion_job['job_id'])/'result'
+                percussion_result=verify_result(percussion_dir,percussion_job)
+                percussion_sources={s['family']:percussion_dir/s['path'] for s in percussion_result['stems']}
+                row['percussion_context_job_id']=percussion_job['job_id']
+                save(stage="종소리·팀파니·기타 타악기 분류 중",progress=96)
+                row=route_percussion(self.root,row,context_sources['percussion'],context_job['job_id'],
+                                     additional=(context_sources['timpani'],percussion_sources['percussion'],percussion_sources['timpani']),
+                                     version='context-supported-percussion-v2')
+                from .string_routing import apply as route_strings
+                save(stage="흩어진 스트링 성분 정리 중",progress=96.5)
+                row=route_strings(self.root,row,{f:context_sources[f] for f in ('synth','bowed_strings','brass')},context_job['job_id'])
+                from .percussion_refinement import apply_backing,RIVALS
+                row=apply_backing(self.root,row,{f:context_sources[f] for f in ('percussion','timpani',*RIVALS)},context_job['job_id'])
+                from .context_routing import apply as route_families,CONTEXT
+                save(stage="브라스·기타 성분 정리 중",progress=96.8)
+                row=route_families(self.root,row,{h:context_sources[h] for h in CONTEXT.values()},context_job['job_id'])
+            if row["model"]=="final_10":
+                from .synth_recovery import run_for_library
+                recoveries=(("synth",85,"신디사이저 보완 추출 중"),("strings",91,"스트링 보완 추출 중"))
                 for family,base,stage in recoveries:
                     row.update(state="RUNNING",stage=stage,progress=base,active_job_id=None,completed_chunks=0,total_chunks=0)
                     write_json(folder/"record.json",row)
                     def recovery_progress(p):
                         fraction=p["completed"]/max(1,p["total"])
-                        save(progress=round(max(row["progress"],base+(3.8 if row["model"]=="final_11" else 5.8)*fraction),1),completed_chunks=p["completed"],total_chunks=p["total"])
+                        save(progress=round(max(row["progress"],base+5.8*fraction),1),completed_chunks=p["completed"],total_chunks=p["total"])
                     row=run_for_library(self,row,family,on_progress=recovery_progress)
             if row["model"]=="final_11":
                 save(stage="최종 반주 정리",progress=97,completed_chunks=0,total_chunks=0)
@@ -346,6 +384,7 @@ class WebLibrary:
                 row=apply_leakage_rule(self.root,row)
             if final:
                 self.validate_partition(row["instrumental"],[t for t in row["tracks"] if t["family"] not in ("lead","backing")])
+            if row["model"]=="final_11":self.validate_partition(row["original"],row["tracks"])
             tracks=[self.track_activity(t) for t in row["tracks"]]
             save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=tracks,
                  original=str((asset/"canonical.wav").relative_to(self.root)),active_job_id=None)
@@ -382,7 +421,7 @@ class WebLibrary:
                ("bass","bass"),("drums","drums"))
         if any(key not in source for key,_ in order):raise ValueError("최종 트랙에 필요한 악기 출력이 누락됐습니다.")
         tracks=[{**{k:v for k,v in source[key].items() if k not in ("parent_family","display_name")},"family":family} for key,family in order]
-        if row.get("separation_version")=="staged-guitar-residual-v8":
+        if row.get("separation_version") in ("staged-guitar-residual-v8","staged-guitar-residual-v9","staged-guitar-residual-v10","staged-context-percussion-v11","staged-context-percussion-v12","staged-context-strings-v13","staged-context-backing-v14","staged-context-families-v15"):
             tracks.append(source["guitar_residual"])
         return self.with_remaining(row,tracks,"flat_v4","remaining-v4.wav",row["instrumental"],
                                    [t for t in tracks if t["family"] not in ("lead","backing")])

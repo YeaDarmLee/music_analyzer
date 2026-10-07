@@ -1,0 +1,237 @@
+[
+  {
+    "case": "vocal-violin",
+    "voice_before": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.05024187955222735,
+      "error_rms": 0.0007362457580875639,
+      "raw_sdr_db": 36.66544958098713,
+      "si_sdr_db": 36.73654186220138,
+      "output_to_mix_db": -0.09742335656975597,
+      "target_gain": 1.0016697569600346,
+      "silence_output_dbfs": null
+    },
+    "voice_after": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.050240333641407876,
+      "error_rms": 0.0007478859549234772,
+      "raw_sdr_db": 36.52919814533018,
+      "si_sdr_db": 36.5959910468971,
+      "output_to_mix_db": -0.09769062000559223,
+      "target_gain": 1.0016354445884683,
+      "silence_output_dbfs": null
+    },
+    "strings_before": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.008191812923524546,
+      "error_rms": 0.0007362457596466526,
+      "raw_sdr_db": 20.967458398009754,
+      "si_sdr_db": 20.932820027252767,
+      "output_to_mix_db": -15.851140401777428,
+      "target_gain": 0.9913786407114678,
+      "silence_output_dbfs": null
+    },
+    "strings_after": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.0082031329838968,
+      "error_rms": 0.0007478859557043432,
+      "raw_sdr_db": 20.831206971677275,
+      "si_sdr_db": 20.795651627132568,
+      "output_to_mix_db": -15.839145874772605,
+      "target_gain": 0.9926211637555828,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "quiet-vocal-violin",
+    "voice_before": {
+      "reference_absent": false,
+      "reference_rms": 0.005015281243837386,
+      "output_rms": 0.005019373575740551,
+      "error_rms": 0.00020264156735848798,
+      "raw_sdr_db": 27.871335124557113,
+      "si_sdr_db": 27.871346090437598,
+      "output_to_mix_db": -5.659316076636978,
+      "target_gain": 1.000000030478096,
+      "silence_output_dbfs": null
+    },
+    "voice_after": {
+      "reference_absent": false,
+      "reference_rms": 0.005015281243837386,
+      "output_rms": 0.005016292460213129,
+      "error_rms": 0.0002124197439507374,
+      "raw_sdr_db": 27.462008222496095,
+      "si_sdr_db": 27.457147076131925,
+      "output_to_mix_db": -5.664649500483149,
+      "target_gain": 0.9993046954217998,
+      "silence_output_dbfs": null
+    },
+    "strings_before": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.008210016393740294,
+      "error_rms": 0.00020264156683304785,
+      "raw_sdr_db": 32.17334383266947,
+      "si_sdr_db": 32.20298717663148,
+      "output_to_mix_db": -1.3854259906395063,
+      "target_gain": 0.9972810866034642,
+      "silence_output_dbfs": null
+    },
+    "strings_after": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.00821221630002985,
+      "error_rms": 0.00021241974363353595,
+      "raw_sdr_db": 31.764016921056747,
+      "si_sdr_db": 31.782792341753794,
+      "output_to_mix_db": -1.3830988840011127,
+      "target_gain": 0.9975178211661181,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "very-quiet-vocal-violin",
+    "voice_before": {
+      "reference_absent": false,
+      "reference_rms": 0.0005015281045280163,
+      "output_rms": 0.0005000395548218492,
+      "error_rms": 5.2079334573853886e-05,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -24.34295158858014,
+      "target_gain": 0.9916448674346431,
+      "silence_output_dbfs": null
+    },
+    "voice_after": {
+      "reference_absent": false,
+      "reference_rms": 0.0005015281045280163,
+      "output_rms": 0.0004994176560241852,
+      "error_rms": 5.3136252011881104e-05,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -24.353760945821413,
+      "target_gain": 0.9901882536207633,
+      "silence_output_dbfs": null
+    },
+    "strings_before": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.008223250193071612,
+      "error_rms": 5.207933343616007e-05,
+      "raw_sdr_db": 43.974606185972156,
+      "si_sdr_db": 44.04282707346986,
+      "output_to_mix_db": -0.022168707638080182,
+      "target_gain": 0.9991696130117061,
+      "silence_output_dbfs": null
+    },
+    "strings_after": {
+      "reference_absent": false,
+      "reference_rms": 0.00822992213754757,
+      "output_rms": 0.008223365495865161,
+      "error_rms": 5.313625044605901e-05,
+      "raw_sdr_db": 43.80009642293932,
+      "si_sdr_db": 43.86313670041026,
+      "output_to_mix_db": -0.02204691877176284,
+      "target_gain": 0.9991827910269044,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "vocal-quiet-violin",
+    "voice_before": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.05025152196323298,
+      "error_rms": 0.00038257016113866057,
+      "raw_sdr_db": 42.35168381544799,
+      "si_sdr_db": 42.65941213800705,
+      "output_to_mix_db": 0.01617255173979894,
+      "target_gain": 1.0019410355595346,
+      "silence_output_dbfs": null
+    },
+    "voice_after": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.050251306801663835,
+      "error_rms": 0.00038220799207995,
+      "raw_sdr_db": 42.35991041213144,
+      "si_sdr_db": 42.666852831084995,
+      "output_to_mix_db": 0.016135361350893936,
+      "target_gain": 1.0019367920639097,
+      "silence_output_dbfs": null
+    },
+    "strings_before": {
+      "reference_absent": false,
+      "reference_rms": 0.0008229922281470431,
+      "output_rms": 0.000759640249814644,
+      "error_rms": 0.00038257016278365715,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -36.394652484325725,
+      "target_gain": 0.8179411439291708,
+      "silence_output_dbfs": null
+    },
+    "strings_after": {
+      "reference_absent": false,
+      "reference_rms": 0.0008229922281470431,
+      "output_rms": 0.0007790915497798173,
+      "error_rms": 0.00038220799327320557,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -36.17504196465987,
+      "target_gain": 0.8402404133041862,
+      "silence_output_dbfs": null
+    }
+  },
+  {
+    "case": "vocal-no-violin",
+    "voice_before": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.05025484562185291,
+      "error_rms": 0.00020693338603073116,
+      "raw_sdr_db": 47.68929441027967,
+      "si_sdr_db": 48.90854173862617,
+      "output_to_mix_db": 0.017653171383890616,
+      "target_gain": 1.0020280205260483,
+      "silence_output_dbfs": null
+    },
+    "voice_after": {
+      "reference_absent": false,
+      "reference_rms": 0.05015281157327262,
+      "output_rms": 0.050254845625956404,
+      "error_rms": 0.0002069333845040323,
+      "raw_sdr_db": 47.68929447436183,
+      "si_sdr_db": 48.908542040071424,
+      "output_to_mix_db": 0.017653172093124905,
+      "target_gain": 1.00202802060816,
+      "silence_output_dbfs": null
+    },
+    "strings_before": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 0.00020693338603009604,
+      "error_rms": 0.00020693338603009604,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -47.689294410382985,
+      "target_gain": null,
+      "silence_output_dbfs": -73.68338871747918
+    },
+    "strings_after": {
+      "reference_absent": true,
+      "reference_rms": 0.0,
+      "output_rms": 0.00020693338481959366,
+      "error_rms": 0.00020693338481959366,
+      "raw_sdr_db": null,
+      "si_sdr_db": null,
+      "output_to_mix_db": -47.68929446119301,
+      "target_gain": null,
+      "silence_output_dbfs": -73.68338876828919
+    }
+  }
+]

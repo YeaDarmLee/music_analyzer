@@ -1,0 +1,19 @@
+{
+  "analysis_id": "analysis_f205b90d70cd466792e2ec64e50f852a",
+  "state": "SUCCEEDED",
+  "version": "staged-guitar-residual-v10",
+  "processing_seconds": 266.156,
+  "track_count": 12,
+  "full_song_partition_verified": true,
+  "excerpt_pair_max_abs_error": 3.808236215263605e-08,
+  "high_frequency_change_db": -3.0845888325073245,
+  "high_frequency_rms": {
+    "original": 0.044499241156545445,
+    "piano-before": 0.015293411335235594,
+    "piano-after": 0.010721978399194072,
+    "drums-before": 0.0036916766379724024,
+    "drums-after": 0.009701860339262723,
+    "moved": 0.007988328793710777
+  },
+  "note": "No ground-truth ride stem or perceptual confirmation; high-frequency reduction is not separation accuracy."
+}

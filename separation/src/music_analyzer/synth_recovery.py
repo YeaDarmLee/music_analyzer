@@ -11,6 +11,7 @@ POSITIVE = 'electronic synthesizer playing sustained chords'
 NEGATIVE = 'piano, acoustic guitar strumming, electric guitar, bass and drums'
 
 def settings(family):
+    if family=='cymbal':return 'clapsep-harmonic-protected-cymbal-v1','ride cymbal being struck with drumsticks','piano playing melodic notes and chords','v1'
     if family=='synth':return VERSION,POSITIVE,NEGATIVE,'v2'
     if family=='strings':return 'clapsep-strings-brass-excluded-v2','bowed orchestral strings playing sustained chords','piano, electronic synthesizer, brass instruments, acoustic guitar strumming, electric guitar, bass and drums','v2'
     if family=='brass':return 'clapsep-brass-v1','brass instruments playing sustained chords','piano, electronic synthesizer, bowed orchestral strings, acoustic guitar strumming, electric guitar, bass and drums','v1'
@@ -21,7 +22,7 @@ def infer(root, identifier, family='synth'):
     version,positive,negative,suffix=settings(family)
     root = Path(root).resolve()
     row = read_json(root/'web'/identifier/'record.json')
-    track = next(t for t in row['tracks'] if t['family']=='other')
+    track = next(t for t in row['tracks'] if t['family']==('piano' if family=='cymbal' else 'other'))
     source = (root/track['path']).resolve()
     if not source.is_relative_to(root): raise ValueError('Invalid source path')
     output = root/'web'/identifier/(family+'-recovery-'+suffix)
@@ -37,6 +38,9 @@ def infer(root, identifier, family='synth'):
 
 def apply(root, row, estimate, manifest, family='synth'):
     """Publish new files atomically, retaining original tracks and provenance for rollback."""
+    if family=='cymbal':
+        from .piano_drum_refinement import apply as apply_cymbal
+        return apply_cymbal(root,row,estimate,manifest)
     root = Path(root).resolve()
     version,positive,negative,suffix=settings(family)
     selected_family=family
@@ -64,7 +68,7 @@ def apply(root, row, estimate, manifest, family='synth'):
         if rate!=44100 or instrumental.shape!=synth.shape or not np.isfinite(instrumental).all():
             raise ValueError('Instrumental timeline mismatch')
         reconstructed=revised[selected_family].astype(np.float64)+revised['other']
-        for family in ('piano','synth','strings','brass','acoustic_guitar','guitar','guitar_residual','bass','drums'):
+        for family in ('piano','synth','strings','brass','acoustic_guitar','guitar','guitar_residual','bass','drums','percussion'):
             if family not in source:continue
             if family==selected_family:continue
             audio,rate=sf.read(root/source[family]['path'],dtype='float32',always_2d=True)
@@ -137,7 +141,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root',type=Path,required=True)
     parser.add_argument('--id',required=True)
-    parser.add_argument('--family',choices=['synth','strings','brass'],default='synth')
+    parser.add_argument('--family',choices=['synth','strings','brass','cymbal'],default='synth')
     args=parser.parse_args()
     import re
     if not re.fullmatch(r'analysis_[0-9a-f]{32}',args.id):raise ValueError('Invalid analysis ID')

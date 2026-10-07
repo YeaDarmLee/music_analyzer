@@ -7,7 +7,7 @@ from pathlib import Path
 from .common import project_root, read_json, sha256_file, write_json
 
 CONFIG = project_root() / "separation/configs/models/demucs_htdemucs.json"
-MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke", "bs_roformer_mega4", "bs_roformer_mega5")
+MODEL_IDS = ("demucs_htdemucs", "demucs_htdemucs_6s", "demucs_htdemucs_ft", "melband_roformer_kj", "bs_roformer_6s", "melband_karaoke", "bs_karaoke", "bs_roformer_mega4", "bs_roformer_mega5", "bs_roformer_mega7")
 FILES = {"955717e8-8726e21a.th", "5c90dfd2-34c22ccb.th",
          "f7e0c4bc-ba3fe64a.th", "d12395a8-e57c48e6.th",
          "92cfc3b6-ef3bcb9c.th", "04573f0d-f3cf25b2.th"}

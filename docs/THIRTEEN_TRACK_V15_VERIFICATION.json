@@ -1,0 +1,578 @@
+[
+  {
+    "case": "mallet-94-109",
+    "group": "stability-v15",
+    "analysis_id": "analysis_b6960c36ccf24802ba2deb816b178c03",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 3.6247866128202536e-16,
+      "other->brass": 1.169139518289827e-09,
+      "other->guitar": 3.2664848260902286e-09,
+      "synth->guitar": 3.516571868704234e-11
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "mallet-no-94-109",
+    "group": "stability-v15",
+    "analysis_id": "analysis_7a0de74ac7d54a559313e4422adf54ac",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 5.081827402766811e-16,
+      "other->brass": 5.2210923508392386e-08,
+      "other->guitar": 1.3968979633548347e-07,
+      "synth->guitar": 1.081590562858948e-09
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "mallet-quiet-94-109",
+    "group": "stability-v15",
+    "analysis_id": "analysis_7d67a5f5baed4dde8ba5e5b92c5da02a",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.6760400717274398e-16,
+      "other->brass": 9.85282468872636e-09,
+      "other->guitar": 3.094529757650641e-08,
+      "synth->guitar": 2.0577440968424068e-09
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "percussion-bell_tree",
+    "group": "stability-v15",
+    "analysis_id": "analysis_89a4ff5c108b4d31bf2fa99ded901887",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 8.903573915345623e-17,
+      "other->brass": 4.846569992014558e-11,
+      "other->guitar": 2.2750550226414744e-12,
+      "synth->guitar": 1.017884874511856e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "percussion-cowbell",
+    "group": "stability-v15",
+    "analysis_id": "analysis_f791e1f40efb473ea3999497418cd4e5",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 4.368127766721446e-15,
+      "other->brass": 1.6545022254140366e-10,
+      "other->guitar": 6.111867330617473e-12,
+      "synth->guitar": 8.431198309842381e-14
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "percussion-sleigh_bells",
+    "group": "stability-v15",
+    "analysis_id": "analysis_fcb7563c8b214a599557cd5184cb825b",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.5844295886093031e-16,
+      "other->brass": 4.6511914839794615e-11,
+      "other->guitar": 3.608418648245434e-12,
+      "synth->guitar": 1.2721144440100161e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "phoenix-30-50",
+    "group": "stability-v15",
+    "analysis_id": "analysis_d2f42ac4102548e594ff0621b192d7ff",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 4.662101742196302e-08,
+      "other->brass": 1.3453942674281505e-06,
+      "other->guitar": 4.641119590092574e-05,
+      "synth->guitar": 1.7433862272810218e-07
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "rainfall-40-60",
+    "group": "stability-v15",
+    "analysis_id": "analysis_f4f5217bbcb141b28a7e56fe83c63793",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 3.577383109388723e-11,
+      "other->brass": 1.935724246352032e-12,
+      "other->guitar": 0.0009974184726657613,
+      "synth->guitar": 6.619603836777213e-06
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "rainfall-guitars-only-40-60",
+    "group": "stability-v15",
+    "analysis_id": "analysis_7396b56c2434426ea3c024b4f5c5cbb5",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.7551380269335433e-10,
+      "other->brass": 2.662050216719409e-13,
+      "other->guitar": 0.00039541054770643436,
+      "synth->guitar": 3.246929876786345e-07
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-brass",
+    "group": "stability-v15",
+    "analysis_id": "analysis_e262bb07979c40468013c22582da3142",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 2.984804613575242e-11,
+      "other->brass": 0.00029902139562762545,
+      "other->guitar": 2.0739022024040313e-11,
+      "synth->guitar": 1.850401770497565e-12
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-no-brass",
+    "group": "stability-v15",
+    "analysis_id": "analysis_c0e4eca356cc4f66b501f556ed02c4a3",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.163178900530225e-16,
+      "other->brass": 5.845082126743566e-11,
+      "other->guitar": 2.44714863134803e-12,
+      "synth->guitar": 1.148844952331697e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-no-strings",
+    "group": "stability-v15",
+    "analysis_id": "analysis_18b12eb286d341fbab257fcca24fac86",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.163178900530225e-16,
+      "other->brass": 5.845082126743566e-11,
+      "other->guitar": 2.44714863134803e-12,
+      "synth->guitar": 1.148844952331697e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-no-timpani",
+    "group": "stability-v15",
+    "analysis_id": "analysis_49bee51ba0ba49728c164b05bae16eb7",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.163178900530225e-16,
+      "other->brass": 5.845082126743566e-11,
+      "other->guitar": 2.44714863134803e-12,
+      "synth->guitar": 1.148844952331697e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-quiet-brass",
+    "group": "stability-v15",
+    "analysis_id": "analysis_3f1683a747e048fa9cc6698f71c972bd",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 3.1624532751220164e-12,
+      "other->brass": 0.00013900527933386622,
+      "other->guitar": 2.1683992073823574e-12,
+      "synth->guitar": 1.3593076634565732e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-quiet-strings",
+    "group": "stability-v15",
+    "analysis_id": "analysis_0fbb2c0102ff41cfa88c69063efc2aa0",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.3113505800442927e-16,
+      "other->brass": 6.196113927785804e-11,
+      "other->guitar": 1.6583762107346926e-10,
+      "synth->guitar": 2.3443190809666196e-11
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-quiet-timpani",
+    "group": "stability-v15",
+    "analysis_id": "analysis_f051af4d02fe4114b1293c1e9630968a",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.0940944685159441e-16,
+      "other->brass": 4.496171769763956e-11,
+      "other->guitar": 3.748260291014036e-12,
+      "synth->guitar": 1.1208217267341436e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-strings",
+    "group": "stability-v15",
+    "analysis_id": "analysis_8b0be3cb57af4da88a35f31e6f44028b",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 4.021880656631717e-15,
+      "other->brass": 4.0690505353740327e-10,
+      "other->guitar": 4.260149097779391e-11,
+      "synth->guitar": 9.306109580531542e-11
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "real-timpani",
+    "group": "stability-v15",
+    "analysis_id": "analysis_5e7ba4cf150d4219ba1325c6f6624dbc",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 6.45360436298696e-14,
+      "other->brass": 7.341087115912819e-12,
+      "other->guitar": 9.990409282582398e-11,
+      "synth->guitar": 4.390121350927991e-12
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh16-brass-60-75",
+    "group": "stability-v15",
+    "analysis_id": "analysis_1ee5154c59e34daea43755455c6b9b94",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 0.012123946182858288,
+      "other->brass": 0.0017794195504631195,
+      "other->guitar": 0.005908009177790313,
+      "synth->guitar": 0.0015688243813578267
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh16-no-brass-60-75",
+    "group": "stability-v15",
+    "analysis_id": "analysis_81026711f051443ea6c691de34230798",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.70822021783182e-06,
+      "other->brass": 2.059407760451949e-05,
+      "other->guitar": 0.007513145246372829,
+      "synth->guitar": 0.0019837802740693628
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh16-quiet-brass-60-75",
+    "group": "stability-v15",
+    "analysis_id": "analysis_a7bc92f40b0245f0978338799d073b40",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 2.9843906510338794e-06,
+      "other->brass": 0.00011354448821728422,
+      "other->guitar": 0.006900911603747134,
+      "synth->guitar": 0.00265731122556556
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh20-no-pad-15-30",
+    "group": "stability-v15",
+    "analysis_id": "analysis_be412373376f4b4d93a8e9af3abd2fe3",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 2.7370164238949893e-14,
+      "other->brass": 5.407726952175044e-10,
+      "other->guitar": 0.00411954844650984,
+      "synth->guitar": 0.0004549694880638049
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "group": "stability-v15",
+    "analysis_id": "analysis_65f23ade40ad4f3caece2f9a68c12e0c",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 3.2765752059604947e-15,
+      "other->brass": 6.450468923596683e-09,
+      "other->guitar": 7.005432565603524e-05,
+      "synth->guitar": 6.725492727649802e-06
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "slakh20-quiet-pad-15-30",
+    "group": "stability-v15",
+    "analysis_id": "analysis_bac5027e74ff4140b560814b6602ad9f",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 3.6768111483868564e-14,
+      "other->brass": 4.13408421625363e-10,
+      "other->guitar": 0.004911803589280115,
+      "synth->guitar": 0.00023064021758368127
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "piano-only",
+    "group": "controls-v15",
+    "analysis_id": "analysis_e4001771689a4eaf8bc28c5b30fc969b",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.163178900530225e-16,
+      "other->brass": 5.845082126743566e-11,
+      "other->guitar": 2.44714863134803e-12,
+      "synth->guitar": 1.148844952331697e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "quiet-piano-only",
+    "group": "controls-v15",
+    "analysis_id": "analysis_0faab9c0b54a4c058336c47e703adecb",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.1775376457865623e-17,
+      "other->brass": 6.042390180985947e-12,
+      "other->guitar": 2.320298161359096e-13,
+      "synth->guitar": 1.095253499928551e-14
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "quiet-vocal-violin",
+    "group": "controls-v15",
+    "analysis_id": "analysis_913292bde20843829ad2e3a1c451353e",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.715437326743725e-13,
+      "other->brass": 9.003608467381253e-08,
+      "other->guitar": 2.2318317181299554e-11,
+      "synth->guitar": 2.6211518231543318e-11
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "very-quiet-piano-only",
+    "group": "controls-v15",
+    "analysis_id": "analysis_6dfcbe3c7c354505b7af528f572f15e5",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.1927203755317231e-18,
+      "other->brass": 6.007171105445969e-13,
+      "other->guitar": 2.4308078083006202e-14,
+      "synth->guitar": 1.334350990700643e-15
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "very-quiet-vocal-violin",
+    "group": "controls-v15",
+    "analysis_id": "analysis_dacb886997864ef2afeb635483c5e05d",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 1.0920635223970481e-12,
+      "other->brass": 4.3632835705696345e-07,
+      "other->guitar": 6.088087361660614e-12,
+      "synth->guitar": 3.780742471424511e-12
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "vocal-no-violin",
+    "group": "controls-v15",
+    "analysis_id": "analysis_5ce53e05d9a8423c928cbe7dda5e0378",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 9.130561374801333e-14,
+      "other->brass": 3.6998336286869784e-09,
+      "other->guitar": 2.475806140737061e-10,
+      "synth->guitar": 2.4867021023604575e-13
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "vocal-quiet-violin",
+    "group": "controls-v15",
+    "analysis_id": "analysis_f0d1e43ee42e4ed1818158ab133e0ca2",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 8.193119015271548e-14,
+      "other->brass": 3.4337514320376705e-09,
+      "other->guitar": 2.3218736939878207e-10,
+      "synth->guitar": 6.657433635631699e-09
+    },
+    "original_and_instrumental_sums_verified": true
+  },
+  {
+    "case": "vocal-violin",
+    "group": "controls-v15",
+    "analysis_id": "analysis_64bd210f52cc431ba7bf1dcd5293382f",
+    "changed_tracks": [
+      "brass",
+      "guitar",
+      "other",
+      "synth"
+    ],
+    "moved_rms": {
+      "guitar->brass": 7.371517284532545e-14,
+      "other->brass": 1.1308095847790967e-09,
+      "other->guitar": 2.0732542190427406e-10,
+      "synth->guitar": 2.0299173092497327e-12
+    },
+    "original_and_instrumental_sums_verified": true
+  }
+]

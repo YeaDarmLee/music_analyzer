@@ -9,7 +9,7 @@ from music_analyzer.web_server import WebLibrary
 @pytest.mark.parametrize('version,count,presets,recoveries',[
     ('basic_2',2,['vocal_roformer'],[]),
     ('basic_6',6,['vocal_roformer','instrument_roformer_6s'],[]),
-    ('final_11',12,['vocal_roformer','bs_karaoke','instrument_roformer_6s','instrument_mega5','instrument_mega5'],['synth','strings','brass']),
+    ('final_11',13,['vocal_roformer','instrument_mega7','bs_karaoke','instrument_roformer_6s','instrument_mega5','instrument_mega5','instrument_mega7'],['cymbal']),
 ])
 def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch,version,count,presets,recoveries):
     import music_analyzer.web_server as web
@@ -31,8 +31,8 @@ def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch
                 np.testing.assert_allclose(input_audio,.03 if calls.count(preset)==0 else .48,atol=1e-7)
             calls.append(preset);jid='job_'+format(len(calls),'032x')
             folder=self.root/'jobs'/jid/'result';folder.mkdir(parents=True)
-            labels={'vocal_roformer':['vocals','instrumental'],'instrument_roformer_6s':['vocals','piano','guitar','bass','drums','other'],'instrument_mega5':['synth','bowed_strings','brass','acoustic-guitar','electric-guitar'],'bs_karaoke':['lead','backing']}[preset]
-            values=[.2,.6] if preset=='vocal_roformer' else [.1,.1] if preset=='bs_karaoke' else [.03]*len(labels)
+            labels={'vocal_roformer':['vocals','instrumental'],'instrument_roformer_6s':['vocals','piano','guitar','bass','drums','other'],'instrument_mega5':['synth','bowed_strings','brass','acoustic-guitar','electric-guitar'],'instrument_mega7':['synth','bowed_strings','brass','acoustic-guitar','electric-guitar','percussion','timpani'],'bs_karaoke':['lead','backing']}[preset]
+            values=[.2,.6] if preset=='vocal_roformer' else [.1,.1] if preset=='bs_karaoke' else [0]*len(labels) if preset=='instrument_mega7' else [.03]*len(labels)
             stems=[]
             for label,value in zip(labels,values):
                 path=folder/(label+'.wav');sf.write(path,np.full((4410,2),value,dtype=np.float32),44100,subtype='FLOAT')
@@ -45,6 +45,12 @@ def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch
     monkeypatch.setattr(web,'verify_result',lambda folder,job:manifests[str(folder)])
     def recover(library,row,family,on_progress):
         recovered.append(family)
+        if family=='cymbal':
+            for track in row['tracks']:
+                if track['family'] in ('piano','drums'):
+                    path=library.root/track['path'];audio,rate=sf.read(path,dtype='float32',always_2d=True)
+                    sf.write(path,audio+(-.01 if track['family']=='piano' else .01),rate,subtype='FLOAT')
+            return row
         for track in row['tracks']:
             if track['family'] in (family,'other'):
                 path=library.root/track['path']
@@ -64,9 +70,11 @@ def test_versions_run_only_required_stages_and_preserve_sum(tmp_path,monkeypatch
         assert len(result['tracks'])==count
         assert calls==presets and recovered==recoveries
         if version=='final_11':
+            assert result['separation_version']=='staged-context-families-v15'
+            assert result['recovery_policy']=='base-estimates-only-v1'
             other=next(t for t in result['tracks'] if t['family']=='other')
             assert other['path'].endswith('remaining-final11-v3.wav')
-            np.testing.assert_allclose(sf.read(tmp_path/other['path'])[0],.36,atol=1e-7)
+            np.testing.assert_allclose(sf.read(tmp_path/other['path'])[0],.39,atol=1e-7)
             residual=next(t for t in result['tracks'] if t['family']=='guitar_residual')
             np.testing.assert_allclose(sf.read(tmp_path/residual['path'])[0],-.03,atol=1e-7)
         if version=='basic_6':

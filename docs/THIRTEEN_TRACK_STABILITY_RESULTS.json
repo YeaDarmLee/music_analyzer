@@ -1,0 +1,2714 @@
+[
+  {
+    "case": "mallet-94-109",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_744697e867604777a8efd932b35dd868",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 101.686,
+    "input_sha256": "d5266fe6f53465320f1eda512579598399d4295b57cd0660ef1ac19fa88f54ce",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -190.5743482610162,
+          "after": -190.30655376597977
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4903993850772708e-11,
+          "after": 1.5370655448758308e-11
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -102.92408564632753,
+          "after": -103.0174948042559
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.595967793686122e-07,
+          "after": 3.557503495985676e-07
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 18.78694957484849,
+          "after": 18.787196953369886
+        },
+        "target_gain": {
+          "before": 0.979456708754091,
+          "after": 0.9794592322487197
+        },
+        "output_to_mix_db": {
+          "before": -3.749405694451275,
+          "after": -3.7493865119951675
+        },
+        "reference_rms": {
+          "before": 0.03316548513471909,
+          "after": 0.03316548513471909
+        },
+        "error_rms": {
+          "before": 0.0038136328130447482,
+          "after": 0.003813524200403847
+        },
+        "sdr_delta_db": 0.0002473785213972235
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -74.37041412522947,
+          "after": -74.12155858492319
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 9.62718615299778e-06,
+          "after": 9.906999623951214e-06
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -82.04423402770841,
+          "after": -82.05058825472362
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.979315507532936e-06,
+          "after": 3.9764054743043244e-06
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -82.57838446089875,
+          "after": -82.58040390876064
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.741974750482643e-06,
+          "after": 3.74110485173509e-06
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -164.08525821643246,
+          "after": -163.99634673970976
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.1459887476204556e-10,
+          "after": 3.178357455590537e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -176.660289154689,
+          "after": -176.6260526952521
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 7.396148426300167e-11,
+          "after": 7.425358748636662e-11
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -92.76374689105026,
+          "after": -92.76967964801143
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.1583311382480562e-06,
+          "after": 1.1575402289679835e-06
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": 23.249045581040626,
+          "after": 23.218109788028976
+        },
+        "target_gain": {
+          "before": 0.9915298431582814,
+          "after": 0.9912877898290857
+        },
+        "output_to_mix_db": {
+          "before": -3.2695217901774747,
+          "after": -3.2715019296443417
+        },
+        "reference_rms": {
+          "before": 0.03477051966199231,
+          "after": 0.03477051966199231
+        },
+        "error_rms": {
+          "before": 0.0023919874813992663,
+          "after": 0.002400522008721531
+        },
+        "sdr_delta_db": -0.030935793011650503
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": 14.822886572647135
+        },
+        "target_gain": {
+          "before": null,
+          "after": 0.9166959057887942
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -11.413636253080456
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.01453772217843318
+        },
+        "error_rms": {
+          "before": null,
+          "after": 0.0026384692461495158
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -10.574449526126719,
+          "after": -22.31618078655434
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.014903820092430221,
+          "after": 0.0038566571842373557
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -95.14407900270656,
+          "after": -95.14538437541644
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 8.80675927844279e-07,
+          "after": 8.805435840097197e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "mallet-quiet-94-109",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_c884a0184126439ca3e64dc8077456d6",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 99.156,
+    "input_sha256": "8f184e489eed898bf1b4b213c9a41330fe5e8243908aa16e357ee6c1522105c5",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -190.6762231350302,
+          "after": -191.1190824835106
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4094350552473289e-11,
+          "after": 1.339374732275208e-11
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -98.60460177589289,
+          "after": -98.64004020763682
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.657520508635242e-07,
+          "after": 5.634484848348614e-07
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 18.38720529361248,
+          "after": 18.386940274439855
+        },
+        "target_gain": {
+          "before": 0.9725919150005807,
+          "after": 0.9725861776738934
+        },
+        "output_to_mix_db": {
+          "before": -3.422129028772028,
+          "after": -3.422176952961669
+        },
+        "reference_rms": {
+          "before": 0.03316548513471909,
+          "after": 0.03316548513471909
+        },
+        "error_rms": {
+          "before": 0.003993246224585371,
+          "after": 0.003993368066215848
+        },
+        "sdr_delta_db": -0.0002650191726267792
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -59.00656799565374,
+          "after": -59.169647930532435
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.4016672303474216e-05,
+          "after": 5.3011956047939686e-05
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -95.04263019652775,
+          "after": -95.14867595671416
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 8.525595350523187e-07,
+          "after": 8.422139448427129e-07
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -98.67889343558438,
+          "after": -98.9058183659224
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.609337277182957e-07,
+          "after": 5.464687194687226e-07
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -162.51207704091024,
+          "after": -162.54222494295252
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.6078824046765423e-10,
+          "after": 3.595381493117249e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -176.74581926742968,
+          "after": -176.79071905465594
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 7.007534787085081e-11,
+          "after": 6.971404349019928e-11
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -93.35420847901902,
+          "after": -93.35510063258934
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.035489744037623e-06,
+          "after": 1.0353833912668256e-06
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": 24.168448607740558,
+          "after": 24.168057616686465
+        },
+        "target_gain": {
+          "before": 0.9934925868952666,
+          "after": 0.9934596364021198
+        },
+        "output_to_mix_db": {
+          "before": -2.8729760827829596,
+          "after": -2.8732634385597873
+        },
+        "reference_rms": {
+          "before": 0.03477051966199231,
+          "after": 0.03477051966199231
+        },
+        "error_rms": {
+          "before": 0.0021517348362663264,
+          "after": 0.0021518316977327573
+        },
+        "sdr_delta_db": -0.0003909910540933481
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": 4.005608200536659
+        },
+        "target_gain": {
+          "before": null,
+          "after": 0.5298973314824265
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -33.80434868718985
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0014537722428299932
+        },
+        "error_rms": {
+          "before": null,
+          "after": 0.0009166762142484378
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -22.344497567888144,
+          "after": -22.75462473788851
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.003678166184517893,
+          "after": 0.003508528339847872
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -95.13309676305335,
+          "after": -95.13170170604185
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 8.437259129656225e-07,
+          "after": 8.438614362486188e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "rainfall-40-60",
+    "before_version": "staged-guitar-residual-v9",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_4dfee0a1c6cd4c52a2dc14f9ca913e7f",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 88.641,
+    "input_sha256": "10037404d3b6eb8f9ed0b335936090b2efe1bbc08091810398fee4ff54db283a",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": 18.634812306134144,
+          "after": 18.6384744989575
+        },
+        "target_gain": {
+          "before": 0.9893792184489901,
+          "after": 0.9892966103356201
+        },
+        "output_to_mix_db": {
+          "before": -3.4578146285523697,
+          "after": -3.458588188245682
+        },
+        "reference_rms": {
+          "before": 0.04414262189538186,
+          "after": 0.04414262189538186
+        },
+        "error_rms": {
+          "before": 0.0051655611802742035,
+          "after": 0.005163383706874567
+        },
+        "sdr_delta_db": 0.003662192823355781
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": 8.693541227871682,
+          "after": 8.695204611079681
+        },
+        "target_gain": {
+          "before": 0.9083425404450823,
+          "after": 0.9087386766573324
+        },
+        "output_to_mix_db": {
+          "before": -15.822654305672998,
+          "after": -15.819276568633656
+        },
+        "reference_rms": {
+          "before": 0.01085680752066252,
+          "after": 0.01085680752066252
+        },
+        "error_rms": {
+          "before": 0.003990479434348833,
+          "after": 0.0039897153144685255
+        },
+        "sdr_delta_db": 0.0016633832079993027
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -107.07554639521598,
+          "after": -107.07855223382624
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.899521331300398e-07,
+          "after": 2.8985180966676355e-07
+        }
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -53.564349108090354,
+          "after": -54.675127855681836
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.00013736818891834957,
+          "after": 0.00012087799147787402
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -95.36344685520609,
+          "after": -95.20919797155952
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.1166865496052252e-06,
+          "after": 1.1366944232739284e-06
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -107.38304479503066,
+          "after": -106.54782722291976
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.7986680389362063e-07,
+          "after": 3.081145921318735e-07
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": 18.92477425383438,
+          "after": 18.92385118997434
+        },
+        "target_gain": {
+          "before": 0.9719940845765048,
+          "after": 0.9719557086089352
+        },
+        "output_to_mix_db": {
+          "before": -3.473497542215162,
+          "after": -3.473833576657213
+        },
+        "reference_rms": {
+          "before": 0.04487647753354885,
+          "after": 0.04487647753354885
+        },
+        "error_rms": {
+          "before": 0.005079021462518746,
+          "after": 0.0050795612472126885
+        },
+        "sdr_delta_db": -0.0009230638600392638
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": 16.22460969443587,
+          "after": 16.22584578715643
+        },
+        "target_gain": {
+          "before": 0.9358185698748975,
+          "after": 0.9358629074195944
+        },
+        "output_to_mix_db": {
+          "before": -13.236532348126165,
+          "after": -13.236135230639572
+        },
+        "reference_rms": {
+          "before": 0.015074629929976139,
+          "after": 0.015074629929976139
+        },
+        "error_rms": {
+          "before": 0.0023281779655193436,
+          "after": 0.0023278466650778957
+        },
+        "sdr_delta_db": 0.0012360927205605776
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -99.86380335975583,
+          "after": -99.85671803346929
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 6.651406031281154e-07,
+          "after": 6.656833985210873e-07
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -73.53463234322186,
+          "after": -73.52993979899398
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.3783896731385072e-05,
+          "after": 1.3791345481364771e-05
+        }
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -89.06205461946392
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 2.3067519526805116e-06
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -34.32196461573194,
+          "after": -34.304676641677936
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.0012589410569214562,
+          "after": 0.0012614492875294954
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": 19.91322805291915,
+          "after": 19.913257078911965
+        },
+        "target_gain": {
+          "before": 0.9882961749292213,
+          "after": 0.9882921313788529
+        },
+        "output_to_mix_db": {
+          "before": -2.881803938400252,
+          "after": -2.881839830480604
+        },
+        "reference_rms": {
+          "before": 0.04730424833021191,
+          "after": 0.04730424833021191
+        },
+        "error_rms": {
+          "before": 0.0047779185638181934,
+          "after": 0.004777902597278902
+        },
+        "sdr_delta_db": 2.9025992816400503e-05
+      }
+    }
+  },
+  {
+    "case": "real-brass",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_70f31ac767f94cebaac751ddb0780a8d",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 117.703,
+    "input_sha256": "49a9df5d1a52f44c2a27d7dac48604d09ff5954420db6478b439e97fc6886541",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -8.926432130954305,
+          "after": -101.5908180660724
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.012193154431648411,
+          "after": 2.8372445967220527e-07
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -55.56723486230151,
+          "after": -25.13329340241669
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.6764385110019965e-05,
+          "after": 0.0018870048256612734
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 26.027068861036547,
+          "after": 32.88287191243685
+        },
+        "target_gain": {
+          "before": 0.9980200146607128,
+          "after": 0.9996035412370142
+        },
+        "output_to_mix_db": {
+          "before": -0.6873596046069368,
+          "after": -0.6822058500667847
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.0015741072786260046,
+          "after": 0.0007148981521545579
+        },
+        "sdr_delta_db": 6.855803051400301
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -70.92245947904958,
+          "after": -83.96260086575222
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 9.689797629831457e-06,
+          "after": 2.1592734143736603e-06
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -114.7947131078491,
+          "after": -81.87515556428238
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 6.204431948917361e-08,
+          "after": 2.7458695604283754e-06
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": 9.042675399437429e-07,
+          "after": 15.860324101513806
+        },
+        "target_gain": {
+          "before": 1.0413336821571152e-07,
+          "after": 0.878168103896803
+        },
+        "output_to_mix_db": {
+          "before": -111.22375333745877,
+          "after": -9.405883571767928
+        },
+        "reference_rms": {
+          "before": 0.013045582659719824,
+          "after": 0.013045582659719824
+        },
+        "error_rms": {
+          "before": 0.013045581301575033,
+          "after": 0.0021011026758278803
+        },
+        "sdr_delta_db": 15.860323197246267
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -169.09289710759143,
+          "after": -165.60751235579738
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.1961697781364153e-10,
+          "after": 1.7867428922170064e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -167.64744258431034,
+          "after": -167.9479586003883
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4127507668196097e-10,
+          "after": 1.36470804235017e-10
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -106.34604710002566,
+          "after": -106.26971999438375
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.6411010596905761e-07,
+          "after": 1.655585755796423e-07
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -56.57489025810052,
+          "after": -58.50113704020373
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.054674196675546e-05,
+          "after": 4.049308162305198e-05
+        }
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -102.31644062064758
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 2.6098506172469104e-07
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -48.7300040975494,
+          "after": -39.75278594827473
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.00012472039454232184,
+          "after": 0.00035058907899264755
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -98.20056016389736,
+          "after": -97.56605679059349
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.1918880211006683e-07,
+          "after": 4.509566975392168e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "real-quiet-brass",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_95f14d7a3a89471980128d9d353dae75",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 83.86,
+    "input_sha256": "caa833e286d720cbd4a2c412f5e4cdcebb7dee31870f63928027c4ee54ab1b91",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -155.34990321982625,
+          "after": -155.93116448177963
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.38552470204689e-10,
+          "after": 5.036918909781565e-10
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -69.26985413118264,
+          "after": -69.30256239418846
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.0845022981641333e-05,
+          "after": 1.0804260914409466e-05
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 41.03266450227448,
+          "after": 41.03124787210995
+        },
+        "target_gain": {
+          "before": 0.9994217788327929,
+          "after": 0.9994269912798758
+        },
+        "output_to_mix_db": {
+          "before": -0.011390762819622837,
+          "after": -0.011345327653799288
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.00027973998356130774,
+          "after": 0.0002797856116355328
+        },
+        "sdr_delta_db": -0.0014166301645275325
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -102.86139675386681,
+          "after": -103.1183158169844
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.2680537654414936e-07,
+          "after": 2.2019496917998906e-07
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -98.88854220078318,
+          "after": -98.28367793801094
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.583406467440846e-07,
+          "after": 3.841840109301361e-07
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": 12.363788298789434,
+          "after": 12.318341563725623
+        },
+        "target_gain": {
+          "before": 0.8249323829791225,
+          "after": 0.8235931478846593
+        },
+        "output_to_mix_db": {
+          "before": -29.1655326267798,
+          "after": -29.17823891822694
+        },
+        "reference_rms": {
+          "before": 0.0013045582879701824,
+          "after": 0.0013045582879701824
+        },
+        "error_rms": {
+          "before": 0.00031424912225357066,
+          "after": 0.0003158976608467659
+        },
+        "sdr_delta_db": -0.045446735063810806
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -168.16956338176962,
+          "after": -168.191065389216
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.23096304231354e-10,
+          "after": 1.2279195495337172e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -166.9319021721468,
+          "after": -166.96758556553647
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4194760672932606e-10,
+          "after": 1.4136565342819999e-10
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -106.22605458649714,
+          "after": -106.22420718743668
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.5396444963731847e-07,
+          "after": 1.539971997690457e-07
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -55.801501955725186,
+          "after": -55.80009693834416
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.112673809211528e-05,
+          "after": 5.113500895081162e-05
+        }
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -104.94970814464095
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 1.7833548860301592e-07
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -44.026469868366156,
+          "after": -43.91057992199001
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.00019833515037513347,
+          "after": 0.00020099913439123367
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -97.16107043882987,
+          "after": -97.16839944075831
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.3718943793671567e-07,
+          "after": 4.3682070071585975e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "real-quiet-strings",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_55fbcc4ce55f4e0f8a655edbc04f68e2",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 87.469,
+    "input_sha256": "0590fb43febe5fac5ea59e5e8bb0064d165ec74dc864914afc4da58a36e4cae2",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -187.03608094794328,
+          "after": -186.95405274093196
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4019468832196596e-11,
+          "after": 1.4152493685999515e-11
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -89.21071484392274,
+          "after": -89.5321683999764
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.0914399962980536e-06,
+          "after": 1.0517855182805594e-06
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 46.472847788703575,
+          "after": 46.52146227609694
+        },
+        "target_gain": {
+          "before": 0.9996306512740403,
+          "after": 0.9996281445200725
+        },
+        "output_to_mix_db": {
+          "before": -0.006068134508320934,
+          "after": -0.006091013403712759
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.0001495358696244838,
+          "after": 0.0001487012626892516
+        },
+        "sdr_delta_db": 0.04861448739336538
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -102.61274237861385,
+          "after": -103.62790124632781
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.3329127030401846e-07,
+          "after": 2.0755851007917684e-07
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": 0.674984937961257,
+          "after": 0.8583921395295414
+        },
+        "output_to_mix_db": {
+          "before": -34.781900310546085,
+          "after": -32.925895310469045
+        },
+        "reference_rms": {
+          "before": 0.0008229922281470431,
+          "after": 0.0008229922281470431
+        },
+        "error_rms": {
+          "before": 0.00030535045346248097,
+          "after": 0.00014455580771800198
+        }
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -80.92760790167233,
+          "after": -87.56462752946574
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.8324040829932676e-06,
+          "after": 1.319180522444956e-06
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -168.85085860977128,
+          "after": -168.87055026352598
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.1376081018257849e-10,
+          "after": 1.1350319683456186e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -167.00018714629942,
+          "after": -166.95582565121333
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4077523128478515e-10,
+          "after": 1.4149605260972e-10
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -106.28800016645917,
+          "after": -106.28813012321805
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.5280430802851905e-07,
+          "after": 1.5280202181433874e-07
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -55.705260161317526,
+          "after": -55.71595120215484
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 5.167406162258796e-05,
+          "after": 5.1610497650004175e-05
+        }
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -107.16443209837854
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 1.381382665617765e-07
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -40.690062032971326,
+          "after": -46.667012255032674
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.0002910934981709873,
+          "after": 0.00014628001429112166
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -97.5632359775595,
+          "after": -97.56236986194187
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.172283476899256e-07,
+          "after": 4.1726995379139026e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "real-strings",
+    "before_version": "staged-guitar-residual-v10",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_3fac2aac4d534274a59c15d3e0ab0af4",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 157.937,
+    "input_sha256": "bc7c6afa6383d4b5181116652f9ed3ea01cc71469d2c2ebd80f21828792662e5",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -61.97168016232537,
+          "after": -70.62036197196167
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 2.5949844600022257e-05,
+          "after": 9.587396110568928e-06
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -14.53558388805132,
+          "after": -20.60344726819006
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.006108570283950726,
+          "after": 0.0030377106663858856
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 39.47513335514413,
+          "after": 40.345289304936955
+        },
+        "target_gain": {
+          "before": 0.9995685567440926,
+          "after": 0.9995761556711541
+        },
+        "output_to_mix_db": {
+          "before": -0.2898785943457064,
+          "after": -0.2899015902112023
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.0003346810342377161,
+          "after": 0.00030277729513849156
+        },
+        "sdr_delta_db": 0.8701559497928244
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -20.2323215097554,
+          "after": -23.555377713488966
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.003170317033322698,
+          "after": 0.002162468967659018
+        }
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": 0.0009281896463699181,
+          "after": 0.7821661567071853
+        },
+        "target_gain": {
+          "before": 0.00010990555700185447,
+          "after": 0.11795200863919039
+        },
+        "output_to_mix_db": {
+          "before": -64.08577373227583,
+          "after": -23.428353685618912
+        },
+        "reference_rms": {
+          "before": 0.00822992213754757,
+          "after": 0.00822992213754757
+        },
+        "error_rms": {
+          "before": 0.008229042720389818,
+          "after": 0.0075212048699996896
+        },
+        "sdr_delta_db": 0.7812379670608154
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -29.03908800550741,
+          "after": -54.24814155637168
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.0011501761802636516,
+          "after": 6.314103430401094e-05
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -169.2023110695896,
+          "after": -168.85011398200942
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.1287641720102434e-10,
+          "after": 1.175474116181649e-10
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -167.3045292684742,
+          "after": -167.50292992382654
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.4044048031953695e-10,
+          "after": 1.372689378861351e-10
+        }
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -106.52803495353137,
+          "after": -106.61516744705301
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.5357376158670185e-07,
+          "after": 1.52040887910484e-07
+        }
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -56.82860292101654,
+          "after": -57.44839492170761
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.691250497704649e-05,
+          "after": 4.3681648865472384e-05
+        }
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -100.24734689645547
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 3.164837564444685e-07
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -31.48773349031314,
+          "after": -19.67212293785835
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.0008676250751587226,
+          "after": 0.003381525156444426
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -97.99537162226854,
+          "after": -98.02803762911202
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.1015705717330536e-07,
+          "after": 4.086174301117511e-07
+        }
+      }
+    }
+  },
+  {
+    "case": "slakh20-pad-15-30",
+    "before_version": "staged-guitar-residual-v9",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_2abb2b86688c4abe8859f42237c16e52",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 119.205,
+    "input_sha256": "79a7e580a8762715b40768d5fdca528a3d3c0a8f4bccdc2167186921cfe0431e",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -125.76507768505074,
+          "after": -128.27913573882606
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 4.2097695988927274e-08,
+          "after": 3.1517765853955787e-08
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -34.258554730924764,
+          "after": -37.27212036363472
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.0015833775216776709,
+          "after": 0.001119196114050356
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 9.386007011940338,
+          "after": 9.390855764402295
+        },
+        "target_gain": {
+          "before": 0.8703746427397379,
+          "after": 0.8704600596619035
+        },
+        "output_to_mix_db": {
+          "before": -8.958080065232272,
+          "after": -8.957865421418056
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.010692700919387255,
+          "after": 0.010686733563870805
+        },
+        "sdr_delta_db": 0.004848752461956707
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": 0.010330573256462354,
+          "after": 0.017439290602709073
+        },
+        "target_gain": {
+          "before": 0.004915052605109548,
+          "after": 0.004765240144986284
+        },
+        "output_to_mix_db": {
+          "before": -27.953334281666006,
+          "after": -29.25562196888423
+        },
+        "reference_rms": {
+          "before": 0.03790042783967011,
+          "after": 0.03790042783967011
+        },
+        "error_rms": {
+          "before": 0.037855377715891834,
+          "after": 0.037824408741892565
+        },
+        "sdr_delta_db": 0.007108717346246719
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": 0.5392636703978146,
+          "after": 0.5234307393790766
+        },
+        "target_gain": {
+          "before": 0.9790436763204817,
+          "after": 0.9798365774200223
+        },
+        "output_to_mix_db": {
+          "before": -4.175989910556396,
+          "after": -4.164655940599593
+        },
+        "reference_rms": {
+          "before": 0.03725190066237284,
+          "after": 0.03725190066237284
+        },
+        "error_rms": {
+          "before": 0.035009447148079825,
+          "after": 0.03507332174149639
+        },
+        "sdr_delta_db": -0.01583293101873806
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -67.36917874608869,
+          "after": -67.33005684559734
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.499880970724864e-05,
+          "after": 3.5156802518280765e-05
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -155.3707351535716,
+          "after": -155.39677061961845
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.3930780652443108e-09,
+          "after": 1.3889086439588577e-09
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": 1.4157937633563663e-09,
+          "after": 1.4813998538665034e-09
+        },
+        "target_gain": {
+          "before": 1.6299966651337417e-10,
+          "after": 1.7055300593942715e-10
+        },
+        "output_to_mix_db": {
+          "before": -167.25320644811276,
+          "after": -166.78349264658704
+        },
+        "reference_rms": {
+          "before": 0.014193462110547006,
+          "after": 0.014193462110547006
+        },
+        "error_rms": {
+          "before": 0.014193462108233485,
+          "after": 0.014193462108126274
+        },
+        "sdr_delta_db": 6.560609051013707e-11
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": 15.875706682562331,
+          "after": 15.876735990641153
+        },
+        "target_gain": {
+          "before": 0.956039247028122,
+          "after": 0.9559289928787135
+        },
+        "output_to_mix_db": {
+          "before": -7.492149203861769,
+          "after": -7.493198728225874
+        },
+        "reference_rms": {
+          "before": 0.035630368731471754,
+          "after": 0.035630368731471754
+        },
+        "error_rms": {
+          "before": 0.00572842171895881,
+          "after": 0.005727742921317227
+        },
+        "sdr_delta_db": 0.0010293080788219555
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": 17.986313688134043,
+          "after": 18.010415503475585
+        },
+        "target_gain": {
+          "before": 1.0210530402152986,
+          "after": 1.0204449833222318
+        },
+        "output_to_mix_db": {
+          "before": -7.58169708821793,
+          "after": -7.587053528548262
+        },
+        "reference_rms": {
+          "before": 0.033203471274884815,
+          "after": 0.033203471274884815
+        },
+        "error_rms": {
+          "before": 0.0041866610805964015,
+          "after": 0.0041750599358109
+        },
+        "sdr_delta_db": 0.024101815341541766
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -57.577655700220916
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 0.00010805115827519964
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -16.157495859950195,
+          "after": -16.096942604657823
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.012724403099088785,
+          "after": 0.012813420583680625
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": -3.227487914867914e-05,
+          "after": -3.265952187573881e-05
+        },
+        "target_gain": {
+          "before": -3.6578536743179275e-06,
+          "after": -3.702257366544357e-06
+        },
+        "output_to_mix_db": {
+          "before": -84.56817415580147,
+          "after": -84.57715752761274
+        },
+        "reference_rms": {
+          "before": 0.014193462110547006,
+          "after": 0.014193462110547006
+        },
+        "error_rms": {
+          "before": 0.014193514850467092,
+          "after": 0.014193515479007473
+        },
+        "sdr_delta_db": -3.846427270596728e-07
+      }
+    }
+  },
+  {
+    "case": "slakh20-quiet-pad-15-30",
+    "before_version": "staged-guitar-residual-v9",
+    "after_version": "staged-context-percussion-v11",
+    "analysis_id": "analysis_85c83fa38b6844fd9dc08aa4a1372657",
+    "track_count": 13,
+    "partition_verified": true,
+    "processing_seconds": 95.724,
+    "input_sha256": "35278cea216ef19b7aaad8945ec2cf4c49a605305662dd81e672f93c5b3d0542",
+    "metrics": {
+      "lead": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -140.58394351030273,
+          "after": -141.66779974674282
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 6.732755904430334e-09,
+          "after": 5.942922374590015e-09
+        }
+      },
+      "backing": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -53.313012172622045,
+          "after": -53.79545567696981
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.00015550323788348543,
+          "after": 0.00014710155413895056
+        }
+      },
+      "piano": {
+        "raw_sdr_db": {
+          "before": 12.121862076467483,
+          "after": 12.119735187266397
+        },
+        "target_gain": {
+          "before": 0.9475344339156525,
+          "after": 0.9475200240930273
+        },
+        "output_to_mix_db": {
+          "before": -7.373564642150729,
+          "after": -7.373559043929491
+        },
+        "reference_rms": {
+          "before": 0.03150560111022742,
+          "after": 0.03150560111022742
+        },
+        "error_rms": {
+          "before": 0.007803594003221771,
+          "after": 0.007805505081159595
+        },
+        "sdr_delta_db": -0.0021268892010866125
+      },
+      "synth": {
+        "raw_sdr_db": {
+          "before": -4.012405446560749,
+          "after": -4.058848170802606
+        },
+        "target_gain": {
+          "before": 0.011608064209599518,
+          "after": 0.011577291353843278
+        },
+        "output_to_mix_db": {
+          "before": -23.693263930520363,
+          "after": -23.617832576116953
+        },
+        "reference_rms": {
+          "before": 0.0037900428490706193,
+          "after": 0.0037900428490706193
+        },
+        "error_rms": {
+          "before": 0.006015398349600383,
+          "after": 0.006047648322759084
+        },
+        "sdr_delta_db": -0.04644272424185747
+      },
+      "strings": {
+        "raw_sdr_db": {
+          "before": 13.16620234595467,
+          "after": 13.16654471812595
+        },
+        "target_gain": {
+          "before": 0.9682686653366951,
+          "after": 0.9680819455262955
+        },
+        "output_to_mix_db": {
+          "before": -5.791465235879201,
+          "after": -5.793129227244242
+        },
+        "reference_rms": {
+          "before": 0.03725190066237284,
+          "after": 0.03725190066237284
+        },
+        "error_rms": {
+          "before": 0.008181601430557055,
+          "after": 0.008181278942296534
+        },
+        "sdr_delta_db": 0.00034237217128030295
+      },
+      "brass": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -67.0711677559336,
+          "after": -67.20767921768464
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 3.190300979061574e-05,
+          "after": 3.1405526898483525e-05
+        }
+      },
+      "acoustic_guitar": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -153.8295356541126,
+          "after": -153.86090699342137
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 1.465255169423971e-09,
+          "after": 1.4599725664941273e-09
+        }
+      },
+      "guitar": {
+        "raw_sdr_db": {
+          "before": -8.513806120415786e-11,
+          "after": -6.50559417128384e-11
+        },
+        "target_gain": {
+          "before": -9.801490085640906e-12,
+          "after": -7.489493801509876e-12
+        },
+        "output_to_mix_db": {
+          "before": -167.0228415342084,
+          "after": -167.05971451788358
+        },
+        "reference_rms": {
+          "before": 0.014193462110547006,
+          "after": 0.014193462110547006
+        },
+        "error_rms": {
+          "before": 0.014193462110686124,
+          "after": 0.014193462110653308
+        },
+        "sdr_delta_db": 2.008211949131946e-11
+      },
+      "bass": {
+        "raw_sdr_db": {
+          "before": 17.646759751521838,
+          "after": 17.644834832371146
+        },
+        "target_gain": {
+          "before": 0.9670436428438094,
+          "after": 0.9670630983902473
+        },
+        "output_to_mix_db": {
+          "before": -6.328314592845581,
+          "after": -6.328102158733373
+        },
+        "reference_rms": {
+          "before": 0.035630368731471754,
+          "after": 0.035630368731471754
+        },
+        "error_rms": {
+          "before": 0.004671779420314555,
+          "after": 0.004672814869138977
+        },
+        "sdr_delta_db": -0.0019249191506922614
+      },
+      "drums": {
+        "raw_sdr_db": {
+          "before": 18.646067329923046,
+          "after": 18.64143010974093
+        },
+        "target_gain": {
+          "before": 1.0229864542704108,
+          "after": 1.0230838524590968
+        },
+        "output_to_mix_db": {
+          "before": -6.4725841345375015,
+          "after": -6.4717260340548926
+        },
+        "reference_rms": {
+          "before": 0.033203471274884815,
+          "after": 0.033203471274884815
+        },
+        "error_rms": {
+          "before": 0.0038804324091663346,
+          "after": 0.0038825046463827543
+        },
+        "sdr_delta_db": -0.004637220182114987
+      },
+      "percussion": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": null,
+          "after": -92.38007752894872
+        },
+        "reference_rms": {
+          "before": null,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": null,
+          "after": 1.7313551714826982e-06
+        }
+      },
+      "other": {
+        "raw_sdr_db": {
+          "before": null,
+          "after": null
+        },
+        "target_gain": {
+          "before": null,
+          "after": null
+        },
+        "output_to_mix_db": {
+          "before": -16.53589009912054,
+          "after": -16.55688247707956
+        },
+        "reference_rms": {
+          "before": 0.0,
+          "after": 0.0
+        },
+        "error_rms": {
+          "before": 0.010729896677710798,
+          "after": 0.01070399558023289
+        }
+      },
+      "guitar_total": {
+        "raw_sdr_db": {
+          "before": -3.2669120072782414e-05,
+          "after": -3.305440917726969e-05
+        },
+        "target_gain": {
+          "before": -3.7408081758956073e-06,
+          "after": -3.7851752102808544e-06
+        },
+        "output_to_mix_db": {
+          "before": -88.00424332286951,
+          "after": -88.00608751919532
+        },
+        "reference_rms": {
+          "before": 0.014193462110547006,
+          "after": 0.014193462110547006
+        },
+        "error_rms": {
+          "before": 0.014193515494691777,
+          "after": 0.014193516124288423
+        },
+        "sdr_delta_db": -3.85289104487275e-07
+      }
+    }
+  }
+]

@@ -1,0 +1,3206 @@
+{
+  "source_checkpoint_sha256": "c62820893bbf86d4e734f966bd142d9157cfc8bb8e79e9d8f9ea553f3ff3519f",
+  "heads": {
+    "6": "bells",
+    "7": "bowed_strings",
+    "8": "brass",
+    "12": "digital-piano",
+    "17": "flute",
+    "19": "glockenspiel",
+    "25": "keys",
+    "29": "marimba",
+    "31": "organ",
+    "32": "percussion",
+    "37": "strings",
+    "38": "synth",
+    "40": "timpani",
+    "51": "wind-chimes",
+    "52": "woodwind"
+  },
+  "cases": [
+    {
+      "case": "mallet-94-109",
+      "input_sha256": "d5266fe6f53465320f1eda512579598399d4295b57cd0660ef1ac19fa88f54ce",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 0.0015316138742491603,
+          "drums": 0.0005892843473702669,
+          "pitched_percussion": 0.7654564380645752
+        },
+        "bowed_strings": {
+          "piano": -7.557890057796612e-06,
+          "drums": -0.00010350296361139044,
+          "pitched_percussion": -0.00013909417612012476
+        },
+        "brass": {
+          "piano": 9.119197784457356e-05,
+          "drums": -1.2876767868874595e-05,
+          "pitched_percussion": -0.00024373680935241282
+        },
+        "digital-piano": {
+          "piano": 0.32832562923431396,
+          "drums": 0.005727417301386595,
+          "pitched_percussion": -0.011557147838175297
+        },
+        "flute": {
+          "piano": -5.557009899348486e-06,
+          "drums": -1.8520210005590343e-06,
+          "pitched_percussion": -0.000288125011138618
+        },
+        "glockenspiel": {
+          "piano": 0.0021655994933098555,
+          "drums": 0.00021059185382910073,
+          "pitched_percussion": 0.7505415081977844
+        },
+        "keys": {
+          "piano": 0.9846177697181702,
+          "drums": 0.010591982863843441,
+          "pitched_percussion": 0.007189395371824503
+        },
+        "marimba": {
+          "piano": 0.000388280488550663,
+          "drums": 6.593798752874136e-05,
+          "pitched_percussion": 0.3115861415863037
+        },
+        "organ": {
+          "piano": 0.0007669527549296618,
+          "drums": 0.0004655335796996951,
+          "pitched_percussion": 0.00013968997518531978
+        },
+        "percussion": {
+          "piano": 0.002096109092235565,
+          "drums": 0.001197434845380485,
+          "pitched_percussion": 0.9031313061714172
+        },
+        "strings": {
+          "piano": -0.00019215914653614163,
+          "drums": -7.796929276082665e-05,
+          "pitched_percussion": -0.0003991635167039931
+        },
+        "synth": {
+          "piano": 0.00016565946862101555,
+          "drums": 0.0017964063445106149,
+          "pitched_percussion": 0.00016328992205671966
+        },
+        "timpani": {
+          "piano": 4.455118323676288e-05,
+          "drums": 0.0004499545320868492,
+          "pitched_percussion": 0.0003288469451945275
+        },
+        "wind-chimes": {
+          "piano": -7.747425843263045e-05,
+          "drums": 2.4941366064012982e-05,
+          "pitched_percussion": 0.03732157498598099
+        },
+        "woodwind": {
+          "piano": -3.232248855056241e-05,
+          "drums": 1.4486422514892183e-05,
+          "pitched_percussion": 0.0027215119916945696
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03292818416970799,
+          "error_rms": 0.03292818416970799,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -3.6890458724866004,
+          "target_gain": null,
+          "silence_output_dbfs": -29.64864435741042
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.0774903893502664e-05,
+          "error_rms": 2.0774903893502664e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.68962104753493,
+          "target_gain": null,
+          "silence_output_dbfs": -93.64921953245874
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0062641359193999e-05,
+          "error_rms": 1.0062641359193999e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -73.98616162800647,
+          "target_gain": null,
+          "silence_output_dbfs": -99.94576011293029
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.01453772217843318,
+          "output_rms": 0.028973071023917624,
+          "error_rms": 0.01560232589594133,
+          "raw_sdr_db": -0.6138595997800428,
+          "si_sdr_db": 10.520814828710073,
+          "output_to_mix_db": -4.800510894360357,
+          "target_gain": 1.9100291908141418,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "mallet-no-94-109",
+      "input_sha256": "ea4f51855c30d33aa5e3ae91dd7282a1fa2725065180c3f20d754d6184432772",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -2.905004657804966e-05,
+          "drums": -8.409209044657473e-07,
+          "pitched_percussion": 0.0
+        },
+        "bowed_strings": {
+          "piano": -6.179649972182233e-06,
+          "drums": -0.00011202200403204188,
+          "pitched_percussion": 0.0
+        },
+        "brass": {
+          "piano": 0.00010848878446267918,
+          "drums": -9.912753739627078e-06,
+          "pitched_percussion": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.3209179639816284,
+          "drums": 0.005538090597838163,
+          "pitched_percussion": 0.0
+        },
+        "flute": {
+          "piano": -3.3439973776694387e-06,
+          "drums": -1.6846571497808327e-06,
+          "pitched_percussion": 0.0
+        },
+        "glockenspiel": {
+          "piano": -8.83047414390603e-06,
+          "drums": -1.3510530152416322e-06,
+          "pitched_percussion": 0.0
+        },
+        "keys": {
+          "piano": 0.9862457513809204,
+          "drums": 0.009832952171564102,
+          "pitched_percussion": 0.0
+        },
+        "marimba": {
+          "piano": -0.00011571239883778617,
+          "drums": -7.605418431921862e-06,
+          "pitched_percussion": 0.0
+        },
+        "organ": {
+          "piano": 0.0017445911653339863,
+          "drums": 0.000120935270388145,
+          "pitched_percussion": 0.0
+        },
+        "percussion": {
+          "piano": -0.00011549853661563247,
+          "drums": 5.596684422926046e-05,
+          "pitched_percussion": 0.0
+        },
+        "strings": {
+          "piano": -0.00019402283942326903,
+          "drums": -0.00010879478213610128,
+          "pitched_percussion": 0.0
+        },
+        "synth": {
+          "piano": 0.00018536552670411766,
+          "drums": -3.2733318221289665e-05,
+          "pitched_percussion": 0.0
+        },
+        "timpani": {
+          "piano": 5.232281910139136e-05,
+          "drums": 0.0006331914919428527,
+          "pitched_percussion": 0.0
+        },
+        "wind-chimes": {
+          "piano": -7.389094491827564e-08,
+          "drums": -1.514910877631337e-06,
+          "pitched_percussion": 0.0
+        },
+        "woodwind": {
+          "piano": 2.994142278112122e-06,
+          "drums": 1.5814548532944173e-05,
+          "pitched_percussion": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03297581296003417,
+          "error_rms": 0.03297581296003417,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -3.2882319396378126,
+          "target_gain": null,
+          "silence_output_dbfs": -29.63608977782771
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.9055571381312835e-05,
+          "error_rms": 1.9055571381312835e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.05170264933851,
+          "target_gain": null,
+          "silence_output_dbfs": -94.3995604875284
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.841454654478975e-06,
+          "error_rms": 9.841454654478975e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -73.79095624659388,
+          "target_gain": null,
+          "silence_output_dbfs": -100.13881408478377
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.374743836788927e-05,
+          "error_rms": 9.374743836788927e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.212953970964776,
+          "target_gain": null,
+          "silence_output_dbfs": -80.56081180915467
+        }
+      }
+    },
+    {
+      "case": "mallet-quiet-94-109",
+      "input_sha256": "8f184e489eed898bf1b4b213c9a41330fe5e8243908aa16e357ee6c1522105c5",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 7.457780884578824e-05,
+          "drums": 1.738811442919541e-05,
+          "pitched_percussion": 0.3506765365600586
+        },
+        "bowed_strings": {
+          "piano": -6.246240445761941e-06,
+          "drums": -0.0001113849357352592,
+          "pitched_percussion": -4.3504900531843305e-05
+        },
+        "brass": {
+          "piano": 0.00010903849033638835,
+          "drums": -9.657288501330186e-06,
+          "pitched_percussion": 0.00013525001122616231
+        },
+        "digital-piano": {
+          "piano": 0.32951247692108154,
+          "drums": 0.005676683504134417,
+          "pitched_percussion": 0.012253908440470695
+        },
+        "flute": {
+          "piano": -3.5863913581124507e-06,
+          "drums": -1.7115646642196225e-06,
+          "pitched_percussion": -7.919335621409118e-05
+        },
+        "glockenspiel": {
+          "piano": 6.90859233145602e-05,
+          "drums": 6.122974355093902e-06,
+          "pitched_percussion": 0.47968441247940063
+        },
+        "keys": {
+          "piano": 0.9859281778335571,
+          "drums": 0.009884923696517944,
+          "pitched_percussion": 0.09730178862810135
+        },
+        "marimba": {
+          "piano": -0.00010516236943658441,
+          "drums": -7.178003215813078e-06,
+          "pitched_percussion": 0.10291793197393417
+        },
+        "organ": {
+          "piano": 0.0011220801388844848,
+          "drums": 8.263980271294713e-05,
+          "pitched_percussion": 0.0014627197524532676
+        },
+        "percussion": {
+          "piano": -7.7965778473299e-06,
+          "drums": 0.00016006419900804758,
+          "pitched_percussion": 0.5702192783355713
+        },
+        "strings": {
+          "piano": -0.00018656275642570108,
+          "drums": -0.00010621621913742274,
+          "pitched_percussion": -0.0002515461528673768
+        },
+        "synth": {
+          "piano": 0.000175995213794522,
+          "drums": -2.7451187634142116e-05,
+          "pitched_percussion": 0.0007352856337092817
+        },
+        "timpani": {
+          "piano": 5.968678306089714e-05,
+          "drums": 0.0006412629154510796,
+          "pitched_percussion": 3.423666930757463e-05
+        },
+        "wind-chimes": {
+          "piano": -1.0442558959766757e-06,
+          "drums": -1.0730723261076491e-06,
+          "pitched_percussion": 0.003560032695531845
+        },
+        "woodwind": {
+          "piano": -9.149345032710698e-07,
+          "drums": 1.6133717508637346e-05,
+          "pitched_percussion": 0.003227593842893839
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03295031188118894,
+          "error_rms": 0.03295031188118894,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -3.299933922379585,
+          "target_gain": null,
+          "silence_output_dbfs": -29.64280940735491
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.898809466050456e-05,
+          "error_rms": 1.898809466050456e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.08749675261065,
+          "target_gain": null,
+          "silence_output_dbfs": -94.43037223758596
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.0055797428545684e-05,
+          "error_rms": 1.0055797428545684e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -73.60879419471827,
+          "target_gain": null,
+          "silence_output_dbfs": -99.95166967969361
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.0014537722428299932,
+          "output_rms": 0.0019020040149189343,
+          "error_rms": 0.001249695651337812,
+          "raw_sdr_db": 1.3138422789949353,
+          "si_sdr_db": 1.1959966821035102,
+          "output_to_mix_db": -28.072895928030444,
+          "target_gain": 0.986379242350801,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "percussion-bell_tree",
+      "input_sha256": "dae17a2bfd17897badc174956d8e4031aa8e584f01caf7511b40e5e0eafa10b4",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -9.1166453785263e-05,
+          "pitched_percussion": 0.15846389532089233
+        },
+        "bowed_strings": {
+          "piano": -4.527399539711041e-07,
+          "pitched_percussion": 3.6993096728110686e-05
+        },
+        "brass": {
+          "piano": 7.233127689687535e-05,
+          "pitched_percussion": -4.454274312593043e-05
+        },
+        "digital-piano": {
+          "piano": 0.12305159121751785,
+          "pitched_percussion": 0.0050163473933935165
+        },
+        "flute": {
+          "piano": -2.2318645278573968e-06,
+          "pitched_percussion": 4.697515396401286e-05
+        },
+        "glockenspiel": {
+          "piano": 5.356593646865804e-06,
+          "pitched_percussion": 0.010582121089100838
+        },
+        "keys": {
+          "piano": 0.9937967658042908,
+          "pitched_percussion": 0.004957111086696386
+        },
+        "marimba": {
+          "piano": -5.099871850688942e-05,
+          "pitched_percussion": 0.012765225023031235
+        },
+        "organ": {
+          "piano": 0.00035432822187431157,
+          "pitched_percussion": 0.00019787438213825226
+        },
+        "percussion": {
+          "piano": 3.651855149655603e-05,
+          "pitched_percussion": 1.0102382898330688
+        },
+        "strings": {
+          "piano": -0.00035193245275877416,
+          "pitched_percussion": -0.00025952429859898984
+        },
+        "synth": {
+          "piano": 0.00015472821542061865,
+          "pitched_percussion": -5.385477561503649e-05
+        },
+        "timpani": {
+          "piano": -5.034572950535221e-06,
+          "pitched_percussion": 0.00012643059017136693
+        },
+        "wind-chimes": {
+          "piano": 1.9786970369750634e-05,
+          "pitched_percussion": 0.48027026653289795
+        },
+        "woodwind": {
+          "piano": 1.6587952131885686e-06,
+          "pitched_percussion": -7.505513349315152e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03137651135036238,
+          "error_rms": 0.03137651135036238,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.10609674809090852,
+          "target_gain": null,
+          "silence_output_dbfs": -30.0679069163923
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.255173322516688e-05,
+          "error_rms": 1.255173322516688e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.06411582826179,
+          "target_gain": null,
+          "silence_output_dbfs": -98.02592599656319
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.315706744906525e-06,
+          "error_rms": 4.315706744906525e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.33715130330624,
+          "target_gain": null,
+          "silence_output_dbfs": -107.29896147160764
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.004029501835660203,
+          "output_rms": 0.0032213607940571568,
+          "error_rms": 0.0020396419414038572,
+          "raw_sdr_db": 5.913948482321311,
+          "si_sdr_db": 4.726636159518095,
+          "output_to_mix_db": -19.877402456738682,
+          "target_gain": 0.6914476237179994,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "percussion-cowbell",
+      "input_sha256": "ff86935db017f82f32719d9bfb046e2b6ecf2f69fa8ec9d2aef1572cbd00f21a",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -3.848091000691056e-05,
+          "pitched_percussion": 0.08465054631233215
+        },
+        "bowed_strings": {
+          "piano": -7.488993105653208e-07,
+          "pitched_percussion": 2.778901398414746e-05
+        },
+        "brass": {
+          "piano": 7.462087523890659e-05,
+          "pitched_percussion": 0.00015225551032926887
+        },
+        "digital-piano": {
+          "piano": 0.13020654022693634,
+          "pitched_percussion": -0.000528807460796088
+        },
+        "flute": {
+          "piano": -3.569230557332048e-06,
+          "pitched_percussion": 3.0033708753762767e-05
+        },
+        "glockenspiel": {
+          "piano": 3.579110625651083e-06,
+          "pitched_percussion": 0.026853565126657486
+        },
+        "keys": {
+          "piano": 0.9944925308227539,
+          "pitched_percussion": 0.006375232711434364
+        },
+        "marimba": {
+          "piano": -0.00016698140825610608,
+          "pitched_percussion": 0.16427259147167206
+        },
+        "organ": {
+          "piano": 0.00035736680729314685,
+          "pitched_percussion": 0.0001444708468625322
+        },
+        "percussion": {
+          "piano": 0.001174961100332439,
+          "pitched_percussion": 0.9458448886871338
+        },
+        "strings": {
+          "piano": -0.00033887612516991794,
+          "pitched_percussion": 0.00010431793634779751
+        },
+        "synth": {
+          "piano": 0.00018172449199482799,
+          "pitched_percussion": 0.0013178460067138076
+        },
+        "timpani": {
+          "piano": -1.714572499622591e-05,
+          "pitched_percussion": 0.0191737562417984
+        },
+        "wind-chimes": {
+          "piano": 7.93600338511169e-06,
+          "pitched_percussion": 0.009932680055499077
+        },
+        "woodwind": {
+          "piano": 3.883314434460772e-07,
+          "pitched_percussion": 0.0002197540015913546
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03139726252617761,
+          "error_rms": 0.03139726252617761,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.09149348427224661,
+          "target_gain": null,
+          "silence_output_dbfs": -30.06216431344123
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.2150841633689693e-05,
+          "error_rms": 1.2150841633689693e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.33720195912699,
+          "target_gain": null,
+          "silence_output_dbfs": -98.30787278829597
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.291922105694718e-06,
+          "error_rms": 4.291922105694718e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.37629254416028,
+          "target_gain": null,
+          "silence_output_dbfs": -107.34696337332926
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.003739253175538215,
+          "output_rms": 0.0016550425995021608,
+          "error_rms": 0.002804997603077998,
+          "raw_sdr_db": 2.4970475333977813,
+          "si_sdr_db": 0.2019350712519386,
+          "output_to_mix_db": -25.65314563771263,
+          "target_gain": 0.3165913210675645,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "percussion-sleigh_bells",
+      "input_sha256": "b0f790e0c8000fddc0c4b35a681b69687d4751ea23852cc6cd56f632bee98e37",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 2.2324920223582012e-07,
+          "pitched_percussion": 0.038168687373399734
+        },
+        "bowed_strings": {
+          "piano": 3.750465396024083e-07,
+          "pitched_percussion": -4.924770564684877e-06
+        },
+        "brass": {
+          "piano": 6.851635407656431e-05,
+          "pitched_percussion": -3.4959659387823194e-05
+        },
+        "digital-piano": {
+          "piano": 0.117556631565094,
+          "pitched_percussion": 0.00021682772785425186
+        },
+        "flute": {
+          "piano": -2.3028294435789576e-06,
+          "pitched_percussion": 3.421601650188677e-05
+        },
+        "glockenspiel": {
+          "piano": -2.0063060901520657e-07,
+          "pitched_percussion": 0.00031474558636546135
+        },
+        "keys": {
+          "piano": 0.9932358860969543,
+          "pitched_percussion": 0.011689679697155952
+        },
+        "marimba": {
+          "piano": -5.549361594603397e-05,
+          "pitched_percussion": 0.0001784915803000331
+        },
+        "organ": {
+          "piano": 0.0003598801849875599,
+          "pitched_percussion": 0.00016702611173968762
+        },
+        "percussion": {
+          "piano": -1.4079730135563295e-05,
+          "pitched_percussion": 0.8082091808319092
+        },
+        "strings": {
+          "piano": -0.000348530214978382,
+          "pitched_percussion": -1.4080153960094322e-05
+        },
+        "synth": {
+          "piano": 0.00016164532280527055,
+          "pitched_percussion": -8.91751824383391e-06
+        },
+        "timpani": {
+          "piano": -5.82714710617438e-06,
+          "pitched_percussion": 2.3028187570162117e-05
+        },
+        "wind-chimes": {
+          "piano": -4.962126240570797e-06,
+          "pitched_percussion": 0.016633128747344017
+        },
+        "woodwind": {
+          "piano": 1.5491355043195654e-06,
+          "pitched_percussion": 7.148412987589836e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03135745285802348,
+          "error_rms": 0.03135745285802348,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.05246495765843076,
+          "target_gain": null,
+          "silence_output_dbfs": -30.07318443928776
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.2043018655280094e-05,
+          "error_rms": 1.2043018655280094e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.36457333638973,
+          "target_gain": null,
+          "silence_output_dbfs": -98.38529281801904
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.079215288742606e-06,
+          "error_rms": 4.079215288742606e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.76774798473977,
+          "target_gain": null,
+          "silence_output_dbfs": -107.78846746636908
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.001624508812603433,
+          "output_rms": 0.000170524991530347,
+          "error_rms": 0.0015370972837115205,
+          "raw_sdr_db": 0.4804143307847968,
+          "si_sdr_db": -3.5988375513988107,
+          "output_to_mix_db": -45.34351978571862,
+          "target_gain": 0.05786969544487267,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "phoenix-30-50",
+      "input_sha256": "2b8b715a0e00922cbcaa9d23f1cb65886592109bf03c8f8b04f9420629e38c65",
+      "head_reference_coefficients": {
+        "bells": {
+          "acoustic_guitar": -2.2386851924238726e-05,
+          "strings": -5.8567547966958955e-05,
+          "other": -4.2694893636507913e-05
+        },
+        "bowed_strings": {
+          "acoustic_guitar": 0.026845786720514297,
+          "strings": 0.5943580269813538,
+          "other": 0.11306624114513397
+        },
+        "brass": {
+          "acoustic_guitar": 2.511001548555214e-05,
+          "strings": 0.000977309187874198,
+          "other": 0.00232372316531837
+        },
+        "digital-piano": {
+          "acoustic_guitar": -7.741119043203071e-05,
+          "strings": -7.491483120247722e-05,
+          "other": 3.3489843190182e-05
+        },
+        "flute": {
+          "acoustic_guitar": 0.04031887650489807,
+          "strings": 0.23099297285079956,
+          "other": 0.7459444999694824
+        },
+        "glockenspiel": {
+          "acoustic_guitar": 2.564080205047503e-06,
+          "strings": -9.318471711594611e-06,
+          "other": 1.9343700842000544e-05
+        },
+        "keys": {
+          "acoustic_guitar": -0.00040659564547240734,
+          "strings": -0.0011146895121783018,
+          "other": 0.0004183779237791896
+        },
+        "marimba": {
+          "acoustic_guitar": -0.0003786332090385258,
+          "strings": -0.0009512396063655615,
+          "other": -0.00043437708518467844
+        },
+        "organ": {
+          "acoustic_guitar": -0.00020251056412234902,
+          "strings": -0.0008512689382769167,
+          "other": 0.0009693031897768378
+        },
+        "percussion": {
+          "acoustic_guitar": -4.579974483931437e-05,
+          "strings": -1.2703801075986121e-05,
+          "other": 2.2948786863707937e-05
+        },
+        "strings": {
+          "acoustic_guitar": 0.946797788143158,
+          "strings": 0.7860522866249084,
+          "other": 0.030576437711715698
+        },
+        "synth": {
+          "acoustic_guitar": 0.002533142687752843,
+          "strings": 0.0035682416055351496,
+          "other": 0.012421336956322193
+        },
+        "timpani": {
+          "acoustic_guitar": -7.651039049960673e-05,
+          "strings": -2.2412286853068508e-05,
+          "other": -3.8907375710550696e-05
+        },
+        "wind-chimes": {
+          "acoustic_guitar": 2.223761384811951e-06,
+          "strings": -1.955810830622795e-06,
+          "other": -2.6738334781839512e-06
+        },
+        "woodwind": {
+          "acoustic_guitar": 0.04902227967977524,
+          "strings": 0.3065715730190277,
+          "other": 0.946846604347229
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0017117002592489396,
+          "error_rms": 0.0017117002592489396,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -31.35794792061564,
+          "target_gain": null,
+          "silence_output_dbfs": -55.33144567111244
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.03662895093448057,
+          "output_rms": 0.0663698574478495,
+          "error_rms": 0.0447803518806516,
+          "raw_sdr_db": -1.7452604281568074,
+          "si_sdr_db": 1.6187267945135355,
+          "output_to_mix_db": 0.4129154474151489,
+          "target_gain": 1.3942810431013324,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.000171513061090203,
+          "error_rms": 0.000171513061090203,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -51.340558287476554,
+          "target_gain": null,
+          "silence_output_dbfs": -75.31405603797336
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00021826011427261545,
+          "error_rms": 0.00021826011427261545,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -49.24701468456212,
+          "target_gain": null,
+          "silence_output_dbfs": -73.22051243505891
+        }
+      }
+    },
+    {
+      "case": "rainfall-40-60",
+      "input_sha256": "10037404d3b6eb8f9ed0b335936090b2efe1bbc08091810398fee4ff54db283a",
+      "head_reference_coefficients": {
+        "bells": {
+          "lead": -2.8066356208000798e-06,
+          "backing": 1.646030682422861e-06,
+          "acoustic_guitar": -3.6269722158976947e-07,
+          "guitar": -5.418070827545307e-07
+        },
+        "bowed_strings": {
+          "lead": -0.00011191614612471312,
+          "backing": -2.040790241153445e-05,
+          "acoustic_guitar": 0.00051454285858199,
+          "guitar": 1.6850754036568105e-05
+        },
+        "brass": {
+          "lead": -5.1026978326262906e-05,
+          "backing": 5.950874401605688e-05,
+          "acoustic_guitar": -4.5527667680289596e-05,
+          "guitar": -2.7815096473204903e-05
+        },
+        "digital-piano": {
+          "lead": 0.0003207316913176328,
+          "backing": 0.0009931435342878103,
+          "acoustic_guitar": 0.00016802619211375713,
+          "guitar": -0.0005815406912006438
+        },
+        "flute": {
+          "lead": 7.381156024166557e-07,
+          "backing": -5.6161593420256395e-06,
+          "acoustic_guitar": -7.047743224575242e-07,
+          "guitar": -2.188520511481329e-06
+        },
+        "glockenspiel": {
+          "lead": 3.890165771736065e-07,
+          "backing": 4.835494848975941e-08,
+          "acoustic_guitar": 1.2222609768741677e-07,
+          "guitar": 6.22882112111256e-07
+        },
+        "keys": {
+          "lead": 6.0663118347292766e-05,
+          "backing": 0.0004013928701169789,
+          "acoustic_guitar": 0.0001732407690724358,
+          "guitar": -0.0004426722298376262
+        },
+        "marimba": {
+          "lead": -8.133657684084028e-05,
+          "backing": -3.58285142283421e-05,
+          "acoustic_guitar": -8.559324487578124e-05,
+          "guitar": -8.09625125839375e-05
+        },
+        "organ": {
+          "lead": 2.5009472665260546e-05,
+          "backing": 3.01347336062463e-05,
+          "acoustic_guitar": 3.7612280721077695e-05,
+          "guitar": 7.552587339887396e-05
+        },
+        "percussion": {
+          "lead": -5.786929705209332e-06,
+          "backing": 3.628862395999022e-05,
+          "acoustic_guitar": -4.805579374078661e-05,
+          "guitar": -1.4568611732102e-05
+        },
+        "strings": {
+          "lead": 0.00812483485788107,
+          "backing": 0.06689538061618805,
+          "acoustic_guitar": 0.9861730337142944,
+          "guitar": 0.9980553388595581
+        },
+        "synth": {
+          "lead": -3.118886161246337e-05,
+          "backing": 1.7956288502318785e-05,
+          "acoustic_guitar": -2.636624049046077e-05,
+          "guitar": -2.155858055630233e-05
+        },
+        "timpani": {
+          "lead": 3.037465467059519e-05,
+          "backing": 0.00017338464385829866,
+          "acoustic_guitar": 6.687722634524107e-05,
+          "guitar": -3.5567321901908144e-05
+        },
+        "wind-chimes": {
+          "lead": -1.8479823893358116e-07,
+          "backing": -4.987443276149861e-07,
+          "acoustic_guitar": -1.0971194797093631e-07,
+          "guitar": -2.061914017303934e-07
+        },
+        "woodwind": {
+          "lead": 5.988260909361998e-06,
+          "backing": 8.70123112690635e-05,
+          "acoustic_guitar": -6.6795951170206536e-06,
+          "guitar": -4.4218089897185564e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.292966997325746e-05,
+          "error_rms": 6.292966997325746e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -60.34496347478081,
+          "target_gain": null,
+          "silence_output_dbfs": -84.02289091698704
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.04682979865631722,
+          "error_rms": 0.04682979865631722,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -2.9116267468621255,
+          "target_gain": null,
+          "silence_output_dbfs": -26.58955418906836
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.7843195977956938e-05,
+          "error_rms": 1.7843195977956938e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -71.29261964748676,
+          "target_gain": null,
+          "silence_output_dbfs": -94.970547089693
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.36506025626259e-05,
+          "error_rms": 6.36506025626259e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -60.24602217069949,
+          "target_gain": null,
+          "silence_output_dbfs": -83.92394961290574
+        }
+      }
+    },
+    {
+      "case": "rainfall-guitars-only-40-60",
+      "input_sha256": "3efeac210f7ef978064462b09c43c654f22af923fc57fa394c8681df1aa499c1",
+      "head_reference_coefficients": {
+        "bells": {
+          "acoustic_guitar": 9.383243764204963e-07,
+          "guitar": 7.695410204178188e-06
+        },
+        "bowed_strings": {
+          "acoustic_guitar": 0.00024391349870711565,
+          "guitar": 3.161164158882457e-06
+        },
+        "brass": {
+          "acoustic_guitar": -4.776237619807944e-05,
+          "guitar": -2.604859218990896e-05
+        },
+        "digital-piano": {
+          "acoustic_guitar": 4.3589774577412754e-05,
+          "guitar": -0.0024057612754404545
+        },
+        "flute": {
+          "acoustic_guitar": -5.834010607941309e-07,
+          "guitar": -1.5181029766608845e-06
+        },
+        "glockenspiel": {
+          "acoustic_guitar": 3.9759623859936255e-07,
+          "guitar": 8.593408438173356e-07
+        },
+        "keys": {
+          "acoustic_guitar": 0.00012069364311173558,
+          "guitar": -0.0008638394647277892
+        },
+        "marimba": {
+          "acoustic_guitar": -5.783070810139179e-05,
+          "guitar": -0.00011707477096933872
+        },
+        "organ": {
+          "acoustic_guitar": 6.727056643285323e-06,
+          "guitar": -2.0736935766763054e-05
+        },
+        "percussion": {
+          "acoustic_guitar": -4.292486482881941e-05,
+          "guitar": -1.5244469977915287e-05
+        },
+        "strings": {
+          "acoustic_guitar": 0.9993354678153992,
+          "guitar": 0.998105525970459
+        },
+        "synth": {
+          "acoustic_guitar": -0.00010646251030266285,
+          "guitar": 0.00019565569527912885
+        },
+        "timpani": {
+          "acoustic_guitar": 0.00011036935029551387,
+          "guitar": -5.2730945753864944e-05
+        },
+        "wind-chimes": {
+          "acoustic_guitar": -7.414333680344498e-08,
+          "guitar": 6.365990401491217e-08
+        },
+        "woodwind": {
+          "acoustic_guitar": -6.752001354470849e-06,
+          "guitar": -3.828095941571519e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 2.9648424349119508e-05,
+          "error_rms": 2.9648424349119508e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -64.05797055877008,
+          "target_gain": null,
+          "silence_output_dbfs": -90.55996764104718
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.04721155739588226,
+          "error_rms": 0.04721155739588226,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.017036377735053922,
+          "target_gain": null,
+          "silence_output_dbfs": -26.519033460012142
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.1373374630698553e-06,
+          "error_rms": 3.1373374630698553e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -83.56677820862848,
+          "target_gain": null,
+          "silence_output_dbfs": -110.06877529090558
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.780567135582318e-05,
+          "error_rms": 1.780567135582318e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.48683585329658,
+          "target_gain": null,
+          "silence_output_dbfs": -94.98883293557368
+        }
+      }
+    },
+    {
+      "case": "real-brass",
+      "input_sha256": "49a9df5d1a52f44c2a27d7dac48604d09ff5954420db6478b439e97fc6886541",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -8.752883331908379e-06,
+          "brass": 0.00013465608935803175
+        },
+        "bowed_strings": {
+          "piano": -8.604949107393622e-05,
+          "brass": 0.00023579616390634328
+        },
+        "brass": {
+          "piano": -0.0008743079379200935,
+          "brass": 0.9576494693756104
+        },
+        "digital-piano": {
+          "piano": 0.10876362770795822,
+          "brass": 0.0016664762515574694
+        },
+        "flute": {
+          "piano": -9.501230124442372e-06,
+          "brass": 0.00010408827074570581
+        },
+        "glockenspiel": {
+          "piano": -1.1991394899268926e-07,
+          "brass": 3.456630565779051e-06
+        },
+        "keys": {
+          "piano": 0.9951564073562622,
+          "brass": 0.007413148880004883
+        },
+        "marimba": {
+          "piano": -9.86230224953033e-05,
+          "brass": 0.0003825085877906531
+        },
+        "organ": {
+          "piano": 0.000461074523627758,
+          "brass": 0.0006045241607353091
+        },
+        "percussion": {
+          "piano": -1.105233695852803e-05,
+          "brass": 2.628307993290946e-05
+        },
+        "strings": {
+          "piano": -0.0003947719815187156,
+          "brass": -2.5134422685368918e-05
+        },
+        "synth": {
+          "piano": 9.877756383502856e-05,
+          "brass": 0.002276171464473009
+        },
+        "timpani": {
+          "piano": -1.0912182005995419e-05,
+          "brass": -5.2584640798158944e-05
+        },
+        "wind-chimes": {
+          "piano": 8.104012039211739e-08,
+          "brass": 6.520345436911157e-07
+        },
+        "woodwind": {
+          "piano": -3.3740205253707245e-05,
+          "brass": 0.0006046461639925838
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03142418185428647,
+          "error_rms": 0.03142418185428647,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.7034740300493418,
+          "target_gain": null,
+          "silence_output_dbfs": -30.054720411770347
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.143121477940324e-05,
+          "error_rms": 3.143121477940324e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -60.701530292043586,
+          "target_gain": null,
+          "silence_output_dbfs": -90.0527766737646
+        },
+        "brass": {
+          "reference_absent": false,
+          "reference_rms": 0.013045582659719824,
+          "output_rms": 0.012573873114030985,
+          "error_rms": 0.001083224948860866,
+          "raw_sdr_db": 21.6148965357849,
+          "si_sdr_db": 22.349218164869136,
+          "output_to_mix_db": -8.659372148948725,
+          "target_gain": 0.9610478460319591,
+          "silence_output_dbfs": null
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.6765673028011878e-05,
+          "error_rms": 1.6765673028011878e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -66.16033377645091,
+          "target_gain": null,
+          "silence_output_dbfs": -95.51158015817192
+        }
+      }
+    },
+    {
+      "case": "real-no-brass",
+      "input_sha256": "e4778fbceab446ee8abc92d4fdfe7a132a75b4aea0a3b25165dd9e966ba4dd12",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -7.930336323624942e-06,
+          "brass": 0.0
+        },
+        "bowed_strings": {
+          "piano": -1.2691981510215555e-07,
+          "brass": 0.0
+        },
+        "brass": {
+          "piano": 7.182764238677919e-05,
+          "brass": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.11730559170246124,
+          "brass": 0.0
+        },
+        "flute": {
+          "piano": -2.2517131128552137e-06,
+          "brass": 0.0
+        },
+        "glockenspiel": {
+          "piano": -4.020203547838719e-08,
+          "brass": 0.0
+        },
+        "keys": {
+          "piano": 0.993232250213623,
+          "brass": 0.0
+        },
+        "marimba": {
+          "piano": -5.68324830965139e-05,
+          "brass": 0.0
+        },
+        "organ": {
+          "piano": 0.00035924644907936454,
+          "brass": 0.0
+        },
+        "percussion": {
+          "piano": -7.902668585302308e-06,
+          "brass": 0.0
+        },
+        "strings": {
+          "piano": -0.000349264097167179,
+          "brass": 0.0
+        },
+        "synth": {
+          "piano": 0.0001578147930558771,
+          "brass": 0.0
+        },
+        "timpani": {
+          "piano": -6.062229203962488e-06,
+          "brass": 0.0
+        },
+        "wind-chimes": {
+          "piano": 1.512174385709386e-08,
+          "brass": 0.0
+        },
+        "woodwind": {
+          "piano": 2.1755556645075558e-06,
+          "brass": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03135543590471614,
+          "error_rms": 0.03135543590471614,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.041498548085054154,
+          "target_gain": null,
+          "silence_output_dbfs": -30.07374314529491
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.2055381057840252e-05,
+          "error_rms": 1.2055381057840252e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.34413655239996,
+          "target_gain": null,
+          "silence_output_dbfs": -98.37638114960981
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.165298243751984e-06,
+          "error_rms": 4.165298243751984e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.57483333845747,
+          "target_gain": null,
+          "silence_output_dbfs": -107.60707793566732
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.4488233787566272e-06,
+          "error_rms": 3.4488233787566272e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -79.21433632608586,
+          "target_gain": null,
+          "silence_output_dbfs": -109.24658092329571
+        }
+      }
+    },
+    {
+      "case": "real-no-strings",
+      "input_sha256": "744c0df12d98d06a57077ce10e4046a9414f127585bfd5b48a969732ad26825b",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -7.930336323624942e-06,
+          "strings": 0.0
+        },
+        "bowed_strings": {
+          "piano": -1.2691981510215555e-07,
+          "strings": 0.0
+        },
+        "brass": {
+          "piano": 7.182764238677919e-05,
+          "strings": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.11730559170246124,
+          "strings": 0.0
+        },
+        "flute": {
+          "piano": -2.2517131128552137e-06,
+          "strings": 0.0
+        },
+        "glockenspiel": {
+          "piano": -4.020203547838719e-08,
+          "strings": 0.0
+        },
+        "keys": {
+          "piano": 0.993232250213623,
+          "strings": 0.0
+        },
+        "marimba": {
+          "piano": -5.68324830965139e-05,
+          "strings": 0.0
+        },
+        "organ": {
+          "piano": 0.00035924644907936454,
+          "strings": 0.0
+        },
+        "percussion": {
+          "piano": -7.902668585302308e-06,
+          "strings": 0.0
+        },
+        "strings": {
+          "piano": -0.000349264097167179,
+          "strings": 0.0
+        },
+        "synth": {
+          "piano": 0.0001578147930558771,
+          "strings": 0.0
+        },
+        "timpani": {
+          "piano": -6.062229203962488e-06,
+          "strings": 0.0
+        },
+        "wind-chimes": {
+          "piano": 1.512174385709386e-08,
+          "strings": 0.0
+        },
+        "woodwind": {
+          "piano": 2.1755556645075558e-06,
+          "strings": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03135543590471614,
+          "error_rms": 0.03135543590471614,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.041498548085054154,
+          "target_gain": null,
+          "silence_output_dbfs": -30.07374314529491
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.2055381057840252e-05,
+          "error_rms": 1.2055381057840252e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.34413655239996,
+          "target_gain": null,
+          "silence_output_dbfs": -98.37638114960981
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.165298243751984e-06,
+          "error_rms": 4.165298243751984e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.57483333845747,
+          "target_gain": null,
+          "silence_output_dbfs": -107.60707793566732
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.4488233787566272e-06,
+          "error_rms": 3.4488233787566272e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -79.21433632608586,
+          "target_gain": null,
+          "silence_output_dbfs": -109.24658092329571
+        }
+      }
+    },
+    {
+      "case": "real-no-timpani",
+      "input_sha256": "f6e85502768276120ce79e4f011464af9e8a6839100e1cba590f873e4ee900a0",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -7.930336323624942e-06,
+          "pitched_percussion": 0.0
+        },
+        "bowed_strings": {
+          "piano": -1.2691981510215555e-07,
+          "pitched_percussion": 0.0
+        },
+        "brass": {
+          "piano": 7.182764238677919e-05,
+          "pitched_percussion": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.11730559170246124,
+          "pitched_percussion": 0.0
+        },
+        "flute": {
+          "piano": -2.2517131128552137e-06,
+          "pitched_percussion": 0.0
+        },
+        "glockenspiel": {
+          "piano": -4.020203547838719e-08,
+          "pitched_percussion": 0.0
+        },
+        "keys": {
+          "piano": 0.993232250213623,
+          "pitched_percussion": 0.0
+        },
+        "marimba": {
+          "piano": -5.68324830965139e-05,
+          "pitched_percussion": 0.0
+        },
+        "organ": {
+          "piano": 0.00035924644907936454,
+          "pitched_percussion": 0.0
+        },
+        "percussion": {
+          "piano": -7.902668585302308e-06,
+          "pitched_percussion": 0.0
+        },
+        "strings": {
+          "piano": -0.000349264097167179,
+          "pitched_percussion": 0.0
+        },
+        "synth": {
+          "piano": 0.0001578147930558771,
+          "pitched_percussion": 0.0
+        },
+        "timpani": {
+          "piano": -6.062229203962488e-06,
+          "pitched_percussion": 0.0
+        },
+        "wind-chimes": {
+          "piano": 1.512174385709386e-08,
+          "pitched_percussion": 0.0
+        },
+        "woodwind": {
+          "piano": 2.1755556645075558e-06,
+          "pitched_percussion": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03135543590471614,
+          "error_rms": 0.03135543590471614,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.041498548085054154,
+          "target_gain": null,
+          "silence_output_dbfs": -30.07374314529491
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.2055381057840252e-05,
+          "error_rms": 1.2055381057840252e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -68.34413655239996,
+          "target_gain": null,
+          "silence_output_dbfs": -98.37638114960981
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.165298243751984e-06,
+          "error_rms": 4.165298243751984e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.57483333845747,
+          "target_gain": null,
+          "silence_output_dbfs": -107.60707793566732
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.4488233787566272e-06,
+          "error_rms": 3.4488233787566272e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -79.21433632608586,
+          "target_gain": null,
+          "silence_output_dbfs": -109.24658092329571
+        }
+      }
+    },
+    {
+      "case": "real-quiet-brass",
+      "input_sha256": "caa833e286d720cbd4a2c412f5e4cdcebb7dee31870f63928027c4ee54ab1b91",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -8.37854440760566e-06,
+          "brass": 0.0003946283832192421
+        },
+        "bowed_strings": {
+          "piano": -1.281095956073841e-05,
+          "brass": 0.001904452103190124
+        },
+        "brass": {
+          "piano": 0.0002039977553067729,
+          "brass": 0.9051845669746399
+        },
+        "digital-piano": {
+          "piano": 0.11335515975952148,
+          "brass": 0.014447735622525215
+        },
+        "flute": {
+          "piano": -3.5121486234857002e-06,
+          "brass": 0.00018469833594281226
+        },
+        "glockenspiel": {
+          "piano": -1.310649508923234e-07,
+          "brass": 8.44241731101647e-06
+        },
+        "keys": {
+          "piano": 0.9931151866912842,
+          "brass": 0.06476368755102158
+        },
+        "marimba": {
+          "piano": -6.149547698441893e-05,
+          "brass": 0.000735798676032573
+        },
+        "organ": {
+          "piano": 0.0003959006571676582,
+          "brass": 0.0020049354061484337
+        },
+        "percussion": {
+          "piano": -8.801540388958529e-06,
+          "brass": 9.308610606240109e-05
+        },
+        "strings": {
+          "piano": -0.0003583106736186892,
+          "brass": 0.0015953552210703492
+        },
+        "synth": {
+          "piano": 0.000154170673340559,
+          "brass": 0.0017579245613887906
+        },
+        "timpani": {
+          "piano": -7.003460268606432e-06,
+          "brass": -3.495093187666498e-05
+        },
+        "wind-chimes": {
+          "piano": 2.756188699493123e-08,
+          "brass": -5.355049324862193e-06
+        },
+        "woodwind": {
+          "piano": -3.646466666396009e-06,
+          "brass": 0.003297125920653343
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03134936499208813,
+          "error_rms": 0.03134936499208813,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.04988869936453893,
+          "target_gain": null,
+          "silence_output_dbfs": -30.075425034926955
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.873785919210751e-05,
+          "error_rms": 1.873785919210751e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -64.52006424307598,
+          "target_gain": null,
+          "silence_output_dbfs": -94.54560057863839
+        },
+        "brass": {
+          "reference_absent": false,
+          "reference_rms": 0.0013045582879701824,
+          "output_rms": 0.0012272385345724888,
+          "error_rms": 0.0003115319108932298,
+          "raw_sdr_db": 12.439218984850504,
+          "si_sdr_db": 12.261565095214952,
+          "output_to_mix_db": -28.195883996201083,
+          "target_gain": 0.9139741469201133,
+          "silence_output_dbfs": null
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.626876940817316e-06,
+          "error_rms": 5.626876940817316e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -74.96911531873604,
+          "target_gain": null,
+          "silence_output_dbfs": -104.99465165429847
+        }
+      }
+    },
+    {
+      "case": "real-quiet-strings",
+      "input_sha256": "0590fb43febe5fac5ea59e5e8bb0064d165ec74dc864914afc4da58a36e4cae2",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -8.055559192143846e-06,
+          "strings": -3.750304313143715e-05
+        },
+        "bowed_strings": {
+          "piano": 2.2905811420059763e-05,
+          "strings": 0.9627530574798584
+        },
+        "brass": {
+          "piano": 6.792060594307259e-05,
+          "strings": 0.0003486461064312607
+        },
+        "digital-piano": {
+          "piano": 0.11610490083694458,
+          "strings": 0.010294528678059578
+        },
+        "flute": {
+          "piano": -2.3074951513990527e-06,
+          "strings": 8.387298294110224e-06
+        },
+        "glockenspiel": {
+          "piano": -9.390153365984588e-08,
+          "strings": -2.29116017180786e-06
+        },
+        "keys": {
+          "piano": 0.9931136965751648,
+          "strings": 0.046802863478660583
+        },
+        "marimba": {
+          "piano": -5.7723602367332205e-05,
+          "strings": -5.036271613789722e-05
+        },
+        "organ": {
+          "piano": 0.00036074910894967616,
+          "strings": 0.00018972522229887545
+        },
+        "percussion": {
+          "piano": -7.949596692924388e-06,
+          "strings": -1.863476200014702e-06
+        },
+        "strings": {
+          "piano": -0.00033061555586755276,
+          "strings": 0.9809741377830505
+        },
+        "synth": {
+          "piano": 0.00015733393956907094,
+          "strings": 5.67208589927759e-05
+        },
+        "timpani": {
+          "piano": -5.812442850583466e-06,
+          "strings": -1.0608259799482767e-05
+        },
+        "wind-chimes": {
+          "piano": 1.7440791921785603e-08,
+          "strings": 1.9918118141504237e-06
+        },
+        "woodwind": {
+          "piano": 1.998533662117552e-06,
+          "strings": 0.002012229524552822
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0313508184244408,
+          "error_rms": 0.0313508184244408,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.0457344823570866,
+          "target_gain": null,
+          "silence_output_dbfs": -30.075022345418695
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.0008229922281470431,
+          "output_rms": 0.0016397612758016656,
+          "error_rms": 0.0008303788135648776,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -25.67509961682019,
+          "target_gain": 1.975889728605344,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.1744433067841776e-06,
+          "error_rms": 4.1744433067841776e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -77.55874079162078,
+          "target_gain": null,
+          "silence_output_dbfs": -107.58802865468239
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.6647714731570863e-06,
+          "error_rms": 3.6647714731570863e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -78.68977417290006,
+          "target_gain": null,
+          "silence_output_dbfs": -108.71906203596167
+        }
+      }
+    },
+    {
+      "case": "real-quiet-timpani",
+      "input_sha256": "96e359ba730ac990ef737dea6c6641954c64d0364ad8bb93c390a925c8c2f618",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -1.457491180190118e-05,
+          "pitched_percussion": -1.0009711104430608e-06
+        },
+        "bowed_strings": {
+          "piano": -1.0238030654363683e-06,
+          "pitched_percussion": -3.177973485435359e-05
+        },
+        "brass": {
+          "piano": 9.84812795650214e-05,
+          "pitched_percussion": 0.00024317664792761207
+        },
+        "digital-piano": {
+          "piano": 0.15390850603580475,
+          "pitched_percussion": 0.03000515326857567
+        },
+        "flute": {
+          "piano": -3.576862127374625e-06,
+          "pitched_percussion": -4.699479177361354e-06
+        },
+        "glockenspiel": {
+          "piano": -2.2974531930231024e-06,
+          "pitched_percussion": -1.0018163266067859e-05
+        },
+        "keys": {
+          "piano": 0.9917113780975342,
+          "pitched_percussion": 0.044980645179748535
+        },
+        "marimba": {
+          "piano": -8.775913011049852e-05,
+          "pitched_percussion": -3.154936712235212e-05
+        },
+        "organ": {
+          "piano": 0.000512958038598299,
+          "pitched_percussion": 0.0005546733154915273
+        },
+        "percussion": {
+          "piano": -0.00020724066416732967,
+          "pitched_percussion": 0.030735310167074203
+        },
+        "strings": {
+          "piano": -0.00032214648672379553,
+          "pitched_percussion": -5.1122184231644496e-05
+        },
+        "synth": {
+          "piano": 0.00012756872456520796,
+          "pitched_percussion": -3.9495876990258694e-05
+        },
+        "timpani": {
+          "piano": 0.0011850817827507854,
+          "pitched_percussion": 0.09832922369241714
+        },
+        "wind-chimes": {
+          "piano": -1.3154376476975926e-09,
+          "pitched_percussion": -1.1804673931692378e-06
+        },
+        "woodwind": {
+          "piano": -7.076583187881624e-06,
+          "pitched_percussion": -4.973583600076381e-06
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03134441743468999,
+          "error_rms": 0.03134441743468999,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.13728191631639808,
+          "target_gain": null,
+          "silence_output_dbfs": -30.076795950381854
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.3612301698623169e-05,
+          "error_rms": 1.3612301698623169e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -67.38185464409557,
+          "target_gain": null,
+          "silence_output_dbfs": -97.32136867816104
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 9.18989577417933e-06,
+          "error_rms": 9.18989577417933e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -70.7942742473646,
+          "target_gain": null,
+          "silence_output_dbfs": -100.73378828143005
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.004510404597663918,
+          "output_rms": 0.000671609533736953,
+          "error_rms": 0.004091522330573486,
+          "raw_sdr_db": 0.8466115085548488,
+          "si_sdr_db": -0.9098854249393038,
+          "output_to_mix_db": -33.51814891643675,
+          "target_gain": 0.09964372575525095,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "real-strings",
+      "input_sha256": "bc7c6afa6383d4b5181116652f9ed3ea01cc71469d2c2ebd80f21828792662e5",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -8.546213393856306e-06,
+          "strings": -1.919031456054654e-05
+        },
+        "bowed_strings": {
+          "piano": 0.0001061415096046403,
+          "strings": 0.8277631998062134
+        },
+        "brass": {
+          "piano": 5.865802086191252e-05,
+          "strings": 0.0017713018460199237
+        },
+        "digital-piano": {
+          "piano": 0.11757718026638031,
+          "strings": 0.003143058391287923
+        },
+        "flute": {
+          "piano": -2.5598737920518033e-06,
+          "strings": 8.712728595128283e-05
+        },
+        "glockenspiel": {
+          "piano": -8.608115820152307e-08,
+          "strings": -1.8209393601864576e-06
+        },
+        "keys": {
+          "piano": 0.9934640526771545,
+          "strings": 0.015359454788267612
+        },
+        "marimba": {
+          "piano": -6.130273686721921e-05,
+          "strings": -0.0002874976780731231
+        },
+        "organ": {
+          "piano": 0.00036986437044106424,
+          "strings": 0.00032079379889182746
+        },
+        "percussion": {
+          "piano": -8.475404683849774e-06,
+          "strings": -1.7109692862504744e-06
+        },
+        "strings": {
+          "piano": -0.00023731810506433249,
+          "strings": 0.7144721746444702
+        },
+        "synth": {
+          "piano": 0.0001480607461417094,
+          "strings": 0.00012421597784850746
+        },
+        "timpani": {
+          "piano": -5.23215567227453e-06,
+          "strings": -9.45788087847177e-06
+        },
+        "wind-chimes": {
+          "piano": 5.184462992247063e-08,
+          "strings": 7.654914043087047e-06
+        },
+        "woodwind": {
+          "piano": 4.124684346606955e-05,
+          "strings": 0.409706175327301
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03136082568413453,
+          "error_rms": 0.03136082568413453,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -0.32662562106377946,
+          "target_gain": null,
+          "silence_output_dbfs": -30.07225023012009
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.00822992213754757,
+          "output_rms": 0.013349237059131405,
+          "error_rms": 0.005302371793206632,
+          "raw_sdr_db": 3.818510999355977,
+          "si_sdr_db": 17.546440331709555,
+          "output_to_mix_db": -7.745246482141599,
+          "target_gain": 1.607953618966244,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 1.741368474610133e-05,
+          "error_rms": 1.741368474610133e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -65.43656183467567,
+          "target_gain": null,
+          "silence_output_dbfs": -95.18218644373198
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 6.283930253990348e-06,
+          "error_rms": 6.283930253990348e-06,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -74.28974826866207,
+          "target_gain": null,
+          "silence_output_dbfs": -104.03537287771839
+        }
+      }
+    },
+    {
+      "case": "real-timpani",
+      "input_sha256": "7d5a280b8a04d4cf44e39e199f7a771fcf2943362c55d40656d908177590d23c",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": -0.00010052545258076862,
+          "pitched_percussion": -3.423031739657745e-05
+        },
+        "bowed_strings": {
+          "piano": -1.7747233869158663e-05,
+          "pitched_percussion": -1.8747461581369862e-05
+        },
+        "brass": {
+          "piano": 0.00023676904675085098,
+          "pitched_percussion": 0.00018814849318005145
+        },
+        "digital-piano": {
+          "piano": 0.2827005684375763,
+          "pitched_percussion": -0.0018500779988244176
+        },
+        "flute": {
+          "piano": -6.367085916281212e-06,
+          "pitched_percussion": -4.015648755739676e-06
+        },
+        "glockenspiel": {
+          "piano": -2.1113728507771157e-05,
+          "pitched_percussion": -4.4790638639824465e-05
+        },
+        "keys": {
+          "piano": 0.9755838513374329,
+          "pitched_percussion": 0.006847414653748274
+        },
+        "marimba": {
+          "piano": -0.00021578912856057286,
+          "pitched_percussion": -3.285037382738665e-05
+        },
+        "organ": {
+          "piano": 0.0015518123982474208,
+          "pitched_percussion": 0.0005703429342247546
+        },
+        "percussion": {
+          "piano": 0.004003371112048626,
+          "pitched_percussion": 0.7839071154594421
+        },
+        "strings": {
+          "piano": -0.0003124522336293012,
+          "pitched_percussion": -0.00035926641430705786
+        },
+        "synth": {
+          "piano": 8.297880413010716e-05,
+          "pitched_percussion": -2.21753834921401e-05
+        },
+        "timpani": {
+          "piano": 0.03345342352986336,
+          "pitched_percussion": 0.6924580931663513
+        },
+        "wind-chimes": {
+          "piano": -8.637265409561223e-07,
+          "pitched_percussion": 8.387605134885234e-07
+        },
+        "woodwind": {
+          "piano": -6.051207674317993e-05,
+          "pitched_percussion": -2.296583988936618e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.031062512506974112,
+          "error_rms": 0.031062512506974112,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -4.98080261646021,
+          "target_gain": null,
+          "silence_output_dbfs": -30.15526838117459
+        },
+        "strings": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.6831957873456016e-05,
+          "error_rms": 3.6831957873456016e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.50103813077041,
+          "target_gain": null,
+          "silence_output_dbfs": -88.67550389548478
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 3.481896906221622e-05,
+          "error_rms": 3.481896906221622e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.989216072099886,
+          "target_gain": null,
+          "silence_output_dbfs": -89.16368183681426
+        },
+        "pitched_percussion": {
+          "reference_absent": false,
+          "reference_rms": 0.0451040452177841,
+          "output_rms": 0.032601548885248806,
+          "error_rms": 0.017107832218828698,
+          "raw_sdr_db": 8.420410231120544,
+          "si_sdr_db": 10.016978785599743,
+          "output_to_mix_db": -4.560769561327318,
+          "target_gain": 0.6892923148972203,
+          "silence_output_dbfs": null
+        }
+      }
+    },
+    {
+      "case": "slakh16-brass-60-75",
+      "input_sha256": "b7cb27622c138deb5c99f792781bc852e7f98114f50ad3091364bcf7cc6dcce7",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 8.29252167022787e-05,
+          "bass": 2.4459613996441476e-06,
+          "guitar": -0.00014679146988783032,
+          "strings": 2.9778182579320855e-05,
+          "brass": 8.188821084331721e-05,
+          "drums": -1.390642410115106e-06,
+          "other": 0.0
+        },
+        "bowed_strings": {
+          "piano": 0.018702000379562378,
+          "bass": 0.010165432468056679,
+          "guitar": 0.03837943449616432,
+          "strings": 0.6451978087425232,
+          "brass": 0.052029818296432495,
+          "drums": 4.2573265091050416e-05,
+          "other": 0.0
+        },
+        "brass": {
+          "piano": 0.04760457202792168,
+          "bass": 0.02091170847415924,
+          "guitar": 0.04391954466700554,
+          "strings": 0.06391139328479767,
+          "brass": 0.7238976955413818,
+          "drums": 0.0019022334599867463,
+          "other": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.037482429295778275,
+          "bass": -0.00079219980398193,
+          "guitar": -0.0012001587310805917,
+          "strings": 0.0011389103019610047,
+          "brass": 0.0010667358292266726,
+          "drums": -8.88818030944094e-05,
+          "other": 0.0
+        },
+        "flute": {
+          "piano": 0.00010572346218395978,
+          "bass": 9.283506187784951e-06,
+          "guitar": -0.0004035508318338543,
+          "strings": 0.00016054055595304817,
+          "brass": 0.00030834582867100835,
+          "drums": -5.20258709002519e-06,
+          "other": 0.0
+        },
+        "glockenspiel": {
+          "piano": 3.623927113949321e-05,
+          "bass": 1.520660816822783e-06,
+          "guitar": -7.593148893647594e-06,
+          "strings": -5.094932021165732e-06,
+          "brass": -1.3636713447340298e-06,
+          "drums": 1.1291883339481501e-07,
+          "other": 0.0
+        },
+        "keys": {
+          "piano": 0.7831817865371704,
+          "bass": 0.017454741522669792,
+          "guitar": 0.022338707000017166,
+          "strings": 0.06349534541368484,
+          "brass": 0.03282749280333519,
+          "drums": 8.473530760966241e-05,
+          "other": 0.0
+        },
+        "marimba": {
+          "piano": -7.972582352522295e-06,
+          "bass": -0.0002748595434240997,
+          "guitar": -0.00028225145069882274,
+          "strings": -0.00011495047510834411,
+          "brass": 0.0002120996214216575,
+          "drums": -2.7803889679489657e-06,
+          "other": 0.0
+        },
+        "organ": {
+          "piano": 0.30761104822158813,
+          "bass": -0.003332071006298065,
+          "guitar": 0.007452036719769239,
+          "strings": 0.028001029044389725,
+          "brass": 0.027496106922626495,
+          "drums": 5.926123321842169e-06,
+          "other": 0.0
+        },
+        "percussion": {
+          "piano": 3.603937875595875e-05,
+          "bass": -3.0074306778260507e-05,
+          "guitar": -0.0001073319508577697,
+          "strings": 2.1294817997841164e-05,
+          "brass": 5.994557432131842e-05,
+          "drums": 1.7794045561458915e-05,
+          "other": 0.0
+        },
+        "strings": {
+          "piano": 0.05308366194367409,
+          "bass": 0.032563090324401855,
+          "guitar": 0.8787704110145569,
+          "strings": 0.7712830305099487,
+          "brass": 0.17852357029914856,
+          "drums": 0.0025416575372219086,
+          "other": 0.0
+        },
+        "synth": {
+          "piano": 0.09669642895460129,
+          "bass": 0.010832646861672401,
+          "guitar": 0.0016081808134913445,
+          "strings": 0.015204619616270065,
+          "brass": 0.025507988408207893,
+          "drums": -5.5708233048790134e-06,
+          "other": 0.0
+        },
+        "timpani": {
+          "piano": -4.0837931010173634e-05,
+          "bass": -0.0002467006561346352,
+          "guitar": -9.244288958143443e-05,
+          "strings": -2.2371999875758775e-05,
+          "brass": 4.867453026236035e-05,
+          "drums": 0.00013455143198370934,
+          "other": 0.0
+        },
+        "wind-chimes": {
+          "piano": -3.4682229852478486e-06,
+          "bass": 3.1303266041504685e-06,
+          "guitar": -1.1181642776136869e-06,
+          "strings": 3.0650121516373474e-06,
+          "brass": -3.997944872935477e-07,
+          "drums": -1.8275625279784435e-07,
+          "other": 0.0
+        },
+        "woodwind": {
+          "piano": 0.001177344936877489,
+          "bass": -0.000482494302559644,
+          "guitar": -0.00026418917695991695,
+          "strings": 0.0009598267497494817,
+          "brass": 0.002335519529879093,
+          "drums": 2.0029283405165188e-05,
+          "other": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.061896005131585524,
+          "error_rms": 0.061896005131585524,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -6.330988806676521,
+          "target_gain": null,
+          "silence_output_dbfs": -24.16674760289178
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.0708672366130451,
+          "error_rms": 0.06288168460032986,
+          "raw_sdr_db": -7.986310042019094,
+          "si_sdr_db": -5.297844297233998,
+          "output_to_mix_db": -5.155331238297408,
+          "target_gain": 1.3494697209326962,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": false,
+          "reference_rms": 0.04605914569241847,
+          "output_rms": 0.038431138140770454,
+          "error_rms": 0.023221741381173895,
+          "raw_sdr_db": 5.948421886796743,
+          "si_sdr_db": 4.694990395238885,
+          "output_to_mix_db": -10.470576277476184,
+          "target_gain": 0.7210057647913024,
+          "silence_output_dbfs": null
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00025377560876189883,
+          "error_rms": 0.00025377560876189883,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -54.075243638931084,
+          "target_gain": null,
+          "silence_output_dbfs": -71.91100243514634
+        }
+      }
+    },
+    {
+      "case": "slakh16-no-brass-60-75",
+      "input_sha256": "bb6bb184886ae5c8f918fba105978181691ab61871be70e2868fe101eea8fbcd",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 0.00010688487236620858,
+          "bass": 4.606768925441429e-06,
+          "guitar": -7.956173067213967e-05,
+          "strings": 3.080094757024199e-05,
+          "brass": 0.0,
+          "drums": 3.5910383644477406e-07,
+          "other": 0.0
+        },
+        "bowed_strings": {
+          "piano": 0.025928393006324768,
+          "bass": 0.009242282249033451,
+          "guitar": 0.04736616462469101,
+          "strings": 0.7488520741462708,
+          "brass": 0.0,
+          "drums": -2.887449591071345e-05,
+          "other": 0.0
+        },
+        "brass": {
+          "piano": 0.00340344593860209,
+          "bass": 0.00024295644834637642,
+          "guitar": -0.00017517450032755733,
+          "strings": 0.0005131951766088605,
+          "brass": 0.0,
+          "drums": 1.5394909496535547e-05,
+          "other": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.04930693283677101,
+          "bass": -0.002576761180534959,
+          "guitar": -0.0018313712207600474,
+          "strings": 0.0011750867124646902,
+          "brass": 0.0,
+          "drums": 3.934270807803841e-06,
+          "other": 0.0
+        },
+        "flute": {
+          "piano": 0.0002317805920029059,
+          "bass": 2.3141890778788365e-05,
+          "guitar": -0.00025012894184328616,
+          "strings": 0.0002053483040072024,
+          "brass": 0.0,
+          "drums": -1.3805605476591154e-06,
+          "other": 0.0
+        },
+        "glockenspiel": {
+          "piano": 4.9748447054298595e-05,
+          "bass": 7.189896678028163e-07,
+          "guitar": -3.1806032438908005e-06,
+          "strings": -1.1785955393861514e-06,
+          "brass": 0.0,
+          "drums": 9.262974032253624e-08,
+          "other": 0.0
+        },
+        "keys": {
+          "piano": 0.7856397032737732,
+          "bass": 0.020076798275113106,
+          "guitar": 0.0227182786911726,
+          "strings": 0.06786059588193893,
+          "brass": 0.0,
+          "drums": 0.0002442278200760484,
+          "other": 0.0
+        },
+        "marimba": {
+          "piano": 0.0001420049520675093,
+          "bass": -0.00017054250929504633,
+          "guitar": -0.00014890791499055922,
+          "strings": -0.00013736415712628514,
+          "brass": 0.0,
+          "drums": 4.4168399426780525e-07,
+          "other": 0.0
+        },
+        "organ": {
+          "piano": 0.3932194411754608,
+          "bass": 0.0033108254428952932,
+          "guitar": 0.011643609963357449,
+          "strings": 0.04352768883109093,
+          "brass": 0.0,
+          "drums": 2.8122947696829215e-05,
+          "other": 0.0
+        },
+        "percussion": {
+          "piano": 3.124159775325097e-05,
+          "bass": -3.929605372832157e-05,
+          "guitar": -4.962788807461038e-05,
+          "strings": 1.8518065189709887e-05,
+          "brass": 0.0,
+          "drums": 2.7206722734263167e-05,
+          "other": 0.0
+        },
+        "strings": {
+          "piano": 0.0687287226319313,
+          "bass": 0.04342580586671829,
+          "guitar": 0.9510805010795593,
+          "strings": 0.868615984916687,
+          "brass": 0.0,
+          "drums": 0.003263378981500864,
+          "other": 0.0
+        },
+        "synth": {
+          "piano": 0.127593994140625,
+          "bass": 0.011962519958615303,
+          "guitar": 0.002534006256610155,
+          "strings": 0.02135741338133812,
+          "brass": 0.0,
+          "drums": 5.389463694882579e-05,
+          "other": 0.0
+        },
+        "timpani": {
+          "piano": -2.694840259209741e-05,
+          "bass": -0.00011473037739051506,
+          "guitar": -4.6621382352896035e-05,
+          "strings": -1.4308237041404936e-05,
+          "brass": 0.0,
+          "drums": 0.0002447745646350086,
+          "other": 0.0
+        },
+        "wind-chimes": {
+          "piano": -2.5252300019928953e-06,
+          "bass": 3.7800234622409334e-06,
+          "guitar": -2.0807917735510273e-06,
+          "strings": 3.0879648420523154e-06,
+          "brass": 0.0,
+          "drums": -5.560769409385102e-07,
+          "other": 0.0
+        },
+        "woodwind": {
+          "piano": 0.0013670481275767088,
+          "bass": -3.1785450573806884e-06,
+          "guitar": -0.0003837912518065423,
+          "strings": 0.0005943774012848735,
+          "brass": 0.0,
+          "drums": 3.408197244425537e-06,
+          "other": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.06544431743172387,
+          "error_rms": 0.06544431743172387,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -5.213978998069897,
+          "target_gain": null,
+          "silence_output_dbfs": -23.682561150388942
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.07425733799293309,
+          "error_rms": 0.06485326394532548,
+          "raw_sdr_db": -8.254463447521953,
+          "si_sdr_db": -4.307472402469286,
+          "output_to_mix_db": -4.1166303195796825,
+          "target_gain": 1.5404685144648456,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0011575793156201892,
+          "error_rms": 0.0011575793156201892,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -40.260402689197875,
+          "target_gain": null,
+          "silence_output_dbfs": -58.72898484151692
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00015684130506713097,
+          "error_rms": 0.00015684130506713097,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -57.62220890004802,
+          "target_gain": null,
+          "silence_output_dbfs": -76.09079105236707
+        }
+      }
+    },
+    {
+      "case": "slakh16-quiet-brass-60-75",
+      "input_sha256": "6dfd31f2f2aebf975b744ac71aa9c6d692a823b41e8a98e4e77039fcb72b5103",
+      "head_reference_coefficients": {
+        "bells": {
+          "piano": 0.0001058042180375196,
+          "bass": 4.555191480903886e-06,
+          "guitar": -7.98489636508748e-05,
+          "strings": 3.0057524782023393e-05,
+          "brass": -1.9077398974332027e-05,
+          "drums": 3.265685961650888e-07,
+          "other": 0.0
+        },
+        "bowed_strings": {
+          "piano": 0.025219546630978584,
+          "bass": 0.009313302114605904,
+          "guitar": 0.04597219079732895,
+          "strings": 0.7416579723358154,
+          "brass": 0.13181030750274658,
+          "drums": 2.8777822080883197e-06,
+          "other": 0.0
+        },
+        "brass": {
+          "piano": 0.004225910175591707,
+          "bass": 0.00030356060597114265,
+          "guitar": 2.7106661946163513e-05,
+          "strings": 0.0005342854419723153,
+          "brass": -0.000572647200897336,
+          "drums": 1.4341927453642711e-05,
+          "other": 0.0
+        },
+        "digital-piano": {
+          "piano": 0.047891296446323395,
+          "bass": -0.002608999377116561,
+          "guitar": -0.001900295726954937,
+          "strings": 0.001109735923819244,
+          "brass": -0.0020475939381867647,
+          "drums": 5.571084784605773e-06,
+          "other": 0.0
+        },
+        "flute": {
+          "piano": 0.00023471383610740304,
+          "bass": 2.8385900805005804e-05,
+          "guitar": -0.00024471658980473876,
+          "strings": 0.0001990873133763671,
+          "brass": -1.5472996892640367e-06,
+          "drums": -1.555546873532876e-06,
+          "other": 0.0
+        },
+        "glockenspiel": {
+          "piano": 4.901045031147078e-05,
+          "bass": -5.055908331996761e-07,
+          "guitar": -2.7173525722901104e-06,
+          "strings": -1.7027618923748378e-06,
+          "brass": -1.5526929928455502e-05,
+          "drums": 8.14248437563947e-08,
+          "other": 0.0
+        },
+        "keys": {
+          "piano": 0.7869167923927307,
+          "bass": 0.020055899396538734,
+          "guitar": 0.023068517446517944,
+          "strings": 0.06843193620443344,
+          "brass": -0.024470306932926178,
+          "drums": 0.00022823082690592855,
+          "other": 0.0
+        },
+        "marimba": {
+          "piano": 0.00015624842490069568,
+          "bass": -0.00018201483180746436,
+          "guitar": -0.00014944645226933062,
+          "strings": -0.0001348597725154832,
+          "brass": 0.00018323439871892333,
+          "drums": 3.7928842289147724e-07,
+          "other": 0.0
+        },
+        "organ": {
+          "piano": 0.39812058210372925,
+          "bass": 0.0036272634752094746,
+          "guitar": 0.012000270187854767,
+          "strings": 0.04407895728945732,
+          "brass": 0.04561597481369972,
+          "drums": 3.521476173773408e-05,
+          "other": 0.0
+        },
+        "percussion": {
+          "piano": 3.302932236692868e-05,
+          "bass": -3.749700772459619e-05,
+          "guitar": -4.868428732152097e-05,
+          "strings": 1.9606643036240712e-05,
+          "brass": -1.6629768651910126e-05,
+          "drums": 2.5196472051902674e-05,
+          "other": 0.0
+        },
+        "strings": {
+          "piano": 0.06829436868429184,
+          "bass": 0.044942788779735565,
+          "guitar": 0.9502146244049072,
+          "strings": 0.8647398948669434,
+          "brass": 0.6699045896530151,
+          "drums": 0.0034818369895219803,
+          "other": 0.0
+        },
+        "synth": {
+          "piano": 0.12575700879096985,
+          "bass": 0.011639372445642948,
+          "guitar": 0.0023646277841180563,
+          "strings": 0.021078262478113174,
+          "brass": 0.05945688486099243,
+          "drums": 5.78681610932108e-05,
+          "other": 0.0
+        },
+        "timpani": {
+          "piano": -2.7269034035271034e-05,
+          "bass": -0.00010316878615412861,
+          "guitar": -4.8035348299890757e-05,
+          "strings": -1.527406129753217e-05,
+          "brass": -0.00011238611477892846,
+          "drums": 0.0002197776484536007,
+          "other": 0.0
+        },
+        "wind-chimes": {
+          "piano": -3.038768454644014e-06,
+          "bass": 3.814566980508971e-06,
+          "guitar": -1.7995014331972925e-06,
+          "strings": 3.3832450299087213e-06,
+          "brass": -2.4562220914958743e-06,
+          "drums": -5.517059094017895e-07,
+          "other": 0.0
+        },
+        "woodwind": {
+          "piano": 0.001586360507644713,
+          "bass": 1.2533449080365244e-05,
+          "guitar": -0.00026574076036922634,
+          "strings": 0.0005441285902634263,
+          "brass": -0.001359474379569292,
+          "drums": 2.934534450105275e-06,
+          "other": 0.0
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.06580939091581234,
+          "error_rms": 0.06580939091581234,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -5.175494851797332,
+          "target_gain": null,
+          "silence_output_dbfs": -23.63424257394867
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.02507313654771946,
+          "output_rms": 0.07410882482989774,
+          "error_rms": 0.06479208592950536,
+          "raw_sdr_db": -8.24626592198563,
+          "si_sdr_db": -4.370529291610205,
+          "output_to_mix_db": -4.143853746675321,
+          "target_gain": 1.5292519315421391,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": false,
+          "reference_rms": 0.004605914648360485,
+          "output_rms": 0.001453047036511881,
+          "error_rms": 0.004826058384141,
+          "raw_sdr_db": -0.4055337143602107,
+          "si_sdr_db": -51.66220379039969,
+          "output_to_mix_db": -38.295658816844565,
+          "target_gain": 0.0008238703236538171,
+          "silence_output_dbfs": null
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00015469131130427388,
+          "error_rms": 0.00015469131130427388,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -57.7519338588814,
+          "target_gain": null,
+          "silence_output_dbfs": -76.21068158103273
+        }
+      }
+    },
+    {
+      "case": "slakh20-no-pad-15-30",
+      "input_sha256": "95490c70bfb279e35984874112e7ae6ee36615713b7492c1e25572e12a395e87",
+      "head_reference_coefficients": {
+        "bells": {
+          "drums": -2.826611080308794e-06,
+          "bass": -3.780753210502752e-10,
+          "synth": 2.541098841762901e-21,
+          "piano": -3.284580452600494e-05,
+          "guitar": -6.091441719036084e-06,
+          "strings": -1.3671429769601673e-05
+        },
+        "bowed_strings": {
+          "drums": 0.003057010006159544,
+          "bass": 0.0049759396351873875,
+          "synth": 1.6653345369377348e-16,
+          "piano": 0.06266186386346817,
+          "guitar": 0.07175205647945404,
+          "strings": 0.9130706191062927
+        },
+        "brass": {
+          "drums": -2.212910112575628e-05,
+          "bass": 0.00021920801373198628,
+          "synth": 5.421010862427522e-20,
+          "piano": -0.00029512745095416903,
+          "guitar": 6.454260437749326e-05,
+          "strings": 0.00038022574153728783
+        },
+        "digital-piano": {
+          "drums": 0.0026731055695563555,
+          "bass": 0.01759902574121952,
+          "synth": 0.0,
+          "piano": 0.16408680379390717,
+          "guitar": 0.013423380441963673,
+          "strings": -0.00519399531185627
+        },
+        "flute": {
+          "drums": -6.716282769048121e-06,
+          "bass": 2.329528797417879e-06,
+          "synth": 0.0,
+          "piano": -9.36298310989514e-05,
+          "guitar": 0.00048285486991517246,
+          "strings": 4.939439895679243e-05
+        },
+        "glockenspiel": {
+          "drums": -4.46382455265848e-06,
+          "bass": 1.1046365955280635e-07,
+          "synth": 4.235164736271502e-22,
+          "piano": -9.471069461142179e-06,
+          "guitar": 1.5080813682288863e-06,
+          "strings": -7.712897058809176e-06
+        },
+        "keys": {
+          "drums": 0.00285896984860301,
+          "bass": 0.04077551141381264,
+          "synth": -2.7755575615628914e-17,
+          "piano": 0.9407804012298584,
+          "guitar": 0.3720022737979889,
+          "strings": 0.026728665456175804
+        },
+        "marimba": {
+          "drums": -8.332789548148867e-06,
+          "bass": -1.7988295439863577e-05,
+          "synth": 2.710505431213761e-20,
+          "piano": -0.00029772374546155334,
+          "guitar": 0.00015641092613805085,
+          "strings": -0.00012779573444277048
+        },
+        "organ": {
+          "drums": 0.0007474964950233698,
+          "bass": 0.000690651882905513,
+          "synth": 0.0,
+          "piano": 0.008789747953414917,
+          "guitar": 0.27792710065841675,
+          "strings": 0.003149193013086915
+        },
+        "percussion": {
+          "drums": 0.00033050632919184864,
+          "bass": -4.8176450945902616e-05,
+          "synth": 6.776263578034403e-21,
+          "piano": -5.457213046611287e-05,
+          "guitar": 1.1657355571514927e-05,
+          "strings": 1.0389518365627737e-06
+        },
+        "strings": {
+          "drums": 0.0034736613743007183,
+          "bass": 0.0034943334758281708,
+          "synth": -1.1102230246251565e-16,
+          "piano": 0.05965706333518028,
+          "guitar": 0.42683395743370056,
+          "strings": 0.9503971338272095
+        },
+        "synth": {
+          "drums": 0.0004886395763605833,
+          "bass": 0.004456053022295237,
+          "synth": -5.551115123125783e-17,
+          "piano": 0.005308377556502819,
+          "guitar": 0.35288017988204956,
+          "strings": 0.004485887009650469
+        },
+        "timpani": {
+          "drums": 0.0015174782602116466,
+          "bass": -0.00025782667216844857,
+          "synth": 0.0,
+          "piano": -2.5466765691817272e-06,
+          "guitar": -2.6179607175436104e-06,
+          "strings": -1.0860164678661022e-07
+        },
+        "wind-chimes": {
+          "drums": -1.7769096984920907e-06,
+          "bass": -4.0910160237217497e-07,
+          "synth": 0.0,
+          "piano": 3.178846554874326e-07,
+          "guitar": 1.1853283155005556e-07,
+          "strings": -2.1242735783744138e-06
+        },
+        "woodwind": {
+          "drums": 2.366545595577918e-05,
+          "bass": 2.5036271836142987e-05,
+          "synth": 0.0,
+          "piano": -0.00017133816436398774,
+          "guitar": 0.00013571704039350152,
+          "strings": 0.0001001094133243896
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.03645568450757417,
+          "error_rms": 0.03645568450757417,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -5.8933164059078464,
+          "target_gain": null,
+          "silence_output_dbfs": -28.764694857050937
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.07236859863587201,
+          "error_rms": 0.037633867480647475,
+          "raw_sdr_db": -0.0886083025852815,
+          "si_sdr_db": 11.453853532491532,
+          "output_to_mix_db": 0.062381709495176296,
+          "target_gain": 1.876700580051928,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.1247642138816234e-05,
+          "error_rms": 5.1247642138816234e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -62.93514377563089,
+          "target_gain": null,
+          "silence_output_dbfs": -85.80652222677399
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.00021887800276104916,
+          "error_rms": 0.00021887800276104916,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -50.32457920553205,
+          "target_gain": null,
+          "silence_output_dbfs": -73.19595765667513
+        }
+      }
+    },
+    {
+      "case": "slakh20-pad-15-30",
+      "input_sha256": "79a7e580a8762715b40768d5fdca528a3d3c0a8f4bccdc2167186921cfe0431e",
+      "head_reference_coefficients": {
+        "bells": {
+          "drums": -3.260651055825292e-06,
+          "bass": 1.6996486351672502e-07,
+          "synth": 5.051028324487561e-07,
+          "piano": -3.483729960862547e-05,
+          "guitar": 5.558579232456395e-07,
+          "strings": -1.264329875994008e-05
+        },
+        "bowed_strings": {
+          "drums": 0.0012479519937187433,
+          "bass": 0.04751671850681305,
+          "synth": 0.7849486470222473,
+          "piano": 0.12481711059808731,
+          "guitar": 0.08390986174345016,
+          "strings": 0.8789029717445374
+        },
+        "brass": {
+          "drums": -1.934463216457516e-05,
+          "bass": 0.0001678456028457731,
+          "synth": 0.0003344241122249514,
+          "piano": -0.00031251777545548975,
+          "guitar": 4.8367328417953104e-05,
+          "strings": 0.0002889726893045008
+        },
+        "digital-piano": {
+          "drums": 0.002749770414084196,
+          "bass": 0.016915639862418175,
+          "synth": -0.002318598097190261,
+          "piano": 0.12240956723690033,
+          "guitar": 0.02168458141386509,
+          "strings": -0.0028735753148794174
+        },
+        "flute": {
+          "drums": -5.463960860652151e-06,
+          "bass": 3.3493877253931714e-06,
+          "synth": 7.270382047863677e-05,
+          "piano": -0.00014030205784365535,
+          "guitar": 6.103438136051409e-05,
+          "strings": 9.61162459134357e-06
+        },
+        "glockenspiel": {
+          "drums": -4.201262527203653e-06,
+          "bass": 4.975544953822464e-08,
+          "synth": -1.7600063983991276e-06,
+          "piano": -8.932976015785243e-06,
+          "guitar": 5.090813374408754e-06,
+          "strings": -6.857685548311565e-06
+        },
+        "keys": {
+          "drums": 0.003017451148480177,
+          "bass": 0.042164720594882965,
+          "synth": 0.04746324196457863,
+          "piano": 0.8749931454658508,
+          "guitar": 0.356649786233902,
+          "strings": 0.037710338830947876
+        },
+        "marimba": {
+          "drums": -9.115189641306642e-06,
+          "bass": -2.58856871369062e-05,
+          "synth": -3.747270238818601e-05,
+          "piano": -0.0003833412192761898,
+          "guitar": 5.957026587566361e-05,
+          "strings": -0.00014424935216084123
+        },
+        "organ": {
+          "drums": 0.00040716020157560706,
+          "bass": 0.0006713868351653218,
+          "synth": 0.0056932233273983,
+          "piano": 0.006573962979018688,
+          "guitar": 0.16343830525875092,
+          "strings": 0.0025808713398873806
+        },
+        "percussion": {
+          "drums": 0.014040722511708736,
+          "bass": 0.0001257045951206237,
+          "synth": 2.6392581276013516e-05,
+          "piano": 5.091817365610041e-05,
+          "guitar": 2.3918568331282586e-05,
+          "strings": 2.149592319256044e-06
+        },
+        "strings": {
+          "drums": 0.002329146256670356,
+          "bass": 0.03304353356361389,
+          "synth": 0.9124249219894409,
+          "piano": 0.1532842218875885,
+          "guitar": 0.26506945490837097,
+          "strings": 0.9469010829925537
+        },
+        "synth": {
+          "drums": 0.00022752406948711723,
+          "bass": 0.0045802476815879345,
+          "synth": 0.004869604948908091,
+          "piano": 0.0037981399800628424,
+          "guitar": 0.2366756945848465,
+          "strings": 0.003464306704699993
+        },
+        "timpani": {
+          "drums": 0.00551676657050848,
+          "bass": -0.00019876504666171968,
+          "synth": 4.687051387008978e-06,
+          "piano": 4.3797987018479034e-05,
+          "guitar": -1.8391765479464084e-05,
+          "strings": 1.0256089808535762e-06
+        },
+        "wind-chimes": {
+          "drums": -1.683099867477722e-06,
+          "bass": -2.7133745561513933e-07,
+          "synth": -2.794014108076226e-06,
+          "piano": 1.969253162314999e-06,
+          "guitar": -1.8019126457602397e-07,
+          "strings": -1.5407713362947106e-06
+        },
+        "woodwind": {
+          "drums": 2.687319829419721e-05,
+          "bass": 2.6019302822533064e-05,
+          "synth": 7.924535020720214e-05,
+          "piano": -0.00019709626212716103,
+          "guitar": 0.0001696790859568864,
+          "strings": 7.48992242733948e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": false,
+          "reference_rms": 0.03790042783967011,
+          "output_rms": 0.033086136516736094,
+          "error_rms": 0.048145600340855264,
+          "raw_sdr_db": -2.078249877542138,
+          "si_sdr_db": -21.382383230625194,
+          "output_to_mix_db": -7.857323088059792,
+          "target_gain": 0.07418885133773434,
+          "silence_output_dbfs": null
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.09952928137061251,
+          "error_rms": 0.07759746798510393,
+          "raw_sdr_db": -6.373982284646866,
+          "si_sdr_db": 0.09633497517586466,
+          "output_to_mix_db": 1.7087731318779433,
+          "target_gain": 1.8996898921632974,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 5.765560932232872e-05,
+          "error_rms": 5.765560932232872e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.03341291002445,
+          "target_gain": null,
+          "silence_output_dbfs": -84.78316867485256
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0006469807021217899,
+          "error_rms": 0.0006469807021217899,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -42.032417697130484,
+          "target_gain": null,
+          "silence_output_dbfs": -63.7821734619586
+        }
+      }
+    },
+    {
+      "case": "slakh20-quiet-pad-15-30",
+      "input_sha256": "35278cea216ef19b7aaad8945ec2cf4c49a605305662dd81e672f93c5b3d0542",
+      "head_reference_coefficients": {
+        "bells": {
+          "drums": -2.7856506221723976e-06,
+          "bass": -1.1034267721754532e-08,
+          "synth": -6.431533165596193e-06,
+          "piano": -3.4096210583811626e-05,
+          "guitar": -2.289512849529274e-06,
+          "strings": -1.3758747627434786e-05
+        },
+        "bowed_strings": {
+          "drums": 0.0029533240012824535,
+          "bass": 0.006514281965792179,
+          "synth": 0.4963792562484741,
+          "piano": 0.06182996183633804,
+          "guitar": 0.06768543273210526,
+          "strings": 0.91099613904953
+        },
+        "brass": {
+          "drums": -2.082094579236582e-05,
+          "bass": 0.0002029421302722767,
+          "synth": 5.0341659516561776e-05,
+          "piano": -0.0003184204106219113,
+          "guitar": 9.1051340859849e-05,
+          "strings": 0.00037098038592375815
+        },
+        "digital-piano": {
+          "drums": 0.002547054784372449,
+          "bass": 0.018174750730395317,
+          "synth": 0.01682990975677967,
+          "piano": 0.15885695815086365,
+          "guitar": 0.012477883137762547,
+          "strings": -0.005025948863476515
+        },
+        "flute": {
+          "drums": -6.719326847814955e-06,
+          "bass": 1.970371613424504e-06,
+          "synth": -1.1570314200071152e-06,
+          "piano": -9.420973219675943e-05,
+          "guitar": 0.0005993416998535395,
+          "strings": 4.257978071109392e-05
+        },
+        "glockenspiel": {
+          "drums": -4.493482720135944e-06,
+          "bass": 1.3581525593053811e-07,
+          "synth": 4.7335593080788385e-06,
+          "piano": -9.290684829466045e-06,
+          "guitar": 5.615330564978649e-07,
+          "strings": -7.820056453056168e-06
+        },
+        "keys": {
+          "drums": 0.0026323848869651556,
+          "bass": 0.04027774557471275,
+          "synth": 0.21631623804569244,
+          "piano": 0.9397751092910767,
+          "guitar": 0.3441424071788788,
+          "strings": 0.025992359966039658
+        },
+        "marimba": {
+          "drums": -8.32833848107839e-06,
+          "bass": -1.8938993889605626e-05,
+          "synth": -0.00012179847544757649,
+          "piano": -0.0003019167925231159,
+          "guitar": 0.0001891802967293188,
+          "strings": -0.0001321398449363187
+        },
+        "organ": {
+          "drums": 0.0006725698476657271,
+          "bass": 0.0007010756526142359,
+          "synth": 0.011473266407847404,
+          "piano": 0.008044960908591747,
+          "guitar": 0.24405525624752045,
+          "strings": 0.002617635065689683
+        },
+        "percussion": {
+          "drums": 0.00046180037315934896,
+          "bass": -4.771888052346185e-05,
+          "synth": 4.550836092676036e-05,
+          "piano": -5.284404687699862e-05,
+          "guitar": 1.1825235560536385e-05,
+          "strings": 8.592040785515564e-07
+        },
+        "strings": {
+          "drums": 0.003454596269875765,
+          "bass": 0.005061400588601828,
+          "synth": 0.566125750541687,
+          "piano": 0.05919213965535164,
+          "guitar": 0.42822858691215515,
+          "strings": 0.9508798718452454
+        },
+        "synth": {
+          "drums": 0.000598735292442143,
+          "bass": 0.0029933233745396137,
+          "synth": 0.02735774964094162,
+          "piano": 0.005517925135791302,
+          "guitar": 0.3628790080547333,
+          "strings": 0.004741312470287085
+        },
+        "timpani": {
+          "drums": 0.0015845999587327242,
+          "bass": -0.0002552580845076591,
+          "synth": -0.00011541449202923104,
+          "piano": 3.246369942644378e-06,
+          "guitar": 3.7634316640833276e-07,
+          "strings": 3.266409748903243e-06
+        },
+        "wind-chimes": {
+          "drums": -1.8034961613011546e-06,
+          "bass": -2.370127418771517e-07,
+          "synth": 8.38741073039273e-07,
+          "piano": 2.7333982188793016e-07,
+          "guitar": 4.391883479115677e-08,
+          "strings": -2.0090922134841094e-06
+        },
+        "woodwind": {
+          "drums": 2.3761725969961844e-05,
+          "bass": 2.5698551326058805e-05,
+          "synth": 3.696774001582526e-05,
+          "piano": -0.00016639803652651608,
+          "guitar": 0.00017656650743447244,
+          "strings": 9.43535051192157e-05
+        }
+      },
+      "scores": {
+        "synth": {
+          "reference_absent": false,
+          "reference_rms": 0.0037900428490706193,
+          "output_rms": 0.03609098533039927,
+          "error_rms": 0.03612331294874918,
+          "raw_sdr_db": -19.58286907152705,
+          "si_sdr_db": -27.128049875514133,
+          "output_to_mix_db": -5.999826118675249,
+          "target_gain": 0.4187396534480746,
+          "silence_output_dbfs": null
+        },
+        "strings": {
+          "reference_absent": false,
+          "reference_rms": 0.03725190066237284,
+          "output_rms": 0.07262175345579629,
+          "error_rms": 0.03805054173514642,
+          "raw_sdr_db": -0.18424816271383138,
+          "si_sdr_db": 11.139476274162831,
+          "output_to_mix_db": 0.07353371621981124,
+          "target_gain": 1.8785631030769439,
+          "silence_output_dbfs": null
+        },
+        "brass": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 4.755197510587417e-05,
+          "error_rms": 4.755197510587417e-05,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -63.60442969137516,
+          "target_gain": null,
+          "silence_output_dbfs": -86.4566287922946
+        },
+        "pitched_percussion": {
+          "reference_absent": true,
+          "reference_rms": 0.0,
+          "output_rms": 0.0002186629836935388,
+          "error_rms": 0.0002186629836935388,
+          "raw_sdr_db": null,
+          "si_sdr_db": null,
+          "output_to_mix_db": -50.35229550245846,
+          "target_gain": null,
+          "silence_output_dbfs": -73.20449460337791
+        }
+      }
+    }
+  ],
+  "note": "Naive group sums are experimental diagnostics, not the production routing method."
+}

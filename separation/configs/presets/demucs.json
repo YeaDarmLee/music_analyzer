@@ -222,6 +222,26 @@
       "precision": "float16",
       "device": "cuda",
       "batch_size": 1
+    },
+    "instrument_mega7": {
+      "id": "instrument_mega7",
+      "model_id": "bs_roformer_mega7",
+      "segment_sec": 10,
+      "overlap": 0.4,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
+    },
+    "instrument_mega7_memory_safe": {
+      "id": "instrument_mega7_memory_safe",
+      "model_id": "bs_roformer_mega7",
+      "segment_sec": 5,
+      "overlap": 0.4,
+      "seed": 0,
+      "precision": "float16",
+      "device": "cuda",
+      "batch_size": 1
     }
   },
   "oom_fallback": {
@@ -244,6 +264,8 @@
     "bs_karaoke_memory_safe": null,
     "bs_karaoke_refined": "bs_karaoke_memory_safe",
     "instrument_mega5": "instrument_mega5_memory_safe",
-    "instrument_mega5_memory_safe": null
+    "instrument_mega5_memory_safe": null,
+    "instrument_mega7": "instrument_mega7_memory_safe",
+    "instrument_mega7_memory_safe": null
   }
 }
