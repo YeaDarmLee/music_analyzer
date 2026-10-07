@@ -2460,3 +2460,9 @@ html {
 .plan-side .lane b { width: 62px; font-size: 11px }
 .plan-side .lane-wave i:nth-child(n+22) { display: none }
 .plan-side article > div:first-of-type { margin-bottom: 0 }
+
+.recommend { margin-top: 6px; padding: 14px 16px; border: 1px solid #3a3150; border-radius: 12px; background: #17151f }
+.recommend > span { display: block; margin-bottom: 10px; color: #c7b9ff; font-size: 12px; font-weight: 600 }
+.recommend ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none }
+.recommend li { padding: 5px 11px; border-radius: 999px; background: #2a2240; color: #d9ceff; font-size: 12px }
+.recommend li:before { content: '✓ '; color: #72d5b5 }
