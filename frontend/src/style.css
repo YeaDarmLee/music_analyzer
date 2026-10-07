@@ -2348,3 +2348,14 @@ html {
 .cta-band { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin: 10px 0 40px; padding: 28px 32px; border: 1px solid #363046; border-radius: 13px; background: radial-gradient(ellipse at 80% 50%, #39304c 0%, #211c2e 60%, #1b1923 100%) }
 .cta-band h3 { margin: 0 0 6px; font-size: 18px }
 .cta-band p { margin: 0; color: #9496a5; font-size: 13px }
+
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; margin: 0 0 40px }
+.compare-grid article { position: relative; border: 1px solid #2c2a38; border-radius: 12px; padding: 24px; background: #1b1923; display: flex; flex-direction: column; gap: 12px }
+.compare-grid article.featured { border-color: #6a5a9c; background: #211c2e }
+.compare-grid h3 { margin: 0; font-size: 22px }
+.compare-grid strong { color: #c7b9ff; font-weight: 500; font-size: 13px }
+.compare-grid .track-chips { margin: 0; gap: 6px }
+.compare-grid .track-chips span { padding: 5px 10px; font-size: 12px }
+.compare-grid p { margin: 0; color: #a5a7b5; font-size: 13px; line-height: 1.6 }
+.compare-grid small { margin-top: auto; color: #7f8190; font-size: 12px }
+.compare-flag { position: absolute; top: 18px; right: 18px; padding: 3px 9px; border-radius: 999px; background: #3a2f5c; color: #d9ceff; font-size: 11px }
