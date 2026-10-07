@@ -2493,3 +2493,16 @@ html {
 .about-right .about-points article { padding-left: 18px; border-left: 2px solid #4b4266 }
 .about-lp .about-flow { margin-top: 64px }
 @media (max-width: 900px) { .about-top { grid-template-columns: 1fr; gap: 32px } .about-left h2 { font-size: 30px } }
+
+/* title left, content right */
+.plans-lp, .feature-lp, .steps-lp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); gap: 72px; align-items: start; text-align: left }
+.lp-head h2 { margin: 0; max-width: none; font-size: 34px }
+.lp-body { min-width: 0 }
+.plans-lp .plan-split { margin-top: 0 }
+.feature-row { grid-template-columns: repeat(2, 1fr); margin-top: 0; gap: 40px 48px; text-align: left }
+.feature-row .feature-icon { margin: 0 }
+.timeline { grid-template-columns: repeat(2, 1fr); margin-top: 0; gap: 40px 48px; text-align: left }
+.timeline:before { display: none }
+@media (max-width: 900px) { .plans-lp, .feature-lp, .steps-lp { grid-template-columns: 1fr; gap: 28px } }
+.lp-head h2, .about-left h2 { word-break: keep-all }
+.plans-lp { grid-template-columns: minmax(0, .8fr) minmax(0, 3fr); gap: 56px }
