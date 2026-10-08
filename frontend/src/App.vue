@@ -166,6 +166,21 @@ playing.value=true;tick();
 finally{if(ticket===startRevision)starting.value=false}
 }
 function downloadChoice(track){window.location.href=track?track.download:selected.value.archive_url}
+function tick(){if(!playing.value)return;position.value=Math.max(0,context.currentTime-origin);if(position.value>=duration.value){stop();position.value=0;if(loop.value)toggle();return}raf=requestAnimationFrame(tick)}
+function seek(event){const was=playing.value||starting.value;stop();position.value=Math.min(duration.value,Math.max(0,Number(event.target.value)));if(was)toggle()}
+function seekWave(event){const rect=event.currentTarget.getBoundingClientRect();const was=playing.value||starting.value;stop();position.value=(event.clientX-rect.left)/rect.width*duration.value;if(was)toggle()}
+function choose(e){
+if(uploading.value)return;
+clearMetadata();fileDuration.value=null;readingFile.value=false;error.value='';
+file.value=e.target.files?.[0]||e.dataTransfer?.files?.[0]||null;
+if(!file.value)return;
+if(!/\.(mp3|wav|flac)$/i.test(file.value.name)){error.value='MP3, WAV, FLAC 파일을 선택해 주세요.';file.value=null;return}
+if(file.value.size===0||file.value.size>1024**3){error.value='파일은 1GB 이하의 음원을 선택해 주세요.';file.value=null;return}
+readingFile.value=true;const audio=new Audio();metadataAudio=audio;metadataUrl=URL.createObjectURL(file.value);audio.preload='metadata';
+audio.onloadedmetadata=()=>{const length=audio.duration;readingFile.value=false;if(Number.isFinite(length)&&length>0){fileDuration.value=length;if(length>900){error.value='15분 이하의 음원을 선택해 주세요.';file.value=null;fileDuration.value=null}}clearMetadata()};
+audio.onerror=()=>{readingFile.value=false;clearMetadata()};
+metadataTimer=setTimeout(()=>{readingFile.value=false;clearMetadata()},10000);audio.src=metadataUrl;
+}
 const canDelete=row=>!!row&&!['QUEUED','RUNNING'].includes(row.state);
 function askDelete(row,event){modalOrigin=originOf(event);deleteDialog.value={id:row.id,name:row.name}}
 async function confirmDelete(){const d=deleteDialog.value;if(!d||deleting.value)return;deleting.value=true;error.value='';try{await request('/api/analyses/'+d.id,{method:'DELETE'});deleteDialog.value=null;if(selected.value?.id===d.id)home();await refresh()}catch(e){deleteDialog.value=null;error.value=e.message}finally{deleting.value=false}}
