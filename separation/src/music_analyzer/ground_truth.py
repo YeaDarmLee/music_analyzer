@@ -17,6 +17,13 @@ from .common import project_root, read_json, write_json, sha256_file
 from .evaluation import raw_sdr, si_sdr
 
 
+def _partition(outputs, mixture):
+    error = np.sum([np.asarray(a, dtype=np.float64) for a in outputs.values()], axis=0) - np.asarray(mixture, dtype=np.float64)
+    return {'max_abs_error': float(np.max(np.abs(error))), 'samples_over_2e-6': int(np.sum(np.abs(error) > 2e-6)),
+            'nan': int(np.isnan(error).sum()), 'inf': int(np.isinf(error).sum()),
+            'clipping_samples': int(sum(np.sum(np.abs(a) > 1.0) for a in outputs.values()))}
+
+
 def score(target, estimate, mixture):
     arrays = [np.asarray(a, dtype=np.float64) for a in (target, estimate, mixture)]
     if any(a.shape != arrays[0].shape or a.ndim != 2 or a.shape[1] != 2
@@ -188,7 +195,8 @@ def evaluate(folder, root, row):
                                       'instrumental_restoration.py','percussion_refinement.py','piano_drum_refinement.py')},
                      'job_ids': row['job_ids']},
                   'outputs': {t['family']: str(library.track_path(row,t['family'])) for t in row['tracks']},
-                  'sum_error_rms': float(np.sqrt(np.mean((sum(outputs.values())-mixture)**2)))}
+                  'sum_error_rms': float(np.sqrt(np.mean((sum(outputs.values())-mixture)**2))),
+                  'partition': _partition(outputs, mixture)}
         write_json(folder/'report.json', result)
         (folder/'comparison.html').write_text(
             '<!doctype html><meta charset="utf-8"><title>Reference comparison</title>'
@@ -203,6 +211,13 @@ def evaluate(folder, root, row):
         print(prepared['name'], 'REPORT', folder/'report.json', flush=True)
         for family, item in metrics.items():
             print(family, {key: item[key] for key in ('raw_sdr_db','output_to_mix_db','target_gain')}, flush=True)
+        # benchmarks keep reports and metrics, not audio (MUSIC_KEEP_BENCHMARK_AUDIO=1 keeps the comparison WAVs and the run library)
+        from .lifecycle import discard_benchmark_audio
+        generated = [folder/name for name in ('evaluation-candidates','evaluation-outputs','without-recovery','comparison.html')]
+        if (folder/'library').is_dir() and Path(root).resolve() == (folder/'library').resolve():
+            generated.append(folder/'library')
+        result['audio_cleanup'] = discard_benchmark_audio(*generated)
+        write_json(folder/'report.json', result)
         return result
     finally:
         library.executor.shutdown()

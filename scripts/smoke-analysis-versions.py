@@ -1,4 +1,5 @@
 """Check all analysis versions on a short real clip in an isolated library."""
+import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import argparse
 import os
 import time

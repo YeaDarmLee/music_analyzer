@@ -1,4 +1,5 @@
 """Real GPU pipeline check in an isolated study library, without account mutations."""
+import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import os
 import time
 from pathlib import Path

@@ -19,7 +19,11 @@ for name in cases:
         c, b = com["metrics"].get(stem), bas["metrics"].get(stem)
         rows.append({"case": name, "stem": stem, "base": None if not b else b.get("raw_sdr_db"), "com": None if not c else c.get("raw_sdr_db"),
                      "base_si": None if not b else b.get("si_sdr_db"), "com_si": None if not c else c.get("si_sdr_db")})
-    run = read_json(com_root / name / "run.json"); root = Path(run["root"]); rec = read_json(root / "web" / run["id"] / "record.json")
+    run = read_json(com_root / name / "run.json"); root = Path(run["root"])
+    if "partition" in com:   # reports written since benchmark audio is discarded by default carry their own partition stats
+        stats = dict(com["partition"], rms_error=com.get("sum_error_rms"), dc_offset=0.0)
+        stats.update(case=name, seconds=com.get("processing_seconds")); partition.append(stats); continue
+    rec = read_json(root / "web" / run["id"] / "record.json")
     library = WebLibrary.__new__(WebLibrary); library.root = root
     original = read_audio(library.track_path(rec, "original"))
     stems = [read_audio(library.track_path(rec, t["family"])) for t in rec["tracks"]]

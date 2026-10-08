@@ -4,6 +4,7 @@ Case folders are copied from data/pad-eval/cases-v16 into data/commercial-eval/p
 reports stay untouched. Baseline = the existing v16 report.json of the same case (staged-context-pads-v16).
 usage: run-commercial-eval.py pad00-mix pad01-mix ...
 """
+import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import os, shutil, sys, time
 from pathlib import Path
 from music_analyzer.common import project_root, read_json, write_json, sha256_file

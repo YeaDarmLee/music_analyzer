@@ -10,7 +10,7 @@
     "runtime_modules": [
       "web_server.py", "auth.py", "legal.py", "release.py", "worker.py", "roformer_runner.py", "ingest.py",
       "job_service.py", "job_contracts.py", "registry.py", "common.py", "audio.py", "environment.py",
-      "commercial_pipeline.py", "commercial_cymbal.py", "piano_drum_refinement.py", "percussion_refinement.py",
+      "commercial_pipeline.py", "commercial_cymbal.py", "lifecycle.py", "piano_drum_refinement.py", "percussion_refinement.py",
       "string_routing.py", "context_routing.py", "instrumental_restoration.py",
       "vendor/msst/attend.py", "vendor/msst/bs_roformer.py", "vendor/msst/mel_band_roformer.py"
     ],

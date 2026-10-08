@@ -78,6 +78,66 @@
     "vocal2_mega"
    ],
    "status": "VALIDATING"
+  },
+  "commercial_2": {
+   "models": [
+    {
+     "approval_evidence_url": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md",
+     "approval_status": "APPROVED",
+     "approved_sha256": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "melband_roformer_kj",
+     "problems": [],
+     "registry_sha256_prefix": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "PUBLISHER_DECLARED"
+    }
+   ],
+   "preset": "commercial_2",
+   "problems": [],
+   "stage_presets": [
+    "vocal_roformer"
+   ],
+   "status": "VALIDATING"
+  },
+  "commercial_6": {
+   "models": [
+    {
+     "approval_evidence_url": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md",
+     "approval_status": "APPROVED",
+     "approved_sha256": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "melband_roformer_kj",
+     "problems": [],
+     "registry_sha256_prefix": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "PUBLISHER_DECLARED"
+    },
+    {
+     "approval_evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
+     "approval_status": "APPROVED",
+     "approved_sha256": "24b900e2cc5b405b24cc87b898beb7c57fdcd3bc8fbde5cb514a9a4f716393ed",
+     "code_license": "MIT",
+     "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+     "model_id": "bs_roformer_core4",
+     "problems": [],
+     "registry_sha256_prefix": "24b900e2cc5b405b24cc87b898beb7c57fdcd3bc8fbde5cb514a9a4f716393ed",
+     "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+     "weight_license": "MIT",
+     "weight_license_status": "VERIFIED_DECLARATION"
+    }
+   ],
+   "preset": "commercial_6",
+   "problems": [],
+   "stage_presets": [
+    "vocal_roformer",
+    "instrument_core4"
+   ],
+   "status": "VALIDATING"
   }
  },
  "production_presets": [],

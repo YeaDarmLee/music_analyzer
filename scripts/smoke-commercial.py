@@ -2,6 +2,7 @@
 
 Inputs are built from the license-clean synthetic pad-eval mix. Output: docs/COMMERCIAL_CLEAN_SMOKE_RESULTS.json
 """
+import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import os, time
 from pathlib import Path
 import numpy as np, soundfile as sf
@@ -57,4 +58,6 @@ try:
 finally:
     library.executor.shutdown(wait=True)
 write_json(base / ("docs/COMMERCIAL_CLEAN_SMOKE_RESULTS.json" if PRESET == "commercial_13" else f"docs/COMMERCIAL_CLEAN_SMOKE_{PRESET.upper()}_RESULTS.json"), results)
+from music_analyzer.lifecycle import discard_benchmark_audio
+discard_benchmark_audio(work)  # results live in docs/*.json; audio only with MUSIC_KEEP_BENCHMARK_AUDIO=1
 print("SMOKE DONE", flush=True)

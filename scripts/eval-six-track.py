@@ -3,6 +3,7 @@
 usage: eval-six-track.py <basic_6|commercial_6> case ...   -> data/commercial-eval/six/<preset>/<case>.json
 Targets: piano/guitar/bass/drums = their GT stems; other = strings+brass+synth GT; vocals has no GT (N/A).
 """
+import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import os, sys, time, json
 from pathlib import Path
 import numpy as np, soundfile as sf
@@ -53,4 +54,6 @@ for name in sys.argv[2:]:
     finally:
         library.executor.shutdown(wait=True)
     write_json(out_dir / f"{name}.json", result); print(name, "done", flush=True)
+    from music_analyzer.lifecycle import discard_benchmark_audio
+    discard_benchmark_audio(root)  # reports stay, audio goes unless MUSIC_KEEP_BENCHMARK_AUDIO=1
 print("SIX DONE", flush=True)

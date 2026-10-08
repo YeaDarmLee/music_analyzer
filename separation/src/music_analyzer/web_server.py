@@ -14,7 +14,7 @@ from .ingest import ingest_file,load_asset
 from .job_service import JobService
 from .job_contracts import job_folder,verify_result,JobError
 from .audio import RATE
-from . import release
+from . import release,lifecycle
 from .legal import RIGHTS_CONFIRMATION_VERSION,public_versions,require_consents,ConsentError
 
 BUSY_STATES=("QUEUED","RUNNING")
@@ -35,6 +35,26 @@ class WebLibrary:
             if record["state"] not in ("SUCCEEDED","FAILED","CANCELLED"):
                 record.update(state="FAILED",stage="실행 중 서버가 종료됐습니다. 새 분석으로 다시 실행해 주세요.",error="서버 종료로 분석이 중단됐습니다.")
                 write_json(path,record)
+        self.reap()
+
+    def reap(self):
+        """Startup sweep: leftovers of crashed or failed analyses, stale partials and download archives, expired playback caches."""
+        try:
+            lifecycle.cleanup_unfinalized(self.root)
+            lifecycle.reap(self.root)
+        except Exception as error:print(f"[lifecycle] reap failed: {error}",file=sys.stderr,flush=True)
+
+    def finish_outputs(self,row,success):
+        """After the final state is saved: drop intermediates (MUSIC_KEEP_INTERMEDIATES=1 keeps them). Never fails the analysis."""
+        try:
+            with self.cache_lock:
+                path=self.web/row["id"]/"record.json"
+                if not path.exists():return  # deleted meanwhile
+                result=lifecycle.finalize(self.root,row,success)
+                if result["mode"]=="removed":
+                    row["storage"]=result;write_json(path,row)
+                if result.get("errors"):print(f"[lifecycle] {row['id']}: {result['errors'][:3]}",file=sys.stderr,flush=True)
+        except Exception as error:print(f"[lifecycle] {row.get('id')} cleanup failed: {error}",file=sys.stderr,flush=True)
 
     def safe(self,path):
         value=(self.root/path).resolve()
@@ -132,7 +152,7 @@ class WebLibrary:
 
     def public(self,row):
         """API view of a record: no file paths, and no internal stage names or error text (those stay in record.json and the server log)."""
-        view={k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path","stage","error")}
+        view={k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path","stage","error","storage")}
         if row.get("state")=="FAILED":view["error_code"]="ANALYSIS_FAILED"
         return view|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
 
@@ -261,6 +281,7 @@ class WebLibrary:
                 row.update(original=original_path,tracks=[{**s,"path":str((first_dir/s["path"]).relative_to(self.root))} for s in first["stems"] if s["family"] in ("vocals","instrumental")],track_layout="basic_2")
                 self.validate_partition(row["original"],row["tracks"])
                 save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
+                self.finish_outputs(row,True)
                 return
             if is11:
                 context_job=run_stage(asset.name,"instrument_mega7",lambda j:update(j,32,8,"원곡 악기 근거 확인 중"))
@@ -300,6 +321,7 @@ class WebLibrary:
                 save(stage="길이·합계 검증 및 저장",progress=97)
                 self.validate_partition(instrumental_path,[t for t in row["tracks"] if t["family"]!="vocals"])
                 save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=[self.track_activity(t) for t in row["tracks"]],active_job_id=None)
+                self.finish_outputs(row,True)
                 return
             tracks=[]
             for base,stems in [(first_dir,[s for s in first["stems"] if s["family"]=="vocals"]),
@@ -420,10 +442,12 @@ class WebLibrary:
             tracks=[self.track_activity(t) for t in row["tracks"]]
             save(state="SUCCEEDED",stage="분석 완료",progress=100,tracks=tracks,
                  original=str((asset/"canonical.wav").relative_to(self.root)),active_job_id=None)
+            self.finish_outputs(row,True)
         except Exception as error:
             upload.unlink(missing_ok=True)
             print(f"[analysis] {row['id']} failed: {error}",file=sys.stderr,flush=True)
             save(state="FAILED",stage="분석 실패",error=str(error),active_job_id=None)
+            self.finish_outputs(row,False)
 
     def delete(self,identifier):
         """Remove one analysis and every job/asset directory no other analysis or job still uses."""
@@ -664,16 +688,22 @@ class WebLibrary:
         return target
 
     def archive(self,row):
+        """Per-request ZIP of the final stems. A unique temp file (never cached or listed); the caller must discard_archive() it after the response."""
         folder=self.web/"archives";folder.mkdir(exist_ok=True)
-        target=folder/(row["id"]+"_"+self.fingerprint(row)+".zip")
-        with self.cache_lock:
-            if not target.exists():
-                partial=target.with_suffix(".partial")
-                with zipfile.ZipFile(partial,"w",compression=zipfile.ZIP_STORED) as archive:
-                    for t in row["tracks"]:archive.write(self.track_path(row,t["family"]),t["family"]+".wav")
-                    archive.writestr("manifest.json",json.dumps(self.public(row),ensure_ascii=False,indent=2))
-                partial.replace(target)
+        target=folder/f"dl-{uuid4().hex}.zip"
+        partial=target.with_suffix(".partial")
+        try:
+            with zipfile.ZipFile(partial,"w",compression=zipfile.ZIP_STORED) as archive:
+                for t in row["tracks"]:archive.write(self.track_path(row,t["family"]),t["family"]+".wav")
+                archive.writestr("manifest.json",json.dumps(self.public(row),ensure_ascii=False,indent=2))
+            partial.replace(target)
+        finally:
+            partial.unlink(missing_ok=True)
         return target
+
+    def discard_archive(self,path):
+        try:Path(path).unlink(missing_ok=True)
+        except OSError as error:print(f"[lifecycle] archive not removed: {error}",file=sys.stderr,flush=True)
 
 def make_handler(library,dist,port,public_access=False,auth=None):
     class Handler(BaseHTTPRequestHandler):
@@ -816,7 +846,10 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                     if action=="enhanced":
                         strength=int(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get("strength",["50"])[0])
                         return self.file(library.enhanced(row,family,strength),family+f"-clarity-{strength}.wav")
-                    if action=="archive":return self.file(library.archive(row),row["name"]+"-stems.zip")
+                    if action=="archive":
+                        archive=library.archive(row)
+                        try:return self.file(archive,row["name"]+"-stems.zip")
+                        finally:library.discard_archive(archive)
                     if action=="download":return self.file(library.track_path(row,family),family+".wav")
                     query=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
                     if 'start_frame' in query or 'num_frames' in query:
