@@ -44,7 +44,8 @@ Composition (procedural, seed)  →  Performance (NoteEvent)  →  SceneSpec (JS
 - **Scene 분포(초기 가설, config)**: vocal+instruments 55% / instrumental only 20% / vocal only 10% / sparse 10% / near-silence 5%; 활성 악기 수 1~4 모두 존재 (400개 샘플 확인: 230/80/45/30/15).
 - **Production gate**: scene이 쓰는 모든 asset은 usage 정책을 통과해야 한다 (`render-fixed`가 매 scene에서 검사, 실패 scene은 기록되지 않음). 미-ingest asset(version/sha256 null), RED, YELLOW, 권한 UNKNOWN, 의무(attribution) 누락은 거부.
 - **Fallback은 명시**: piano 샘플 asset이 없으면 FM "keys" 합성 patch를 쓰고 `renderers[stem].fallback_for`로 기록한다. 이 fallback으로 만든 piano는 Packet의 "VCSL Keys piano"가 아니다.
-- **Lazy vs fixed**: train은 spec+seed만 저장하고 window render(요청 구간 + 2~8 s pre-roll; pre-roll은 그 구간에 걸친 지속음 길이에 맞춰 확장), val/test는 고정 WAV. window render는 같은 spec의 전체 렌더를 crop한 것과 **같지 않다** (level scale이 window 기준, 시작 전 8 s 이상 지속된 음은 누락) — 학습 전용이며 벤치마크는 fixed만 사용.
+- **Lazy vs fixed**: train은 spec+seed만 저장하고 **scene 전체를 렌더한 뒤(모든 FX, scene-level gain 포함) 3 s crop**을 반환한다. 따라서 `full_render(scene)[start:end] == training_crop(scene, start, end)` (property test, 캐시 on/off). val/test는 고정 WAV. 전체 렌더 RTF ≈ 0.084 (대리 데이터 기준)라 연구 초기에는 충분하다. 독립 window 렌더(`render(spec, window)`, 어댑터 `render_path: window`)는 실험적 최적화 경로로만 남기며 전체 렌더와 **같지 않다** (scene-level level scale이 window 기준, pre-roll 밖에서 시작한 지속음 누락, FX tail 차이). 필요해지면 context-aware renderer(pre-roll + active note carry + FX state + post-roll + 전역 정규화)로 대체한다.
+- **Activity metadata**: 어댑터는 crop된 target 자체에서 stem별 `active`(peak > `activity_threshold`, 기본 1e-4)를 계산해 `batch["active"]`로 넘기고, 엔진 trainer가 loss에 전달한다. scene에서는 활성이지만 crop 구간이 조용한 stem도 inactive로 취급된다.
 
 ## 5. 의존성
 추가: **SciPy** (BSD-3-Clause, Packet §4.2 승인) — WAV I/O, biquad/IIR, FFT convolution, resampling. 추가하지 않은 것: FluidSynth, sfizz runtime, Sforzando, VST host, Pedalboard, Surge, Dexed, OB-Xf, librosa, audiomentations, music21, MusPy, pretty_midi, Mido(debug MIDI export 미구현).

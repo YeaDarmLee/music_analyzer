@@ -1,7 +1,7 @@
 """DF-7: Data Factory -> engine dataset contract. The ONLY module (besides assets.py) that imports `engine`.
 
 Registered as dataset kind `datafactory_scenes`. Item = {"mix": (2,T) float32 tensor, "stems": {target_name: (2,T)}}.
-mode "lazy"  : spec generated from (master_seed, split, index), window-rendered on demand (training).
+mode "lazy"  : spec generated from (master_seed, split, index); the whole scene is rendered on demand, then cropped (training).
 mode "fixed" : pre-rendered scene directories (validation/test), cropped deterministically.
 Optional disk cache of rendered windows (LRU by mtime, size-capped)."""
 from __future__ import annotations
@@ -53,10 +53,12 @@ class DiskCache:
 
 class SceneDataset(Dataset):
     def __init__(self, factory: Factory, split: str, n: int, schema: str, chunk_samples: int, mode: str = "lazy",
-                 fixed_dir: str | Path | None = None, cache: DiskCache | None = None, epoch_salt: int = 0):
+                 fixed_dir: str | Path | None = None, cache: DiskCache | None = None, epoch_salt: int = 0,
+                 render_path: str = "full", activity_threshold: float = 1e-4):
         self.f, self.split, self.n, self.schema, self.chunk = factory, split, n, schema, chunk_samples
         self.mode, self.fixed_dir, self.cache, self.salt = mode, Path(fixed_dir) if fixed_dir else None, cache, epoch_salt
         self._specs: dict[int, SceneSpec] = {}
+        self.render_path, self.act_thr = render_path, activity_threshold
 
     def __len__(self):
         return self.n
@@ -70,19 +72,35 @@ class SceneDataset(Dataset):
         if self.mode == "fixed":
             mix, tg = self._fixed(i)
         else:
-            sp = self.spec(i)
-            start = crop_start_samples(sp.seeds["mix"] + self.salt, sp.duration_samples, self.chunk)
-            win = (start / sp.sample_rate, (start + min(self.chunk, sp.duration_samples)) / sp.sample_rate)
-            key = hash_obj([sp.hash(), win, self.schema, GENERATOR_VERSION])[:32]
-            arr = self.cache.get(key) if self.cache else None
-            if arr is None:
-                mix, tg = self.f.render_targets(sp, self.schema, win)
-                arr = np.stack([mix] + [tg[k] for k in SCHEMAS[self.schema]])
-                if self.cache:
-                    self.cache.put(key, arr)
-            mix, tg = arr[0], {k: arr[1 + j] for j, k in enumerate(SCHEMAS[self.schema])}
+            mix, tg = self.crop_item(i)
         mix = self._fit(mix)
-        return {"mix": torch.from_numpy(mix), "stems": {k: torch.from_numpy(self._fit(v)) for k, v in tg.items()}}
+        stems = {k: self._fit(v) for k, v in tg.items()}
+        # activity is read from the cropped target itself: a stem that is active in the scene but silent in this crop
+        # (rest, silence block) must also be treated as inactive by the loss
+        active = {k: torch.tensor(bool(np.abs(v).max() > self.act_thr)) for k, v in stems.items()}
+        return {"mix": torch.from_numpy(mix), "stems": {k: torch.from_numpy(v) for k, v in stems.items()}, "active": active}
+
+    def full_scene(self, sp: SceneSpec):
+        """Training path: the WHOLE scene is rendered (all FX, scene-level gain) and only then cropped, so a crop equals
+        the corresponding slice of the full render exactly. Cached on disk when a cache is configured."""
+        key = hash_obj([sp.hash(), self.schema, GENERATOR_VERSION, "full"])[:32]
+        arr = self.cache.get(key) if self.cache else None
+        if arr is None:
+            mix, tg = self.f.render_targets(sp, self.schema, None)
+            arr = np.stack([mix] + [tg[k] for k in SCHEMAS[self.schema]])
+            if self.cache:
+                self.cache.put(key, arr)
+        return arr[0], {k: arr[1 + j] for j, k in enumerate(SCHEMAS[self.schema])}
+
+    def crop_item(self, i: int):
+        sp = self.spec(i)
+        start = crop_start_samples(sp.seeds["mix"] + self.salt, sp.duration_samples, self.chunk)
+        end = start + self.chunk
+        if self.render_path == "window":  # experimental optimization path; NOT equal to the full render (see docs)
+            win = (start / sp.sample_rate, min(end, sp.duration_samples) / sp.sample_rate)
+            return self.f.render_targets(sp, self.schema, win)
+        mix, tg = self.full_scene(sp)
+        return mix[:, start:end], {k: v[:, start:end] for k, v in tg.items()}
 
     def _fit(self, a: np.ndarray) -> np.ndarray:
         a = np.ascontiguousarray(a[:, :self.chunk], dtype=np.float32)
@@ -114,4 +132,5 @@ def build(ds_cfg: dict, model_cfg: dict, split: str, seed: int) -> SceneDataset:
     cache = DiskCache(p["cache_dir"], int(p["cache_max_gb"] * 1e9)) if p.get("cache_dir") else None
     mode = p.get("mode", {}).get(split, "lazy") if isinstance(p.get("mode"), dict) else p.get("mode", "lazy")
     return SceneDataset(factory, split, n, schema, int(p["chunk_samples"]), mode,
-                        (p.get("fixed_dir") or None) and Path(p["fixed_dir"]), cache)
+                        (p.get("fixed_dir") or None) and Path(p["fixed_dir"]), cache,
+                        render_path=p.get("render_path", "full"), activity_threshold=float(p.get("activity_threshold", 1e-4)))

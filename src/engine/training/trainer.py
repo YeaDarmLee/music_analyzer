@@ -92,7 +92,7 @@ class Trainer:
         mix = batch["mix"]
         with torch.autocast(device_type=self.device.type, dtype=self.amp_dtype, enabled=self.amp_enabled):
             out = self.model(mix)
-            loss, parts = self.loss_fn(out, batch["stems"], mix)
+            loss, parts = self.loss_fn(out, batch["stems"], mix, batch.get("active"))
         return out, loss, parts
 
     def _oom(self, e: BaseException) -> TrainingOOMError:

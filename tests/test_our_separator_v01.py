@@ -258,3 +258,56 @@ def test_multires_stft_silent_target_explodes_without_floor_and_is_bounded_with_
     assert plain.item() > 1e6 and torch.isfinite(floored) and floored.item() < 200
     ok = {"vocals": x / 2, "instrumental": x / 2}
     assert LOSSES.get("multires_stft")(out, ok, x, resolutions=res, sc_floor_rel=0.01).item() < 1e-3  # perfect prediction stays ~0
+
+
+def _act_out(x, sc=None):
+    from engine.interfaces import SeparationOutput
+    return SeparationOutput({"vocals": x / 2, "instrumental": x / 2}, 8000, aux={"input_scale": x.pow(2).mean(dim=(1, 2), keepdim=True).sqrt()})
+
+
+def test_multires_stft_activity_aware_inactive_target_is_bounded_and_skips_convergence():
+    x = audio(b=2, t=4000)
+    out = _act_out(x)
+    res = [[256, 64, 256]]
+    tg = {"vocals": torch.zeros_like(x), "instrumental": x}
+    act = {"vocals": torch.tensor([False, False]), "instrumental": torch.tensor([True, True])}
+    fn = LOSSES.get("multires_stft")
+    v = fn(out, tg, x, resolutions=res, active=act)
+    assert torch.isfinite(v) and v.item() < 50
+    # no activity info and no floor -> the Packet-02 form explodes on this input
+    assert fn(out, tg, x, resolutions=res).item() > 1e6
+    # gradients through masked (silent) rows are finite, not NaN
+    p = x.clone().requires_grad_(True)
+    o2 = _act_out(x)
+    o2.stems = {"vocals": p / 2, "instrumental": x / 2}
+    fn(o2, tg, x, resolutions=res, active=act).backward()
+    assert torch.isfinite(p.grad).all()
+    # inactive items contribute only the linear magnitude term: silent output is a zero-loss optimum
+    o3 = _act_out(x)
+    o3.stems = {"vocals": torch.zeros_like(x), "instrumental": x}
+    assert fn(o3, {"vocals": torch.zeros_like(x), "instrumental": x}, x, resolutions=res, active=act).item() < 1e-6
+
+
+def test_multires_stft_all_active_matches_per_item_form_and_mixed_batch():
+    x = audio(b=2, t=4000)
+    out = _act_out(x)
+    res = [[256, 64, 256]]
+    tg = {"vocals": x * 0.3, "instrumental": x * 0.7}
+    fn = LOSSES.get("multires_stft")
+    all_act = {k: torch.tensor([True, True]) for k in tg}
+    a = fn(out, tg, x, resolutions=res, active=all_act)
+    b = fn(out, tg, x, resolutions=res, sc_floor_rel=1e-9)  # per-item path without activity
+    assert torch.allclose(a, b, rtol=1e-4)
+    mixed = {"vocals": torch.tensor([True, False]), "instrumental": torch.tensor([True, True])}
+    tg2 = {"vocals": torch.stack([x[0] * 0.3, torch.zeros_like(x[1])]), "instrumental": x * 0.7}
+    assert torch.isfinite(fn(out, tg2, x, resolutions=res, active=mixed))
+
+
+def test_composite_passes_activity_to_losses():
+    from engine.training.losses import build_composite
+    x = audio(b=1, t=4000)
+    out = _act_out(x)
+    comp = build_composite([{"name": "multires_stft", "weight": 1.0, "kwargs": {"resolutions": [[256, 64, 256]]}}])
+    tg = {"vocals": torch.zeros_like(x), "instrumental": x}
+    total, _ = comp(out, tg, x, {"vocals": torch.tensor([False]), "instrumental": torch.tensor([True])})
+    assert torch.isfinite(total) and total.item() < 50

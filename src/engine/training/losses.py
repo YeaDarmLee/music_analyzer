@@ -37,34 +37,49 @@ def waveform_l2(out, target, mix, use_input_scale=True, **_):
 
 
 @LOSSES.register("multires_stft")
-def multires_stft(out, target, mix, resolutions, use_input_scale=True, eps=1e-7, sc_floor_rel=None, **_):
-    """Mean over resolutions of (spectral convergence + log-magnitude L1). resolutions: [[n_fft, hop, win], ...].
+def multires_stft(out, target, mix, resolutions, use_input_scale=True, eps=1e-7, sc_floor_rel=None,
+                  inactive_linear_weight=1.0, linear_weight=0.0, active=None, **_):
+    """Mean over resolutions of a per-item spectral term. resolutions: [[n_fft, hop, win], ...].
 
-    sc_floor_rel=None : spectral convergence uses the whole-batch target norm (Research Packet 02 form). This explodes
-                        (~1e10) when a target stem is exactly silent, e.g. an inactive stem in a batch of one scene.
-    sc_floor_rel=r    : per-item convergence with denominator max(|T|, r*|M|), M = mixture spectrum, which stays bounded for
-                        silent targets. Needed for any dataset that contains inactive stems (Data Factory)."""
+    active=None (no activity metadata) :
+        spectral convergence + log-magnitude L1 for every item (Research Packet 02 form). With sc_floor_rel=None the
+        convergence uses the whole-batch target norm and explodes (~1e10, measured) for exactly-silent targets;
+        sc_floor_rel=r bounds it with a per-item denominator max(|T|, r*|M|) (numerical-safety fallback only).
+    active={stem: bool tensor (B,)} (Data Factory knows which stems are inactive) :
+        active items   -> spectral convergence + log magnitude (+ linear_weight * linear magnitude L1)
+        inactive items -> inactive_linear_weight * linear magnitude L1 (absolute spectral error); spectral convergence and
+                          the log term are NOT computed, since relative error against a silent target is meaningless."""
     terms = []
     sc_in = _scale(out) if use_input_scale else None
     m_all = mix.float() / sc_in if sc_in is not None else mix.float()
-    for p, t in _pairs(out, target, use_input_scale):
+    names = [n for n in out.stems if n in target]
+    for n, (p, t) in zip(names, _pairs(out, target, use_input_scale)):
         b = p.shape[0]
+        act = None
+        if active is not None and n in active:
+            act = active[n].to(p.device).bool().reshape(b)
         p, t = p.reshape(-1, p.shape[-1]), t.reshape(-1, t.shape[-1])
         m = m_all.reshape(-1, m_all.shape[-1])
         for n_fft, hop, win in resolutions:
             w = torch.hann_window(win, device=p.device)
             P = torch.stft(p, n_fft, hop, win, window=w, return_complex=True).abs()
             T = torch.stft(t, n_fft, hop, win, window=w, return_complex=True).abs()
-            if sc_floor_rel is None:
+            if act is None and sc_floor_rel is None:
                 sc = torch.linalg.vector_norm(T - P) / torch.linalg.vector_norm(T).clamp_min(eps)
-            else:
+                lm = (torch.log(T + eps) - torch.log(P + eps)).abs().mean()
+                terms.append(sc + lm)
+                continue
+            num = torch.linalg.vector_norm((T - P).reshape(b, -1), dim=1)
+            nt = torch.linalg.vector_norm(T.reshape(b, -1), dim=1)
+            if sc_floor_rel is not None:
                 M = torch.stft(m, n_fft, hop, win, window=w, return_complex=True).abs()
-                num = torch.linalg.vector_norm((T - P).reshape(b, -1), dim=1)
-                den = torch.maximum(torch.linalg.vector_norm(T.reshape(b, -1), dim=1),
-                                    sc_floor_rel * torch.linalg.vector_norm(M.reshape(b, -1), dim=1)).clamp_min(eps)
-                sc = (num / den).mean()
-            lm = (torch.log(T + eps) - torch.log(P + eps)).abs().mean()
-            terms.append(sc + lm)
+                nt = torch.maximum(nt, sc_floor_rel * torch.linalg.vector_norm(M.reshape(b, -1), dim=1))
+            keep = act if act is not None else torch.ones(b, dtype=torch.bool, device=p.device)
+            sc = num / torch.where(keep, nt.clamp_min(eps), torch.ones_like(nt))  # safe denominator: no inf in masked rows
+            lm = (torch.log(T + eps) - torch.log(P + eps)).abs().reshape(b, -1).mean(1)
+            lin = (T - P).abs().reshape(b, -1).mean(1)
+            item = torch.where(keep, sc + lm + linear_weight * lin, inactive_linear_weight * lin)
+            terms.append(item.mean())
     return torch.stack(terms).mean()
 
 
@@ -97,10 +112,10 @@ def build_composite(loss_cfgs: list[dict]):
     if not terms:
         raise ValueError("all loss weights are zero")
 
-    def composite(out, target, mix):
+    def composite(out, target, mix, active=None):
         total, parts = 0.0, {}
         for name, w, fn, kw in terms:
-            v = fn(out, target, mix, **kw)
+            v = fn(out, target, mix, active=active, **kw)
             parts[name] = float(v.detach())
             total = total + w * v
         return total, parts

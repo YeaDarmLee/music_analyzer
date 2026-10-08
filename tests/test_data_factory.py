@@ -405,3 +405,43 @@ def test_our_separator_trains_on_datafactory_scenes_cpu(fac):
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="no CUDA device")
 def test_our_separator_trains_on_datafactory_scenes_cuda(fac):
     _train_steps(fac, "cuda", steps=2)
+
+
+# --- training path = full render + crop (property) / activity metadata ---------------------------------------------------------
+@pytest.mark.parametrize("use_cache", [False, True])
+def test_training_crop_equals_slice_of_full_render(fac, tmp_path, use_cache):
+    from data_factory.adapter import crop_start_samples
+    cache = DiskCache(tmp_path / "c", 10**9) if use_cache else None
+    ds = SceneDataset(fac, "train", 6, "2stem_v1", 131584, "lazy", cache=cache)
+    for rounds in range(2 if use_cache else 1):  # second round reads the cache
+        for i in range(6):
+            sp = ds.spec(i)
+            start = crop_start_samples(sp.seeds["mix"], sp.duration_samples, 131584)
+            r = fac.render(sp)
+            ref_mix = r["mix"][:, start:start + 131584]
+            ref_t = {k: v[:, start:start + 131584] for k, v in build_targets(r["atomic"], "2stem_v1").items()}
+            it = ds[i]
+            assert np.allclose(it["mix"].numpy(), ref_mix, atol=1e-6, rtol=0)
+            for k in ref_t:
+                assert np.allclose(it["stems"][k].numpy(), ref_t[k], atol=1e-6, rtol=0)
+
+
+def test_window_render_path_is_not_the_full_render(fac):
+    """Documents why 'window' is experimental: it differs from the full render (scene-level gain, long-note carry)."""
+    sp = next(s for s in sample_rows(fac, 8) if "synth" in s.active_stems)
+    start, n = 1.5, 88200
+    full = fac.render(sp)["mix"][:, int(start * SR):int(start * SR) + n]
+    win = fac.render(sp, (start, start + n / SR))["mix"]
+    assert not np.allclose(full, win, atol=1e-4)
+
+
+def test_item_activity_flags_follow_the_data(fac):
+    ds = SceneDataset(fac, "train", 40, "2stem_v1", 131584, "lazy")
+    seen = set()
+    for i in range(40):
+        it = ds[i]
+        for k, v in it["stems"].items():
+            flag = bool(it["active"][k])
+            assert flag == bool(v.abs().max() > 1e-4)
+            seen.add((k, flag))
+    assert seen == {("vocals", True), ("vocals", False), ("instrumental", True), ("instrumental", False)}
