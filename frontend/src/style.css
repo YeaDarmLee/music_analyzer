@@ -2750,3 +2750,12 @@ button.crumb:hover { color: #c7b9ff }
   .library { --lib-cols: minmax(0, 1fr) 96px 72px; --lib-gap: 12px; --lib-pad: 16px }
   .model-label, .duration, .table-header>span:nth-child(2), .table-header>span:nth-child(3) { display: none }
 }
+
+/* rights confirmation dialog: same surface, accent and type scale as the analysis modal */
+.confirm-modal.rights-modal { width: min(480px, calc(100vw - 32px)); padding: 30px 34px 32px; text-align: left }
+.rights-modal h2 { font-size: 24px; margin: 0 0 20px }
+.rights-statement { margin: 0 0 14px; padding: 18px 20px; border: 1px solid #3c4053; border-radius: 12px; background: #14151c; color: #ecebf4; font-size: 16px; font-weight: 600; line-height: 1.7; word-break: keep-all }
+.rights-note { margin: 0 0 26px; color: #9ea1b0; font-size: 14px; line-height: 1.7; word-break: keep-all }
+.rights-note a { color: #b6a2ff; text-decoration: underline; text-underline-offset: 3px }
+.rights-modal .confirm-actions { gap: 12px }
+.rights-modal .confirm-actions .button { padding: 14px 0; font-size: 15px; font-weight: 600 }
