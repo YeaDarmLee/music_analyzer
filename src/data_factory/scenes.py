@@ -20,6 +20,7 @@ from .util import derive_seeds, make_rng, sub_rng
 from .vocal import choose_vocal, render_vocal
 
 INSTRUMENTS = ("drums", "bass", "piano", "synth")
+VOCAL_TYPES = ("vocal_plus_instruments", "vocal_only", "vocal_full_band", "vocal_sparse")  # dropped when no vocal index
 PREROLL_S = 2.0
 MAX_PREROLL_S = 8.0
 
@@ -98,8 +99,8 @@ class Factory:
             stype, active = force.get("scene_type", "forced"), set(force["active"])
             rp.rand()
         profile = list(cfg["profiles"])[rm.randint(len(cfg["profiles"]))]
-        sparse = stype in ("sparse_instrument", "near_silence")
-        comp = dict(comp, density=0.2 if sparse else comp["density"])
+        sparse = stype in ("sparse_instrument", "near_silence", "vocal_sparse")
+        comp = dict(comp, density=0.2 if sparse else 1.0 if stype == "dense" else comp["density"])
 
         events, renderers, assets_used, perf_meta = [], {}, {A.INTERNAL_ASSET_ID}, {}
         for stem in [s for s in INSTRUMENTS if s in active]:
@@ -132,7 +133,7 @@ class Factory:
     def _scene_type(self, rp, split) -> tuple[str, set]:
         dist = dict(self.cfg["scene_types"])
         if not self.vocal_index:
-            dist = {k: v for k, v in dist.items() if k not in ("vocal_plus_instruments", "vocal_only")}
+            dist = {k: v for k, v in dist.items() if k not in VOCAL_TYPES}
         names = sorted(dist)
         p = np.array([dist[k] for k in names], dtype=np.float64)
         stype = names[rp.choice(len(names), p=p / p.sum())]
@@ -141,6 +142,12 @@ class Factory:
         have_vocal = bool(self.vocal_index)
         if stype == "vocal_plus_instruments":
             return stype, {"vocal", *insts}
+        if stype == "vocal_full_band":   # dataset_v0 categories (explicit, so ratios are controlled by config)
+            return stype, {"vocal", *list(rp.permutation(list(INSTRUMENTS))[:3 + int(rp.randint(2))])}
+        if stype == "vocal_sparse":
+            return stype, {"vocal", *insts[:1 + int(rp.randint(2))]}
+        if stype == "dense":
+            return stype, set(INSTRUMENTS) | ({"vocal"} if have_vocal and rp.rand() < .7 else set())
         if stype == "instrumental_only":
             return stype, set(insts)
         if stype == "vocal_only":

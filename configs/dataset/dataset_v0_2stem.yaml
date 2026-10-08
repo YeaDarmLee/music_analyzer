@@ -1,0 +1,19 @@
+# Dataset v0 (2-stem vocals/instrumental). train = lazy deterministic specs (full-scene render -> crop); val/test = fixed WAV.
+# No training config is bound to this yet: first real training settings are fixed after the Dataset v0 report is reviewed.
+name: dataset_v0_2stem
+kind: datafactory_scenes
+plugin: data_factory.adapter
+usage: PRODUCTION_TRAINING
+chunk_seconds: 2.9838
+params:
+  manifest: ../artifacts/manifests/dataset_v0.manifest.json
+  factory_config: configs/data_factory/dataset_v0.yaml
+  repo_root: .
+  target_schema: 2stem_v1
+  chunk_samples: 131584
+  num_scenes: {train: 15000, val: 500, test: 500}
+  mode: {train: lazy, val: fixed, test: fixed}
+  fixed_dir: data/factory/dataset_v0
+  cache_dir: null
+  render_path: full
+  activity_threshold: 0.0001

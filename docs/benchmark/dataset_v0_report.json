@@ -1,0 +1,548 @@
+{
+ "config": "configs\\data_factory\\dataset_v0.yaml",
+ "config_sha256": "d28b3f8865ca3436",
+ "sizes": {
+  "train": 15000,
+  "val": 500,
+  "test": 500
+ },
+ "ratios": {
+  "vocal_full_band": 0.4,
+  "vocal_sparse": 0.1,
+  "instrumental_only": 0.15,
+  "vocal_only": 0.05,
+  "dense": 0.1,
+  "sparse_instrument": 0.15,
+  "near_silence": 0.05
+ },
+ "split_ratios_by_family": {
+  "train": 0.8,
+  "val": 0.1,
+  "test": 0.1
+ },
+ "spec_generation_seconds": 51.0,
+ "train": {
+  "scenes": 15000,
+  "seconds_total": 0.0,
+  "category": {
+   "instrumental_only": 2321,
+   "vocal_full_band": 5935,
+   "near_silence": 761,
+   "vocal_sparse": 1459,
+   "sparse_instrument": 2273,
+   "dense": 1529,
+   "vocal_only": 722
+  },
+  "duration_s": {
+   "min": 5.0,
+   "mean": 9.96,
+   "max": 15.0
+  },
+  "hours_total": 41.5,
+  "active_stem_count_hist": {
+   "1": 2357,
+   "2": 2994,
+   "3": 1604,
+   "4": 3916,
+   "5": 4129
+  },
+  "stem_presence": {
+   "vocal": 10541,
+   "piano": 9667,
+   "bass": 9787,
+   "drums": 9751,
+   "synth": 9720
+  },
+  "composition_families": 14002,
+  "bpm": {
+   "min": 70,
+   "mean": 110.3,
+   "max": 150
+  },
+  "key_root_hist": {
+   "0": 1248,
+   "1": 1217,
+   "2": 1205,
+   "3": 1320,
+   "4": 1197,
+   "5": 1287,
+   "6": 1253,
+   "7": 1283,
+   "8": 1231,
+   "9": 1227,
+   "10": 1248,
+   "11": 1284
+  },
+  "mode": {
+   "minor": 5872,
+   "major": 9128
+  },
+  "fx_profile": {
+   "rock_dense": 3087,
+   "electronic": 2963,
+   "ballad": 2996,
+   "dry_rehearsal": 3004,
+   "pop_clean": 2950
+  },
+  "instrument_usage": {
+   "drums": {
+    "own_drum_synth": 4880,
+    "vcsl_drums": 2408,
+    "stargate_drums": 2463
+   },
+   "bass": {
+    "sneakybass_pluck": 2411,
+    "blb_pluck_center": 2437,
+    "own_synth:synth_bass": 4939
+   },
+   "piano": {
+    "vcsl_keys_steinway_b": 3246,
+    "vcsl_keys_grand_k": 3237,
+    "vcsl_keys_upright_knight": 3184
+   },
+   "synth": {
+    "own_synth:arp": 2383,
+    "own_synth:lead": 2470,
+    "own_synth:pad": 2503,
+    "own_synth:pluck": 2364
+   }
+  },
+  "unique_synth_or_kit_patches": {
+   "drums": 4880,
+   "synth": 9720,
+   "bass": 4939
+  },
+  "performance": {
+   "piano_pattern": {
+    "comping": 1675,
+    "broken": 1569,
+    "block": 1664,
+    "arpeggio": 1612,
+    "octave_bass": 1566,
+    "ballad": 1581
+   },
+   "piano_pedal_mode": {
+    "up": 2866,
+    "mixed": 2934,
+    "down": 3867
+   },
+   "bass_pattern": {
+    "walking": 1930,
+    "syncopated": 1972,
+    "root_whole": 1946,
+    "root_fifth_octave": 2009,
+    "root_eighths": 1930
+   },
+   "drum_groove": {
+    "ballad": 1636,
+    "pop": 1584,
+    "halftime": 1536,
+    "four_floor": 1669,
+    "sparse": 1645,
+    "rock": 1681
+   },
+   "synth_role": {
+    "arp": 2383,
+    "lead": 2470,
+    "pad": 2503,
+    "pluck": 2364
+   }
+  },
+  "vocal": {
+   "scenes": 10541,
+   "singers": {
+    "female1": 878,
+    "female3": 868,
+    "female4": 678,
+    "female5": 818,
+    "female6": 793,
+    "female7": 821,
+    "male1": 785,
+    "male2": 852,
+    "male4": 809,
+    "male6": 833,
+    "male7": 784,
+    "male8": 783,
+    "male9": 839
+   },
+   "category": {
+    "scales": 4105,
+    "arpeggios": 4331,
+    "long_tones": 2105
+   },
+   "unique_clips_used": 2218,
+   "unique_clips_available_in_split": 2249,
+   "max_uses_of_one_clip": 14,
+   "doubled_vocal_scenes": 4208,
+   "vocal_minutes_approx": 1223.4
+  }
+ },
+ "val": {
+  "scenes": 500,
+  "seconds_total": 0.0,
+  "category": {
+   "vocal_sparse": 55,
+   "vocal_only": 27,
+   "dense": 58,
+   "sparse_instrument": 79,
+   "vocal_full_band": 186,
+   "instrumental_only": 74,
+   "near_silence": 21
+  },
+  "duration_s": {
+   "min": 5.03,
+   "mean": 10.09,
+   "max": 14.95
+  },
+  "hours_total": 1.4,
+  "active_stem_count_hist": {
+   "1": 83,
+   "2": 112,
+   "3": 45,
+   "4": 123,
+   "5": 137
+  },
+  "stem_presence": {
+   "vocal": 351,
+   "piano": 308,
+   "bass": 325,
+   "drums": 317,
+   "synth": 318
+  },
+  "composition_families": 487,
+  "bpm": {
+   "min": 70,
+   "mean": 110.4,
+   "max": 150
+  },
+  "key_root_hist": {
+   "0": 40,
+   "1": 44,
+   "2": 41,
+   "3": 42,
+   "4": 50,
+   "5": 43,
+   "6": 44,
+   "7": 41,
+   "8": 33,
+   "9": 34,
+   "10": 54,
+   "11": 34
+  },
+  "mode": {
+   "major": 321,
+   "minor": 179
+  },
+  "fx_profile": {
+   "rock_dense": 99,
+   "electronic": 113,
+   "dry_rehearsal": 104,
+   "ballad": 101,
+   "pop_clean": 83
+  },
+  "instrument_usage": {
+   "piano": {
+    "vcsl_keys_grand_k": 108,
+    "vcsl_keys_upright_knight": 98,
+    "vcsl_keys_steinway_b": 102
+   },
+   "synth": {
+    "own_synth:lead": 86,
+    "own_synth:arp": 75,
+    "own_synth:pluck": 90,
+    "own_synth:pad": 67
+   },
+   "drums": {
+    "stargate_drums": 80,
+    "own_drum_synth": 149,
+    "vcsl_drums": 88
+   },
+   "bass": {
+    "blb_pluck_center": 71,
+    "own_synth:synth_bass": 173,
+    "sneakybass_pluck": 81
+   }
+  },
+  "unique_synth_or_kit_patches": {
+   "synth": 318,
+   "drums": 149,
+   "bass": 173
+  },
+  "performance": {
+   "piano_pattern": {
+    "octave_bass": 55,
+    "ballad": 54,
+    "block": 48,
+    "comping": 44,
+    "arpeggio": 54,
+    "broken": 53
+   },
+   "piano_pedal_mode": {
+    "down": 114,
+    "mixed": 101,
+    "up": 93
+   },
+   "bass_pattern": {
+    "root_fifth_octave": 56,
+    "root_whole": 68,
+    "root_eighths": 63,
+    "walking": 68,
+    "syncopated": 70
+   },
+   "drum_groove": {
+    "pop": 55,
+    "halftime": 47,
+    "rock": 58,
+    "ballad": 53,
+    "sparse": 52,
+    "four_floor": 52
+   },
+   "synth_role": {
+    "lead": 86,
+    "arp": 75,
+    "pluck": 90,
+    "pad": 67
+   }
+  },
+  "vocal": {
+   "scenes": 351,
+   "singers": {
+    "female9": 163,
+    "male11": 188
+   },
+   "category": {
+    "arpeggios": 129,
+    "long_tones": 81,
+    "scales": 141
+   },
+   "unique_clips_used": 227,
+   "unique_clips_available_in_split": 346,
+   "max_uses_of_one_clip": 4,
+   "doubled_vocal_scenes": 150,
+   "vocal_minutes_approx": 38.0
+  },
+  "fixed_render": {
+   "ok": 500,
+   "failed": [],
+   "seconds": 412.7
+  }
+ },
+ "test": {
+  "scenes": 500,
+  "seconds_total": 0.0,
+  "category": {
+   "dense": 58,
+   "sparse_instrument": 76,
+   "vocal_full_band": 190,
+   "vocal_sparse": 49,
+   "vocal_only": 24,
+   "instrumental_only": 80,
+   "near_silence": 23
+  },
+  "duration_s": {
+   "min": 5.06,
+   "mean": 10.36,
+   "max": 15.0
+  },
+  "hours_total": 1.44,
+  "active_stem_count_hist": {
+   "1": 84,
+   "2": 94,
+   "3": 57,
+   "4": 120,
+   "5": 145
+  },
+  "stem_presence": {
+   "vocal": 348,
+   "piano": 335,
+   "bass": 325,
+   "drums": 314,
+   "synth": 326
+  },
+  "composition_families": 491,
+  "bpm": {
+   "min": 70,
+   "mean": 111.0,
+   "max": 150
+  },
+  "key_root_hist": {
+   "0": 46,
+   "1": 42,
+   "2": 41,
+   "3": 41,
+   "4": 35,
+   "5": 34,
+   "6": 42,
+   "7": 36,
+   "8": 37,
+   "9": 51,
+   "10": 48,
+   "11": 47
+  },
+  "mode": {
+   "major": 296,
+   "minor": 204
+  },
+  "fx_profile": {
+   "dry_rehearsal": 106,
+   "pop_clean": 104,
+   "ballad": 103,
+   "electronic": 97,
+   "rock_dense": 90
+  },
+  "instrument_usage": {
+   "drums": {
+    "own_drum_synth": 154,
+    "stargate_drums": 85,
+    "vcsl_drums": 75
+   },
+   "bass": {
+    "own_synth:synth_bass": 172,
+    "blb_pluck_center": 74,
+    "sneakybass_pluck": 79
+   },
+   "piano": {
+    "vcsl_keys_steinway_b": 113,
+    "vcsl_keys_grand_k": 117,
+    "vcsl_keys_upright_knight": 105
+   },
+   "synth": {
+    "own_synth:pad": 84,
+    "own_synth:pluck": 93,
+    "own_synth:lead": 75,
+    "own_synth:arp": 74
+   }
+  },
+  "unique_synth_or_kit_patches": {
+   "drums": 154,
+   "bass": 172,
+   "synth": 326
+  },
+  "performance": {
+   "piano_pattern": {
+    "ballad": 65,
+    "arpeggio": 45,
+    "octave_bass": 55,
+    "broken": 60,
+    "comping": 52,
+    "block": 58
+   },
+   "piano_pedal_mode": {
+    "down": 136,
+    "mixed": 99,
+    "up": 100
+   },
+   "bass_pattern": {
+    "walking": 49,
+    "root_whole": 64,
+    "root_fifth_octave": 66,
+    "syncopated": 77,
+    "root_eighths": 69
+   },
+   "drum_groove": {
+    "sparse": 57,
+    "ballad": 51,
+    "pop": 55,
+    "four_floor": 56,
+    "rock": 46,
+    "halftime": 49
+   },
+   "synth_role": {
+    "pad": 84,
+    "pluck": 93,
+    "lead": 75,
+    "arp": 74
+   }
+  },
+  "vocal": {
+   "scenes": 348,
+   "singers": {
+    "female2": 72,
+    "female8": 63,
+    "male10": 67,
+    "male3": 67,
+    "male5": 79
+   },
+   "category": {
+    "scales": 151,
+    "long_tones": 69,
+    "arpeggios": 128
+   },
+   "unique_clips_used": 274,
+   "unique_clips_available_in_split": 879,
+   "max_uses_of_one_clip": 3,
+   "doubled_vocal_scenes": 132,
+   "vocal_minutes_approx": 43.2
+  },
+  "fixed_render": {
+   "ok": 500,
+   "failed": [],
+   "seconds": 456.7
+  }
+ },
+ "leakage": {
+  "family_overlap_train_val": 0,
+  "family_overlap_train_test": 0,
+  "family_overlap_val_test": 0,
+  "singer_overlap": {
+   "train_val": [],
+   "train_test": [],
+   "val_test": []
+  },
+  "duplicate_scene_spec_hashes_in_train": 0
+ },
+ "manifest_sha256": "0c2178e149b2619e9a6d2c148f881507bf40e416d1dc1611019fd77242bf40a5",
+ "assets_used": [
+  "karoryfer_big_little_bass",
+  "karoryfer_sneakybass",
+  "project-procedural-dsp",
+  "stargate_sample_pack",
+  "vcsl",
+  "vcsl_keys",
+  "vocalset"
+ ],
+ "render_seconds_per_scene_by_category": {
+  "instrumental_only": {
+   "n": 13,
+   "s_per_scene": 0.79,
+   "rtf": 0.105
+  },
+  "vocal_full_band": {
+   "n": 23,
+   "s_per_scene": 0.901,
+   "rtf": 0.098
+  },
+  "dense": {
+   "n": 6,
+   "s_per_scene": 0.719,
+   "rtf": 0.096
+  },
+  "vocal_sparse": {
+   "n": 12,
+   "s_per_scene": 0.465,
+   "rtf": 0.042
+  },
+  "sparse_instrument": {
+   "n": 11,
+   "s_per_scene": 0.36,
+   "rtf": 0.033
+  },
+  "vocal_only": {
+   "n": 4,
+   "s_per_scene": 0.155,
+   "rtf": 0.017
+  },
+  "near_silence": {
+   "n": 1,
+   "s_per_scene": 0.204,
+   "rtf": 0.029
+  }
+ },
+ "dataloader_items_per_second_full_scene_render": {
+  "workers_0": 1.16,
+  "workers_4": 2.99,
+  "workers_8": 4.41
+ },
+ "full_scene_cache_bytes_per_scene_2stem_float32": 10341327,
+ "fixed_bytes": 15394408214
+}

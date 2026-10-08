@@ -1,0 +1,39 @@
+# Dataset v0 distribution (Research Lead, 2026-10-08). Generator = Data Factory v0 FROZEN; only distributions/sizes live here.
+# (was: Data Factory v0 generation config. Distributions are initial hypotheses (Packet 04/05 s21-22), to be revised after benchmark.
+master_seed: 20261008
+sample_rate: 44100
+duration_seconds: [5.0, 15.0]
+bpm_range: [70, 150]
+split_ratios: {train: 0.8, val: 0.1, test: 0.1}   # decided per composition family, never per clip
+dataset_sizes: {train: 15000, val: 500, test: 500}   # train = deterministic specs rendered lazily; val/test = fixed WAV
+scene_types:                     # category ratios (sum = 1)
+  vocal_full_band: 0.40          # vocal + 3-4 instruments
+  vocal_sparse: 0.10             # vocal + 1-2 instruments, low density
+  instrumental_only: 0.15
+  vocal_only: 0.05
+  dense: 0.10                    # all 4 instruments (+ vocal 70 %), density 1.0
+  sparse_instrument: 0.15        # 1-2 instruments (+ vocal 50 %), low density
+  near_silence: 0.05             # inactive / very quiet edge cases
+profiles: [pop_clean, ballad, rock_dense, electronic, dry_rehearsal]
+mix:
+  stem_ref_rms_db: -20.0         # every stem is first equalized to this playing-loudness, then the random gains below apply
+  stem_gain_db: [-6.0, 3.0]
+  vocal_gain_db: [-2.0, 4.0]
+  target_rms_db: [-24.0, -16.0]
+  near_silence_rms_db: [-60.0, -48.0]
+  peak_limit: 0.98
+# Populated by `data_factory.cli ingest-*` once assets are ingested (paths to instrument manifests / vocal index).
+instruments:
+  piano:
+    - {manifest: artifacts/instruments/vcsl_keys_grand_k.json}
+    - {manifest: artifacts/instruments/vcsl_keys_steinway_b.json}
+    - {manifest: artifacts/instruments/vcsl_keys_upright_knight.json}
+    - {manifest: artifacts/instruments/vcsl_keys_upright_y.json}
+  bass:
+    - {manifest: artifacts/instruments/blb_pluck_center.json}
+    - {manifest: artifacts/instruments/sneakybass_pluck.json}
+  drums:
+    - {manifest: artifacts/instruments/vcsl_drums.json}
+    - {manifest: artifacts/instruments/stargate_drums.json}
+holdout_instruments: [vcsl_keys_upright_y]     # appears only in the 'ood' split (unseen-piano generalization test)
+vocal_index: artifacts/vocalset_index.json
