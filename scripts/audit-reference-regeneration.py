@@ -2,7 +2,7 @@
 import json, collections
 from pathlib import Path
 import numpy as np, soundfile as sf
-cases = Path(r"C:\workspace\music_analyzer\data\ground-truth\cases")
+cases = Path(__file__).resolve().parents[1] / "data/ground-truth/cases"
 stats = collections.Counter(); bad = []
 read = lambda p: sf.read(p, dtype="float32", always_2d=True)[0]
 for d in sorted(cases.glob("*-v1[0-9]/*")):
