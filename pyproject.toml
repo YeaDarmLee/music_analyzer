@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "music-engine"
+version = "0.0.1"
+description = "Research engine: music source separation training/inference infrastructure"
+requires-python = ">=3.11,<3.13"
+# Lower bounds only. Phase 2 verified with .venv: torch 2.5.1+cu121, numpy 1.26.4, PyYAML 6.0.3.
+dependencies = ["numpy>=1.26", "PyYAML>=6.0", "torch>=2.5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+music-engine = "engine.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["cuda: needs a CUDA device (skipped otherwise)"]

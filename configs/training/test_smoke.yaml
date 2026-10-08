@@ -1,0 +1,21 @@
+# Infrastructure smoke settings. Values are for tests, not recommendations.
+seed: 1234
+device: auto
+deterministic: true
+max_steps: 6
+batch_size: 4
+optimizer: {name: Adam, lr: 0.001, kwargs: {}}
+scheduler: {name: StepLR, kwargs: {step_size: 2, gamma: 0.5}}
+amp: {enabled: false, dtype: float16}
+grad_accum_steps: 1
+grad_clip_norm: 1.0
+gradient_checkpointing: false
+losses:
+  - {name: waveform_l1, weight: 1.0, kwargs: {}}
+metrics:
+  - {name: sdr, kwargs: {}}
+  - {name: si_sdr, kwargs: {}}
+  - {name: reconstruction_error_db, kwargs: {}}
+val_every: 3
+val_batches: 2
+checkpoint_every: 3

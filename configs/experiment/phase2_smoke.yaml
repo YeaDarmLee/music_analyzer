@@ -1,0 +1,5 @@
+name: phase2_smoke
+output_root: runs
+model: model/tiny_test_separator.yaml
+training: training/test_smoke.yaml
+dataset: dataset/synthetic_tiny.yaml

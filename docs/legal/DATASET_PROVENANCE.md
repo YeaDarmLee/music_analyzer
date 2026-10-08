@@ -34,7 +34,15 @@ GREEN만 학습 manifest에 들어간다. 곡/트랙별 라이선스가 다른 �
 }
 ```
 
-`null`은 UNKNOWN과 같다. `null`이 하나라도 있는 asset은 production dataset 생성에서 거부한다(코드로 강제).
+`null`/누락/`"UNKNOWN"`은 모두 UNKNOWN이다. 어떤 flag가 필수인지는 **용도(usage class)** 가 정한다 (`src/engine/data/manifest.py`, 테스트로 강제):
+
+| usage | 허용 grade | 필수 조건 |
+|---|---|---|
+| `RESEARCH`, `BENCHMARK` | GREEN, YELLOW | 없음 (RED는 항상 거부) |
+| `PRODUCTION_TRAINING` | GREEN | commercial / training / derivative = True, sha256, source/license/version |
+| `DATASET_REDISTRIBUTION` | GREEN | 위 + redistribution = True |
+
+`redistribution_allowed=false`여도 내부 렌더링 학습(`PRODUCTION_TRAINING`)은 막지 않는다. 재배포 가능 여부와 학습 가능 여부는 별개 판정이다.
 
 ## 4. Checkpoint lineage 추적 (구현 대상)
 

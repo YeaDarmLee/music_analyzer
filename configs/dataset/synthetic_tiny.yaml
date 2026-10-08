@@ -1,0 +1,8 @@
+name: synthetic_tiny
+kind: synthetic_sum
+usage: RESEARCH
+chunk_seconds: 0.5
+params:
+  num_items_train: 16
+  num_items_val: 4
+  manifest: dataset/synthetic_tiny.manifest.json

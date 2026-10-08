@@ -1,0 +1,19 @@
+{
+  "manifest_version": 1,
+  "name": "synthetic_tiny",
+  "assets": {
+    "procedural-sine-sum": {
+      "asset_id": "procedural-sine-sum",
+      "source": "procedural (engine.data.synthetic)",
+      "license": "project-owned (no third-party material)",
+      "version": "1",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "grade": "GREEN",
+      "commercial_allowed": true,
+      "training_allowed": true,
+      "derivative_allowed": true,
+      "redistribution_allowed": true
+    }
+  },
+  "samples": [{"sample_id": "generated-on-the-fly", "asset_ids": ["procedural-sine-sum"]}]
+}

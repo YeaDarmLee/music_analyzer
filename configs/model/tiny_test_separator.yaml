@@ -1,0 +1,8 @@
+# TEST FIXTURE ONLY. Not an OUR MODEL architecture.
+model_id: tiny_test_separator
+sample_rate: 8000
+channels: 2
+stems: [stem_a, stem_b]
+params:
+  hidden: 16
+  kernel: 5

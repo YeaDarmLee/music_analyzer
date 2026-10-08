@@ -25,7 +25,7 @@
 |---|---|---|
 | 0 | Repository audit, benchmark freeze | 완료 (`LEGACY_BASELINE.md`) |
 | 1 | 아키텍처·라이선스 | Packet 01 대기. repo 쪽 준비(`LEGACY_IMPLEMENTATION_NOTES`, 매트릭스 skeleton) 완료 |
-| 2 | Engine foundation (config, registry, checkpoint/provenance, trainer, 테스트) | Packet 없이 착수 가능 |
+| 2 | Engine foundation (config, registry, checkpoint/provenance, trainer, 테스트) | 완료 (`TRAINING_SYSTEM.md`) |
 | 3~7 | v0 모델, Data Factory v0, 2-stem 최적화, 6-stem, 13+ | 후속 |
 
 ## 확정 제약

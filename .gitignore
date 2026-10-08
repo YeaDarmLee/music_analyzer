@@ -38,3 +38,6 @@ storage/
 scratch/
 generated/
 benchmark-runs/
+
+# Engine experiment outputs
+runs/
