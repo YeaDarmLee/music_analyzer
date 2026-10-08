@@ -28,8 +28,8 @@ core4·mega5·mega7·vocal2는 모두 공식 `mvsep_mega_model_bs_roformer_53_st
 attribution 요구: MIT 고지문(저작권 표시)을 `/licenses`에 싣는 것으로 처리했다. 별도 attribution 문구 요구는 확인되지 않았다.
 
 ### Blocker (문서화만 하고 승인 근거를 만들어 내지 않음)
-1. **Mega53 가중치의 상업 이용 근거가 약하다.** 근거는 저장소 이슈 #245에 올라온 저자의 MIT 선언 한 건이다. 가중치 배포물(체크포인트 자체)에 라이선스 파일이 붙어 있지 않다.
-   `commercial_approval.json`의 `basis`에도 "author MIT declaration … assumed per project owner"라고 적혀 있다.
+1. **Mega53 가중치의 상업 이용 근거는 저자의 댓글 한 건이다.** 저장소 소유자가 이슈 #245의 2026-09-25 댓글에서 53-stem 가중치를 상업 사용을 포함해 MIT로 배포한다고 밝혔다(2026-10-08 직접 확인). 같은 댓글의 단서: AS IS, 저자가 훈련 오디오 전체의 저작권을 보유하지 않음, 면책 없음. 체크포인트 파일 자체에는 라이선스 파일이 없고, 우리 파생본을 저자가 직접 언급한 것도 아니다.
+   `commercial_approval.json`의 `basis`는 이 내용으로 정정했고, 소유자의 위험 수용은 `docs/LICENSE_RISK_ACCEPTANCE_KO.md`에 기록했다.
 2. **학습 데이터 출처·라이선스가 확인되지 않았다**(Mega53과 KJ 모두). 가중치가 MIT라는 선언이 학습 데이터의 권리 문제까지 해소하는지는 이 프로젝트에서 판단할 수 없다.
 3. 위 두 가지는 코드로 해결되는 문제가 아니다. 상업 서비스 전에 저작권자(ZFTurbo/MVSep, KimberleyJSN)의 서면 확인이나 법률 검토가 필요하다.
 4. 품질 개선을 위해 다른 모델을 찾는 조사는 하지 않기로 했다.

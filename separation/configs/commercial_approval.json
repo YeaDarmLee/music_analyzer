@@ -4,31 +4,31 @@
   "models": {
     "melband_roformer_kj": {
       "status": "APPROVED",
-      "basis": "Publisher-declared MIT in HF model README (ac9b0614...)",
+      "basis": "Publisher-declared MIT in HF model README (ac9b0614...); no separate weight restriction found; project-owner decision 2026-10-08 to treat as MIT (docs/LICENSE_RISK_ACCEPTANCE_KO.md)",
       "evidence_url": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md",
       "checkpoint_sha256": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e"
     },
     "bs_roformer_mega5": {
       "status": "APPROVED",
-      "basis": "Head-pruning-only derivative of official Mega53; author MIT declaration (commercial use/redistribution/modification) assumed per project owner",
+      "basis": "Head-pruning-only derivative of official Mega53 weights. Repository owner stated in issue #245 (comment 2026-09-25) that the 53-stem weights are MIT incl. commercial use; caveats stated there: AS IS, author does not hold copyright to all training audio, no indemnity. Derivative not mentioned by the author. Project-owner risk acceptance: docs/LICENSE_RISK_ACCEPTANCE_KO.md",
       "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
       "checkpoint_sha256": "8a73fb568f5a4cc28e464dbf7ec3ac2b961a7fe6c010fc97215468582e3d32d3"
     },
     "bs_roformer_mega7": {
       "status": "APPROVED",
-      "basis": "Head-pruning-only derivative of official Mega53; author MIT declaration (commercial use/redistribution/modification) assumed per project owner",
+      "basis": "Head-pruning-only derivative of official Mega53 weights. Repository owner stated in issue #245 (comment 2026-09-25) that the 53-stem weights are MIT incl. commercial use; caveats stated there: AS IS, author does not hold copyright to all training audio, no indemnity. Derivative not mentioned by the author. Project-owner risk acceptance: docs/LICENSE_RISK_ACCEPTANCE_KO.md",
       "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
       "checkpoint_sha256": "46e2e801cccb08a318947ef596683170603cd6f66717cc7e613242919c877a27"
     },
     "bs_roformer_core4": {
       "status": "APPROVED",
-      "basis": "Head-pruning-only derivative of official Mega53; author MIT declaration (commercial use/redistribution/modification) assumed per project owner",
+      "basis": "Head-pruning-only derivative of official Mega53 weights. Repository owner stated in issue #245 (comment 2026-09-25) that the 53-stem weights are MIT incl. commercial use; caveats stated there: AS IS, author does not hold copyright to all training audio, no indemnity. Derivative not mentioned by the author. Project-owner risk acceptance: docs/LICENSE_RISK_ACCEPTANCE_KO.md",
       "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
       "checkpoint_sha256": "24b900e2cc5b405b24cc87b898beb7c57fdcd3bc8fbde5cb514a9a4f716393ed"
     },
     "bs_roformer_vocal2": {
       "status": "APPROVED",
-      "basis": "Head-pruning-only derivative of official Mega53 (lead-vocal 27, back-vocal 2); author MIT declaration assumed per project owner. Used only as ownership evidence (vocal_split.py), quality unverified without clean vocal GT",
+      "basis": "Head-pruning-only derivative of official Mega53 weights (lead-vocal 27, back-vocal 2). Repository owner stated in issue #245 (comment 2026-09-25) that the 53-stem weights are MIT incl. commercial use; caveats stated there: AS IS, author does not hold copyright to all training audio, no indemnity. Derivative not mentioned by the author. Project-owner risk acceptance: docs/LICENSE_RISK_ACCEPTANCE_KO.md. Used only as ownership evidence (vocal_split.py), quality unverified without clean vocal GT",
       "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245",
       "checkpoint_sha256": "fb4d0d09c900bc40b184b6132efe6ea541c7db969e17e7a60a80ca32898952f6"
     },
