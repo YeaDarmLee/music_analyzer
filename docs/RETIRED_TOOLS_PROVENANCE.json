@@ -1,0 +1,42 @@
+{
+ "retired_on": "2026-10-08",
+ "reason": "research-only tools: no production, commercial, final_11-baseline or test dependency (path references and .pth files checked)",
+ "kept_on_purpose": "tools/audiosep-env (0.28 GB): clapsep-env loads its packages through music_analyzer_base.pth",
+ "audiosep": {
+  "repository": "https://github.com/Audio-AGI/AudioSep.git",
+  "commit": "944583f18b84589dc965de3ad77525c945334252",
+  "registry": "separation/configs/models/audiosep_base.json",
+  "scripts_that_used_it": [
+   "prepare-audiosep.py",
+   "run-target-voice-experiment.py"
+  ],
+  "checkpoints": [
+   {
+    "file": "AudioSep/checkpoint/audiosep_base_4M_steps.ckpt",
+    "bytes": 1264844076,
+    "sha256": "f8cda01bfd0ebd141eef45d41db7a3ada23a56568465840d3cff04b8010ce82c"
+   },
+   {
+    "file": "AudioSep/checkpoint/music_speech_audioset_epoch_15_esc_89.98.pt",
+    "bytes": 2352471003,
+    "sha256": "51c68f12f9d7ea25fdaaccf741ec7f81e93ee594455410f3bca4f47f88d8e006"
+   }
+  ],
+  "environment_lock": "data/separation/tools/audiosep-environment-lock.txt (kept)"
+ },
+ "wesep_reference": {
+  "prepare_script": "data/separation/tools/prepare-wesep-reference.py (kept)",
+  "checkpoints": [
+   {
+    "file": "wesep-reference/checkpoint/avg_model.pt",
+    "bytes": 282633800,
+    "sha256": "3d0502171eab31b7cf25835f35d1969b415bb95f2ac52e2c5e2a743ebd8f90e5"
+   },
+   {
+    "file": "wesep-reference/bsrnn_ecapa_vox1.tar.gz",
+    "bytes": 261570027,
+    "sha256": "a129b8247e47a2a2fe7407768c69a55c0f97433ba1016c943e9afa1ad2414ffb"
+   }
+  ]
+ }
+}

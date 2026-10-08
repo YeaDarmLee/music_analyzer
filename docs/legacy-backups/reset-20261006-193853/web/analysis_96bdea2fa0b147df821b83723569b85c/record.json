@@ -1,0 +1,82 @@
+{
+  "id": "analysis_96bdea2fa0b147df821b83723569b85c",
+  "name": "Orange · 기타 비교 · 0:40–1:00",
+  "state": "SUCCEEDED",
+  "stage": "실험 후보 생성 · 청취 평가 필요",
+  "progress": 100,
+  "created": "2026-10-06T10:23:32Z",
+  "duration": 20.0,
+  "model": "part_study",
+  "kind": "part_comparison",
+  "original": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\parent.wav",
+  "tracks": [
+    {
+      "family": "study_current_1",
+      "display_name": "기존 전체 곡 · 목표 추출",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\current_1.wav",
+      "sha256": "87e1524db5f82d42d557d632beb0a43eabc65417e758ba593bcdbc81a6a12c74"
+    },
+    {
+      "family": "study_current_2",
+      "display_name": "기존 전체 곡 · 잔여",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\current_2.wav",
+      "sha256": "b9e1b678cfdc23721286baf3997a1c81ce75b943e6f63c941bab4eb1d598558c"
+    },
+    {
+      "family": "study_baseline",
+      "display_name": "구간 재실행 · 기존 프롬프트",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\baseline.wav",
+      "sha256": "9305f3d88761f340fe1d701277d334a5d83da10e8af0732ad1890cbb8b1966ad"
+    },
+    {
+      "family": "study_baseline_residual",
+      "display_name": "구간 재실행 · 잔여",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\baseline_residual.wav",
+      "sha256": "b04c75a0c1e3e8160a2d8333c09d7b64016e1f8700abac7af3e460ed8cdf39c3"
+    },
+    {
+      "family": "study_part_a",
+      "display_name": "독립 추출 A · 리드 기타",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\part_a.wav",
+      "sha256": "870c37ab83ec94d5192fc9c52b9f66faf0d34560b691dbe6667de77fc87cc0b9"
+    },
+    {
+      "family": "study_part_b",
+      "display_name": "독립 추출 B · 리듬 기타",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\part_b.wav",
+      "sha256": "aa92aba101c645ace8112960d25116447fb194468b0eec75a23fcfb681d0cc36"
+    },
+    {
+      "family": "study_unassigned",
+      "display_name": "미배정 차이 신호 · 악기 파트 아님",
+      "path": "web\\analysis_96bdea2fa0b147df821b83723569b85c\\unassigned.wav",
+      "sha256": "3465ed3cad25caf9e4422467d161e12af99294a2ec8284dfa11a5bdbb768d9cb"
+    }
+  ],
+  "job_ids": [],
+  "source_analysis_id": "analysis_fd76d20725f6421dad108c521caecae6",
+  "study_id": "study_52d658e28295485695fa8cc2ffe994ba",
+  "quality_improvement_verified": false,
+  "study_metrics": {
+    "baseline_target_residual": {
+      "waveform_correlation": 0.503760419766857,
+      "output_energy_ratios": [
+        0.39870900132752346,
+        0.2704470562250132
+      ],
+      "sum_error_rms": 1.094819100346363e-09,
+      "accuracy_score": null,
+      "warning": "Correlation, energy and reconstruction do not establish distinct musical parts."
+    },
+    "independent_text_parts": {
+      "waveform_correlation": 0.5918974922489436,
+      "output_energy_ratios": [
+        0.49025237862993726,
+        0.29200962973600547
+      ],
+      "sum_error_rms": 0.0191853874242137,
+      "accuracy_score": null,
+      "warning": "Correlation, energy and reconstruction do not establish distinct musical parts."
+    }
+  }
+}

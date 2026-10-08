@@ -198,3 +198,15 @@
 - `data/reset-backups`(2.3 GB, 이전 라이브러리 초기화 시 백업)는 사용자 데이터라서 유지. 디스크 여유가 426 GB라서 급하지 않다. 삭제 여부는 사용자가 최종 결정.
 - `data/separation/tools/{AudioSep,CLAPSepInference}`(5.9 GB)는 개발용 UNKNOWN 라이선스 경로의 도구라서 이번 범위에서 건드리지 않았다.
 - 한 번에 한 서버가 같은 데이터 루트를 쓴다고 가정한다. 두 프로세스가 같은 라이브러리를 동시에 정리하는 경우는 미검증.
+
+
+## 13. 후속: 라이브러리/도구 대정리 이후 상태 (2026-10-08)
+
+자세한 내용은 `FULL_DISK_AUDIT_KO.md` 13절. 요약:
+
+- 프로젝트 102.56 GB → **48.52 GB**, `data/separation` 64.52 → **12.93 GB**, `web/` 43.57 → 2.62 GB.
+- 분석 50건 중 MANUAL_TEST 23 + BENCHMARK 23(FAILED 1 포함)을 정상 삭제 경로(`WebLibrary.delete` + DB 소유 행 `release`)로 삭제하고 DEMO 2 + UNKNOWN 2를 유지했다. 이후 레코드 4건·DB 소유 4행으로 일치하고 4건 모두 `final/` + `original.wav` + `manifest.json` 계약을 만족한다 (`contract_violations == []`).
+- 고아 입력 asset 49개(5.33 GB), AudioSep·wesep(4.0 GB), reset-backups(2.27 GB, 메타데이터 59 KB는 `docs/legacy-backups/`에 보존)를 삭제했다.
+- 이 대정리의 유지 항목: 단독 job 항목 36개, CLAPSep 스택(+ `audiosep-env`: `clapsep-env`가 사용), UNKNOWN 라이선스 체크포인트 3종.
+- 7절의 "남은 `jobs/` 1.9 GB·`inputs/` 6.2 GB" 수치는 이 정리로 0.91 GB·0.39 GB가 되었고, 12절의 남은 위험 중 "연결되지 않은 단독 job 항목 36건"만 계속 유효하다.
+- 재부팅 후 재검증: 단위 테스트 323 passed, 라이브러리 계약 위반 0, 전체 lifecycle e2e 통과.

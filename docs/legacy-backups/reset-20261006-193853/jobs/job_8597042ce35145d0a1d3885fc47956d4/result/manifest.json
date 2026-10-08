@@ -1,0 +1,165 @@
+{
+  "kind": "separation_result",
+  "schema_version": "1.0",
+  "status": "succeeded",
+  "job_id": "job_8597042ce35145d0a1d3885fc47956d4",
+  "asset_id": "asset_d8b1327923bd43c98a4cca041db58c25",
+  "source_sha256": "769cb0b00942c72e3d23eef2118b840c7470310fbef2ffc8aa4c72c2862ed9fb",
+  "original_sha256": "8a67dde11d0cee18a761076b3823fda3a239d09ba75eac2f7ce358f09ae15b9c",
+  "timeline": {
+    "sample_rate": 44100,
+    "channels": 2,
+    "num_frames": 10353664,
+    "origin_sec": 0
+  },
+  "model": {
+    "schema_version": "1.0",
+    "model_id": "melband_roformer_kj",
+    "architecture": "MelBandRoformer",
+    "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+    "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+    "checkpoint_url": "https://huggingface.co/KimberleyJSN/melbandroformer/resolve/ac9b0614ab3cd7f77219e18ba494dfd93956c348/MelBandRoformer.ckpt",
+    "checkpoint_filename": "MelBandRoformer.ckpt",
+    "checkpoint_signature": "KimberleyJSN",
+    "upstream_sha256_prefix": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+    "checkpoint_index_evidence": "https://huggingface.co/KimberleyJSN/melbandroformer/tree/ac9b0614ab3cd7f77219e18ba494dfd93956c348",
+    "native_sample_rate": 44100,
+    "channels": 2,
+    "source_labels": [
+      "vocals",
+      "instrumental"
+    ],
+    "taxonomy_version": "1.1",
+    "source_mapping": {
+      "vocals": "instrument.voice.vocal",
+      "instrumental": "mix.accompaniment"
+    },
+    "code_license": {
+      "value": "MIT",
+      "status": "VERIFIED",
+      "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/blob/84b1eac0887756b4f1a9d7a1ff49105939749ed2/LICENSE"
+    },
+    "weight_license": {
+      "value": "MIT",
+      "status": "PUBLISHER_DECLARED",
+      "evidence_url": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md"
+    },
+    "usage_status": {
+      "local_research": "PROJECT_DEV_BASELINE",
+      "commercial_service": "REVIEW_REQUIRED",
+      "redistribution": "BLOCKED"
+    },
+    "training_data_risk": "UNKNOWN",
+    "commercial_release_status": "DEV_ONLY",
+    "engine": "melband_roformer",
+    "quality_notes": [
+      "instrumental is input minus estimated vocals; reconstruction is not a quality score"
+    ],
+    "upstream_config_sha256": "f63f38eb1e6e40a7db0dade714a5ae257555dd8748f4e774eae8679275a81926",
+    "checkpoint_sha256": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e",
+    "artifact_hashes": {
+      "MelBandRoformer.ckpt": "87201f4d31afb5bc79993230fc49446918425574db48c01c405e44f365c7559e"
+    },
+    "config_sha256": "b842a1e34226c71e21c21ba8fde62aaa13e94c5897261ed75cc794c0c0315494",
+    "verification": {
+      "upstream_hash": "published_sha256_full",
+      "full_hash": "observed_on_first_download_then_pinned",
+      "independent_full_hash_verified": true
+    }
+  },
+  "preset": {
+    "id": "vocal_roformer",
+    "model_id": "melband_roformer_kj",
+    "segment_sec": 8,
+    "overlap": 0.75,
+    "seed": 0,
+    "precision": "float16",
+    "device": "cuda",
+    "batch_size": 1
+  },
+  "requested_preset": "vocal_roformer",
+  "actual_preset": "vocal_roformer",
+  "attempt_id": "a_8a0011dd47904b8c9870dd4db18f4502",
+  "inference_performed": true,
+  "environment_lock_sha256": "02e29ac1be2ced9390481c5008eabb81ed539017087d6eaf5d529b522647403f",
+  "pipeline_code_sha256": {
+    "roformer_runner.py": "a4d842910b484c401f39316c14a0a24f676f2abbfc5a216708bf4c837b82cbf1",
+    "worker.py": "f4ac15c5d9e63561ed41f4434b59a13a9f49fe5e5aa19a7170d1173065dddea5",
+    "registry.py": "ddf9fadd95ab790dd83a9aaec7d5a159a3f690f1f44ee2c3312c75247056133a",
+    "audio.py": "6f2e7d6169f0d08e6736f0b0543bc92ced4863ff0cdea5371174f8b867fdfa97",
+    "job_service.py": "2c5076b52f09ee3d82c8cdc39176548df3c01c550fb14ed9a171890de35837d8",
+    "job_contracts.py": "37512124f928efab1ef3e2eecd6a2516499a6f5c11038d03fe9975de2c96bb1d"
+  },
+  "normalization": {
+    "scope": "none",
+    "per_stem_gain": 1.0
+  },
+  "stems": [
+    {
+      "id": "stem_vocals",
+      "family": "vocals",
+      "canonical_id": "instrument.voice.vocal",
+      "path": "stems/vocals.wav",
+      "sha256": "7108945d9e2e9772ff629a9dc5f1f34be59566624495b1810fb7a5326277e13c",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 1.073195219039917,
+      "over_full_scale": true,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_instrumental",
+      "family": "instrumental",
+      "canonical_id": "mix.accompaniment",
+      "path": "stems/instrumental.wav",
+      "sha256": "b3d500613c659a29f53431ad8fad796db6cec1d183264ad7e14e9c7bb80c3d49",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "input_minus_first_model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 1.2131422758102417,
+      "over_full_scale": true,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    }
+  ],
+  "warnings": [
+    "No reference stems: perceptual quality is not scored",
+    "Accompaniment is a residual; reconstruction does not measure separation quality"
+  ],
+  "mix_group": {
+    "kind": "first_model_estimate_plus_input_residual",
+    "reconstruction_guaranteed": true,
+    "tolerance": "float32_roundoff"
+  },
+  "timing": {
+    "model_load_sec": 2.544512099999338,
+    "inference_sec": 55.14184420000038,
+    "rtf": 0.2348690598053034,
+    "wall_sec": 67.41594069999974
+  },
+  "memory": {
+    "peak_allocated_bytes": 1668649984,
+    "peak_reserved_bytes": 1977614336,
+    "measurement": "PyTorch allocator; not whole-device peak"
+  },
+  "diagnostics": {
+    "reconstruction_error_rms": 6.785463422988182e-09,
+    "reconstruction_error_peak": 5.960464477539063e-08,
+    "reference_available": false,
+    "raw_sdr": null,
+    "si_sdr": null,
+    "quality_assessment": "not_performed"
+  }
+}

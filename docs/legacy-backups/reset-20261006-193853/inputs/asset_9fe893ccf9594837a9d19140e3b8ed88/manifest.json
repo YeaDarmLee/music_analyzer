@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "kind": "audio_asset",
+  "status": "ready",
+  "asset_id": "asset_9fe893ccf9594837a9d19140e3b8ed88",
+  "pipeline_version": "0.1.0",
+  "created_at_utc": "2026-10-06T09:56:55.607800+00:00",
+  "input": {
+    "path": "original.wav",
+    "original_name": "vocals.wav",
+    "sha256": "7108945d9e2e9772ff629a9dc5f1f34be59566624495b1810fb7a5326277e13c",
+    "size_bytes": 82829400,
+    "format": "wav",
+    "codec": "pcm_f32le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "reported_duration_sec": 234.776961,
+    "decoded_num_frames": 10353664,
+    "decoded_duration_sec": 234.77696145124716
+  },
+  "canonical": {
+    "path": "canonical.wav",
+    "sha256": "1a105a1b3aa0c994f40d85de5ac1f986bdde7d0e374093ec54134d72a360588d",
+    "sample_rate": 44100,
+    "num_frames": 10353664,
+    "channels": 2,
+    "subtype": "FLOAT",
+    "peak": 1.073195219039917,
+    "rms": 0.1467744740139892,
+    "over_full_scale": true
+  },
+  "timeline": {
+    "sample_rate": 44100,
+    "channels": 2,
+    "num_frames": 10353664,
+    "duration_sec": 234.77696145124716,
+    "origin_sec": 0,
+    "origin_definition": "first decoded sample; no silence trimming"
+  },
+  "preprocessing": {
+    "mono_duplicated": false,
+    "gain": 1.0,
+    "normalization": "none",
+    "resampler": "none",
+    "native_rate": 44100,
+    "target_rate": 44100,
+    "expected_frames_policy": "nearest rational integer, half-up",
+    "resampler_raw_frames": 10353664,
+    "frame_adjustment": 0,
+    "frame_adjustment_policy": "trim or zero-pad at most one final frame",
+    "decoder": {
+      "ffmpeg": "ffmpeg version 2026-03-01-git-862338fe31-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+      "ffprobe": "ffprobe version 2026-03-01-git-862338fe31-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+    },
+    "limits": {
+      "max_file_bytes": 1073741824,
+      "min_duration_sec": 1,
+      "max_duration_sec": 900,
+      "min_sample_rate": 8000,
+      "max_sample_rate": 192000,
+      "max_decoded_bytes": 2147483648,
+      "probe_timeout_sec": 30,
+      "decode_timeout_sec": 300,
+      "disk_reserve_bytes": 1073741824
+    },
+    "implementation_sha256": "ffdd41cb3c575f155ad267f85372d4fda26b0e5f8828d644b78837f4c40f6b65"
+  },
+  "warnings": [
+    "OVER_FULL_SCALE: float32 values are preserved without clipping"
+  ]
+}

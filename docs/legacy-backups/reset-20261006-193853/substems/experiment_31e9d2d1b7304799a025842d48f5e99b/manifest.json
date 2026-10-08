@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "experiment_id": "experiment_31e9d2d1b7304799a025842d48f5e99b",
+  "state": "CANDIDATE_READY",
+  "parent_family": "other",
+  "parent_path": "C:\\workspace\\music_analyzer\\data\\separation\\jobs\\job_2b1a4403cb204f27b823800f2674a529\\result\\stems\\other.wav",
+  "parent_sha256": "ffa16ee10bc285cfeb9e0e229f899402c07f8bd99e91f811984c37e7c97a8b1a",
+  "input_sha256": "8d245c99d5850fc48218e4a841eb1ca5d47d71ce23797107b440a9f82dfd75ce",
+  "timeline": {
+    "sample_rate": 44100,
+    "channels": 2,
+    "num_frames": 10353664,
+    "start_frame": 0
+  },
+  "quality_improvement_verified": false,
+  "model_inference_performed": true,
+  "model_id": "clapsep",
+  "prompt": "A sustained synthesizer pad playing in the background",
+  "estimate_sha256": "6a27113ef405f5133e3ec87311ceffbe292bd057377e84e76bf64e8a84d15161",
+  "estimate_origin": "clapsep_independent_channel_inference",
+  "reconstruction_max_abs": 5.960464477539063e-08,
+  "outputs": [
+    {
+      "role": "target",
+      "path": "target.wav",
+      "sha256": "1a3724a444feaa93e253a22998fb0b37a8782809f768c83a694504f640c70d4a"
+    },
+    {
+      "role": "residual",
+      "path": "residual.wav",
+      "sha256": "2eceadb4573a34ef51cdd49a4dbea51d7974e1d47fd7f7abc41f2a7b21f03fe0"
+    }
+  ],
+  "negative_prompt": "Electric guitar, piano, drums and singing",
+  "model": {
+    "model_id": "clapsep",
+    "revision": "e3c73653fa9aadcddbcc3b5e967182a573589e81",
+    "repository_url": "https://huggingface.co/spaces/AisakaMikoto/CLAPSep",
+    "code_license": "MIT per official GitHub; attribution retained",
+    "weight_license": "UNKNOWN",
+    "commercial_release_status": "DEV_ONLY",
+    "native_sample_rate": 32000,
+    "code_hashes": {
+      "model/CLAPSep.py": "f0121287f618ffc9357eb889ee16e408ce1fec633ed7e58d820d7c387d70a210",
+      "model/CLAPSep_decoder.py": "3416fed2371f08707d65c2a394a5a27e73291b1299c08e0acbbb693810ea7d48"
+    },
+    "artifacts": [
+      {
+        "filename": "best_model.ckpt",
+        "sha256": "6fcc8dbcd7174af86266cf16b4105eced0802352762f81dbfefdce29af3dba04"
+      },
+      {
+        "filename": "music_audioset_epoch_15_esc_90.14.pt",
+        "sha256": "fae3e9c087f2909c28a09dc31c8dfcdacbc42ba44c70e972b58c1bd1caf6dedd"
+      }
+    ]
+  },
+  "wall_sec": 28.853646599999593,
+  "peak_allocated_bytes": 1362635776,
+  "chunk_sec": 10,
+  "overlap": 0.5
+}

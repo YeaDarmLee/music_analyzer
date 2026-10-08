@@ -1,0 +1,251 @@
+{
+  "kind": "separation_result",
+  "schema_version": "1.0",
+  "status": "succeeded",
+  "job_id": "job_2b1a4403cb204f27b823800f2674a529",
+  "asset_id": "asset_c8742ba3e0b64da69045b25c9f59a109",
+  "source_sha256": "a933a4d74311fed3a069f9b28a91766ee16e4994bdbce1b658e3a8672c04032d",
+  "original_sha256": "b3d500613c659a29f53431ad8fad796db6cec1d183264ad7e14e9c7bb80c3d49",
+  "timeline": {
+    "sample_rate": 44100,
+    "channels": 2,
+    "num_frames": 10353664,
+    "origin_sec": 0
+  },
+  "model": {
+    "schema_version": "1.0",
+    "model_id": "bs_roformer_6s",
+    "architecture": "BSRoformer",
+    "code_revision": "84b1eac0887756b4f1a9d7a1ff49105939749ed2",
+    "repository_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+    "checkpoint_url": "https://huggingface.co/noblebarkrr/mvsepless_resources/resolve/030a01aa951b3908ed6b01b2e507c17953300c2d/bs_roformer/bs_6stem_fixed.ckpt",
+    "checkpoint_filename": "bs_6stem_fixed.ckpt",
+    "checkpoint_signature": "bs_6stem_fixed",
+    "upstream_sha256_prefix": "24e7d35ee9c64415673d3fd33e06a67cac2c103c5df6267ba1576459c775916e",
+    "checkpoint_index_evidence": "https://huggingface.co/noblebarkrr/mvsepless_resources/tree/030a01aa951b3908ed6b01b2e507c17953300c2d",
+    "native_sample_rate": 44100,
+    "channels": 2,
+    "source_labels": [
+      "bass",
+      "drums",
+      "other",
+      "vocals",
+      "guitar",
+      "piano"
+    ],
+    "taxonomy_version": "1.0",
+    "source_mapping": {
+      "drums": "instrument.drums",
+      "bass": "instrument.bass",
+      "other": "instrument.other",
+      "vocals": "instrument.voice.vocal",
+      "guitar": "instrument.guitar",
+      "piano": "instrument.piano"
+    },
+    "code_license": {
+      "value": "MIT",
+      "status": "VERIFIED",
+      "evidence_url": "https://github.com/ZFTurbo/Music-Source-Separation-Training/blob/84b1eac0887756b4f1a9d7a1ff49105939749ed2/LICENSE"
+    },
+    "weight_license": {
+      "value": "UNKNOWN",
+      "status": "UNRESOLVED",
+      "evidence_url": "https://huggingface.co/noblebarkrr/mvsepless_resources/tree/030a01aa951b3908ed6b01b2e507c17953300c2d"
+    },
+    "usage_status": {
+      "local_research": "PROJECT_DEV_BASELINE",
+      "commercial_service": "REVIEW_REQUIRED",
+      "redistribution": "BLOCKED"
+    },
+    "training_data_risk": "UNKNOWN",
+    "commercial_release_status": "DEV_ONLY",
+    "quality_notes": [
+      "Community-published six-stem checkpoint; training provenance and comparative quality unverified",
+      "Experimental instrument candidate, not selected production model"
+    ],
+    "engine": "bs_roformer",
+    "upstream_config_file": "bs_roformer_6s.upstream.yaml",
+    "upstream_config_sha256": "4678db9430a87ee33e7fad199166928c9adcd322e2df1a812b4bf03726e2a48b",
+    "checkpoint_sha256": "24e7d35ee9c64415673d3fd33e06a67cac2c103c5df6267ba1576459c775916e",
+    "artifact_hashes": {
+      "bs_6stem_fixed.ckpt": "24e7d35ee9c64415673d3fd33e06a67cac2c103c5df6267ba1576459c775916e"
+    },
+    "config_sha256": "8764431133d4f97c08fae3cca9046ebc59989b5656321ca502a9a8f711cb88a5",
+    "verification": {
+      "upstream_hash": "published_sha256_full",
+      "full_hash": "observed_on_first_download_then_pinned",
+      "independent_full_hash_verified": true
+    }
+  },
+  "preset": {
+    "id": "instrument_roformer_6s",
+    "model_id": "bs_roformer_6s",
+    "segment_sec": 13.351473922902494,
+    "overlap": 0.5,
+    "seed": 0,
+    "precision": "float16",
+    "device": "cuda",
+    "batch_size": 1
+  },
+  "requested_preset": "instrument_roformer_6s",
+  "actual_preset": "instrument_roformer_6s",
+  "attempt_id": "a_beb9c66655c743cf845215d9e4dec6a1",
+  "inference_performed": true,
+  "environment_lock_sha256": "02e29ac1be2ced9390481c5008eabb81ed539017087d6eaf5d529b522647403f",
+  "pipeline_code_sha256": {
+    "roformer_runner.py": "a4d842910b484c401f39316c14a0a24f676f2abbfc5a216708bf4c837b82cbf1",
+    "worker.py": "f4ac15c5d9e63561ed41f4434b59a13a9f49fe5e5aa19a7170d1173065dddea5",
+    "registry.py": "ddf9fadd95ab790dd83a9aaec7d5a159a3f690f1f44ee2c3312c75247056133a",
+    "audio.py": "6f2e7d6169f0d08e6736f0b0543bc92ced4863ff0cdea5371174f8b867fdfa97",
+    "job_service.py": "2c5076b52f09ee3d82c8cdc39176548df3c01c550fb14ed9a171890de35837d8",
+    "job_contracts.py": "37512124f928efab1ef3e2eecd6a2516499a6f5c11038d03fe9975de2c96bb1d"
+  },
+  "normalization": {
+    "scope": "none",
+    "per_stem_gain": 1.0
+  },
+  "stems": [
+    {
+      "id": "stem_bass",
+      "family": "bass",
+      "canonical_id": "instrument.bass",
+      "path": "stems/bass.wav",
+      "sha256": "3555d741bf202d60b68292b750b98e1924485826541bdb1f6d1aec51c3c56ce1",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 0.719420313835144,
+      "over_full_scale": false,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_drums",
+      "family": "drums",
+      "canonical_id": "instrument.drums",
+      "path": "stems/drums.wav",
+      "sha256": "a89f7fad056695f84c17f282154501d1c7b83cf945b554e25cc7b63c684e04d0",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 1.2752124071121216,
+      "over_full_scale": true,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_other",
+      "family": "other",
+      "canonical_id": "instrument.other",
+      "path": "stems/other.wav",
+      "sha256": "ffa16ee10bc285cfeb9e0e229f899402c07f8bd99e91f811984c37e7c97a8b1a",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 0.7743651270866394,
+      "over_full_scale": false,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_vocals",
+      "family": "vocals",
+      "canonical_id": "instrument.voice.vocal",
+      "path": "stems/vocals.wav",
+      "sha256": "3cdc0cbc73c15d9314e5d15ce2955088d7854d91be2712582221c646c13c532f",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 0.004112071357667446,
+      "over_full_scale": false,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_guitar",
+      "family": "guitar",
+      "canonical_id": "instrument.guitar",
+      "path": "stems/guitar.wav",
+      "sha256": "959848055a536685d6ab1d56f2fb91c036dbacfc8eed1ebe96673c83c82f22d7",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 0.7882636785507202,
+      "over_full_scale": false,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    },
+    {
+      "id": "stem_piano",
+      "family": "piano",
+      "canonical_id": "instrument.piano",
+      "path": "stems/piano.wav",
+      "sha256": "22c8acae9c82423d246ad922b5fedcb607f967dfdc00b2d9c1dd17b593642ae6",
+      "presence": "unknown",
+      "quality_score": null,
+      "derivation": "model_estimate",
+      "sample_rate": 44100,
+      "channels": 2,
+      "num_frames": 10353664,
+      "subtype": "FLOAT",
+      "peak": 0.3007071912288666,
+      "over_full_scale": false,
+      "roundtrip_exact": true,
+      "clip_mode": "none",
+      "gain": 1.0
+    }
+  ],
+  "warnings": [
+    "No reference stems: perceptual quality is not scored",
+    "Instrument candidate has unverified training provenance"
+  ],
+  "mix_group": {
+    "kind": "estimated_partition",
+    "reconstruction_guaranteed": false,
+    "tolerance": "float32_roundoff"
+  },
+  "timing": {
+    "model_load_sec": 2.2729802000003474,
+    "inference_sec": 41.140230100000736,
+    "rtf": 0.1752311208293057,
+    "wall_sec": 53.79670179999994
+  },
+  "memory": {
+    "peak_allocated_bytes": 1658294272,
+    "peak_reserved_bytes": 2027945984,
+    "measurement": "PyTorch allocator; not whole-device peak"
+  },
+  "diagnostics": {
+    "reconstruction_error_rms": 0.006769759473868579,
+    "reconstruction_error_peak": 0.22632160054854467,
+    "reference_available": false,
+    "raw_sdr": null,
+    "si_sdr": null,
+    "quality_assessment": "not_performed"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "job_id": "job_8904f11dd2c244f4ac50dfd65433fc77",
+  "asset_id": "asset_9fe893ccf9594837a9d19140e3b8ed88",
+  "data_root": "C:\\workspace\\music_analyzer\\data\\separation",
+  "attempt_dir": "C:\\workspace\\music_analyzer\\data\\separation\\jobs\\job_8904f11dd2c244f4ac50dfd65433fc77\\attempts\\a_5213fed76f094ed69071267810b4413d",
+  "runtime_dir": "C:\\workspace\\music_analyzer\\data\\separation\\runtime",
+  "owner": {
+    "pid": 23320,
+    "create_time": 1791280336.8604808
+  },
+  "preset_name": "bs_karaoke",
+  "requested_preset": "bs_karaoke"
+}

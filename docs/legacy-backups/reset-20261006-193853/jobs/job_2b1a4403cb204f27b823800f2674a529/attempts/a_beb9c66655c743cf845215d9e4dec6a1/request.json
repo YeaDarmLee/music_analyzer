@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "job_id": "job_2b1a4403cb204f27b823800f2674a529",
+  "asset_id": "asset_c8742ba3e0b64da69045b25c9f59a109",
+  "data_root": "C:\\workspace\\music_analyzer\\data\\separation",
+  "attempt_dir": "C:\\workspace\\music_analyzer\\data\\separation\\jobs\\job_2b1a4403cb204f27b823800f2674a529\\attempts\\a_beb9c66655c743cf845215d9e4dec6a1",
+  "runtime_dir": "C:\\workspace\\music_analyzer\\data\\separation\\runtime",
+  "owner": {
+    "pid": 23320,
+    "create_time": 1791280336.8604808
+  },
+  "preset_name": "instrument_roformer_6s",
+  "requested_preset": "instrument_roformer_6s"
+}

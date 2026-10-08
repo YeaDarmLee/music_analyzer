@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "kind": "separation_job",
+  "job_id": "job_8597042ce35145d0a1d3885fc47956d4",
+  "asset_id": "asset_d8b1327923bd43c98a4cca041db58c25",
+  "state": "SUCCEEDED",
+  "created_at_utc": "2026-10-06T09:54:46.708122+00:00",
+  "updated_at_utc": "2026-10-06T09:55:56.277024+00:00",
+  "owner": {
+    "pid": 23320,
+    "create_time": 1791280336.8604808
+  },
+  "canonical_sha256": "769cb0b00942c72e3d23eef2118b840c7470310fbef2ffc8aa4c72c2862ed9fb",
+  "num_frames": 10353664,
+  "requested_preset": "vocal_roformer",
+  "model_id": "melband_roformer_kj",
+  "retry_of": null,
+  "attempts": [
+    {
+      "attempt_id": "a_8a0011dd47904b8c9870dd4db18f4502",
+      "number": 1,
+      "preset_name": "vocal_roformer",
+      "state": "SUCCEEDED",
+      "worker": {
+        "pid": 51240,
+        "create_time": 1791280486.7313447
+      },
+      "error": null
+    }
+  ],
+  "history": [
+    {
+      "state": "CREATED",
+      "at_utc": "2026-10-06T09:54:46.708122+00:00"
+    },
+    {
+      "state": "VALIDATING",
+      "at_utc": "2026-10-06T09:54:46.715626+00:00"
+    },
+    {
+      "state": "PREPARING_MODEL",
+      "at_utc": "2026-10-06T09:54:46.721635+00:00"
+    },
+    {
+      "state": "PREPROCESSING",
+      "at_utc": "2026-10-06T09:54:57.584989+00:00"
+    },
+    {
+      "state": "SEPARATING",
+      "at_utc": "2026-10-06T09:54:57.690570+00:00"
+    },
+    {
+      "state": "EXPORTING",
+      "at_utc": "2026-10-06T09:55:52.858599+00:00"
+    },
+    {
+      "state": "SUCCEEDED",
+      "at_utc": "2026-10-06T09:55:56.277024+00:00"
+    }
+  ],
+  "progress": {
+    "completed": 124,
+    "total": 124
+  },
+  "error": null
+}

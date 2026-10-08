@@ -1,4 +1,4 @@
-# Full Project Disk Audit — DRY-RUN 보고서 (아무것도 삭제하지 않음)
+# Full Project Disk Audit — dry-run 보고서 + 적용 결과 (13절)
 
 측정 도구: `scripts/disk-audit.py`, `audit-library.py`, `audit-artifacts.py`, `audit-report.py`, `audio-format-benchmark.py`, `audit-doc.py`. 이 문서의 모든 수치는 읽기 전용 측정값이며, 판단이 어려운 항목은 UNKNOWN/REVIEW로 두었다. 하드링크는 inode당 한 번만 센 **물리 용량**이다.
 
@@ -472,3 +472,68 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 3. 포맷 최적화(FLAC24, −32 GB 예상)는 삭제가 아니라 별도 결정 사항이며, 합계 보존 계약·manifest 변경이 선행된다.
 
 사용자 데이터로 의심되는 파일(`B USER_PERSISTENT`, `I UNKNOWN`)은 이 보고서에서 삭제 대상으로 확정하지 않았다.
+
+
+## 13. 삭제 적용 결과 (사용자 확정 방침에 따라 실행)
+
+확정 방침: SAFE 삭제 / MANUAL_TEST 23 + BENCHMARK 23 분석 삭제 / DEMO 2 + UNKNOWN 2 유지 / AudioSep + wesep 삭제 / reset-backups 삭제(메타데이터 선보존) / CLAPSep 스택, UNKNOWN 체크포인트 3종, 단독 job 41건은 유지. 스크립트 `scripts/apply-disk-cleanup.py`(기본 plan, `--apply`로 실행).
+
+### 13-1. 실행 전 검증 (실제 ID 기준)
+- 레코드 50건 = MANUAL_TEST 23 + BENCHMARK 23(SUCCEEDED 22 + FAILED 1) + DEMO 2 + UNKNOWN 2. DB `analysis_owners` 49행(= FAILED 1건을 뺀 전부), 소유자 없는 레코드는 FAILED 1건뿐임을 assert로 확인.
+- **"REVIEW 47건" 설명**: 47 = DEMO 2 + MANUAL_TEST 23 + SUCCEEDED BENCHMARK 22. FAILED BENCHMARK 1건은 보고서에서 SAFE(스크래치) 쪽으로 따로 셌다. 삭제 대상은 46건(45 SUCCEEDED + 1 FAILED), 유지 4건. 합계는 일치한다.
+- 삭제 직전 참조 그래프 재계산: 고아 asset 49개 중 새로 참조가 생긴 것 0개, 실행 중인 job/분석 0건, `prepared.json`/`case.json`/`run.json` source 의존성 없음.
+
+### 13-2. 실행 내용
+| 단계 | 내용 | 결과 |
+|---|---|---|
+| 1 safe | 고아 입력 asset 49개, `__pycache__`/`.pytest_cache`, 오래된 smoke 출력 | 5.33 GB + 0.29 GB + 0.03 GB. `data/separation/runtime`(JobService 런타임), 로그, `frontend/dist`·`node_modules`는 **건드리지 않음** (SAFE 분류에 `runtime`이 섞여 있었으나 실행 전에 제외) |
+| 2 analyses | 46건을 `WebLibrary.delete()` + `AuthStore.release()`로 삭제 | 파일만 지우지 않았고 각 건마다 폴더 부재와 DB 소유 행 부재를 assert. 이후 레코드 4건 = 유지 목록과 동일, DB 소유 행 4건 |
+| 3 tools | `tools/AudioSep` 3.46 GB + `tools/wesep-reference` 0.52 GB | 아래 주의 참고. 출처·SHA는 `docs/RETIRED_TOOLS_PROVENANCE.json`에 보존 |
+| 4 reset-backups | 2.27 GB 삭제, 작은 JSON 메타데이터 25개(59 KB)를 `docs/legacy-backups/reset-20261006-193853/`에 먼저 복사 | mp3 2개와 로그·freeze 파일은 보존하지 않음 |
+
+**방침 대비 변경 1건 (audiosep-env 유지)**: 지시는 "AudioSep + wesep 삭제"였고 초안에는 `tools/audiosep-env`(0.28 GB)도 있었다. 삭제 전 의존성 확인에서 `clapsep-env`가 `.pth` 파일로 `audiosep-env`의 site-packages를 읽는다는 것을 발견했다. 이를 지우면 **유지하기로 한 CLAPSep 스택(= final_11 baseline의 심벌 이동)이 깨진다**. 그래서 `audiosep-env`는 남겼고, 삭제 전후에 `clapsep-env`에서 `import torch, laion_clap, music_analyzer.clapsep_experiment`가 성공함을 확인했다. 또 `audiosep_experiment.py`는 CLAPSep이 쓰는 공용 헬퍼(`restore_channel` 등)라서 코드 모듈은 그대로 둔다. 남은 경로 참조는 그 모듈의 CLI 기본값 1곳(`--repo`)과 재생성 스크립트(`prepare-audiosep.py`, `run-target-voice-experiment.py`)뿐이다.
+
+**실행 중 사고 2건 (기록)**
+1. plan 모드 실행이 순수하지 않았다: `WebLibrary` 생성자가 시작 시 정리를 수행해서 FAILED 분석(삭제 대상)의 스크래치 1.73 GB가 plan 단계에서 먼저 지워졌다. 승인 범위 안의 항목이라 피해는 없었고, 이후 plan 모드에서는 `WebLibrary`를 만들지 않도록 고쳤다.
+2. `tools/AudioSep`의 git pack 파일이 읽기 전용이라 첫 삭제 시도가 `PermissionError`로 중단됐다(해당 단계 이전의 1·2단계는 이미 완료). 읽기 전용 해제 후 재시도해서 완료했다. 그 뒤 PC가 강제 재부팅되었으나, 재부팅 후 상태를 확인했을 때 라이브러리·DB·`.venv`는 모두 정상이었다.
+
+### 13-3. 전후 측정 (물리 용량, 하드링크 1회 계산)
+| 항목 | 이전 | 이후 | 감소 |
+|---|---:|---:|---:|
+| **프로젝트 전체** | **102.56 GB** | **48.52 GB** | **−54.04 GB** |
+| `data/` | 97.47 GB | 43.62 GB | −53.85 GB |
+| `data/separation` | 64.52 GB | 12.93 GB | −51.59 GB |
+| `data/separation/tools` | 6.61 GB | 2.61 GB | −4.00 GB |
+| `data/separation/web` (분석 결과) | 43.57 GB | 2.62 GB | −40.95 GB |
+| `data/separation/jobs` / `inputs` | 1.87 / 6.04 GB | 0.91 / 0.39 GB | −0.96 / −5.65 GB |
+| `data/reset-backups` | 2.27 GB | 삭제 (메타데이터 59 KB → `docs/legacy-backups/`) | −2.27 GB |
+| `.venv` | 4.85 GB | 4.67 GB | −0.18 GB (`__pycache__`) |
+| 파일 수 | 65,777 | 46,146 | −19,631 (신규 `docs/legacy-backups` 25개 포함) |
+| C: 여유 공간 | - | 757.9 GB | 볼륨을 다른 데이터가 공유해서 프로젝트 크기만 신뢰할 수 있는 수치로 본다 (이 정리 실행 시작 시점 662.5 GB → 종료 757.9 GB) |
+
+스크립트가 세어서 삭제한 바이트: 3·4단계 6.6 GB(738개 파일) + 1·2단계는 위 폴더 크기 차이로 계산. 목표 예상 "약 47 GB 전후"에 대해 실제는 **48.5 GB**다 (audiosep-env 0.28 GB 유지, 감사 산출물 `data/audit` 등 약 0.1 GB, 실행 중 새로 생긴 로그가 남음).
+
+### 13-4. 남은 가장 큰 디렉터리 TOP 20 (물리)
+`data/ground-truth` 17.57 · `data/ground-truth/cases` 15.53 · `data/separation` 12.93 · `data/pad-eval` 12.71 · `pad-eval/cases` 6.95 · `separation/models` 6.40 · `.venv` 4.67 (torch 4.23) · `pad-eval/cases-v16` 4.62 · `separation/web` 2.62 · `separation/tools` 2.61 · `tools/CLAPSepInference` 2.36 · `ground-truth/cases/stability-v11…v16` 각 1.60 · `models/melband_karaoke` 1.60 · `models/mega53_3head` 1.39 · 분석 `analysis_f7f0…`(DEMO) 1.27.
+
+남은 것은 모두 유지 결정된 항목이다: 벤치마크 source/references(약 29 GB, 중복 제거 시 −11 GB 가능), 모델 체크포인트 6.4 GB, `.venv`, CLAPSep 스택, 분석 4건(2.6 GB).
+
+### 13-5. 삭제 후 무결성
+| 점검 | 결과 |
+|---|---|
+| 백엔드 단위 테스트 | **323 passed, 1 skipped, 0 failed** (재부팅 후 재실행) |
+| 프런트엔드 | `vite build` 성공. 프런트엔드 테스트는 `analysisEstimate.test.js` 1개뿐이며 `node --test`로 통과 (`npm test` 스크립트는 없음) |
+| release gate | `validate_production` 통과, commercial_2/6/13 problems 없음, 승인(APPROVED)된 preset 0개(VALIDATING 유지) |
+| 모델 레지스트리 | `commercial_gate`로 2/6/13의 고정 SHA256 일치, 승인·baseline 체크포인트 8개 모두 존재 |
+| 라이선스 | `build-license-notices.py --check` 일치 |
+| 애플리케이션 기동 | `python -m music_analyzer.web_server --help` 정상, 라이브러리 로드 정상 |
+| 라이브러리 | 분석 4건 모두 `contract_violations == []`, 목록 40건(분석 4 + 단독 job 항목 36), 13트랙 분석의 미리듣기와 758 MB ZIP 생성 확인 |
+| DB 일관성 | `analysis_owners` 4행 ⊆ 레코드 4건 |
+| CLAPSep 환경 | `clapsep-env`에서 torch, laion_clap, `clapsep_experiment` import 성공 (삭제 전·후) |
+| 전체 lifecycle (commercial_6, 5 s) | 분석 → 정리 → 재생 → 개별 WAV → 전체 ZIP → ZIP 임시 파일 삭제 → 분석 삭제 → 남은 파일 0개, `LIFECYCLE E2E OK` |
+
+### 13-6. 아직 남은 결정/위험
+- 단독 job 항목: 라이브러리 목록 40건 중 36건이 분석에 연결되지 않은 단독 job 결과(이번에는 유지, 별도 inventory로 재판단).
+- `final_11 baseline`의 `bs_6stem`·`bs_karaoke`·`melband_karaoke`(UNKNOWN 라이선스)와 CLAPSep 스택: commercial_13 동결 후 baseline 폐기 시점에 재검토.
+- `audiosep-env`(0.28 GB)는 `clapsep-env`가 쓰는 동안 삭제할 수 없다.
+- AudioSep/wesep 재생성: `prepare-audiosep.py` 등으로 재다운로드 가능하며 URL·commit·체크포인트 SHA256은 `docs/RETIRED_TOOLS_PROVENANCE.json`에 있다.
