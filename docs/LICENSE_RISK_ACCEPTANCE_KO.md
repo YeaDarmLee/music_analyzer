@@ -4,7 +4,7 @@
 
 - 작성일: 2026-10-08
 - 결정자: 프로젝트 소유자 (대화에서 직접 결정)
-- 기준 문서: `docs/SIX_TRACK_IMPROVEMENT_PLAN_KO.md` 3절, `docs/COMMERCIAL_LICENSE_STATUS_KO.md`
+- 기준 문서: `docs/COMMERCIAL_LICENSE_STATUS_KO.md`
 
 ## 1. 소유자 정책 (2026-10-08)
 
