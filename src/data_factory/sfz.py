@@ -2,7 +2,8 @@
 
 Supported opcodes: sample, key, lokey, hikey, pitch_keycenter, lovel, hivel, volume, pan, tune, transpose, offset,
 loop_mode, loop_start, loop_end, seq_length, seq_position, lorand, hirand, group, off_by, pitch_keytrack,
-ampeg_release, ampeg_attack, trigger (release regions are skipped), default_path (<control>).
+ampeg_release, ampeg_attack, amp_veltrack (percent), global_volume (dB, added to volume), trigger (release regions are
+skipped), default_path (<control>).
 Opcodes that change *which* regions sound (keyswitches, CC/channel gates, crossfades, #include/#define) are CRITICAL:
 with strict=True ingest is rejected, never silently ignored. All other unknown opcodes are counted and returned.
 """
@@ -93,7 +94,8 @@ def parse_sfz(text: str, strict: bool = True, cc_state: dict | None = None) -> t
         regions = kept
     known = {"sample", "key", "lokey", "hikey", "pitch_keycenter", "lovel", "hivel", "volume", "pan", "tune", "transpose",
              "offset", "loop_mode", "loop_start", "loop_end", "seq_length", "seq_position", "lorand", "hirand", "group",
-             "off_by", "pitch_keytrack", "ampeg_release", "ampeg_attack", "trigger", "_default_path", "end", "loopmode"}
+             "off_by", "pitch_keytrack", "ampeg_release", "ampeg_attack", "trigger", "_default_path", "end", "loopmode",
+             "amp_veltrack", "global_volume"}
     critical = set()
     for r in regions:
         for k in r:
@@ -135,9 +137,11 @@ def regions_to_zones(regions: list[dict], sfz_dir: Path | str = ".") -> tuple[li
         root = note_to_midi(r.get("pitch_keycenter", key if key is not None else str(lo)))
         z = {"sample": "/".join(parts), "root_key": root, "lo_key": lo, "hi_key": hi,
              "lo_vel": int(r.get("lovel", 0)), "hi_vel": int(r.get("hivel", 127)),
-             "volume_db": float(r.get("volume", 0)), "pan": float(r.get("pan", 0)),
+             "volume_db": float(r.get("volume", 0)) + float(r.get("global_volume", 0)), "pan": float(r.get("pan", 0)),
              "tune_cents": float(r.get("tune", 0)) + 100.0 * float(r.get("transpose", 0)),
              "offset": int(float(r.get("offset", 0))), "keytrack": int(float(r.get("pitch_keytrack", 100))) != 0}
+        if "amp_veltrack" in r:
+            z["amp_veltrack"] = float(r["amp_veltrack"])  # percent; see SampleInstrument._note
         mode = r.get("loop_mode", r.get("loopmode", "no_loop"))
         z["one_shot"] = mode == "one_shot"
         if mode in ("loop_continuous", "loop_sustain") and "loop_start" in r and "loop_end" in r:

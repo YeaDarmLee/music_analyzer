@@ -75,6 +75,7 @@ def main(argv=None) -> int:
     s.add_argument("--asset-id", required=True); s.add_argument("--sfz", action="append", required=True,
                   help="path[::opcode=value,opcode=value]; repeat to merge several files")
     s.add_argument("--cc", action="append", default=[], help="fixed controller state N=VALUE, e.g. 64=127 (sustain pedal down)")
+    s.add_argument("--cc-variant", action="append", default=[], help="NAME:N=V alternative fixed controller state, e.g. pedal_up:64=0")
     s.add_argument("--base-dir", default=None, help="sample= paths are relative to this dir under the asset root")
     s.add_argument("--instrument-id", required=True); s.add_argument("--out", required=True)
     s.add_argument("--kind", default="pitched"); s.add_argument("--lenient", action="store_true")
@@ -113,7 +114,9 @@ def main(argv=None) -> int:
                               dict(kv.split("=", 1) for kv in ov.split(",") if kv)))
             man, rep = build_manifest_from_sfz(items, root, a.instrument_id, a.asset_id, rec["version"], rec["license"],
                                                rec["sha256"], a.kind, strict=not a.lenient, base_dir=a.base_dir,
-                                               cc_state={int(k): int(v) for k, v in (c.split("=") for c in a.cc)} or None)
+                                               cc_state={int(k): int(v) for k, v in (c.split("=") for c in a.cc)} or None,
+                                               cc_variants={n: {int(k): int(v) for k, v in (c.split("=") for c in [st])}
+                                                            for n, st in (x.split(":", 1) for x in a.cc_variant)} or None)
         else:
             man, rep = drumkit_manifest(root / a.subdir, a.asset_id, a.instrument_id, rec["version"], rec["license"], rec["sha256"],
                                         exclude_prefixes=tuple(a.exclude), include_prefixes=tuple(a.include),
@@ -131,7 +134,7 @@ def main(argv=None) -> int:
         root = Path(rec["root"]) if Path(rec["root"]).is_absolute() else A.REPO / rec["root"]
         out = Path(a.out_dir)
         n = 0
-        for z in man["zones"]:
+        for z in man["zones"] + (man.get("zones_pedal_up") or []):
             src = root / z["sample"]
             if src.suffix.lower() != ".flac":
                 continue

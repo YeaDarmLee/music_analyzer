@@ -533,3 +533,67 @@ def test_stem_reference_loudness_equalizes_before_random_gains():
     fin, mix, _ = mix_stems({"vocal": quiet, "drums": loud}, {}, cfg, 1, SR, 20000)
     assert abs(20 * np.log10(active_rms(fin["vocal"])) - 20 * np.log10(active_rms(fin["drums"]))) < 0.5
     assert np.abs(sum(f.astype(np.float64) for f in fin.values()) - mix).max() < 2e-6
+
+
+# ---- DF-0 follow-up: pedal states, amp_veltrack/global_volume, fixed-key composition, multi-phrase vocal --------------------
+PEDAL_SFZ = """<global> global_volume=3 amp_veltrack=80
+<group> locc64=65 hicc64=127
+<region> sample=sus.wav key=60
+<group> locc64=0 hicc64=64
+<region> sample=nosus.wav key=60
+"""
+
+
+def test_sfz_pedal_states_veltrack_global_volume():
+    down, _ = parse_sfz(PEDAL_SFZ, cc_state={64: 127})
+    up, _ = parse_sfz(PEDAL_SFZ, cc_state={64: 0})
+    assert [r["sample"] for r in down] == ["sus.wav"] and [r["sample"] for r in up] == ["nosus.wav"]
+    z = regions_to_zones(down, ".")[0][0]
+    assert z["volume_db"] == 3.0 and z["amp_veltrack"] == 80.0
+
+
+def test_sampler_pedal_region_set_and_veltrack(fac):
+    inst = next(iter(fac.instruments.values()))
+    zd = dict(inst.zones[0], lo_key=0, hi_key=127, lo_vel=0, hi_vel=127)
+    zu = dict(zd, sample=zd["sample"] + ".up")
+    saved = inst.zones, inst.zones_pedal_up  # module-scoped fixture: restore afterwards
+    inst.zones, inst.zones_pedal_up = [zd], [zu]
+    try:
+        assert inst.select_zone(60, 80, 0.1, 0, pedal_down=True)["sample"] == zd["sample"]
+        assert inst.select_zone(60, 80, 0.1, 0, pedal_down=False)["sample"] == zu["sample"]
+    finally:
+        inst.zones, inst.zones_pedal_up = saved
+    zv = dict(zd, amp_veltrack=100.0, volume_db=0.0, tune_cents=0.0, root_key=60, keytrack=True)
+    loud, soft = (np.abs(inst._note(zv, 60, v, 2000)).max() for v in (127, 32))
+    assert 10 < loud / soft < 20  # veltrack 100% with v^2 curve: (127/32)^2 = 15.7
+
+
+def test_piano_pedal_mode_varies_and_events_carry_cc64():
+    modes, cc = set(), set()
+    for i in range(30):
+        rng = make_rng(i)
+        c = composition.compose(8.0, rng)
+        ev, meta = performance.piano(c, 8.0, rng)
+        modes.add(meta["pedal_mode"])
+        cc |= {e.meta["cc64"] for e in ev}
+    assert modes == {"up", "down", "mixed"} and cc == {0, 127}
+
+
+def test_compose_fixed_overrides_without_shifting_rng_stream():
+    r1, r2 = make_rng(5), make_rng(5)
+    a = composition.compose(10.0, r1)
+    b = composition.compose(10.0, r2, fixed={"bpm": 100, "key_root": 3, "mode": "minor", "n_bars": 6})
+    assert (b["bpm"], b["key_root"], b["mode"], b["n_bars"]) == (100, 3, "minor", 6)
+    assert r1.rand() != r2.rand() or len(a["chords"]) != len(b["chords"])  # different bar count -> different chord draws
+    # draw count of the header fields is identical: same section type draw
+    r3, r4 = make_rng(9), make_rng(9)
+    assert composition.compose(10.0, r3)["section_type"] == composition.compose(10.0, r4, fixed={"bpm": 99})["section_type"]
+
+
+def test_vocal_len_s_truncates_with_fade(tmp_path):
+    from data_factory.vocal import render_vocal
+    import scipy.io.wavfile as wf
+    wf.write(str(tmp_path / "c.wav"), 44100, (np.sin(np.arange(44100 * 3) * 0.05) * 0.5).astype(np.float32))
+    spec = {"clip_id": "c.wav", "crop_start_s": 0.0, "place_start_s": 0.5, "len_s": 1.0, "silence": [], "double": None}
+    y = render_vocal(spec, tmp_path, 44100 * 3, 44100)
+    assert np.abs(y[:, int(1.55 * 44100):]).max() == 0 and np.abs(y[:, int(1.4 * 44100):int(1.45 * 44100)]).max() > 0

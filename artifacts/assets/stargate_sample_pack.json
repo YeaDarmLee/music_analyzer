@@ -15,7 +15,7 @@
  "attribution_required": false,
  "attribution_text": "",
  "notice_required": false,
- "notes": "Repo LICENSE verified as CC0 1.0 Universal (2026-10-08, Research Lead + agent reading the cloned file); README: public-domain, attribution-free, any purpose. GitHub SPDX auto-detection (NOASSERTION) is not used. Bundle aggregates sub-collections (freesound/, fugue-state-audio/, karoryfer/, microlag/, sgossner/VCSL); the freesound/ subtree is Freesound user uploads (Packet s6.7 YELLOW rationale) and is excluded from kits by default.",
+ "notes": "Repo LICENSE verified as CC0 1.0 Universal (2026-10-08, Research Lead + agent reading the cloned file); README: public-domain, attribution-free, any purpose. GitHub SPDX auto-detection (NOASSERTION) is not used. Bundle aggregates sub-collections (freesound/, fugue-state-audio/, karoryfer/, microlag/, sgossner/VCSL); the freesound/ subtree is Freesound user uploads (Packet s6.7 YELLOW rationale) and is excluded from kits by default. DECISION (Research Lead, 2026-10-08): stargate/freesound/* (38 files) stays EXCLUDED from every production allowlist (uploader-rights unverifiable; Freesound per-uploader Generative-AI preference).",
  "packet_ref": "s6.6",
  "source_commit": "dbfd6ec52d4ed53b60bdbea5fc6adf295127c027",
  "source_commit_date": "2022-12-24T15:59:48-08:00",
@@ -25,5 +25,8 @@
  "bytes": 270695958,
  "root": "data/assets/stargate_sample_pack",
  "license_snapshot": "artifacts/licenses/stargate_sample_pack/LICENSE.txt",
- "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6"
+ "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6",
+ "production_excluded_subtrees": [
+  "freesound/"
+ ]
 }

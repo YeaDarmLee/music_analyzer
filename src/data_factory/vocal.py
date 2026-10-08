@@ -159,6 +159,10 @@ def render_vocal(spec: dict, root: str | Path, duration_samples: int, sr: int) -
     m = x.mean(0)
     s0 = int(spec["crop_start_s"] * sr)
     seg = m[s0:s0 + duration_samples]
+    if spec.get("len_s") is not None:  # phrase truncated to len_s (long-form songs), 40 ms fade-out
+        seg = seg[:int(spec["len_s"] * sr)].copy()
+        f = min(int(0.04 * sr), len(seg))
+        seg[len(seg) - f:] *= np.linspace(1, 0, f, dtype=np.float32)
     out = np.zeros(duration_samples, np.float32)
     p0 = int(spec["place_start_s"] * sr)
     n = min(len(seg), duration_samples - p0)

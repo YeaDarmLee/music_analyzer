@@ -82,6 +82,19 @@ URL은 Packet Source Map 그대로. `—` = 해당 없음.
 
 커밋된 판정 데이터: `configs/data_factory/asset_catalog.json`. ingest 후 레코드: `artifacts/assets/<id>.json`, 라이선스 원문 스냅샷: `artifacts/licenses/<id>/LICENSE.txt`.
 
+### 2.3 Component scope (Research Lead 결정, 2026-10-08)
+
+`scope` = 그 구성요소가 어디서 실행되는가. permissive-only core(PRODUCTION_RUNTIME / TRAINING_RUNTIME)와 내부 제작 도구(INGEST_TOOL / DEVELOPMENT_ONLY)를 혼동하지 않기 위한 열이다. 값: `PRODUCTION_RUNTIME`, `TRAINING_RUNTIME`, `INGEST_TOOL`, `DEVELOPMENT_ONLY`.
+
+| 구성요소 | Code license | scope | 비고 |
+|---|---|---|---|
+| NumPy, SciPy | BSD-3-Clause | TRAINING_RUNTIME | WAV 읽기/쓰기, filter, FFT |
+| OUR sampler / DSP synth / FX / composition | project-owned | TRAINING_RUNTIME | `src/data_factory` |
+| python-soundfile 0.13.1 | BSD-3-Clause | **INGEST_TOOL** | VCSL Keys FLAC → float32 WAV 1회 변환 |
+| libsndfile 1.2.2 (soundfile 내부) | LGPL-2.1 | **INGEST_TOOL ONLY** | PRODUCTION_RUNTIME 금지, TRAINING_RUNTIME 불필요. 변환된 WAV는 libsndfile 코드의 파생물이 아니므로 원 asset license(VCSL Keys CC0) 유지 (LGPL: 프로그램 실행 output은 library 기반 저작물일 때만 적용). Data Factory 자체를 binary로 외부 배포하게 되면 LGPL 의무를 별도 검토 |
+| pytest | MIT | DEVELOPMENT_ONLY | |
+| Stargate `freesound/*` (38 files) | Freesound 업로더별 | — | **EXCLUDED** (production allowlist 금지). Stargate repo 자체 CC0 판정은 유지 |
+
 ## 3. 의존성 (Python 패키지)
 
 정확한 버전·라이선스는 의존성이 확정되는 Phase 2 이후 `pip-licenses` 출력으로 채운다. 현재 후보: torch, numpy, soundfile, einops, PyYAML, pytest. 라이선스 값은 `NEEDS_RESEARCH`.

@@ -30,6 +30,7 @@ class SampleInstrument:
             self.root = sr_root if sr_root.is_absolute() else self.root / sr_root
         self.max_sample_seconds = max_sample_seconds
         self.zones = manifest["zones"]
+        self.zones_pedal_up = manifest.get("zones_pedal_up") or self.zones  # CC64<64 region set (only if the SFZ provides one)
         self.kind = manifest.get("kind", "pitched")
         self.attack_s, self.release_s, self.vel_exp = attack_s, default_release_s, vel_exp
         self._cache: OrderedDict[str, np.ndarray] = OrderedDict()
@@ -59,10 +60,11 @@ class SampleInstrument:
         return a
 
     # -- zone choice ---------------------------------------------------------------------------------------------
-    def select_zone(self, pitch: int, velocity: int, rr: float, counter: int) -> dict | None:
-        cand = [z for z in self.zones if z["lo_key"] <= pitch <= z["hi_key"] and z["lo_vel"] <= velocity <= z["hi_vel"]]
+    def select_zone(self, pitch: int, velocity: int, rr: float, counter: int, pedal_down: bool = True) -> dict | None:
+        zones = self.zones if pedal_down else self.zones_pedal_up
+        cand = [z for z in zones if z["lo_key"] <= pitch <= z["hi_key"] and z["lo_vel"] <= velocity <= z["hi_vel"]]
         if not cand:  # nearest key range, same velocity window: tolerate small gaps in a mapping
-            vel_ok = [z for z in self.zones if z["lo_vel"] <= velocity <= z["hi_vel"]] or self.zones
+            vel_ok = [z for z in zones if z["lo_vel"] <= velocity <= z["hi_vel"]] or zones
             z = min(vel_ok, key=lambda z: min(abs(pitch - z["lo_key"]), abs(pitch - z["hi_key"])))
             if min(abs(pitch - z["lo_key"]), abs(pitch - z["hi_key"])) > 12:
                 return None
@@ -120,7 +122,13 @@ class SampleInstrument:
             env[held:] *= np.exp(np.linspace(0, -6.9, r, dtype=np.float32))
         elif one_shot and n_out > 64:
             env[-64:] *= np.linspace(1, 0, 64, dtype=np.float32)
-        g = 10.0 ** (zone.get("volume_db", 0.0) / 20.0) * (max(velocity, 1) / 127.0) ** self.vel_exp
+        v = max(velocity, 1) / 127.0
+        if "amp_veltrack" in zone:  # SFZ: gain = (1 - t) + t * curve(v), default curve v^2 (sfizz/ARIA convention)
+            t = zone["amp_veltrack"] / 100.0
+            vg = (1.0 - t) + t * v * v
+        else:
+            vg = v ** self.vel_exp
+        g = 10.0 ** (zone.get("volume_db", 0.0) / 20.0) * vg
         th = (zone.get("pan", 0.0) / 100.0 + 1.0) * np.pi / 4.0
         pan = np.array([[np.cos(th)], [np.sin(th)]], np.float32) * np.float32(np.sqrt(2.0))
         return (y * env * g * pan).astype(np.float32)
@@ -133,7 +141,7 @@ class SampleInstrument:
             if s0 >= duration_samples:
                 continue
             rr = float(rng.rand())
-            z = self.select_zone(ev.pitch, ev.velocity, rr, counter)
+            z = self.select_zone(ev.pitch, ev.velocity, rr, counter, ev.meta.get("cc64", 127) >= 64)
             counter += 1
             if z is None:
                 self.skipped += 1
@@ -154,7 +162,7 @@ def load_instrument(manifest_path: str | Path, asset_roots: dict[str, str | Path
 def build_manifest_from_sfz(sfz_path: str | Path | list, asset_root: str | Path, instrument_id: str, asset_id: str,
                             source_version: str, license: str, source_sha256: str, kind: str = "pitched",
                             strict: bool = True, base_dir: str | None = None, cc_state: dict | None = None,
-                            sample_root: str | None = None) -> tuple[dict, dict]:
+                            sample_root: str | None = None, cc_variants: dict | None = None) -> tuple[dict, dict]:
     """Ingest SFZ file(s) into an instrument manifest. -> (manifest, report).
 
     sfz_path: one path, or a list of (path, overrides_dict) pairs. Overrides are explicit opcodes prepended as a <group>
@@ -165,11 +173,13 @@ def build_manifest_from_sfz(sfz_path: str | Path | list, asset_root: str | Path,
     asset_root = Path(asset_root)
     items = [(Path(sfz_path), {})] if isinstance(sfz_path, (str, Path)) else [(Path(p), dict(o)) for p, o in sfz_path]
     regions, unsupported, notes_all, overrides = [], {}, {}, {}
+    texts = []
     for path, ov in items:
         text = path.read_text(encoding="utf-8", errors="replace")
         if ov:
             text = "<group> " + " ".join(f"{k}={v}" for k, v in ov.items()) + "\n" + text
             overrides[path.relative_to(asset_root).as_posix()] = ov
+        texts.append(text)
         reg, uns = parse_sfz(text, strict=strict, cc_state=cc_state)
         for k, v in uns.items():
             unsupported[k] = unsupported.get(k, 0) + v
@@ -178,8 +188,23 @@ def build_manifest_from_sfz(sfz_path: str | Path | list, asset_root: str | Path,
     zones, notes = regions_to_zones(regions, here)
     missing = [z["sample"] for z in zones if not (asset_root / z["sample"]).exists()]
     zones = [z for z in zones if (asset_root / z["sample"]).exists()]
+    variants = {}
+    for name, st in (cc_variants or {}).items():  # alternative fixed-controller states, e.g. pedal_up = {64: 0}
+        vreg = []
+        for text in texts:
+            vreg += parse_sfz(text, strict=strict, cc_state=st)[0]
+        vz, _ = regions_to_zones(vreg, here)
+        vz = [z for z in vz if (asset_root / z["sample"]).exists()]
+        variants[name] = {"cc_state": {str(k): v for k, v in st.items()}, "differs": vz != zones, "zones": vz if vz != zones else None}
     man = {"instrument_id": instrument_id, "asset_id": asset_id, "kind": kind, "source_version": source_version,
            "license": license, "source_sha256": source_sha256, "ingest_overrides": overrides,
            "cc_state": {str(k): v for k, v in (cc_state or {}).items()}, "zones": zones}
+    if "pedal_up" in variants:
+        pu = variants["pedal_up"]
+        man["pedal_up"] = {"cc_state": pu["cc_state"], "separate_region_set": pu["differs"]}
+        if pu["differs"]:
+            man["zones_pedal_up"] = pu["zones"]
+    man["ingest_report"] = {"unsupported_opcodes": unsupported, "skipped": dict(notes),
+                            "note": "trigger=release (key-off noise) and on_locc* regions are excluded by design"}
     return man, {"unsupported_opcodes": unsupported, "notes": dict(notes), "missing_samples": missing,
                  "regions": len(regions), "zones": len(zones)}

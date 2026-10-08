@@ -46,13 +46,17 @@ def chord_at(scale: list[int], degree: int, key_root: int, rng, allow_ext: bool 
             "pcs": [int((key_root + x) % 12) for x in pcs]}
 
 
-def compose(duration_s: float, rng: np.random.RandomState, bpm_range=(70, 150)) -> dict:
-    bpm = int(rng.randint(bpm_range[0], bpm_range[1] + 1))
-    key_root = int(rng.randint(12))
-    mode = "major" if rng.rand() < 0.6 else "minor"
+def compose(duration_s: float, rng: np.random.RandomState, bpm_range=(70, 150), fixed: dict | None = None) -> dict:
+    """fixed (long-form listening songs): {"bpm","key_root","mode","n_bars"} override the drawn values; the RNG draws are
+    unchanged, so scenes without `fixed` stay bit-identical."""
+    fixed = fixed or {}
+    bpm = int(fixed.get("bpm", rng.randint(bpm_range[0], bpm_range[1] + 1)))
+    key_root = int(fixed.get("key_root", rng.randint(12)))
+    drawn_mode = "major" if rng.rand() < 0.6 else "minor"
+    mode = fixed.get("mode") or drawn_mode
     scale = SCALES[mode]
     beats_per_bar = 4
-    n_bars = max(int(np.ceil(duration_s * bpm / 60.0 / beats_per_bar)), 1)
+    n_bars = int(fixed["n_bars"]) if "n_bars" in fixed else max(int(np.ceil(duration_s * bpm / 60.0 / beats_per_bar)), 1)
     total_beats = n_bars * beats_per_bar
     section = sorted(SECTIONS)[rng.randint(len(SECTIONS))]
     chords, beat = [], 0.0

@@ -199,12 +199,15 @@ class Factory:
         raw = {}
         for stem in spec.active_stems:
             if stem == "vocal":
-                v = dict(spec.vocal)
-                place = v["place_start_s"] - r0
-                v["crop_start_s"] = v["crop_start_s"] + max(-place, 0.0)
-                v["place_start_s"] = max(place, 0.0)
-                v["silence"] = [[a - r0, b - r0] for a, b in v["silence"]]
-                raw["vocal"] = render_vocal(v, self.vocal_root, n_range, sr)
+                acc = np.zeros((2, n_range), np.float32)
+                for seg in spec.vocal.get("segments") or [spec.vocal]:  # long-form songs: several phrases on one vocal stem
+                    v = dict(seg)
+                    place = v["place_start_s"] - r0
+                    v["crop_start_s"] = v["crop_start_s"] + max(-place, 0.0)
+                    v["place_start_s"] = max(place, 0.0)
+                    v["silence"] = [[a - r0, b - r0] for a, b in v["silence"]]
+                    acc += render_vocal(v, self.vocal_root, n_range, sr)
+                raw["vocal"] = acc
                 continue
             evs = [NoteEvent(e.instrument, e.pitch, e.velocity, e.start - r0, e.end - r0, e.articulation, e.channel, e.meta)
                    for e in events if e.instrument == stem and 0 <= e.start - r0 < n_range / sr]

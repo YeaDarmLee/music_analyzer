@@ -13,9 +13,9 @@
  "derivative_allowed": true,
  "redistribution_allowed": true,
  "attribution_required": true,
- "attribution_text": "Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo. VocalSet: A Singing Voice Dataset (version 1.1, Zenodo, 2018). DOI 10.5281/zenodo.1203819. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Creator names as listed by the Zenodo record; modified (cropped, mixed, processed) for model training.",
+ "attribution_text": "Julia Wilkins, Prem Seetharaman, Alison Wahl, Bryan Pardo. \"VocalSet: A Singing Voice Dataset\". 19th International Society for Music Information Retrieval Conference (ISMIR), Paris, France, 2018. Dataset: VocalSet v1.1, Zenodo, DOI 10.5281/zenodo.1203819, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Modified (cropped, mixed with other material, processed) for model training.",
  "notice_required": false,
- "notes": "Production use limited to scales/arpeggios/long_tones; excerpts excluded by project policy. Pinned: Zenodo record 1203819 v1.1, VocalSet11.zip (md5 verified). Publisher singer split found in the archive (test_singers_technique.txt) and used for the test split.",
+ "notes": "Production use limited to scales/arpeggios/long_tones; excerpts excluded by project policy. Pinned: Zenodo record 1203819 v1.1, VocalSet11.zip (md5 verified). Citation: Research Lead confirmed from the ISMIR 2018 paper (2026-10-08). Split frozen for Data Factory v0 (test: 5 publisher singers; val: female9, male11; train: 13). Publisher singer split found in the archive (test_singers_technique.txt) and used for the test split.",
  "packet_ref": "s11.1",
  "archive_url": "https://zenodo.org/api/records/1203819/files/VocalSet11.zip/content",
  "archive_name": "VocalSet11.zip",
@@ -27,5 +27,6 @@
  "bytes": 2794258140,
  "root": "data/assets/vocalset",
  "license_snapshot": "artifacts/licenses/vocalset/LICENSE.txt",
- "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801"
+ "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801",
+ "citation": "Julia Wilkins, Prem Seetharaman, Alison Wahl, Bryan Pardo. \"VocalSet: A Singing Voice Dataset\". 19th International Society for Music Information Retrieval Conference (ISMIR), Paris, France, 2018."
 }

@@ -8,7 +8,7 @@ GREEN만 학습 manifest에 들어간다. 곡/트랙별 라이선스가 다른 �
 
 | 데이터셋 | 등급 | 근거 | 비고 |
 |---|---|---|---|
-| VocalSet | **GREEN_CONDITIONAL** | CC BY 4.0 (Zenodo `1203819`, v1.1, 파일 `VocalSet11.zip` 2.08 GB 조회) | attribution 필수. scales/arpeggios/long_tones만, **excerpts 제외**(139 clip). singer-disjoint split: 아카이브의 `test_singers_technique.txt`를 test로 사용, val은 성별별 최고 번호 잔여 가수. 2026-10-08 ingest 완료 (3474 clip). 인용 문구 형식: NEEDS_RESEARCH |
+| VocalSet | **GREEN_CONDITIONAL** | CC BY 4.0 (Zenodo `1203819`, v1.1, 파일 `VocalSet11.zip` 2.08 GB 조회) | attribution 필수. scales/arpeggios/long_tones만, **excerpts 제외**(139 clip). singer-disjoint split: 아카이브의 `test_singers_technique.txt`를 test로 사용, val은 성별별 최고 번호 잔여 가수. 2026-10-08 ingest 완료 (3474 clip). 인용: Wilkins, Seetharaman, Wahl, Pardo, "VocalSet: A Singing Voice Dataset", ISMIR 2018 (Research Lead 확정, NEEDS_RESEARCH 해소; `artifacts/assets/vocalset.json` `citation`/`attribution_text`). **Split v0 freeze**: test = publisher 5명, val = female9 + male11, train = 나머지 13명 |
 | MUSDB18 / MUSDB18-HQ | RED | educational only, 상업 금지, NC 구성요소 포함 | Production 학습 금지 |
 | MedleyDB | RED | non-commercial | |
 | MoisesDB | RED | CC BY-NC-SA 4.0 | |

@@ -35,17 +35,17 @@
 | VCSL Keys 공식 SFZ 4개 (region 222/225/135/138) | critical opcode: `locc64/hicc64`(→ `cc_state` 64=127로 영역 선택, Steinway 126개 NoSus region 제외), `on_locc/on_hicc`(8개 제외). `trigger=release` 84/99/45/68개 skip(키-오프 노이즈 샘플 미사용). 비치명 미지원(경고만): `global_volume`, `amp_veltrack`, `ampeg_decay/sustain`, `rt_decay`. 누락 샘플 0 |
 | VCSL / Stargate 드럼 | SFZ 없음 → 파일명 키워드 규칙. unmatched: VCSL 0, Stargate 30(claps/percussion 등 역할 없는 소리) |
 
-알려진 영향: `global_volume`/`amp_veltrack` 무시로 피아노 레벨·다이내믹 곡선이 원 SFZ와 다르다(스템 레벨은 믹서가 active-RMS로 정규화). 페달-up(NoSus) 샘플과 키-오프 노이즈는 v0에서 사용하지 않는다.
+**피아노 보강 (DF-0 follow-up, Research Lead 지시)**: `global_volume`(dB, region volume에 가산)과 `amp_veltrack`(%, gain = (1−t) + t·v², v = vel/127)을 지원한다. 지원 opcode는 이 둘이 전부이며 SFZ 전체 호환은 목표가 아니다. 페달은 두 상태를 manifest에 보존한다: `zones` = CC64=127(페달 down), `zones_pedal_up` = CC64=0 영역 세트. 별도 pedal-up 샘플셋이 있는 것은 **Steinway B(NoSus 126 region)뿐**이고, Grand K / Upright Knight / Upright Y는 SFZ에 페달 게이트가 없어 단일 세트(`pedal_up.separate_region_set=false`)이며 이 경우 pedal-up 이벤트도 같은 샘플을 쓰고 노트 길이/릴리즈만 달라진다. Performance Generator(`perf_rules_v2`)가 scene 단위로 pedal mode `up`(30%) / `mixed`(chord 단위, 30%) / `down`(40%)를 고르고 각 피아노 이벤트가 `meta.cc64`를 가진다 → 항상 pedal-down인 데이터셋은 만들지 않는다. 계속 제외(manifest `ingest_report`에 기록): `trigger=release`(키-오프 노이즈; K 84, Steinway 99, Knight 45, Y 68), `on_locc*`(페달 노이즈 8), `rt_decay`, `ampeg_decay/sustain`.
 
 ## 4. 발견된 사항 (Research Lead 확인 필요)
 
-1. **Stargate는 Freesound 사용자 업로드를 포함**(`freesound/` 하위 38개 파일)한다. Packet §6.7이 Freesound를 YELLOW(업로더 권리 검증 불가)로 둔 이유가 그대로 적용될 수 있어 kit에서 제외했다(`exclude` 목록이 manifest에 기록됨). 포함 여부는 결정 사항.
+1. **Stargate는 Freesound 사용자 업로드를 포함**(`freesound/` 하위 38개 파일)한다. Packet §6.7이 Freesound를 YELLOW(업로더 권리 검증 불가)로 둔 이유가 그대로 적용될 수 있어 kit에서 제외했다(`exclude` 목록이 manifest에 기록됨). **결정(Research Lead): 계속 제외, production allowlist 추가 금지** (Freesound 자체도 업로드 권리 보증 불가 가능성과 업로더별 Generative-AI preference를 둔다).
 2. Stargate는 VCSL 사본(`sgossner/VCSL`)과 Karoryfer 샘플도 포함한다(중복). `karoryfer/` 하위는 사용 중이다.
 3. VCSL 저장소의 피아노 폴더에는 SFZ가 없고(파일명 인코딩), SFZ는 VCSL Keys 배포본에 있다. 그래서 VCSL에서는 드럼 폴더만 사용한다.
 4. VocalSet 아카이브에 **게시자 제공 singer split**(`train/test_singers_technique.txt`, 기술 분류기용)이 들어 있다. test 5명(female2, female8, male3, male5, male10)을 그대로 쓰고, 남은 가수 중 성별별 번호가 가장 높은 2명(female9, male11)을 val로 분리했다 (train 13명).
 5. VocalSet: excerpts 139개 제외, `__MACOSX` 리소스 포크 2개 제외, 읽기 불가 0. 사용 가능 3474 clip (44.1 kHz 전부), 평균 8.2 s.
-6. FLAC 디코딩에 **python-soundfile 0.13.1 / libsndfile 1.2.2(LGPL)** 를 ingest 시점에만 사용했다(런타임은 SciPy로 WAV만 읽음). 산출 오디오는 도구 라이선스의 영향을 받지 않지만 permissive-only 정책과의 관계는 결정 사항이다.
-7. 정확한 VocalSet 인용 문구는 Zenodo 레코드가 제공한 생성자 목록(Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo)을 그대로 썼다. 게시자가 요구하는 별도 인용문은 `NEEDS_RESEARCH`.
+6. FLAC 디코딩에 **python-soundfile 0.13.1 / libsndfile 1.2.2(LGPL)** 를 ingest 시점에만 사용했다(런타임은 SciPy로 WAV만 읽음). **결정(Research Lead): INGEST_TOOL ONLY로 승인** (production/training runtime 의존성 금지; 산출 WAV는 원 asset license 유지). LICENSE_MATRIX §2.3 참고.
+7. 정확한 VocalSet 인용 문구는 Zenodo 레코드가 제공한 생성자 목록(Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo)을 그대로 썼다. **해소**: ISMIR 2018 논문 인용(Wilkins, Seetharaman, Wahl, Pardo, "VocalSet: A Singing Voice Dataset")으로 확정, asset 레코드·NOTICE·PROVENANCE에 기록. split v0 freeze.
 
 ## 5. 다운로드 재현 명령
 

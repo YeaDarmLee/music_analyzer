@@ -7,7 +7,7 @@ import numpy as np
 from .schema import NoteEvent
 from .synth import DRUM_KEYS
 
-RULES_VERSION = "perf_rules_v1"
+RULES_VERSION = "perf_rules_v2"  # v2: per-chord sustain pedal state (CC64) on piano events
 PIANO_PATTERNS = ("block", "broken", "arpeggio", "comping", "octave_bass", "ballad")
 BASS_PATTERNS = ("root_whole", "root_eighths", "root_fifth_octave", "syncopated", "walking")
 DRUM_GROOVES = ("pop", "rock", "four_floor", "halftime", "ballad", "sparse")
@@ -42,11 +42,14 @@ def _ev(inst, pitch, vel, s, e, rng, jitter_ms, art="", meta=None):
 def piano(comp: dict, dur: float, rng, pattern: str | None = None) -> tuple[list[NoteEvent], dict]:
     clk, ev = _Clock(comp, dur), []
     pattern = pattern or PIANO_PATTERNS[rng.randint(len(PIANO_PATTERNS))]
-    pedal = bool(rng.rand() < 0.6)
+    r = rng.rand()  # pedal mode: scene-level up / down, or per-chord (phrase) changes
+    pedal_mode = "up" if r < 0.3 else "mixed" if r < 0.6 else "down"
     center = int(rng.randint(58, 68))
     base_vel = int(rng.randint(55, 100))
     for c in comp["chords"]:
         b0, b1 = c["start_beat"], c["start_beat"] + c["dur_beats"]
+        pedal = pedal_mode == "down" or (pedal_mode == "mixed" and rng.rand() < 0.5)
+        n_before = len(ev)
         v = _voicing(c, center, rng)
         end_default = clk.t(b1) + (0.3 if pedal else -0.05)
         if pattern == "block" or pattern == "ballad":
@@ -74,7 +77,9 @@ def piano(comp: dict, dur: float, rng, pattern: str | None = None) -> tuple[list
             for off in np.arange(0, c["dur_beats"], 1.0):
                 for p in v:
                     ev.append(_ev("piano", p, base_vel - 5 + rng.randint(-6, 6), clk.t(b0 + off), clk.t(b0 + off + .8), rng, 10))
-    return [e for e in ev if e.start < dur], {"pattern": pattern, "pedal": pedal, "rules": RULES_VERSION}
+        for e in ev[n_before:]:
+            e.meta = {"cc64": 127 if pedal else 0}
+    return [e for e in ev if e.start < dur], {"pattern": pattern, "pedal_mode": pedal_mode, "rules": RULES_VERSION}
 
 
 def bass(comp: dict, dur: float, rng, pattern: str | None = None, glide: bool = False) -> tuple[list[NoteEvent], dict]:

@@ -4,7 +4,7 @@ Models and datasets produced with the Data Factory use the following third-party
 
 ## Attribution required
 
-**VocalSet: A Singing Voice Dataset** — Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo (creators as listed by the Zenodo record). Version 1.1, Zenodo, 2018. DOI 10.5281/zenodo.1203819. Licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). The recordings were cropped, mixed with other material and processed (EQ, compression, reverb, delay, chorus, gain) for model training. Only the `scales`, `arpeggios` and `long_tones` categories are used; `excerpts` are excluded by project policy. The exact citation wording requested by the publisher is not confirmed (NEEDS_RESEARCH).
+**VocalSet: A Singing Voice Dataset** — Julia Wilkins, Prem Seetharaman, Alison Wahl, Bryan Pardo. "VocalSet: A Singing Voice Dataset". 19th International Society for Music Information Retrieval Conference (ISMIR), Paris, France, 2018. Dataset: VocalSet v1.1, Zenodo, DOI 10.5281/zenodo.1203819, licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). The recordings were cropped, mixed with other material and processed (EQ, compression, reverb, delay, chorus, gain) for model training. Only the `scales`, `arpeggios` and `long_tones` categories are used; `excerpts` are excluded by project policy. Citation confirmed by the Research Lead from the ISMIR 2018 paper (2026-10-08); the former NEEDS_RESEARCH is resolved. Singer split (frozen for Data Factory v0): test = the 5 publisher-provided singers, val = female9 + male11, train = the remaining 13.
 
 ## No attribution required (CC0 1.0 Universal), listed for provenance
 

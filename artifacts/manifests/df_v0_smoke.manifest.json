@@ -96,7 +96,10 @@
    "files": 358,
    "bytes": 270695958,
    "license_snapshot": "artifacts/licenses/stargate_sample_pack/LICENSE.txt",
-   "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6"
+   "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6",
+   "production_excluded_subtrees": [
+    "freesound/"
+   ]
   },
   "vcsl": {
    "asset_id": "vcsl",
@@ -167,7 +170,7 @@
    "derivative_allowed": true,
    "redistribution_allowed": true,
    "attribution_required": true,
-   "attribution_text": "Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo. VocalSet: A Singing Voice Dataset (version 1.1, Zenodo, 2018). DOI 10.5281/zenodo.1203819. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Creator names as listed by the Zenodo record; modified (cropped, mixed, processed) for model training.",
+   "attribution_text": "Julia Wilkins, Prem Seetharaman, Alison Wahl, Bryan Pardo. \"VocalSet: A Singing Voice Dataset\". 19th International Society for Music Information Retrieval Conference (ISMIR), Paris, France, 2018. Dataset: VocalSet v1.1, Zenodo, DOI 10.5281/zenodo.1203819, licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Modified (cropped, mixed with other material, processed) for model training.",
    "notice_required": false,
    "archive_url": "https://zenodo.org/api/records/1203819/files/VocalSet11.zip/content",
    "archive_name": "VocalSet11.zip",
@@ -178,7 +181,8 @@
    "files": 4225,
    "bytes": 2794258140,
    "license_snapshot": "artifacts/licenses/vocalset/LICENSE.txt",
-   "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801"
+   "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801",
+   "citation": "Julia Wilkins, Prem Seetharaman, Alison Wahl, Bryan Pardo. \"VocalSet: A Singing Voice Dataset\". 19th International Society for Music Information Retrieval Conference (ISMIR), Paris, France, 2018."
   }
  },
  "samples": [
