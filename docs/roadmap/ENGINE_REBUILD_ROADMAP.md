@@ -13,8 +13,8 @@
 
 | # | 주제 | 상태 | 반영 문서 |
 |---|---|---|---|
-| 01 | Separation Architecture + License (KJ, Mel/BS-RoFormer, SCNet, Demucs, BandIt, Banquet, Open-Unmix, 2025~26 신규) | 대기 | ARCHITECTURE_COMPARISON, LICENSE_MATRIX |
-| 02 | OUR v0.1 Architecture (3060 12GB 기준 params/chunk/batch/accum/AMP/ckpt/STFT/depth/dim) | 01 이후 | OUR_SEPARATOR_ARCHITECTURE |
+| 01 | Separation Architecture + License (KJ, Mel/BS-RoFormer, SCNet, Demucs, BandIt, Banquet, Open-Unmix, BSMamba2, TS-BSmamba2, MuS3D) | v1 수령·반영 완료 (개별 URL 미수령: NEEDS_URL) | ARCHITECTURE_COMPARISON, LICENSE_MATRIX |
+| 02 | OUR v0.1 Architecture (3060 12GB 기준 n_fft/hop/band/dim/depth/chunk/batch/accum/AMP/loss/optimizer) | 대기. 이 Packet 전까지 모델 구현 금지 | OUR_SEPARATOR_ARCHITECTURE |
 | 03 | 6-stem (6 head / query / hierarchical) | 2-stem 동작 이후 | |
 | 04 | Data Factory (작곡, 악기, SFZ/SF2, FX, 6열 라이선스) | 필요 시점 | DATA_FACTORY_ARCHITECTURE, LICENSE_MATRIX §2 |
 | 05 | Dataset GREEN/YELLOW/RED | 필요 시점 | DATASET_PROVENANCE |
@@ -24,7 +24,7 @@
 | Phase | 내용 | 상태 |
 |---|---|---|
 | 0 | Repository audit, benchmark freeze | 완료 (`LEGACY_BASELINE.md`) |
-| 1 | 아키텍처·라이선스 | Packet 01 대기. repo 쪽 준비(`LEGACY_IMPLEMENTATION_NOTES`, 매트릭스 skeleton) 완료 |
+| 1 | 아키텍처·라이선스 | Packet 01 반영 완료. 남은 NEEDS_RESEARCH는 매트릭스 참조 |
 | 2 | Engine foundation (config, registry, checkpoint/provenance, trainer, 테스트) | 완료 (`TRAINING_SYSTEM.md`) |
 | 3~7 | v0 모델, Data Factory v0, 2-stem 최적화, 6-stem, 13+ | 후속 |
 
