@@ -15,14 +15,36 @@ from music_analyzer.legal import REQUIRED_CONSENTS, RIGHTS_CONFIRMATION_VERSION
 from music_analyzer.web_server import WebLibrary, make_handler
 
 
+@pytest.fixture
+def isolated_settings():
+    """A throw-away database with the real DDL: this test never touches the service database."""
+    from music_analyzer.auth import load_settings
+    from music_analyzer.common import project_root
+    name = "music_analyzer_test_" + uuid4().hex[:8]
+    settings = {**load_settings(), "MYSQL_DATABASE": name}
+    connection = AuthStore(settings).connect(with_database=False)
+    try:
+        with connection.cursor() as cursor:
+            for script in sorted((project_root() / "separation/sql").glob("*.sql")):
+                for statement in script.read_text(encoding="utf-8").replace("music_analyzer", name).split(";"):
+                    if statement.strip():
+                        cursor.execute(statement)
+        connection.commit()
+        yield settings
+    finally:
+        with connection.cursor() as cursor:
+            cursor.execute(f"DROP DATABASE IF EXISTS `{name}`")
+        connection.commit()
+        connection.close()
+
 @pytest.mark.skipif(os.environ.get("MUSIC_TEST_MYSQL") != "1", reason="Set MUSIC_TEST_MYSQL=1 to test the configured MySQL")
-def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
+def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch, isolated_settings):
     run = uuid4().hex
     emails = [f"test-{run}-{i}@example.invalid" for i in range(2)]
     class TestStore(AuthStore):
         def throttle(self, address):
             super().throttle("integration-" + run)
-    auth = TestStore()
+    auth = TestStore(isolated_settings)
     auth.check()
     library = WebLibrary(tmp_path)
     queued = []
@@ -58,7 +80,7 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
         assert request("/api/auth/register", credentials[0])[0] == 409
         assert request("/api/auth/register", {**credentials[0], "email": f"test-{run}-nc@example.invalid", "consents": {}})[0] == 400
         assert not auth.query("SELECT 1 FROM users WHERE email=%s", (f"test-{run}-nc@example.invalid",))
-        assert AuthStore().consents(users[0]["id"]) == dict(REQUIRED_CONSENTS)
+        assert AuthStore(isolated_settings).consents(users[0]["id"]) == dict(REQUIRED_CONSENTS)
         assert auth.has_current_consents(users[0]["id"])
         auth.query("DELETE FROM user_consents WHERE user_id=%s AND consent_type='PRIVACY'", (users[0]["id"],))
         assert not auth.has_current_consents(users[0]["id"])  # legacy-style member: gated
@@ -68,8 +90,8 @@ def test_mysql_signup_login_ownership_expiry_and_restart(tmp_path, monkeypatch):
         status, result, _ = request("/api/analyses?preset=basic_2&rights=" + RIGHTS_CONFIRMATION_VERSION, cookie=cookies[0], raw=b"test audio")
         assert status == 202 and len(queued) == 1
         identifier = result["id"]
-        assert AuthStore().owns(users[0]["id"], identifier)  # Survives store/server reconstruction.
-        assert not AuthStore().owns(users[1]["id"], identifier)
+        assert AuthStore(isolated_settings).owns(users[0]["id"], identifier)  # Survives store/server reconstruction.
+        assert not AuthStore(isolated_settings).owns(users[1]["id"], identifier)
         assert request("/api/analyses", cookie=cookies[1])[1] == []
         assert request("/api/analyses/" + identifier, cookie=cookies[1])[0] == 404
         assert request("/api/analyses/" + identifier, cookie=cookies[0])[0] == 200

@@ -1,7 +1,7 @@
 """End-to-end lifecycle of one small production analysis (MUSIC_KEEP_INTERMEDIATES=0):
 analysis -> cleanup -> playback preview -> single-WAV download -> full ZIP -> ZIP temp removed -> analysis deleted -> nothing left.
 
-usage: lifecycle-e2e.py [preset]   (default commercial_6, 5 s clip from the license-clean pad-eval mix)
+usage: lifecycle-e2e.py [preset]   (default commercial_6, 5 s clip of separation/tests/fixtures/synthetic-mix-15s.wav)
 """
 import os, shutil, sys, time, zipfile
 from pathlib import Path
@@ -22,8 +22,8 @@ for model_id in models_for(preset):
     target = root / "models" / model_id; target.mkdir(parents=True, exist_ok=True)
     os.link(checkpoint, target / checkpoint.name)
     write_json(target / "registration.json", read_json(registration))
-prepared = read_json(base / "data/pad-eval/cases-v16/pad00-mix/prepared.json")
-clip = root / "clip.wav"; sf.write(clip, read_audio(prepared["input"])[: 44100 * 5], 44100, subtype="PCM_16")
+
+clip = root / "clip.wav"; sf.write(clip, read_audio(base / "separation/tests/fixtures/synthetic-mix-15s.wav")[: 44100 * 5], 44100, subtype="PCM_16")
 size_of = lambda p: sum(f.stat().st_size for f in Path(p).rglob("*") if f.is_file()) if Path(p).exists() else 0
 steps = {}
 library = WebLibrary(root)
@@ -65,6 +65,8 @@ try:
 finally:
     library.executor.shutdown(wait=True)
     lifecycle.discard_benchmark_audio(root, settings={})
+    if not os.environ.get("KEEP_TEST_OUTPUT"):
+        shutil.rmtree(root, ignore_errors=True)  # test analyses are not kept unless KEEP_TEST_OUTPUT=1
 import json
 print(json.dumps(steps, ensure_ascii=False, indent=1))
 print("LIFECYCLE E2E OK")

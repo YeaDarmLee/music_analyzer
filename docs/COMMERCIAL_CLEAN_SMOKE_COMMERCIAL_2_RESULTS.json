@@ -3,7 +3,7 @@
     "case": "stereo44k_5s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 12.5,
+    "seconds": 15.6,
     "stems": 2,
     "stem_contract": {
       "expected": 2,
@@ -25,7 +25,7 @@
     "case": "mono48k_5s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 13.0,
+    "seconds": 15.5,
     "stems": 2,
     "stem_contract": {
       "expected": 2,
@@ -54,7 +54,7 @@
     "case": "silence_3s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 12.0,
+    "seconds": 14.1,
     "stems": 2,
     "stem_contract": {
       "expected": 2,
@@ -76,7 +76,7 @@
     "case": "long_90s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 21.1,
+    "seconds": 24.5,
     "stems": 2,
     "stem_contract": {
       "expected": 2,

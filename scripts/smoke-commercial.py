@@ -1,6 +1,6 @@
 """commercial_13 edge-input smoke: mono 48 kHz, silence, very short, long (90 s), stereo 44.1 kHz. Checks success + partition integrity.
 
-Inputs are built from the license-clean synthetic pad-eval mix. Output: docs/COMMERCIAL_CLEAN_SMOKE_RESULTS.json
+Inputs are built from separation/tests/fixtures/synthetic-mix-15s.wav (license-clean synthetic). Output: docs/COMMERCIAL_CLEAN_SMOKE_RESULTS.json
 """
 import os as _os; _os.environ.setdefault("MUSIC_KEEP_INTERMEDIATES", "1")  # dev/benchmark scripts read intermediates
 import os, time
@@ -19,7 +19,7 @@ MODELS = models_for(PRESET)
 EXPECTED = {"commercial_2": "vocals instrumental", "commercial_6": "vocals piano guitar bass drums other",
             "commercial_13": "lead backing piano synth strings brass acoustic_guitar guitar bass drums percussion guitar_residual other"}[PRESET].split()
 base = project_root(); work = base / ("data/commercial-eval/smoke" if PRESET == "commercial_13" else f"data/commercial-eval/smoke-{PRESET}"); work.mkdir(parents=True, exist_ok=True)
-mix, _ = sf.read(base / "data/pad-eval/cases/pad00-mix/mix.wav", dtype="float32", always_2d=True)
+mix, _ = sf.read(base / "separation/tests/fixtures/synthetic-mix-15s.wav", dtype="float32", always_2d=True)
 cases = {
     "stereo44k_5s": (mix[:44100 * 5], 44100),
     "mono48k_5s": (resample_poly(mix[:44100 * 5].mean(axis=1), 160, 147).astype(np.float32)[:, None], 48000),
@@ -61,3 +61,5 @@ write_json(base / ("docs/COMMERCIAL_CLEAN_SMOKE_RESULTS.json" if PRESET == "comm
 from music_analyzer.lifecycle import discard_benchmark_audio
 discard_benchmark_audio(work)  # results live in docs/*.json; audio only with MUSIC_KEEP_BENCHMARK_AUDIO=1
 print("SMOKE DONE", flush=True)
+if not os.environ.get("KEEP_TEST_OUTPUT"):
+    import shutil; shutil.rmtree(work, ignore_errors=True)  # test analyses are not kept unless KEEP_TEST_OUTPUT=1

@@ -1,5 +1,7 @@
-param([ValidateRange(1024,65535)][int]$Port = 8780, [switch]$SkipBuild, [switch]$LocalOnly, [switch]$PublicAccess)
+param([ValidateRange(1024,65535)][int]$Port = 8780, [switch]$SkipBuild, [switch]$LocalOnly, [switch]$PublicAccess, [switch]$Development)
 $ErrorActionPreference = 'Stop'
+# Service runs the commercial release profile unless -Development is passed or MUSIC_RELEASE_PROFILE is already set.
+if (-not $env:MUSIC_RELEASE_PROFILE) { $env:MUSIC_RELEASE_PROFILE = if ($Development) { 'development' } else { 'commercial' } }
 $projectPath = Split-Path -Parent $PSScriptRoot
 $pythonPath = Join-Path $projectPath '.venv\Scripts\python.exe'
 if (-not (Test-Path -LiteralPath $pythonPath)) { throw 'Run scripts/bootstrap.ps1 first.' }
