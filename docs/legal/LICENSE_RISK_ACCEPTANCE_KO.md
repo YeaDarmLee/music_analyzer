@@ -42,13 +42,13 @@
 | Open-Unmix `umxhq` | https://zenodo.org/records/3370489 | 라이선스 필드 "MIT License", 비상업 문구 없음 | 후보 | MUSDB18-HQ 학습. MUSDB 라이선스는 연구용 |
 | Open-Unmix `umx` | https://zenodo.org/records/3370486 | 라이선스 필드 "MIT License", 비상업 문구 없음 | 후보 | MUSDB18 학습. 위와 같음 |
 | Spleeter (코드 MIT) | https://github.com/deezer/spleeter | "The code of Spleeter is MIT-licensed." 사전학습 모델의 라이선스는 언급 없음. 비상업 문구 없음 | 후보-별도 위험(모델 라이선스 문구 없음, 정책 적용) | Deezer 내부 데이터, 비공개 |
-| SCNet (코드 MIT) | https://github.com/starrytong/SCNet | 코드 MIT. 체크포인트는 Google Drive 링크이며 제한 문구 없음. "The model checkpoint was trained on the MUSDB dataset." | 후보-별도 위험(정책 적용, 배포처가 Google Drive) | MUSDB 학습. 연구용 데이터 위험 |
+| SCNet (코드 MIT) [정정: 공식 weight `UNKNOWN`. README는 MUSDB 학습만 명시, Issue #35 weight license 문의에 공식 답변 없음. OUR MODEL lineage 사용 안 함] | https://github.com/starrytong/SCNet | 코드 MIT. 체크포인트는 Google Drive 링크이며 제한 문구 없음. "The model checkpoint was trained on the MUSDB dataset." | 후보-별도 위험(정책 적용, 배포처가 Google Drive) | MUSDB 학습. 연구용 데이터 위험 |
 
 ## 4. 이 정책으로 제외한 가중치
 
 | 가중치 | 근거 | 판정 |
 |---|---|---|
-| Banquet / Query-Bandit 체크포인트 | https://zenodo.org/records/13694558 의 라이선스 필드가 "Creative Commons Attribution Non Commercial Share Alike 4.0 International"이다. 코드는 MIT이지만 가중치에 비상업이 명시되어 있다 | **제외** |
+| Banquet / Query-Bandit 체크포인트 | [정정 2026-10-08, Research Packet 외부 검증] 코드(query-bandit)는 MIT. 공식 Zenodo `13694558` 페이지에서 명시적 weight license를 확인하지 못함. 이전 기록의 "CC BY-NC-SA"는 확정할 수 없어 취소 | **제외** (사유: `WEIGHT_LICENSE_UNKNOWN`. 비상업으로 확인된 것이 아님) |
 | Open-Unmix `umxl` | README: "the weights are only licensed for non-commercial use (CC BY-NC-SA 4.0)" | **제외** |
 | Demucs 계열 전체 | 개발자가 가중치는 MIT가 아니며 과학적 목적으로만 제공한다고 밝힘(issue #327). 적용 범위가 특정되지 않아 전체 제외 | **제외** |
 | 출처 불명 커뮤니티 체크포인트 (BS-RoFormer 변형, 드럼 전용 모델 등) | 원 배포자·라이선스 미특정 | **제외** (정책으로 구제하지 않음) |

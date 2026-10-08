@@ -22,18 +22,20 @@
 
 위치: `data/separation/models/<model_id>/` (gitignore, 저장소 미포함)
 
-| model_id | 파일 | SHA-256 | 용도 | 가중치 라이선스 상태 |
-|---|---|---|---|---|
-| `melband_roformer_kj` | MelBandRoformer.ckpt | `87201f4d…c7559e` | **KJ** vocal/instrumental | MIT (publisher declared) |
-| `bs_roformer_vocal2` | vocal2.ckpt | `fb4d0d09…8952f6` | Mega53 파생, vocal | MIT (issue #245 선언) |
-| `bs_roformer_core4` | core4.ckpt | `24b900e2…9393ed` | Mega53 파생 head-pruning, piano/guitar/bass/drums | MIT (issue #245 선언) |
-| `bs_roformer_mega4/5/6/7` | mega{4,5,6,7}.ckpt | mega4 `c9e36874…`, mega5 `8a73fb56…`, mega6 `d33b5a08…`, mega7 `46e2e801…` | Mega53 파생 head 묶음 | MIT (issue #245 선언) |
-| `mega53_*` | official-53.ckpt `c6282089…`, 3head `9d97108e…`, 5head `05eb7b03…`, 5head_bowed `6c959b4d…` | | 53-stem 원본 및 head 실험본 | 위와 동일 |
-| `bs_roformer_6s` | bs_6stem_fixed.ckpt | `24e7d35e…75916e` | 6 stem | **UNKNOWN** |
-| `bs_karaoke` | bs_roformer_karaoke_frazer_becruily.ckpt | `eb90ee24…389f9` | lead/backing | **UNKNOWN** |
-| `melband_karaoke` | mel_band_roformer_karaoke_becruily.ckpt | `d3aa262a…a0e0` | lead/backing | **UNKNOWN** |
-| `demucs_htdemucs`, `_6s`, `_ft` | `.th` 6개 | 전체 해시는 `sha256sum`으로 재계산 | Demucs 비교 | 가중치 MIT 아님 (issue #327) → 제외 |
-| CLAPSep, LAION-CLAP | 별도 venv `data/separation/tools/clapsep-env` | | cymbal 질의 | UNKNOWN |
+| model_id | 파일 | SHA-256 | 용도 | 가중치 라이선스 | 학습 데이터 권리 |
+|---|---|---|---|---|---|
+| `melband_roformer_kj` | MelBandRoformer.ckpt | `87201f4d…c7559e` | **KJ** vocal/instrumental | MIT (publisher declared) | UNKNOWN |
+| `bs_roformer_vocal2` | vocal2.ckpt | `fb4d0d09…8952f6` | Mega53 파생, vocal | MIT (issue #245 선언) | UNKNOWN |
+| `bs_roformer_core4` | core4.ckpt | `24b900e2…9393ed` | Mega53 파생 head-pruning, piano/guitar/bass/drums | MIT (issue #245 선언) | UNKNOWN |
+| `bs_roformer_mega4/5/6/7` | mega{4,5,6,7}.ckpt | mega4 `c9e36874…`, mega5 `8a73fb56…`, mega6 `d33b5a08…`, mega7 `46e2e801…` | Mega53 파생 head 묶음 | MIT (issue #245 선언) | UNKNOWN |
+| `mega53_*` | official-53.ckpt `c6282089…`, 3head `9d97108e…`, 5head `05eb7b03…`, 5head_bowed `6c959b4d…` | | 53-stem 원본 및 head 실험본 | 위와 동일 | UNKNOWN |
+| `bs_roformer_6s` | bs_6stem_fixed.ckpt | `24e7d35e…75916e` | 6 stem | **UNKNOWN** | UNKNOWN |
+| `bs_karaoke` | bs_roformer_karaoke_frazer_becruily.ckpt | `eb90ee24…389f9` | lead/backing | **UNKNOWN** | UNKNOWN |
+| `melband_karaoke` | mel_band_roformer_karaoke_becruily.ckpt | `d3aa262a…a0e0` | lead/backing | **UNKNOWN** | UNKNOWN |
+| `demucs_htdemucs`, `_6s`, `_ft` | `.th` 6개 | 전체 해시는 `sha256sum`으로 재계산 | Demucs 비교 | 코드 MIT, 가중치 별도 권리 미확인 (issue #327) → OUR MODEL lineage 제외 | UNKNOWN |
+| CLAPSep, LAION-CLAP | 별도 venv `data/separation/tools/clapsep-env` | | cymbal 질의 | UNKNOWN | UNKNOWN |
+
+KJ 가중치는 2026-04-22 원 저자가 GPL-3.0에서 MIT로 변경한 기록이 외부 검증으로 확인됨(Research Packet). Mega53은 저자가 가중치를 MIT로 공개했으나 학습 오디오 전체의 저작권을 보유하지 않는다고 명시 → 가중치 라이선스와 학습 데이터 권리는 **별개 열**로 기록한다.
 
 전체 해시 원문은 Phase 0 실행 로그(`sha256sum`)에서 얻었다. 새 레지스트리 구현 시 이 표를 `configs/legacy/checkpoints.json`으로 옮긴다.
 
@@ -85,7 +87,7 @@ core4 설정: segment 10 s, overlap 0.4, fp16, batch 1. OOM 시 segment 5 s `mem
 | loss | multi-STFT (4096…256) w=1.0 | (upstream 기본) |
 | 학습 설정 | lr 1e-5, Adam, AMP, batch 4 | - |
 
-**핵심 관찰**: KJ의 "instrumental"은 `mix − vocals`이다. 따라서 보컬 잔향/잔여가 instrumental로 직접 전이되는 구조이며, 새 모델은 두 stem을 독립 head로 내고 mixture consistency를 loss로 건다 (ARCHITECTURE 문서 참조).
+**핵심 관찰**: KJ의 "instrumental"은 `mix − vocals`이다. 따라서 보컬 잔향/잔여가 instrumental로 직접 전이되는 구조다. 새 모델의 2-stem 출력 방식(A: Inst = Mix − Vocal / B: 독립 head + mixture consistency / C: 독립 예측 후 Mix 투영)은 **미확정**이며 Research Packet 01/02 이후 실험으로 결정한다. 현재 기록은 `candidate = independent heads` 뿐이다.
 
 ## 5. 기존 측정 수치 (태그 안 `docs/COMMERCIAL_CLEAN_CORE4_SUMMARY.md`, 합성 GT 기준)
 
