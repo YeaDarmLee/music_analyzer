@@ -56,6 +56,9 @@ def run_experiment(experiment_path: str | Path, base_dir: str | Path = ".", resu
     last = run.root / run.meta["checkpoints"][-1]["path"]
     result = evaluate_checkpoint(last, cfg, val_ds)
     result["train_val"] = val
+    if cfg.training.get("final_test") and "test" in cfg.dataset["params"].get("num_scenes", {}):  # test split: final only
+        test_ds = DATASETS.get(cfg.dataset["kind"])(cfg.dataset, model_cfg, "test", seed)
+        result["test"] = trainer.evaluate(test_ds, "test")
     run.finalize(result)
     return {"run_dir": run.root, "checkpoint": last, **result}
 

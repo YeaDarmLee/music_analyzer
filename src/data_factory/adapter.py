@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import time
 from pathlib import Path
 
 import numpy as np
@@ -19,7 +21,7 @@ from engine.registry import DATASETS
 from . import GENERATOR_VERSION, assets as A
 from .scenes import Factory
 from .schema import SceneSpec
-from .targets import SCHEMAS, build_targets
+from .targets import ATOMIC_ALL, SCHEMAS, build_targets
 from .util import hash_obj, read_wav, sub_rng
 
 
@@ -51,10 +53,53 @@ class DiskCache:
             f.unlink()
 
 
+RENDER_MODULES = ("sampler", "synth", "fx", "mixer", "vocal", "scenes", "util", "performance", "composition", "targets", "sfz", "schema")
+
+
+def renderer_version() -> str:
+    """Hash of the render-path source files: any code change invalidates the scene cache automatically."""
+    h = hashlib.sha256()
+    for m in RENDER_MODULES:
+        h.update((Path(__file__).parent / f"{m}.py").read_bytes())
+    return h.hexdigest()[:16]
+
+
+class SceneCache:
+    """Persistent full-scene cache (no eviction): one float32 .npy per scene holding ONLY the active final atomic stems
+    (n_active, 2, T); the mix is the float64 sum of the stems (== the mixer's definition), inactive stems are exact zeros.
+    Key = scene spec hash + generator + renderer source hash + asset records + instrument manifests + mix config; it never
+    depends on the crop, so every epoch can cut a different window from the same cached scene. Reads are memory-mapped, so a
+    crop costs ~1 MB of I/O. Writes are atomic (tmp + rename), safe with several DataLoader workers / fill processes."""
+
+    def __init__(self, root: str | Path):
+        self.root = Path(root)
+        self.root.mkdir(parents=True, exist_ok=True)
+
+    def path(self, key: str) -> Path:
+        return self.root / key[:2] / f"{key}.npy"
+
+    def load(self, key: str):
+        p = self.path(key)
+        try:
+            return np.load(p, mmap_mode="r") if p.exists() else None
+        except (ValueError, OSError):  # truncated/corrupt entry: treat as a miss and rewrite
+            return None
+
+    def put(self, key: str, arr: np.ndarray) -> None:
+        p = self.path(key)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        tmp = p.with_name(f"{p.name}.{os.getpid()}.tmp")
+        with open(tmp, "wb") as f:
+            np.save(f, np.ascontiguousarray(arr, dtype=np.float32))
+        os.replace(tmp, p)
+
+
 class SceneDataset(Dataset):
     def __init__(self, factory: Factory, split: str, n: int, schema: str, chunk_samples: int, mode: str = "lazy",
                  fixed_dir: str | Path | None = None, cache: DiskCache | None = None, epoch_salt: int = 0,
-                 render_path: str = "full", activity_threshold: float = 1e-4):
+                 render_path: str = "full", activity_threshold: float = 1e-4, scene_cache: "SceneCache | None" = None):
+        self.scene_cache = scene_cache
+        self._ctx: str | None = None
         self.f, self.split, self.n, self.schema, self.chunk = factory, split, n, schema, chunk_samples
         self.mode, self.fixed_dir, self.cache, self.salt = mode, Path(fixed_dir) if fixed_dir else None, cache, epoch_salt
         self._specs: dict[int, SceneSpec] = {}
@@ -68,7 +113,48 @@ class SceneDataset(Dataset):
             self._specs[i] = self.f.make_spec(i, self.split)
         return self._specs[i]
 
+    def set_epoch(self, epoch: int) -> None:
+        """Deterministic per-epoch crop variation (training only); fixed val/test datasets are never given an epoch."""
+        self.salt = int(epoch)
+
+    def cache_key(self, sp: SceneSpec) -> str:
+        if self._ctx is None:
+            f = self.f
+            self._ctx = hash_obj({
+                "generator": GENERATOR_VERSION, "renderer": renderer_version(), "sr": f.sr, "mix": f.cfg["mix"],
+                "assets": {a: [r.get("sha256"), r.get("version")] for a, r in sorted(f.records.items())},
+                "instruments": {i: hash_obj(x.m) for i, x in sorted(f.instruments.items())}})
+        return hash_obj([sp.hash(), self._ctx])[:32]
+
+    def _cached_atomic(self, sp: SceneSpec):
+        """-> ({stem: (2,T)} for active stems, cache_hit). Renders + stores on a miss."""
+        key = self.cache_key(sp)
+        arr = self.scene_cache.load(key)
+        if arr is not None and arr.shape[0] == len(sp.active_stems):
+            return {s: arr[j] for j, s in enumerate(sp.active_stems)}, True
+        r = self.f.render(sp)
+        arr = np.stack([r["atomic"][s] for s in sp.active_stems])
+        self.scene_cache.put(key, arr)
+        return {s: arr[j] for j, s in enumerate(sp.active_stems)}, False
+
+    def ensure_cached(self, i: int) -> bool:
+        """Cache fill helper. -> True if it was already cached."""
+        sp = self.spec(i)
+        if self.scene_cache.load(self.cache_key(sp)) is not None:
+            return True
+        self._cached_atomic(sp)
+        return False
+
+    def _group(self, i: int) -> dict:
+        if self.mode == "fixed":
+            m = json.loads((self.fixed_dir / f"{self.split}_{i:07d}" / "metadata.json").read_text(encoding="utf-8"))
+            return {"category": m["scene_type"], "singer": (m.get("vocal") or {}).get("singer", "")}
+        sp = self.spec(i)
+        return {"category": sp.scene_type, "singer": (sp.vocal or {}).get("singer", "")}
+
     def __getitem__(self, i: int):
+        t0 = time.perf_counter()
+        self._hit = False
         if self.mode == "fixed":
             mix, tg = self._fixed(i)
         else:
@@ -78,7 +164,8 @@ class SceneDataset(Dataset):
         # activity is read from the cropped target itself: a stem that is active in the scene but silent in this crop
         # (rest, silence block) must also be treated as inactive by the loss
         active = {k: torch.tensor(bool(np.abs(v).max() > self.act_thr)) for k, v in stems.items()}
-        return {"mix": torch.from_numpy(mix), "stems": {k: torch.from_numpy(v) for k, v in stems.items()}, "active": active}
+        return {"mix": torch.from_numpy(mix), "stems": {k: torch.from_numpy(v) for k, v in stems.items()}, "active": active,
+                "group": self._group(i), "telemetry": {"load_s": torch.tensor(time.perf_counter() - t0), "hit": torch.tensor(float(self._hit))}}
 
     def full_scene(self, sp: SceneSpec):
         """Training path: the WHOLE scene is rendered (all FX, scene-level gain) and only then cropped, so a crop equals
@@ -99,6 +186,14 @@ class SceneDataset(Dataset):
         if self.render_path == "window":  # experimental optimization path; NOT equal to the full render (see docs)
             win = (start / sp.sample_rate, min(end, sp.duration_samples) / sp.sample_rate)
             return self.f.render_targets(sp, self.schema, win)
+        if self.scene_cache is not None:  # persistent full-scene cache: cut the crop out of the cached whole scene
+            atomic, self._hit = self._cached_atomic(sp)
+            sl = slice(start, end)
+            crop = {s: np.asarray(a[:, sl]) for s, a in atomic.items()}
+            mix = sum(crop[s].astype(np.float64) for s in ATOMIC_ALL if s in crop).astype(np.float32)  # mixer order: mix == sum(stems)
+            ref = next(iter(crop.values()))
+            full = {s: crop.get(s, np.zeros_like(ref)) for s in ATOMIC_ALL}
+            return mix, build_targets(full, self.schema)
         mix, tg = self.full_scene(sp)
         return mix[:, start:end], {k: v[:, start:end] for k, v in tg.items()}
 
@@ -130,7 +225,8 @@ def build(ds_cfg: dict, model_cfg: dict, split: str, seed: int) -> SceneDataset:
     factory = Factory.from_yaml(p["factory_config"], p.get("repo_root", "."), records)
     n = p["num_scenes"][split]
     cache = DiskCache(p["cache_dir"], int(p["cache_max_gb"] * 1e9)) if p.get("cache_dir") else None
+    scene_cache = SceneCache(p["scene_cache_dir"]) if p.get("scene_cache_dir") and split == "train" else None
     mode = p.get("mode", {}).get(split, "lazy") if isinstance(p.get("mode"), dict) else p.get("mode", "lazy")
     return SceneDataset(factory, split, n, schema, int(p["chunk_samples"]), mode,
                         (p.get("fixed_dir") or None) and Path(p["fixed_dir"]), cache,
-                        render_path=p.get("render_path", "full"), activity_threshold=float(p.get("activity_threshold", 1e-4)))
+                        render_path=p.get("render_path", "full"), activity_threshold=float(p.get("activity_threshold", 1e-4)), scene_cache=scene_cache)

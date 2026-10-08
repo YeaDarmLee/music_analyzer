@@ -14,6 +14,7 @@ params:
   num_scenes: {train: 15000, val: 500, test: 500}
   mode: {train: lazy, val: fixed, test: fixed}
   fixed_dir: data/factory/dataset_v0
-  cache_dir: null
+  cache_dir: null                      # legacy LRU window cache: unused
+  scene_cache_dir: data/cache/dataset_v0   # persistent full-scene cache (train only); key never depends on the crop
   render_path: full
   activity_threshold: 0.0001

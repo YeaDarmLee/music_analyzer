@@ -304,3 +304,13 @@ def test_attribution_obligation_enforced():
         require_valid(unstated, "PRODUCTION_TRAINING")
     assert validate_manifest(_manifest(license_url=""), "PRODUCTION_TRAINING")
     assert validate_manifest(unstated, "RESEARCH") == []  # research does not demand obligations
+
+
+def test_checkpoint_pruning_keeps_recent_and_best(cfg, tcfg, datasets, tmp_path):
+    tcfg["checkpoint_every"], tcfg["keep_recent"] = 1, 2
+    t = trainer_for(cfg, tcfg, datasets, tmp_path)
+    t.best = {"val_si_sdr": {"value": 1.0, "step": 1}}
+    t.fit(max_steps=4)
+    names = sorted(p.name for p in (tmp_path / "ck").glob("step_*.ckpt"))
+    assert names == ["step_000001.ckpt", "step_000003.ckpt", "step_000004.ckpt"]  # best (1) + two newest
+    assert not (tmp_path / "ck" / "step_000002.ckpt.provenance.json").exists()

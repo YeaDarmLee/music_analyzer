@@ -6,8 +6,11 @@ Resume is exact at optimizer-step boundaries: model, optimizer, scheduler, GradS
 from __future__ import annotations
 
 import itertools
+import json
 import os
 import random
+import subprocess
+import time
 from pathlib import Path
 from typing import Callable
 
@@ -19,6 +22,7 @@ from engine.checkpoint import capture_rng, load_checkpoint, restore_rng, save_ch
 from engine.interfaces import SeparatorModel
 from engine.registry import METRICS
 from engine.training.losses import build_composite
+from engine.training.metrics import ValAggregator
 
 
 class TrainingOOMError(RuntimeError):
@@ -79,6 +83,14 @@ class Trainer:
         self.loss_fn = build_composite(tcfg["losses"])
         self.metric_fns = [(m["name"], METRICS.get(m["name"]), m["kwargs"]) for m in tcfg["metrics"]]
         self.step = self.epoch = self.batch_in_epoch = 0
+        self.best: dict = {}  # metadata only: best value + step per tracked metric (checkpoints are pruned, see _prune)
+        self._psutil = None
+        try:
+            import psutil
+            self._psutil = psutil
+            psutil.cpu_percent(None)
+        except ImportError:
+            pass
         if len(train_ds) < tcfg["batch_size"]:
             raise ValueError("train dataset smaller than batch_size")
 
@@ -121,7 +133,30 @@ class Trainer:
         path = self.ckpt_dir / f"step_{self.step:06d}.ckpt"
         save_checkpoint(path, self.state(), self.prov)
         self.on_checkpoint(path, self.step)
+        self._prune()
         return path
+
+    def _prune(self) -> None:
+        """keep_recent (optional): keep the N newest step checkpoints plus the best-val_si_sdr one; best.json tracks the rest."""
+        keep = self.tcfg.get("keep_recent")
+        if not keep:
+            return
+        ckpts = sorted(self.ckpt_dir.glob("step_*.ckpt"))
+        protect = {f"step_{self.best['val_si_sdr']['step']:06d}.ckpt"} if "val_si_sdr" in self.best else set()
+        for p in ckpts[:-keep]:
+            if p.name not in protect:
+                p.unlink()
+                side = p.with_name(p.name + ".provenance.json")
+                if side.exists():
+                    side.unlink()
+
+    def _track_best(self, val: dict) -> None:
+        for key in ("val_si_sdr", "val_si_sdr_vocals", "val_si_sdr_instrumental"):
+            v = val.get(key)
+            if v is not None and v == v and (key not in self.best or v > self.best[key]["value"]):
+                self.best[key] = {"value": v, "step": self.step}
+        self.ckpt_dir.mkdir(parents=True, exist_ok=True)
+        (self.ckpt_dir / "best.json").write_text(json.dumps(self.best, indent=1), encoding="utf-8")
 
     def resume(self, path: str | Path) -> dict:
         state, prov = load_checkpoint(path, map_location=self.device)
@@ -132,16 +167,23 @@ class Trainer:
         self.scaler.load_state_dict(state["scaler"])
         self.step, self.epoch, self.batch_in_epoch = state["step"], state["epoch"], state["batch_in_epoch"]
         restore_rng(state["rng"])
+        b = Path(path).parent / "best.json"
+        if b.exists():
+            self.best = json.loads(b.read_text(encoding="utf-8"))
         return prov
 
     # --- validation --------------------------------------------------------------------------------------
     @torch.no_grad()
-    def validate(self) -> dict:
+    def validate(self, ds=None) -> dict:
+        ds = ds if ds is not None else self.val_ds
         self.model.eval()
         losses, sums, n = [], {name: 0.0 for name, _, _ in self.metric_fns}, 0
         counts = {name: 0 for name, _, _ in self.metric_fns}
+        agg = ValAggregator()
         try:
-            for batch in itertools.islice(self._loader(self.val_ds, False), self.tcfg["val_batches"]):
+            for batch in itertools.islice(self._loader(ds, False), self.tcfg["val_batches"]):
+                group = batch.pop("group", None)
+                batch.pop("telemetry", None)
                 batch = _to_device(batch, self.device)
                 out, loss, _ = self._forward_loss(batch)
                 losses.append(float(loss))
@@ -150,6 +192,7 @@ class Trainer:
                     if v == v:  # NaN = metric undefined for this batch (e.g. no active item)
                         sums[name] += v
                         counts[name] += 1
+                agg.add(out, batch["stems"], batch["mix"], batch.get("active"), group)
                 n += 1
         except torch.cuda.OutOfMemoryError as e:
             raise self._oom(e) from e
@@ -157,7 +200,34 @@ class Trainer:
             self.model.train()
         if n == 0:
             raise ValueError("validation produced no batches")
-        return {"val_loss": sum(losses) / n, **{f"val_{k}": (v / counts[k] if counts[k] else float("nan")) for k, v in sums.items()}}
+        return {"val_loss": sum(losses) / n, **{f"val_{k}": (v / counts[k] if counts[k] else float("nan")) for k, v in sums.items()},
+                **agg.summary()}
+
+    def evaluate(self, ds, event: str = "test") -> dict:
+        res = self.validate(ds)
+        self.log({"event": event, "step": self.step, **res})
+        return res
+
+    @staticmethod
+    def _gpu_util():
+        try:
+            r = subprocess.run(["nvidia-smi", "--query-gpu=utilization.gpu", "--format=csv,noheader,nounits"], capture_output=True,
+                               text=True, timeout=5)
+            return float(r.stdout.strip().splitlines()[0])
+        except Exception:
+            return None
+
+    def _timed(self, loader):
+        """Iterate a DataLoader while accumulating the time spent blocked waiting for the next batch."""
+        it = iter(loader)
+        while True:
+            t = time.perf_counter()
+            try:
+                b = next(it)
+            except StopIteration:
+                return
+            self._wait += time.perf_counter() - t
+            yield b
 
     # --- training ----------------------------------------------------------------------------------------
     def fit(self, max_steps: int | None = None) -> dict:
@@ -168,10 +238,18 @@ class Trainer:
         self.optimizer.zero_grad(set_to_none=True)
         micro = 0
         last_val: dict = {}
+        self._wait, t_step, tele = 0.0, time.perf_counter(), {"load_s": [], "hit": []}
         while self.step < target:
-            for i, batch in enumerate(self._loader(self.train_ds, True, self.epoch)):
+            if hasattr(self.train_ds, "set_epoch"):
+                self.train_ds.set_epoch(self.epoch)  # epoch-dependent crop (deterministic: depends only on the epoch)
+            for i, batch in enumerate(self._timed(self._loader(self.train_ds, True, self.epoch))):
                 if i < self.batch_in_epoch:
                     continue
+                batch.pop("group", None)
+                t = batch.pop("telemetry", None)
+                if t:
+                    tele["load_s"] += t["load_s"].tolist()
+                    tele["hit"] += t["hit"].tolist()
                 batch = _to_device(batch, self.device)
                 try:
                     _, loss, parts = self._forward_loss(batch)
@@ -193,11 +271,24 @@ class Trainer:
                 if self.scheduler and not self.plateau:
                     self.scheduler.step()
                 self.step += 1
+                now = time.perf_counter()
+                perf = {"step_s": now - t_step, "data_wait_s": self._wait, "chunks_per_s": accum * self.tcfg["batch_size"] / (now - t_step),
+                        "epoch": self.epoch, "cache_hit_rate": sum(tele["hit"]) / max(len(tele["hit"]), 1),
+                        "item_load_s": sum(tele["load_s"]) / max(len(tele["load_s"]), 1)}
+                if self.device.type == "cuda":
+                    perf["peak_vram_mib"] = torch.cuda.max_memory_allocated(self.device) / (1 << 20)
+                    if self.step % 25 == 0 or self.step <= 5:
+                        perf["gpu_util_pct"] = self._gpu_util()
+                if self._psutil and (self.step % 25 == 0 or self.step <= 5):
+                    perf["cpu_util_pct"] = self._psutil.cpu_percent(None)
+                self._wait, t_step, tele = 0.0, now, {"load_s": [], "hit": []}
                 self.log({"event": "train", "step": self.step, "loss": float(loss), "parts": parts,
-                          "lr": self.optimizer.param_groups[0]["lr"], "grad_norm": gnorm})
+                          "lr": self.optimizer.param_groups[0]["lr"], "grad_norm": gnorm, **perf})
                 if self.step % self.tcfg["val_every"] == 0 or self.step == target:
                     last_val = self.validate()
+                    self._track_best(last_val)
                     self.log({"event": "val", "step": self.step, **last_val})
+                    t_step = time.perf_counter()
                     if self.plateau:
                         self.scheduler.step(last_val[self.monitor])
                 if self.step % self.tcfg["checkpoint_every"] == 0 or self.step == target:

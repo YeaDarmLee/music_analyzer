@@ -392,7 +392,8 @@ def _train_steps(fac, device, steps=2):
     t = Trainer(build_model(mc), tc, tr, va, tempfile.mkdtemp(), prov)
     before = [p.detach().clone() for p in t.model.parameters()]
     val = t.fit()
-    assert t.step == steps and all(np.isfinite(v) for v in val.values())
+    core = ["val_loss", "val_sdr", "val_si_sdr", "val_reconstruction_error_db"]  # grouped/per-stem detail may be NaN (no active item)
+    assert t.step == steps and all(np.isfinite(val[k]) for k in core)
     assert any(not torch.equal(a, b.detach()) for a, b in zip(before, t.model.parameters()))
     return val
 
@@ -597,3 +598,58 @@ def test_vocal_len_s_truncates_with_fade(tmp_path):
     spec = {"clip_id": "c.wav", "crop_start_s": 0.0, "place_start_s": 0.5, "len_s": 1.0, "silence": [], "double": None}
     y = render_vocal(spec, tmp_path, 44100 * 3, 44100)
     assert np.abs(y[:, int(1.55 * 44100):]).max() == 0 and np.abs(y[:, int(1.4 * 44100):int(1.45 * 44100)]).max() > 0
+
+
+# ---- persistent full-scene cache + per-epoch crops + validation detail ------------------------------------------------------
+def test_scene_cache_crop_exact_and_epoch_variation(fac, tmp_path):
+    from data_factory.adapter import SceneCache, crop_start_samples
+    sc = SceneCache(tmp_path / "sc")
+    ds = SceneDataset(fac, "train", 6, "2stem_v1", 131584, "lazy", scene_cache=sc)
+    ref = SceneDataset(fac, "train", 6, "2stem_v1", 131584, "lazy")  # uncached full-render path
+    starts = {}
+    for epoch in (0, 1, 2):
+        ds.set_epoch(epoch)
+        ref.set_epoch(epoch)
+        for i in range(6):
+            a, b = ds[i], ref[i]  # epoch 0: miss (render+store); later epochs: hit (mmap crop of the same cached scene)
+            assert bool(a["telemetry"]["hit"]) == (epoch > 0)
+            assert torch.equal(a["mix"], b["mix"]) and all(torch.equal(a["stems"][k], b["stems"][k]) for k in a["stems"])
+            assert a["active"].keys() == b["active"].keys() and all(bool(a["active"][k]) == bool(b["active"][k]) for k in a["active"])
+            sp = ds.spec(i)
+            starts.setdefault(i, set()).add(crop_start_samples(sp.seeds["mix"] + epoch, sp.duration_samples, 131584))
+    assert sum(len(v) > 1 for v in starts.values()) >= 4  # scenes longer than the chunk get a different window each epoch
+    ds.set_epoch(1)
+    assert torch.equal(ds[2]["mix"], ds[2]["mix"])  # same epoch -> same crop (reproducible)
+    assert len(list((tmp_path / "sc").rglob("*.npy"))) == 6  # one entry per scene, independent of crop/epoch
+
+
+def test_scene_cache_key_ignores_crop_and_follows_content(fac, tmp_path):
+    from data_factory.adapter import SceneCache
+    ds = SceneDataset(fac, "train", 2, "2stem_v1", 131584, "lazy", scene_cache=SceneCache(tmp_path / "k"))
+    sp = ds.spec(0)
+    k0 = ds.cache_key(sp)
+    ds.set_epoch(5)
+    assert ds.cache_key(sp) == k0 and ds.cache_key(ds.spec(1)) != k0
+    inst = next(iter(fac.instruments.values()))
+    old = inst.m["zones"][0]["volume_db"]
+    try:
+        inst.m["zones"][0]["volume_db"] = old + 1.0  # an asset/instrument change must invalidate every cached scene
+        ds2 = SceneDataset(fac, "train", 2, "2stem_v1", 131584, "lazy", scene_cache=SceneCache(tmp_path / "k"))
+        assert ds2.cache_key(sp) != k0
+    finally:
+        inst.m["zones"][0]["volume_db"] = old
+
+
+def test_val_aggregator_groups_and_active_only():
+    from engine.interfaces import SeparationOutput
+    from engine.training.metrics import ValAggregator
+    t = torch.randn(2, 2, 4000)
+    tgt = {"vocals": t.clone(), "instrumental": torch.zeros(2, 2, 4000)}
+    est = SeparationOutput({"vocals": t.clone() + 0.01 * torch.randn_like(t), "instrumental": torch.zeros(2, 2, 4000) + 1e-4}, 44100, {})
+    agg = ValAggregator()
+    agg.add(est, tgt, t.clone(), {"vocals": torch.tensor([True, True]), "instrumental": torch.tensor([False, False])},
+            {"category": ["a", "b"], "singer": ["s1", ""]})
+    s = agg.summary()
+    assert s["val_si_sdr_vocals"] > 20 and s["val_n_active_instrumental"] == 0 and s["val_si_sdr_instrumental"] != s["val_si_sdr_instrumental"]
+    assert s["val_category/a/n"] == 1 and s["val_singer/s1/n"] == 1 and "val_singer/" not in "".join(k for k in s if k.endswith("/n") and "/ /" in k)
+    assert s["val_category/a/inactive_rms_db"] < -20

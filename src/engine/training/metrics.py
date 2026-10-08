@@ -96,3 +96,62 @@ def measure_inference(fn, audio_seconds: float, device: torch.device) -> dict:
         "latency_s": dt, "rtf": dt / audio_seconds,
         "peak_vram_mib": torch.cuda.max_memory_allocated(device) / (1 << 20) if device.type == "cuda" else None,
     }
+
+
+class ValAggregator:
+    """Per-item validation detail: per-stem SDR / SI-SDR (active items only), inactive-stem RMS ratio, reconstruction error,
+    each also grouped by the batch's `group` labels (e.g. scene category, singer). Pure bookkeeping; no model/data knowledge."""
+
+    def __init__(self):
+        self.rows: list[dict] = []
+
+    def add(self, out, target, mix, active=None, group=None):
+        B = mix.shape[0]
+        m = _flat(mix).pow(2).mean(-1).sqrt().clamp_min(EPS)
+        total = sum(out.stems.values())
+        rec = (10 * torch.log10((_flat(total - mix) ** 2).sum(-1).clamp_min(EPS) / (_flat(mix) ** 2).sum(-1).clamp_min(EPS))).cpu()
+        per = {}
+        for n in out.stems:
+            if n not in target:
+                continue
+            act = active[n].to(mix.device).bool() if active is not None and n in active else torch.ones(B, dtype=torch.bool, device=mix.device)
+            ratio = 20 * torch.log10((_flat(out.stems[n]).pow(2).mean(-1).sqrt() / m).clamp_min(EPS))
+            per[n] = (sdr_db(out.stems[n], target[n]).cpu(), si_sdr_db(out.stems[n], target[n]).cpu(), act.cpu(), ratio.cpu())
+        for b in range(B):
+            row = {"recon": float(rec[b]), "group": {k: v[b] for k, v in (group or {}).items()}, "stems": {}}
+            for n, (sd, ssd, act, inr) in per.items():
+                row["stems"][n] = (float(sd[b]), float(ssd[b]), bool(act[b]), float(inr[b]))
+            self.rows.append(row)
+
+    @staticmethod
+    def _mean(v):
+        return sum(v) / len(v) if v else float("nan")
+
+    def summary(self) -> dict:
+        out, stems = {"val_items": len(self.rows), "val_recon_err_db": self._mean([r["recon"] for r in self.rows])}, set()
+        for r in self.rows:
+            stems |= set(r["stems"])
+        for n in sorted(stems):
+            act = [r["stems"][n] for r in self.rows if n in r["stems"] and r["stems"][n][2]]
+            out[f"val_sdr_{n}"] = self._mean([a[0] for a in act])
+            out[f"val_si_sdr_{n}"] = self._mean([a[1] for a in act])
+            out[f"val_n_active_{n}"] = len(act)
+        groups: dict[tuple, list] = {}
+        for r in self.rows:
+            for gk, gv in r["group"].items():
+                if gv != "":
+                    groups.setdefault((gk, gv), []).append(r)
+        for (gk, gv), rs in sorted(groups.items()):
+            act = [(n, s) for r in rs for n, s in r["stems"].items() if s[2]]
+            ina = [s[3] for r in rs for s in r["stems"].values() if not s[2]]
+            pre = f"val_{gk}/{gv}"
+            out[f"{pre}/sdr"] = self._mean([s[0] for _, s in act])
+            out[f"{pre}/si_sdr"] = self._mean([s[1] for _, s in act])
+            out[f"{pre}/inactive_rms_db"] = self._mean(ina)
+            out[f"{pre}/n"] = len(rs)
+            for n in sorted(stems):  # per stem within the group (vocal vs instrumental per singer / category)
+                a = [s for nn, s in act if nn == n]
+                if a:
+                    out[f"{pre}/si_sdr_{n}"] = self._mean([s[1] for s in a])
+                    out[f"{pre}/sdr_{n}"] = self._mean([s[0] for s in a])
+        return out

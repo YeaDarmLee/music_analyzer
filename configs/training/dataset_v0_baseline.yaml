@@ -1,0 +1,33 @@
+# First real baseline (Research Lead, 2026-10-08): 20 epochs x 1,875 steps = 37,500. FROZEN for the run: do not change
+# architecture / loss weights / optimizer / distribution / assets mid-run (baseline comparability).
+# Research Packet 02 baseline values (optimizer/scheduler/batch/AMP/checkpointing/loss).
+seed: 1234
+device: cuda
+num_workers: 6
+deterministic: false        # TF32/atomics speed; bit-exact resume is covered by the CPU tiny-model test
+max_steps: 37500
+batch_size: 1
+grad_accum_steps: 8
+optimizer: {name: Adam, lr: 0.00005, kwargs: {betas: [0.9, 0.999], eps: 1.0e-8, weight_decay: 0.0}}
+scheduler:
+  name: ReduceLROnPlateau
+  monitor: val_si_sdr
+  kwargs: {mode: max, factor: 0.5, patience: 3, min_lr: 1.0e-6}
+amp: {enabled: true, dtype: float16}
+grad_clip_norm: 1.0
+gradient_checkpointing: true
+losses:
+  - {name: waveform_l1, weight: 1.0, kwargs: {}}
+  - name: multires_stft
+    weight: 1.0
+    kwargs: {resolutions: [[2048, 512, 2048], [1024, 256, 1024], [512, 128, 512]], sc_floor_rel: 0.01, inactive_linear_weight: 1.0}
+metrics:
+  - {name: sdr, kwargs: {}}
+  - {name: si_sdr, kwargs: {}}
+  - {name: reconstruction_error_db, kwargs: {}}
+  - {name: inactive_rms_ratio_db, kwargs: {}}
+val_every: 1000
+val_batches: 500           # full fixed validation set (500 scenes, one fixed crop each)
+checkpoint_every: 1000
+keep_recent: 3             # + the best val_si_sdr checkpoint; best.json tracks best overall/vocal/instrumental
+final_test: true           # test split is evaluated once, after the last step
