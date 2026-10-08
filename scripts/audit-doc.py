@@ -147,7 +147,9 @@ mb_n = sum(1 for a in lib["analyses"] if a["classification"] in ("MANUAL_TEST", 
 mb_gb = sum(a["folder_bytes"] for a in lib["analyses"] if a["classification"] in ("MANUAL_TEST", "BENCHMARK") and a["state"] == "SUCCEEDED") / 2**30
 w(f"| **REVIEW** (사용자 확인 후) | {gb(risk['REVIEW'])} | 분석 {review_n}건(약 {review_gb:.1f} GB; DEMO 1.2 / MANUAL_TEST 24.4 / BENCHMARK 17.5 중 FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |")
 w(f"| **KEEP** | {gb(risk['KEEP'])} | `.venv` 4.7 GB, production 체크포인트 1.5 GB, 소스·설정·문서·라이선스 증빙, 청정 벤치마크 source(BabySlakh, FreePats, pad-eval stems), 데모곡 mix·stems, report·metrics, `.git` |")
-w(f"| **UNKNOWN** | {gb(risk['UNKNOWN'])} | 분석 `bed`(basic_2, 150 s, 소스 불명) |")
+unknown_rows = [a for a in lib["analyses"] if a["classification"] == "UNKNOWN" and a["state"] == "SUCCEEDED"]
+unknown_n = len(unknown_rows); unknown_names = ", ".join("`" + a["name"][:30] + "`" for a in unknown_rows)
+w(f"| **UNKNOWN** | {gb(risk['UNKNOWN'])} | 분석 {unknown_n}건: {unknown_names} (원곡이 `song/`에도 샘플곡에도 없음) |")
 w(f"\n### 권고 순서\n1. SAFE 7.2 GB: 승인되면 삭제 직전에 참조 그래프를 다시 계산해서(그 사이 새 분석이 생길 수 있음) 실행.\n2. REVIEW 중 가장 큰 효과: (a) 분석 50건 처리 방침(전부 보관 / MANUAL_TEST·BENCHMARK {mb_n}건 삭제 시 약 {mb_gb:.1f} GB 회수 / DEMO는 별도), (b) `ground-truth/cases`·`pad-eval/cases`의 이전 버전 폴더 정리 또는 sha256 dedup(약 11 GB), (c) AudioSep·wesep 삭제(4.1 GB), (d) reset-backups(2.3 GB).\n3. 포맷 최적화(FLAC24, −32 GB 예상)는 삭제가 아니라 별도 결정 사항이며, 합계 보존 계약·manifest 변경이 선행된다.\n")
 w("사용자 데이터로 의심되는 파일(`B USER_PERSISTENT`, `I UNKNOWN`)은 이 보고서에서 삭제 대상으로 확정하지 않았다.")
 Path(ROOT / "docs/FULL_DISK_AUDIT_KO.md").write_text("\n".join(L) + "\n", encoding="utf-8")

@@ -49,7 +49,7 @@ for i, r in records.items():
     base_name = re.sub(r"\s*·.*$", "", name)
     import difflib
     key = norm(base_name)
-    in_song = next((songs[k] for k in songs if k and (k == key or k in key or key in k)), None)
+    in_song = songs.get(key) or next((songs[k] for k in songs if len(k) >= 6 and len(key) >= 6 and (k in key or key in k)), None)   # exact first; substrings only for titles of 6+ characters
     if not in_song and key:   # titles written differently (e.g. "millsage - 기사개전 (起死開戦)" vs song/millsage-(起死開戦.mp3)
         best = max(songs, key=lambda k: difflib.SequenceMatcher(None, k, key).ratio())
         in_song = songs[best] if difflib.SequenceMatcher(None, best, key).ratio() >= .6 else None

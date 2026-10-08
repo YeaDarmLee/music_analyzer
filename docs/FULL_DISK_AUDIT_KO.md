@@ -8,9 +8,9 @@
 |---|---:|
 | 현재 전체 프로젝트 (물리) | **102.56 GB** (논리 103.25 GB, 차이는 하드링크) |
 | 안전하게 바로 삭제 가능 (SAFE) | 7.24 GB |
-| 사용자 확인 후 삭제 (REVIEW) | 86.44 GB |
+| 사용자 확인 후 삭제 (REVIEW) | 85.18 GB |
 | 유지 필수 (KEEP) | 8.73 GB |
-| UNKNOWN (자동 삭제 금지) | 0.15 GB |
+| UNKNOWN (자동 삭제 금지) | 1.42 GB |
 
 핵심: 프로젝트의 **약 98 %가 `data/`** 이고, 그중 **43.6 GB는 `data/separation/web`의 분석 50건**(최종 stem)이다. 코드·설정·문서·라이선스 증빙·`.git`은 합쳐서 0.1 GB 미만이다. `.git`은 9.3 MB(커밋 80개, 최대 blob 0.49 MB)라 과거에 대형 파일을 커밋한 흔적이 없다.
 
@@ -214,19 +214,19 @@
 
 | 카테고리 | 위험도 | 용량 | 파일 수 |
 |---|---|---:|---:|
-| B USER_PERSISTENT | REVIEW | 44.38 GB | 1,216 |
+| B USER_PERSISTENT | REVIEW | 43.12 GB | 1,200 |
 | D REGENERABLE | REVIEW | 27.09 GB | 6,827 |
 | E DEV_TOOL | REVIEW | 12.70 GB | 16,512 |
 | H ORPHAN | SAFE | 6.94 GB | 203 |
-| A PRODUCTION_REQUIRED | KEEP | 6.16 GB | 24,438 |
+| A PRODUCTION_REQUIRED | KEEP | 6.16 GB | 24,451 |
 | C TEST_FIXTURE_REQUIRED | KEEP | 2.57 GB | 1,790 |
 | G LEGACY_BACKUP | REVIEW | 2.27 GB | 131 |
-| F CACHE | SAFE | 0.30 GB | 14,518 |
-| I UNKNOWN | UNKNOWN | 0.15 GB | 14 |
+| I UNKNOWN | UNKNOWN | 1.42 GB | 30 |
+| F CACHE | SAFE | 0.30 GB | 14,519 |
 
 | 항목 | 카테고리 | 위험도 | 용량 | 파일 |
 |---|---|---|---:|---:|
-| library analysis - MANUAL_TEST (visible in the dev accounts' library) | B | REVIEW | 24.37 GB | 346 |
+| library analysis - MANUAL_TEST (visible in the dev accounts' library) | B | REVIEW | 23.10 GB | 330 |
 | library analysis - BENCHMARK (visible in the dev accounts' library) | B | REVIEW | 17.52 GB | 282 |
 | case mixtures/references (regenerable from the sources above) | D | REVIEW | 15.53 GB | 3,901 |
 | case references / reports of the synthetic benchmark | D | REVIEW | 11.57 GB | 2,920 |
@@ -237,6 +237,7 @@
 | CLAPSep stack (needed only by the final_11 BASELINE cymbal path) | E | REVIEW | 2.47 GB | 3,511 |
 | reset-20261006 backup (5 study analyses, none in the DB) | G | REVIEW | 2.27 GB | 131 |
 | production checkpoints (APPROVED) | A | KEEP | 1.46 GB | 10 |
+| library analysis - UNKNOWN | I | UNKNOWN | 1.42 GB | 21 |
 | official-53 source checkpoint + 3-head experiment (provenance for pruned heads) | E | REVIEW | 1.39 GB | 4 |
 | scratch of the FAILED analysis | H | SAFE | 1.29 GB | 52 |
 | library analysis - DEMO (visible in the dev accounts' library) | B | REVIEW | 1.20 GB | 25 |
@@ -248,14 +249,13 @@
 | demo song mix + stems | C | KEEP | 0.34 GB | 28 |
 | FAILED analysis record (no deliverable) | H | SAFE | 0.32 GB | 14 |
 | .venv __pycache__ | F | SAFE | 0.18 GB | 9,679 |
-| library analysis - UNKNOWN | I | UNKNOWN | 0.15 GB | 5 |
 | song/ (developer's local commercial mp3 collection, not tracked) | E | REVIEW | 0.13 GB | 25 |
 | build / dependency caches | F | SAFE | 0.08 GB | 4,750 |
 | benchmark reports / metrics (commercial_13/6) | C | KEEP | 0.06 GB | 474 |
 | old smoke output / logs / runtime markers | F | SAFE | 0.03 GB | 51 |
 | playback / download caches | F | SAFE | 0.01 GB | 1 |
-| source, config, docs, license evidence, frontend | A | KEEP | 0.01 GB | 519 |
-| .git | A | KEEP | 0.01 GB | 1,674 |
+| source, config, docs, license evidence, frontend | A | KEEP | 0.01 GB | 521 |
+| .git | A | KEEP | 0.01 GB | 1,685 |
 
 UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지워도 기능·사용자 데이터 손실 없음 (삭제 직전 재검증), REVIEW=사용자 확인 필요, KEEP=유지.
 
@@ -267,53 +267,53 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 
 | id | 생성일 | preset (version) | 상태 | 소유 | 이름 | final | original | 폴더 합계(회수 가능) | 수정일 | 분류 | 근거 |
 |---|---|---|---|---|---|---:|---:|---:|---|---|---|
-| 18f1c73b | 2026-10-06T15:54 | final_10 (v5) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 941 MB | 86 MB | 1,027 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 18f1c73b | 2026-10-06T15:54 | final_10 (v5) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 941 MB | 86 MB | 1,027 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - 분홍신 [가사 Lyrics].mp3' was analysed again later  |
 | 911d1dca | 2026-10-06T16:03 | final_10 (v5) | SUCCEEDED | 6ff80a | MyGO!!!!!-壱雫空 | 702 MB | 64 MB | 766 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'MyGO!!!!!-壱雫空.mp3' was analysed again later with another |
 | f60c7cfe | 2026-10-06T16:10 | final_10 (v5) | FAILED | - | millsage - 기사개전 (起死開戦) | 0 MB | 0 MB | 332 MB | 2026-10-06 | **BENCHMARK** | older iteration: the same source 'millsage-(起死開戦.mp3' was analysed again later with anothe |
 | fc67d335 | 2026-10-06T16:15 | final_10 (v5) | SUCCEEDED | 6ff80a | millsage - 기사개전 (起死開戦) | 723 MB | 66 MB | 789 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'millsage-(起死開戦.mp3' was analysed again later with anothe |
-| b4793dce | 2026-10-06T16:23 | final_10 (v5) | SUCCEEDED | 6ff80a | 주님의 선하심 Goodness of God albastian  | 1,667 MB | 152 MB | 1,818 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| b4793dce | 2026-10-06T16:23 | final_10 (v5) | SUCCEEDED | 6ff80a | 주님의 선하심 Goodness of God albastian  | 1,667 MB | 152 MB | 1,818 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/주님의 선하심 Goodness of God albastian live worship vol.3.mp3 (developer's  |
 | 729b4ed1 | 2026-10-06T16:37 | final_10 (v5) | SUCCEEDED | 6ff80a | My Name is Malguem (내 이름 맑음) | 697 MB | 63 MB | 760 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/My Name is Malguem (내 이름 맑음).mp3 (developer's local collection of comm |
 | f7111f85 | 2026-10-06T16:47 | final_10 (v5) | SUCCEEDED | 6ff80a | 아름다운 나라 Kingdom Beautiful [WELOVE] | 1,289 MB | 117 MB | 1,406 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/아름다운 나라 Kingdom Beautiful [WELOVE].mp3 (developer's local collection o |
 | 8c140611 | 2026-10-06T17:11 | final_10 (v5) | SUCCEEDED | 6ff80a | MyGO!!!!!-壱雫空 | 702 MB | 64 MB | 766 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'MyGO!!!!!-壱雫空.mp3' was analysed again later with another |
-| 4224d3f3 | 2026-10-06T17:19 | final_10 (v5) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 941 MB | 86 MB | 1,027 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 4224d3f3 | 2026-10-06T17:19 | final_10 (v5) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 941 MB | 86 MB | 1,027 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - 분홍신 [가사 Lyrics].mp3' was analysed again later  |
 | 261d02cb | 2026-10-06T17:27 | final_10 (v5) | SUCCEEDED | 6ff80a | 알바스천-미라클 제너레이션 | 892 MB | 81 MB | 973 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '알바스천-미라클 제너레이션.mp3' was analysed again later with anothe |
 | 6e2f464d | 2026-10-06T18:56 | final_10 (v5) | SUCCEEDED | 6ff80a | 알바스천-미라클 제너레이션 | 892 MB | 81 MB | 973 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '알바스천-미라클 제너레이션.mp3' was analysed again later with anothe |
-| 77516f19 | 2026-10-06T19:10 | final_10 (v5) | SUCCEEDED | 6ff80a | WELOVE - 시간을 뚫고 (The Time, Penetra | 1,288 MB | 117 MB | 1,405 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
-| 71e1efc0 | 2026-10-06T19:49 | basic_2 (-) | SUCCEEDED | 6ff80a | SPYAIR - サムライハート(Some Like It Hot! | 129 MB | 64 MB | 193 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| 77516f19 | 2026-10-06T19:10 | final_10 (v5) | SUCCEEDED | 6ff80a | WELOVE - 시간을 뚫고 (The Time, Penetra | 1,288 MB | 117 MB | 1,405 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/WELOVE - 시간을 뚫고 (The Time, Penetrated Eng, CHN Sub).mp3 (developer's l |
+| 71e1efc0 | 2026-10-06T19:49 | basic_2 (-) | SUCCEEDED | 6ff80a | SPYAIR - サムライハート(Some Like It Hot! | 129 MB | 64 MB | 193 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/SPYAIR - サムライハート(Some Like It Hot!!).mp3 (developer's local collection |
 | 662b89d2 | 2026-10-06T19:51 | bs_karaoke (-) | SUCCEEDED | 6ff80a | SPYAIR - サムライハート(Some Like It Hot! | 129 MB | 64 MB | 193 MB | 2026-10-08 | **BENCHMARK** | derived from another analysis (parent_analysis_id / '보완' / '리드/코러스' in the name) |
-| a382cc37 | 2026-10-06T19:53 | basic_6 (-) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 513 MB | 86 MB | 599 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| a382cc37 | 2026-10-06T19:53 | basic_6 (-) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 513 MB | 86 MB | 599 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - 분홍신 [가사 Lyrics].mp3' was analysed again later  |
 | 145ff851 | 2026-10-06T20:01 | basic_6 (-) | SUCCEEDED | 6ff80a | 아이유(IU) - Blueming(블루밍) | 439 MB | 73 MB | 512 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - Blueming(블루밍).mp3' was analysed again later wi |
 | f8f1ca6e | 2026-10-06T20:07 | final_11 (recovery-v7) | SUCCEEDED | 6ff80a | 아이유(IU) - Blueming(블루밍) | 804 MB | 73 MB | 877 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - Blueming(블루밍).mp3' was analysed again later wi |
 | e5c3a195 | 2026-10-06T20:25 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 아이유(IU) - Blueming(블루밍) | 877 MB | 73 MB | 950 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - Blueming(블루밍).mp3' was analysed again later wi |
-| 011aae99 | 2026-10-06T20:35 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,027 MB | 86 MB | 1,112 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 011aae99 | 2026-10-06T20:35 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,027 MB | 86 MB | 1,112 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - 분홍신 [가사 Lyrics].mp3' was analysed again later  |
 | 7cdf607e | 2026-10-06T20:48 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 알바스천-미라클 제너레이션 | 973 MB | 81 MB | 1,054 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/알바스천-미라클 제너레이션.mp3 (developer's local collection of commercial tracks) |
-| ecbb16fc | 2026-10-06T20:58 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 스파이에어(SPYAIR) - Orange | 948 MB | 79 MB | 1,027 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| ecbb16fc | 2026-10-06T20:58 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 스파이에어(SPYAIR) - Orange | 948 MB | 79 MB | 1,027 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/스파이에어(SPYAIR) - Orange.mp3 (developer's local collection of commercial |
 | d05ca307 | 2026-10-06T21:08 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | sumika - 픽션(フィクション) | 942 MB | 79 MB | 1,021 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'sumika - 픽션(フィクション).mp3' was analysed again later with a |
 | 30a84202 | 2026-10-06T21:28 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 윤하(YOUNHA) - 사건의 지평선 | 1,216 MB | 101 MB | 1,317 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/윤하(YOUNHA) - 사건의 지평선.mp3 (developer's local collection of commercial t |
-| 4a0eaa6b | 2026-10-06T21:42 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 아이유(IU) - strawberry moon | 829 MB | 69 MB | 898 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 4a0eaa6b | 2026-10-06T21:42 | final_11 (guitar-residual-v8) | SUCCEEDED | 6ff80a | 아이유(IU) - strawberry moon | 829 MB | 69 MB | 898 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - strawberry moon.mp3' was analysed again later  |
 | 0d991426 | 2026-10-06T22:39 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | millsage - 기사개전 (起死開戦) | 789 MB | 66 MB | 855 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/millsage-(起死開戦.mp3 (developer's local collection of commercial tracks) |
 | 28a7a785 | 2026-10-06T22:46 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | sumika - 픽션(フィクション) | 942 MB | 79 MB | 1,021 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'sumika - 픽션(フィクション).mp3' was analysed again later with a |
-| 8343b5b6 | 2026-10-06T23:03 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,027 MB | 86 MB | 1,112 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 8343b5b6 | 2026-10-06T23:03 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,027 MB | 86 MB | 1,112 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - 분홍신 [가사 Lyrics].mp3' was analysed again later  |
 | aa198a47 | 2026-10-06T23:11 | basic_2 (-) | SUCCEEDED | 6ff80a | 아이유(IU) - Blueming(블루밍) | 146 MB | 73 MB | 219 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '아이유(IU) - Blueming(블루밍).mp3' was analysed again later wi |
 | 555eb610 | 2026-10-06T23:13 | basic_6 (-) | SUCCEEDED | 6ff80a | 아이유(IU) - Blueming(블루밍) | 439 MB | 73 MB | 512 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/아이유(IU) - Blueming(블루밍).mp3 (developer's local collection of commercia |
-| 072b74b5 | 2026-10-06T23:16 | basic_2 (-) | SUCCEEDED | 6ff80a | 너의 이름은 OST - Sparkle | 187 MB | 93 MB | 280 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source 'R.mp3' was analysed again later with another pipeline ve |
+| 072b74b5 | 2026-10-06T23:16 | basic_2 (-) | SUCCEEDED | 6ff80a | 너의 이름은 OST - Sparkle | 187 MB | 93 MB | 280 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '너의 이름은 OST - Sparkle.mp3' was analysed again later with  |
 | 03e2ccd7 | 2026-10-06T23:19 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | imase - Fiction | 778 MB | 65 MB | 843 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/imase - Fiction.mp3 (developer's local collection of commercial tracks |
 | f5a5b045 | 2026-10-06T23:29 | final_11 (guitar-residual-v9) | SUCCEEDED | 6ff80a | (한글자막) 코미 양은 커뮤증입니다 OP Full - 신데렐라 | 913 MB | 76 MB | 989 MB | 2026-10-08 | **BENCHMARK** | older iteration: the same source '(한글자막) 코미 양은 커뮤증입니다 OP Full - 신데렐라 사이다 걸.mp3' was analys |
 | 22c70f29 | 2026-10-06T23:47 | basic_6 (-) | SUCCEEDED | 6ff80a | (한글자막) 코미 양은 커뮤증입니다 OP Full - 신데렐라 | 456 MB | 76 MB | 533 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/(한글자막) 코미 양은 커뮤증입니다 OP Full - 신데렐라 사이다 걸.mp3 (developer's local collec |
 | a8c56e42 | 2026-10-07T00:27 | final_11 (context-percussion-v11) | SUCCEEDED | 6ff80a | millsage - 기사개전 (起死開戦) · 13트랙 보완 | 855 MB | 66 MB | 921 MB | 2026-10-08 | **BENCHMARK** | derived from another analysis (parent_analysis_id / '보완' / '리드/코러스' in the name) |
 | c95296bf | 2026-10-07T01:06 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | millsage - 기사개전 (起死開戦) · 13트랙 보완 v | 855 MB | 66 MB | 921 MB | 2026-10-08 | **BENCHMARK** | derived from another analysis (parent_analysis_id / '보완' / '리드/코러스' in the name) |
-| f62cb50c | 2026-10-07T01:40 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 아이유(IU) - strawberry moon | 898 MB | 69 MB | 967 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| f62cb50c | 2026-10-07T01:40 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 아이유(IU) - strawberry moon | 898 MB | 69 MB | 967 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/아이유(IU) - strawberry moon.mp3 (developer's local collection of commerc |
 | 6ea8d66a | 2026-10-07T02:09 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 엔플라잉 - Flashback | 1,084 MB | 83 MB | 1,167 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/엔플라잉 - Flashback.mp3 (developer's local collection of commercial track |
 | 6385da45 | 2026-10-07T02:48 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | METEOR | 862 MB | 66 MB | 928 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/METEOR.mp3 (developer's local collection of commercial tracks) |
-| 94701dbc | 2026-10-07T03:03 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,112 MB | 86 MB | 1,198 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
-| f58c3199 | 2026-10-07T03:26 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 브로큰발렌타인 Broken Valentine - 화석의노래 | 1,072 MB | 82 MB | 1,154 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| 94701dbc | 2026-10-07T03:03 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 아이유(IU) - 분홍신 [가사 Lyrics] | 1,112 MB | 86 MB | 1,198 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/아이유(IU) - 분홍신 [가사 Lyrics].mp3 (developer's local collection of commerc |
+| f58c3199 | 2026-10-07T03:26 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 브로큰발렌타인 Broken Valentine - 화석의노래 | 1,072 MB | 82 MB | 1,154 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/브로큰발렌타인 Broken Valentine - 화석의노래.mp3 (developer's local collection of  |
 | 8e8e0083 | 2026-10-07T03:36 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | MyGO!!!!!-壱雫空 | 829 MB | 64 MB | 893 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/MyGO!!!!!-壱雫空.mp3 (developer's local collection of commercial tracks) |
 | 29c78273 | 2026-10-07T03:44 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | sumika - 픽션(フィクション) | 1,021 MB | 79 MB | 1,099 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/sumika - 픽션(フィクション).mp3 (developer's local collection of commercial tr |
-| 80f4d173 | 2026-10-07T03:53 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 너의 이름은 OST - Sparkle | 1,215 MB | 93 MB | 1,309 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| 80f4d173 | 2026-10-07T03:53 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | 너의 이름은 OST - Sparkle | 1,215 MB | 93 MB | 1,309 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/너의 이름은 OST - Sparkle.mp3 (developer's local collection of commercial t |
 | 58643cc3 | 2026-10-07T04:07 | final_11 (context-percussion-v12) | SUCCEEDED | 6ff80a | QWER - 고민중독 [가사 Lyrics] | 770 MB | 59 MB | 829 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/QWER - 고민중독.mp3 (developer's local collection of commercial tracks) |
-| 47871328 | 2026-10-07T04:39 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | R | 1,248 MB | 96 MB | 1,344 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/METEOR.mp3 (developer's local collection of commercial tracks) |
+| 47871328 | 2026-10-07T04:39 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | R | 1,248 MB | 96 MB | 1,344 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
 | e3863250 | 2026-10-07T04:54 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | 掌心正銘 | 969 MB | 75 MB | 1,043 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/MyGO!!!!!-掌心正銘.mp3 (developer's local collection of commercial tracks) |
-| c14adb81 | 2026-10-07T05:21 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | millsage「everscape」【Official Music | 1,206 MB | 93 MB | 1,298 MB | 2026-10-08 | **MANUAL_TEST** | source matches song/R.mp3 (developer's local collection of commercial tracks) |
+| c14adb81 | 2026-10-07T05:21 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | millsage「everscape」【Official Music | 1,206 MB | 93 MB | 1,298 MB | 2026-10-08 | **UNKNOWN** | source is not in song/ and not the demo track |
 | b7d2dc8c | 2026-10-07T16:14 | basic_2 (-) | SUCCEEDED | 7418fa | bed | 101 MB | 50 MB | 151 MB | 2026-10-08 | **UNKNOWN** | source is not in song/ and not the demo track |
 | ec355a2e | 2026-10-07T17:39 | final_11 (context-families-v15) | SUCCEEDED | 6ff80a | 오늘을 채워 가 | 758 MB | 58 MB | 816 MB | 2026-10-08 | **DEMO** | title is the AI-generated sample song (rights confirmed by the user) |
 | 365a7bf5 | 2026-10-07T17:49 | basic_6 (-) | SUCCEEDED | 6ff80a | 오늘을 채워 가 | 350 MB | 58 MB | 408 MB | 2026-10-08 | **DEMO** | title is the AI-generated sample song (rights confirmed by the user) |
@@ -322,9 +322,9 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 |---|---:|---:|---|
 | REAL_USER | 0 | 0.00 GB | 유지 |
 | DEMO | 2 | 1.20 GB | REVIEW (권리 보유 샘플 - 샘플 자산은 `frontend/public/samples`에 이미 있음) |
-| MANUAL_TEST | 24 | 24.37 GB | REVIEW |
+| MANUAL_TEST | 23 | 23.10 GB | REVIEW |
 | BENCHMARK | 23 | 17.85 GB | REVIEW |
-| UNKNOWN | 1 | 0.15 GB | 유지 |
+| UNKNOWN | 2 | 1.42 GB | 유지 |
 
 `FAILED` 1건(millsage)은 산출물이 없는 실패 기록이며 소유자도 없다 → 그 분석의 job/asset 스크래치 포함 1.6 GB는 SAFE.
 
@@ -462,13 +462,13 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 | 위험도 | 용량 | 내용 |
 |---|---:|---|
 | **SAFE** (바로 삭제 가능) | 7.24 GB | ORPHAN 입력 asset 5.33 GB, FAILED 분석의 스크래치와 기록 1.6 GB, `.venv`/프런트/데이터 `__pycache__`·빌드 cache ~0.3 GB, 오래된 smoke·로그, 이번 감사 산출물 |
-| **REVIEW** (사용자 확인 후) | 86.44 GB | 분석 48건(약 43.1 GB; DEMO 1.2 / MANUAL_TEST 24.4 / BENCHMARK 17.5 중 FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |
+| **REVIEW** (사용자 확인 후) | 85.18 GB | 분석 47건(약 41.8 GB; DEMO 1.2 / MANUAL_TEST 24.4 / BENCHMARK 17.5 중 FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |
 | **KEEP** | 8.73 GB | `.venv` 4.7 GB, production 체크포인트 1.5 GB, 소스·설정·문서·라이선스 증빙, 청정 벤치마크 source(BabySlakh, FreePats, pad-eval stems), 데모곡 mix·stems, report·metrics, `.git` |
-| **UNKNOWN** | 0.15 GB | 분석 `bed`(basic_2, 150 s, 소스 불명) |
+| **UNKNOWN** | 1.42 GB | 분석 2건: `bed`, `millsage「everscape」【Official M` (원곡이 `song/`에도 샘플곡에도 없음) |
 
 ### 권고 순서
 1. SAFE 7.2 GB: 승인되면 삭제 직전에 참조 그래프를 다시 계산해서(그 사이 새 분석이 생길 수 있음) 실행.
-2. REVIEW 중 가장 큰 효과: (a) 분석 50건 처리 방침(전부 보관 / MANUAL_TEST·BENCHMARK 46건 삭제 시 약 41.9 GB 회수 / DEMO는 별도), (b) `ground-truth/cases`·`pad-eval/cases`의 이전 버전 폴더 정리 또는 sha256 dedup(약 11 GB), (c) AudioSep·wesep 삭제(4.1 GB), (d) reset-backups(2.3 GB).
+2. REVIEW 중 가장 큰 효과: (a) 분석 50건 처리 방침(전부 보관 / MANUAL_TEST·BENCHMARK 45건 삭제 시 약 40.6 GB 회수 / DEMO는 별도), (b) `ground-truth/cases`·`pad-eval/cases`의 이전 버전 폴더 정리 또는 sha256 dedup(약 11 GB), (c) AudioSep·wesep 삭제(4.1 GB), (d) reset-backups(2.3 GB).
 3. 포맷 최적화(FLAC24, −32 GB 예상)는 삭제가 아니라 별도 결정 사항이며, 합계 보존 계약·manifest 변경이 선행된다.
 
 사용자 데이터로 의심되는 파일(`B USER_PERSISTENT`, `I UNKNOWN`)은 이 보고서에서 삭제 대상으로 확정하지 않았다.
