@@ -2719,7 +2719,6 @@ button.crumb:hover { color: #c7b9ff }
 .rights-check input { flex-shrink: 0; width: 17px; height: 17px; margin: 2px 0 0; accent-color: #a793fa }
 .rights-box small { display: block; margin-top: 8px; font-size: 11px; line-height: 1.6; color: #8a8d9c }
 .rights-box a { color: #b6a2ff }
-.library-item .library-row { width: 100%; padding-right: 88px }
 .link-button { margin-left: 10px; padding: 4px 2px; border: 0; background: none; color: #8a8d9c; font-size: 11px; cursor: pointer }
 .link-button:hover:not(:disabled) { color: #f5b3c4; text-decoration: underline }
 .button.danger { background: #5a2735; color: #ffd6df }
