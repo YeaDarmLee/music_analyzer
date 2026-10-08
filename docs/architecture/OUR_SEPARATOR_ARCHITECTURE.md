@@ -116,3 +116,53 @@ stem 이름/개수는 config(`stems`)에서만 온다 (6-stem 구성으로 forwa
 
 ## 9. 다음 ablation 순서 [P02]
 AB-01 C vs B, AB-02 C vs A, AB-03 60 overlapping Mel vs fixed BS band, AB-04 depth 6 vs 8, AB-05 dim 192 vs 256, AB-06 3 s vs 6 s context, AB-07 FF expansion 2 vs 4. 평가 지표: vocal/instrumental SDR·SI-SDR, mixture 재구성 오차(평균·최대 절대), 향후 instrumental 내부 보존(drums/bass/guitar/piano). 단일 sine-sum 데이터로는 ablation을 수행하지 않는다 (실제 분리 데이터 필요).
+
+## 10. v0.1 Engineering Baseline (승인됨, 2026-10-08)
+
+Research Lead가 위 §4~5 결과를 승인했다. 아래가 v0.1의 기준선이다.
+
+| 항목 | 값 |
+|---|---|
+| params | 8,316,732 |
+| 2-stem forward/backward | 정상 |
+| RTX 3060 12 GiB 단일 GPU 학습 | 가능 |
+| fp16 AMP | 정상 |
+| 학습 peak VRAM | checkpointing ON 373 MiB / OFF 약 1.7 GiB |
+| 추론 RTF | 0.021 |
+| 16-scene synthetic overfit | 성공 |
+| val SI-SDR | 26.9 dB |
+| mixture 재구성 | 약 −125 dB |
+| stem swap / collapse / NaN | 없음 |
+
+**26.9 dB는 주파수 대역이 분리된 sine synthetic overfit 결과이며 실제 separation 성능 수치로 사용하지 않는다.** 모델 성능 주장에는 실제(또는 음악형 synthetic) 분리 데이터의 held-out 평가만 쓴다.
+
+### 10.1 Architecture Observation — 6-stem에서의 병목은 output projection
+
+| 모듈 | 비중 (2-stem) |
+|---|---|
+| Band Projector | 18.6% |
+| Backbone | 42.7% |
+| Decoder Trunk | 1.8% |
+| Output Projection | 36.9% |
+
+단순히 6-stem으로 확장하면 출력층이 stem 수에 선형 증가해 약 14.5M(ENGINEERING_ESTIMATE, 미측정)에 이르러 15M gate에 근접한다. **2-stem은 현재 구조를 유지하고**, 6-stem에서는 출력 projection 확장을 Packet 03의 별도 설계 대상으로 둔다. Packet 03 비교 대상(지금은 구현하지 않음): stem별 output projection / factorized output projection / shared projection + stem embedding / lightweight shared decoder / query-conditioned decoder / hierarchical decoder.
+
+### 10.2 Gradient checkpointing 정책
+현재 기본 ON을 변경하지 않는다. 실측(ON 373 MiB·227 ms, OFF 1.7 GiB·189 ms)상 OFF도 여유가 크지만, 음악형 데이터의 activation/loader/loss 비용이 다를 수 있다. Data Factory에서 실제 5~15 s scene을 만든 뒤 다시 profile하여 training speed / peak VRAM / chunk length 기준으로 ON/OFF 기본값을 결정한다.
+
+### 10.3 개발 정지
+실제 학습 데이터 없이는 어떤 변경이 개선인지 판단할 수 없으므로 v0.1 아키텍처 개발은 일단 정지한다. 순서: Commercial-Clean Data Factory & Dataset (Packet 04/05) → GREEN 데이터로 v0.1 baseline → v0.2 ablation → Packet 03 / 6-stem.
+
+### 10.4 Clean provenance run (commit `c042777`)
+원본: `docs/benchmark/our_separator_v01_overfit_clean_run.json`. 목적은 성능이 아니라 provenance artifact 확보. 동일 config로 150 step 전체 재실행.
+
+| 항목 | 결과 |
+|---|---|
+| git_commit / git_dirty | `c042777eb8cdafcf6d587645fa8d2800cff7629f` / **false** (experiment.json과 sidecar 모두) |
+| model_config_hash | `e1f52718…d76c` (이전 dirty run과 동일) |
+| training_config_hash | `7c693b58…d01b` (동일) |
+| dataset_manifest_sha256 | `576771fd…b285` (동일) |
+| checkpoint_sha256 | `47e9540c…ac58`, 재계산 값과 일치, sidecar 검증 통과, parent_checkpoint = null |
+| 재현된 성능 | val SI-SDR 26.89 dB (이전 26.90), val SDR 26.55 (26.53), 재구성 −125.8 dB |
+
+체크포인트 해시는 이전 run과 다르다. 이 config는 `deterministic: false`(속도 우선)라 GPU 연산 순서가 달라지기 때문이며, 결과 수치가 거의 같다는 것이 재현성의 근거다. 같은 해시가 필요하면 `deterministic: true`로 별도 실행해야 하고 이 run은 그 검증이 아니다.

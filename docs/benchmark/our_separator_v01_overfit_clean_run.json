@@ -1,0 +1,32 @@
+{
+ "run_id": "20261008T064254-our_v01_overfit-ef84ffdc",
+ "git_commit": "c042777eb8cdafcf6d587645fa8d2800cff7629f",
+ "git_dirty": false,
+ "status": "completed",
+ "model_config_hash": "e1f52718986b3525fdae0be967957893c52517bfd82dda8b587f8bdd15f4d76c",
+ "training_config_hash": "7c693b586333ec6a6c5d61774b6d4687d34974950e5e93fdca3b01c427f0d01b",
+ "dataset_manifest_sha256": "576771fd86c419d4bec131c176bbee19339646fdabcc945e14318c9671edb285",
+ "checkpoint_sha256": "47e9540ce59392914a63ee56c51c29b9d90eff0281ab34593f8f5732d378ac58",
+ "sidecar_git_commit": "c042777eb8cdafcf6d587645fa8d2800cff7629f",
+ "parent_checkpoint": null,
+ "sha256_recomputed_matches": true,
+ "hashes_equal_to_dirty_run": {
+  "model_config_hash": true,
+  "training_config_hash": true,
+  "dataset_config_hash": true,
+  "dataset_manifest_hash": true
+ },
+ "final_val": {
+  "val_loss": 0.6177428103983402,
+  "val_reconstruction_error_db": -125.83652830123901,
+  "val_sdr": 26.546801924705505,
+  "val_si_sdr": 26.89075016975403
+ },
+ "checkpoint_step": 150,
+ "prior_dirty_run_val": {
+  "val_loss": 0.6164176017045975,
+  "val_reconstruction_error_db": -125.83652830123901,
+  "val_sdr": 26.529179573059082,
+  "val_si_sdr": 26.89961278438568
+ }
+}
