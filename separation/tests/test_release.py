@@ -35,7 +35,7 @@ def commercial(served, tmp_path, monkeypatch):
     """Commercial profile with commercial_13 promoted to APPROVED in a throwaway config and approval file."""
     request, library, store = served
     config = read_json(release.CONFIG)
-    config["commercial"]["presets"]["commercial_13"]["status"] = "APPROVED"
+    config["commercial"]["presets"] = {name: {"status": "APPROVED" if name == "commercial_13" else "VALIDATING"} for name in config["commercial"]["presets"]}
     path = tmp_path / "release_presets.json"
     write_json(path, config)
     monkeypatch.setattr(release, "CONFIG", path)
@@ -66,10 +66,11 @@ def test_profile_defaults_to_development_and_rejects_unknown_values(monkeypatch)
         release.profile({"MUSIC_RELEASE_PROFILE": "prod"})  # a typo must not silently mean "development"
 
 
-def test_commercial_is_not_enabled_by_default_and_nothing_is_approved_yet():
+def test_commercial_is_not_enabled_by_default_and_exactly_the_three_commercial_presets_are_allowlisted():
     assert release.profile({}) == "development"
-    assert read_json(release.CONFIG)["commercial"]["presets"]["commercial_13"]["status"] != "APPROVED"
-    assert release.manifest()["production_presets"] == []
+    plan = release.manifest()
+    assert plan["production_presets"] == ["commercial_2", "commercial_6", "commercial_13"]
+    assert all(plan["presets"][name]["problems"] == [] for name in plan["production_presets"])  # owner-approved AND every model gate passes
 
 
 # --- development keeps working ------------------------------------------------------------------------

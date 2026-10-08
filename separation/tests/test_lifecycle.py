@@ -69,7 +69,7 @@ def test_success_promotes_final_assets_with_manifest_and_removes_the_rest(librar
     # canonical layout: record.json, manifest.json, original.wav, final/<family>.wav and nothing else
     assert sorted(p.relative_to(folder).as_posix() for p in folder.rglob("*") if p.is_file()) == [
         "final/drums.wav", "final/piano.wav", "manifest.json", "original.wav", "record.json"]
-    manifest = json.loads((folder / "manifest.json").read_text())
+    manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
     assert {a["family"]: a["path"] for a in manifest["final_assets"]} == {"drums": "final/drums.wav", "piano": "final/piano.wav"}
     assert manifest["original"]["path"] == "original.wav" and len(manifest["original"]["sha256"]) == 64
     # the record points at the promoted files (the caller persists it)
@@ -177,15 +177,15 @@ def test_server_restart_marks_running_failed_and_cleans_their_intermediates(libr
     make_analysis(root, A, state="RUNNING", tracks=False)
     library = WebLibrary(root)
     try:
-        record = json.loads((root / "web" / A / "record.json").read_text())
+        record = json.loads((root / "web" / A / "record.json").read_text(encoding="utf-8"))
         assert record["state"] == "FAILED" and record["storage"]["mode"] == "removed"
         assert not exists(root, f"web/{A}/remaining.wav") and not exists(root, f"jobs/{JOB1}/result")
         assert exists(root, f"jobs/{JOB1}/job.json")
     finally:
         library.executor.shutdown(wait=True)
-    before = (root / "web" / A / "record.json").read_text()
+    before = (root / "web" / A / "record.json").read_text(encoding="utf-8")
     WebLibrary(root).executor.shutdown(wait=True)
-    assert (root / "web" / A / "record.json").read_text() == before  # second restart finds nothing to do
+    assert (root / "web" / A / "record.json").read_text(encoding="utf-8") == before  # second restart finds nothing to do
 
 
 def test_download_zip_is_a_unique_temporary_file_and_discard_removes_it(tmp_path):

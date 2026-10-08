@@ -1,1 +1,16 @@
-[]
+[
+ {
+  "name": "MVSep Mega53 계열 가중치",
+  "author": "MVSep / Roman Solovyev (ZFTurbo)",
+  "license": "MIT (저작자 선언)",
+  "url": "https://github.com/ZFTurbo/Music-Source-Separation-Training",
+  "evidence": "https://github.com/ZFTurbo/Music-Source-Separation-Training/issues/245"
+ },
+ {
+  "name": "Mel-Band RoFormer 가중치",
+  "author": "Kimberley Jensen (KimberleyJSN)",
+  "license": "MIT (저작자 선언)",
+  "url": "https://huggingface.co/KimberleyJSN/melbandroformer",
+  "evidence": "https://huggingface.co/KimberleyJSN/melbandroformer/blob/ac9b0614ab3cd7f77219e18ba494dfd93956c348/README.md"
+ }
+]

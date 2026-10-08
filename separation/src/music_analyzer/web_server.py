@@ -638,55 +638,6 @@ class WebLibrary:
             sf.write(output,samples*np.float32(gain),source.samplerate,format='WAV',subtype='PCM_16')
             return output.getvalue()
 
-    def enhanced(self,row,family,strength):
-        from scipy.signal import sosfilt
-        profiles={"vocals":((300,-1.5,.8),(3200,1.3,.7)),"guitar":((320,-1.4,.8),(2600,1.2,.7)),"piano":((280,-1.2,.8),(3000,1,.7)),"bass":((300,-.7,.8),(1200,.6,.7)),"drums":((350,-.8,.8),(4500,.8,.7)),"other":((350,-.6,.7),(3000,.5,.7))}
-        profiles.update(lead=profiles["vocals"],backing=profiles["vocals"],synth=profiles["other"],brass=profiles["other"],strings=profiles["other"],acoustic_guitar=profiles["guitar"],synth_pad=profiles["other"],other_residual=profiles["other"],lead_guitar=profiles["guitar"],guitar_residual=profiles["guitar"])
-        if family not in profiles:raise ValueError("후처리를 지원하지 않는 트랙입니다.")
-        if not 0<=strength<=100:raise ValueError("강도는 0–100입니다.")
-        folder=self.web/"enhanced"/row["id"]/self.fingerprint(row);target=folder/(family+f"-clarity-v1-{strength}.wav")
-        with self.cache_lock:
-            if target.exists():return target
-            folder.mkdir(parents=True,exist_ok=True)
-            sos=[]
-            for frequency,gain,q in profiles[family]:
-                A=10**(gain*strength/50/40);w=2*np.pi*frequency/RATE;alpha=np.sin(w)/(2*q);c=np.cos(w)
-                sos.append([1+alpha*A,-2*c,1-alpha*A,1+alpha/A,-2*c,1-alpha/A])
-            sos=np.asarray(sos);sos[:,:3]/=sos[:,3,None];sos[:,4:]/=sos[:,3,None];sos[:,3]=1
-            state=np.zeros((len(sos),2,2));partial=target.with_suffix(".partial")
-            try:
-                with sf.SoundFile(self.track_path(row,family)) as source,sf.SoundFile(partial,"w",samplerate=source.samplerate,channels=source.channels,format="WAV",subtype="FLOAT") as output:
-                    for block in source.blocks(blocksize=RATE*5,dtype="float64",always_2d=True):
-                        processed,state=sosfilt(sos,block,axis=0,zi=state);output.write(processed)
-                partial.replace(target)
-            finally:
-                if partial.exists():partial.unlink()
-        return target
-
-    def bundle(self,row,mode,settings):
-        if mode not in ("enhanced","both"):raise ValueError("다운로드 종류가 잘못되었습니다.")
-        families={t["family"] for t in row["tracks"]}
-        if not isinstance(settings,dict) or not settings or not set(settings)<=families:raise ValueError("트랙 선택이 잘못되었습니다.")
-        if any(type(value) is not int or not 0<=value<=100 for value in settings.values()):raise ValueError("강도는 0–100입니다.")
-        key=hashlib.sha256(json.dumps([mode,settings],sort_keys=True).encode()).hexdigest()[:16]
-        folder=self.web/"bundles"/row["id"]/self.fingerprint(row);folder.mkdir(parents=True,exist_ok=True)
-        target=folder/(key+"-v1.zip")
-        if target.exists():return target
-        processed={family:self.enhanced(row,family,strength) for family,strength in settings.items()}
-        with self.cache_lock:
-            if not target.exists():
-                partial=target.with_suffix(".partial")
-                try:
-                    with zipfile.ZipFile(partial,"w",zipfile.ZIP_STORED) as archive:
-                        for family,path in processed.items():
-                            archive.write(path,f"clarity/{family}-clarity-{settings[family]}.wav")
-                            if mode=="both":archive.write(self.track_path(row,family),f"raw/{family}.wav")
-                        archive.writestr("settings.json",json.dumps({"mode":mode,"strengths":settings,"version":1},ensure_ascii=False))
-                    partial.replace(target)
-                finally:
-                    if partial.exists():partial.unlink()
-        return target
-
     def archive(self,row):
         """Per-request ZIP of the final stems. A unique temp file (never cached or listed); the caller must discard_archive() it after the response."""
         folder=self.web/"archives";folder.mkdir(exist_ok=True)
@@ -833,19 +784,13 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                 if path=="/api/analyses":
                     owned=auth.owned_ids(user["id"])
                     return self.json(200,[library.public(r) for r in library.entries(owned)])
-                match=re.fullmatch(r"/api/analyses/([^/]+)(?:/(audio|download|archive|enhanced|bundle)(?:/([a-z][a-z0-9_]*))?)?",path)
+                match=re.fullmatch(r"/api/analyses/([^/]+)(?:/(audio|download|archive)(?:/([a-z][a-z0-9_]*))?)?",path)
                 if match:
                     identifier,action,family=match.groups()
                     self.authorize(user,identifier)
                     if not action:return self.json(200,library.detail(identifier))
                     row=library.get(identifier)
                     if row["state"]!="SUCCEEDED":raise ValueError("분석이 아직 완료되지 않았습니다.")
-                    if action=="bundle":
-                        query=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
-                        return self.file(library.bundle(row,query.get("mode",[""])[0],json.loads(query.get("settings",["{}"]) [0])),row["name"]+"-tracks.zip")
-                    if action=="enhanced":
-                        strength=int(urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get("strength",["50"])[0])
-                        return self.file(library.enhanced(row,family,strength),family+f"-clarity-{strength}.wav")
                     if action=="archive":
                         archive=library.archive(row)
                         try:return self.file(archive,row["name"]+"-stems.zip")

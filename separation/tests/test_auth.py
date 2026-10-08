@@ -109,7 +109,7 @@ def test_only_current_members_analyses_are_listed(tenant_server):
         assert [row["id"] for row in json.loads(body)] == [identifier]
 
 
-@pytest.mark.parametrize("suffix", ["", "/audio/vocals", "/audio/original", "/audio/vocals?start_frame=0&num_frames=100", "/download/vocals", "/download/original", "/archive", "/enhanced/vocals?strength=50", "/bundle?mode=both"])
+@pytest.mark.parametrize("suffix", ["", "/audio/vocals", "/audio/original", "/audio/vocals?start_frame=0&num_frames=100", "/download/vocals", "/download/original", "/archive"])
 def test_other_members_and_legacy_results_are_inaccessible(tenant_server, suffix):
     request, _, _, ids = tenant_server
     for identifier in ids[1:]:

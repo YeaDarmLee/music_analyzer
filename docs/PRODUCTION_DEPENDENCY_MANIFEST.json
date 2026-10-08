@@ -77,7 +77,7 @@
     "instrument_core4",
     "vocal2_mega"
    ],
-   "status": "VALIDATING"
+   "status": "APPROVED"
   },
   "commercial_2": {
    "models": [
@@ -100,7 +100,7 @@
    "stage_presets": [
     "vocal_roformer"
    ],
-   "status": "VALIDATING"
+   "status": "APPROVED"
   },
   "commercial_6": {
    "models": [
@@ -137,10 +137,14 @@
     "vocal_roformer",
     "instrument_core4"
    ],
-   "status": "VALIDATING"
+   "status": "APPROVED"
   }
  },
- "production_presets": [],
+ "production_presets": [
+  "commercial_2",
+  "commercial_6",
+  "commercial_13"
+ ],
  "profile_env": "MUSIC_RELEASE_PROFILE",
  "runtime": {
   "direct": {

@@ -96,9 +96,6 @@ def test_final_ten_tracks_reconstruct_instrumental_without_subtracting_vocals(li
     np.testing.assert_allclose(summed,sf.read(instrumental)[0],atol=1e-7)
     with pytest.raises(ValueError,match="누락"):
         library.final_session({**row,"tracks":[t for t in tracks if t["family"]!="synth"]})
-    for family in ("strings","brass","acoustic_guitar"):
-        enhanced=library.enhanced(result,family,0)
-        np.testing.assert_array_equal(sf.read(enhanced)[0],sf.read(library.track_path(result,family))[0])
 
 def test_restart_marks_incomplete_analysis_failed(tmp_path):
     folder=tmp_path/"web"/("analysis_"+"1"*32)
@@ -180,34 +177,6 @@ def test_preview_cache_changes_when_vocal_source_changes(library):
     original={"tracks":[{"family":"vocals","path":"old.wav","sha256":"old"}]}
     selected={"tracks":[{"family":"vocals","path":"selected.wav","sha256":"new"}]}
     assert library.fingerprint(original)!=library.fingerprint(selected)
-
-def test_enhanced_preserves_timeline_and_zero_strength(library):
-    import numpy as np
-    import soundfile as sf
-    audio=np.column_stack([np.sin(np.arange(44100)*2*np.pi*300/44100)*.2]*2).astype("float32")
-    source=library.root/"raw.wav";sf.write(source,audio,44100,subtype="FLOAT")
-    row={"id":"test","tracks":[{"family":"vocals","path":"raw.wav","peak":.2}],"original":"raw.wav"}
-    bypass=library.enhanced(row,"vocals",0);corrected=library.enhanced(row,"vocals",50)
-    zero,rate=sf.read(bypass,dtype="float32");processed,_=sf.read(corrected,dtype="float32")
-    assert rate==44100 and processed.shape==audio.shape
-    np.testing.assert_allclose(zero,audio,atol=1e-7)
-    assert np.sqrt(np.mean(processed[2000:]**2))<np.sqrt(np.mean(audio[2000:]**2))
-    assert sf.info(corrected).subtype=="FLOAT"
-    with pytest.raises(ValueError):library.enhanced(row,"vocals",101)
-    with pytest.raises(ValueError):library.enhanced(row,"original",50)
-
-def test_bundle_uses_snapshot_strength_and_keeps_raw(library):
-    import numpy as np
-    import soundfile as sf
-    import zipfile
-    source=library.root/"raw.wav";sf.write(source,np.zeros((100,2)),44100,subtype="FLOAT")
-    row={"id":"bundle","tracks":[{"family":"guitar","path":"raw.wav"}],"original":"raw.wav"}
-    with zipfile.ZipFile(library.bundle(row,"both",{"guitar":73})) as archive:
-        assert set(archive.namelist())=={"clarity/guitar-clarity-73.wav","raw/guitar.wav","settings.json"}
-        assert archive.read("raw/guitar.wav")==source.read_bytes()
-        assert b'73' in archive.read("settings.json")
-    with pytest.raises(ValueError):library.bundle(row,"both",{"original":50})
-    with pytest.raises(ValueError):library.bundle(row,"both",{"guitar":101})
 
 def test_vocal_detail_queues_parent_vocal_without_changing_parent(library,monkeypatch):
     import copy
