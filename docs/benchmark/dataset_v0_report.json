@@ -20,7 +20,7 @@
   "val": 0.1,
   "test": 0.1
  },
- "spec_generation_seconds": 51.0,
+ "spec_generation_seconds": 49.5,
  "train": {
   "scenes": 15000,
   "seconds_total": 0.0,
@@ -324,7 +324,7 @@
   "fixed_render": {
    "ok": 500,
    "failed": [],
-   "seconds": 412.7
+   "seconds": 414.3
   }
  },
  "test": {
@@ -477,7 +477,7 @@
   "fixed_render": {
    "ok": 500,
    "failed": [],
-   "seconds": 456.7
+   "seconds": 453.3
   }
  },
  "leakage": {
@@ -504,44 +504,44 @@
  "render_seconds_per_scene_by_category": {
   "instrumental_only": {
    "n": 13,
-   "s_per_scene": 0.79,
+   "s_per_scene": 0.792,
    "rtf": 0.105
   },
   "vocal_full_band": {
    "n": 23,
-   "s_per_scene": 0.901,
-   "rtf": 0.098
+   "s_per_scene": 0.925,
+   "rtf": 0.101
   },
   "dense": {
    "n": 6,
-   "s_per_scene": 0.719,
-   "rtf": 0.096
+   "s_per_scene": 0.729,
+   "rtf": 0.097
   },
   "vocal_sparse": {
    "n": 12,
-   "s_per_scene": 0.465,
-   "rtf": 0.042
+   "s_per_scene": 0.487,
+   "rtf": 0.044
   },
   "sparse_instrument": {
    "n": 11,
-   "s_per_scene": 0.36,
+   "s_per_scene": 0.362,
    "rtf": 0.033
   },
   "vocal_only": {
    "n": 4,
-   "s_per_scene": 0.155,
-   "rtf": 0.017
+   "s_per_scene": 0.159,
+   "rtf": 0.018
   },
   "near_silence": {
    "n": 1,
-   "s_per_scene": 0.204,
-   "rtf": 0.029
+   "s_per_scene": 0.169,
+   "rtf": 0.024
   }
  },
  "dataloader_items_per_second_full_scene_render": {
-  "workers_0": 1.16,
-  "workers_4": 2.99,
-  "workers_8": 4.41
+  "workers_0": 1.15,
+  "workers_4": 3.11,
+  "workers_8": 4.44
  },
  "full_scene_cache_bytes_per_scene_2stem_float32": 10341327,
  "fixed_bytes": 15394408214

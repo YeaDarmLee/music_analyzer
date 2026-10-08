@@ -653,3 +653,15 @@ def test_val_aggregator_groups_and_active_only():
     assert s["val_si_sdr_vocals"] > 20 and s["val_n_active_instrumental"] == 0 and s["val_si_sdr_instrumental"] != s["val_si_sdr_instrumental"]
     assert s["val_category/a/n"] == 1 and s["val_singer/s1/n"] == 1 and "val_singer/" not in "".join(k for k in s if k.endswith("/n") and "/ /" in k)
     assert s["val_category/a/inactive_rms_db"] < -20
+
+
+def test_specs_identical_across_processes_with_different_hash_seeds():
+    """Regression: iterating a set of stem names drove RNG draws in PYTHONHASHSEED order, so multi-stem scene specs differed
+    between processes (found while filling the Dataset v0 cache with a process pool)."""
+    import os, subprocess, sys
+    code = ("import sys,warnings;warnings.filterwarnings('ignore');sys.path.insert(0,'src');"
+            "from data_factory.scenes import Factory;f=Factory.from_yaml('configs/data_factory/dataset_v0.yaml','.');"
+            "print([f.make_spec(i,'train').hash()[:8] for i in range(12)])")
+    outs = {subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=True,
+                           env={**os.environ, "PYTHONHASHSEED": str(h)}).stdout.strip().splitlines()[-1] for h in (1, 2, 3)}
+    assert len(outs) == 1

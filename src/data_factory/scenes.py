@@ -114,9 +114,9 @@ class Factory:
         if "vocal" in active:
             vocal = choose_vocal(self.vocal_index, "test" if split == "ood" else split, make_rng(seeds["instrument"] ^ 0x5EED), dur)
             assets_used.add(vocal["asset_id"])
-        fx = {s: random_chain(s, profile, rf) for s in active}
+        fx = {s: random_chain(s, profile, rf) for s in sorted(active)}  # sorted: set order depends on PYTHONHASHSEED
         mix_cfg = cfg["mix"]
-        gains = {s: float(rm.uniform(*mix_cfg["stem_gain_db"])) for s in active}
+        gains = {s: float(rm.uniform(*mix_cfg["stem_gain_db"])) for s in sorted(active)}
         if "vocal" in gains:
             gains["vocal"] = float(rm.uniform(*mix_cfg["vocal_gain_db"]))
         lvl = mix_cfg["near_silence_rms_db"] if stype == "near_silence" else mix_cfg["target_rms_db"]
