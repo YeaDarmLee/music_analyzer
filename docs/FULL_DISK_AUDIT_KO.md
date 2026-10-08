@@ -462,7 +462,7 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 | 위험도 | 용량 | 내용 |
 |---|---:|---|
 | **SAFE** (바로 삭제 가능) | 7.24 GB | ORPHAN 입력 asset 5.33 GB, FAILED 분석의 스크래치와 기록 1.6 GB, `.venv`/프런트/데이터 `__pycache__`·빌드 cache ~0.3 GB, 오래된 smoke·로그, 이번 감사 산출물 |
-| **REVIEW** (사용자 확인 후) | 85.18 GB | 분석 47건(약 41.8 GB; DEMO 1.2 / MANUAL_TEST 24.4 / BENCHMARK 17.5 중 FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |
+| **REVIEW** (사용자 확인 후) | 85.18 GB | 분석 47건(약 41.8 GB; DEMO·MANUAL_TEST·BENCHMARK, 세부는 3절 표, FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |
 | **KEEP** | 8.73 GB | `.venv` 4.7 GB, production 체크포인트 1.5 GB, 소스·설정·문서·라이선스 증빙, 청정 벤치마크 source(BabySlakh, FreePats, pad-eval stems), 데모곡 mix·stems, report·metrics, `.git` |
 | **UNKNOWN** | 1.42 GB | 분석 2건: `bed`, `millsage「everscape」【Official M` (원곡이 `song/`에도 샘플곡에도 없음) |
 

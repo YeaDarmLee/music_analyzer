@@ -145,7 +145,7 @@ review_n = sum(1 for a in lib["analyses"] if a["classification"] in ("DEMO", "MA
 review_gb = sum(a["folder_bytes"] for a in lib["analyses"] if a["classification"] in ("DEMO", "MANUAL_TEST", "BENCHMARK") and a["state"] == "SUCCEEDED") / 2**30
 mb_n = sum(1 for a in lib["analyses"] if a["classification"] in ("MANUAL_TEST", "BENCHMARK") and a["state"] == "SUCCEEDED")
 mb_gb = sum(a["folder_bytes"] for a in lib["analyses"] if a["classification"] in ("MANUAL_TEST", "BENCHMARK") and a["state"] == "SUCCEEDED") / 2**30
-w(f"| **REVIEW** (사용자 확인 후) | {gb(risk['REVIEW'])} | 분석 {review_n}건(약 {review_gb:.1f} GB; DEMO 1.2 / MANUAL_TEST 24.4 / BENCHMARK 17.5 중 FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |")
+w(f"| **REVIEW** (사용자 확인 후) | {gb(risk['REVIEW'])} | 분석 {review_n}건(약 {review_gb:.1f} GB; DEMO·MANUAL_TEST·BENCHMARK, 세부는 3절 표, FAILED 1건 제외), 케이스 references·reports 27.1 GB(중복 제거 시 −11.2 GB), AudioSep·wesep 4.1 GB, CLAPSep 스택 2.5 GB(baseline 재현 포기), 비production 가중치 3.5 GB, official-53 1.4 GB, 단독 job 항목 1.3 GB, reset-backups 2.3 GB, medleydb·philharmonia 1.0 GB, `song/` 0.13 GB |")
 w(f"| **KEEP** | {gb(risk['KEEP'])} | `.venv` 4.7 GB, production 체크포인트 1.5 GB, 소스·설정·문서·라이선스 증빙, 청정 벤치마크 source(BabySlakh, FreePats, pad-eval stems), 데모곡 mix·stems, report·metrics, `.git` |")
 unknown_rows = [a for a in lib["analyses"] if a["classification"] == "UNKNOWN" and a["state"] == "SUCCEEDED"]
 unknown_n = len(unknown_rows); unknown_names = ", ".join("`" + a["name"][:30] + "`" for a in unknown_rows)
