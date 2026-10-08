@@ -25,7 +25,7 @@ export class BufferedPlayer {
   prepare(position=0){return this.window(Math.floor(position/this.windowSeconds))}
   stop(){
     this.generation++;this.active=false;clearTimeout(this.timer);
-    for(const item of this.nodes){try{item.source.stop()}catch{}item.source.disconnect();item.gain.disconnect();for(const f of item.filters)f.node.disconnect()}
+    for(const item of this.nodes){try{item.source.stop()}catch{}item.source.disconnect();item.gain.disconnect()}
     this.nodes=[];this.onSources([]);
   }
   dispose(){this.stop();this.controller.abort();for(const c of this.controllers.values())c.abort();this.controllers.clear();this.cache.clear()}
@@ -62,7 +62,7 @@ export class BufferedPlayer {
         // Disconnect finished sources and keep only the current and next windows.
         this.nodes=this.nodes.filter(item=>{
           if(item.windowIndex>=next)return true;
-          item.source.disconnect();item.gain.disconnect();for(const f of item.filters)f.node.disconnect();return false;
+          item.source.disconnect();item.gain.disconnect();return false;
         });
         this.onSources(this.nodes);
         for(const key of this.cache.keys())if(key!==next&&key!==next+1){this.controllers.get(key)?.abort();this.controllers.delete(key);this.cache.delete(key)}

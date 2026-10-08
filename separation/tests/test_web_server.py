@@ -170,8 +170,9 @@ def test_legacy_instrument_result_uses_selected_vocal_for_playback_and_zip(libra
     assert library.track_path(row,"guitar")==instrument_dir/"stems/guitar.wav"
     assert vocal_id not in [r["id"] for r in library.entries()]
     with zipfile.ZipFile(library.archive(row)) as archive:
-        assert archive.read("vocals.wav")==b"selected"
-        assert archive.read("guitar.wav")==b"secondary"
+        assert archive.read(library.download_name(row,"vocals"))==b"selected"
+        assert archive.read(library.download_name(row,"guitar"))==b"secondary"
+        assert not [n for n in archive.namelist() if n.endswith(".json")]  # stems only, no manifest/metadata
 
 def test_preview_cache_changes_when_vocal_source_changes(library):
     original={"tracks":[{"family":"vocals","path":"old.wav","sha256":"old"}]}
@@ -225,3 +226,11 @@ def test_audio_window_preserves_samples_timeline_and_bounds(library):
     assert source.read_bytes()==before
     for start,count in [(-1,1),(0,1323001),(4096,1),(0,0)]:
         with pytest.raises(ValueError):library.audio_window(row,'guitar',start,count)
+
+
+def test_download_names_are_title_family_yymmdd(library):
+    row={"name":'오늘을 채워 가: "live"/mix?',"created":"2026-10-08T02:15:49Z"}
+    name=library.download_name(row,"vocals")
+    assert name.endswith("_vocals_261008.wav") and name.startswith("오늘을 채워 가") and not any(c in name for c in r'\/:*?"<>|')
+    assert library.download_name({"name":"곡","created":1791400000},suffix=".zip").endswith(".zip")
+    assert library.download_name({"name":"곡","created":"garbage"},"drums").startswith("곡_drums_")

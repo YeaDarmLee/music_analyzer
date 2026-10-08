@@ -199,7 +199,7 @@ def test_download_zip_is_a_unique_temporary_file_and_discard_removes_it(tmp_path
         first, second = library.archive(row), library.archive(row)
         assert first != second and first.name.startswith("dl-") and first.exists() and second.exists()
         with zipfile.ZipFile(first) as archive:
-            assert archive.read("drums.wav") == b"RIFFaaaa"
+            assert archive.read(library.download_name(row, "drums")) == b"RIFFaaaa"
         library.discard_archive(first)
         assert not first.exists() and second.exists()   # concurrent downloads never delete each other's file
         library.discard_archive(first)                  # idempotent

@@ -6,6 +6,7 @@ from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from http.cookies import SimpleCookie, CookieError
 from .auth import AuthStore, AuthError, DatabaseUnavailable, COOKIE_NAME, SESSION_SECONDS
 from pathlib import Path
+from datetime import datetime
 from uuid import uuid4
 import numpy as np
 import soundfile as sf
@@ -638,6 +639,15 @@ class WebLibrary:
             sf.write(output,samples*np.float32(gain),source.samplerate,format='WAV',subtype='PCM_16')
             return output.getvalue()
 
+    @staticmethod
+    def download_name(row,family=None,suffix=".wav"):
+        """`<title>_<family>_<yymmdd>.wav` (family omitted for the ZIP: `<title>_<yymmdd>.zip`); the date is the analysis date in server local time."""
+        title=re.sub(r'[\\/:*?"<>|\x00-\x1f]+',"_",str(row.get("name") or "analysis")).strip(" ._") or "analysis"
+        created=row.get("created")
+        try:moment=datetime.fromtimestamp(created) if isinstance(created,(int,float)) else datetime.fromisoformat(str(created).replace("Z","+00:00")).astimezone()
+        except (TypeError,ValueError):moment=datetime.now()
+        return "_".join(part for part in (title,family,moment.strftime("%y%m%d")) if part)+suffix
+
     def archive(self,row):
         """Per-request ZIP of the final stems. A unique temp file (never cached or listed); the caller must discard_archive() it after the response."""
         folder=self.web/"archives";folder.mkdir(exist_ok=True)
@@ -645,8 +655,7 @@ class WebLibrary:
         partial=target.with_suffix(".partial")
         try:
             with zipfile.ZipFile(partial,"w",compression=zipfile.ZIP_STORED) as archive:
-                for t in row["tracks"]:archive.write(self.track_path(row,t["family"]),t["family"]+".wav")
-                archive.writestr("manifest.json",json.dumps(self.public(row),ensure_ascii=False,indent=2))
+                for t in row["tracks"]:archive.write(self.track_path(row,t["family"]),self.download_name(row,t["family"]))
             partial.replace(target)
         finally:
             partial.unlink(missing_ok=True)
@@ -793,9 +802,9 @@ def make_handler(library,dist,port,public_access=False,auth=None):
                     if row["state"]!="SUCCEEDED":raise ValueError("분석이 아직 완료되지 않았습니다.")
                     if action=="archive":
                         archive=library.archive(row)
-                        try:return self.file(archive,row["name"]+"-stems.zip")
+                        try:return self.file(archive,library.download_name(row,suffix=".zip"))
                         finally:library.discard_archive(archive)
-                    if action=="download":return self.file(library.track_path(row,family),family+".wav")
+                    if action=="download":return self.file(library.track_path(row,family),library.download_name(row,family))
                     query=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
                     if 'start_frame' in query or 'num_frames' in query:
                         body=library.audio_window(row,family,int(query.get('start_frame',['0'])[0]),int(query.get('num_frames',[str(RATE*30)])[0]))
