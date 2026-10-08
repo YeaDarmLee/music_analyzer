@@ -1,0 +1,162 @@
+"""Minimal deterministic sampler: zone selection (key/velocity/round-robin), repitch by playback rate, loop, ADSR-like
+envelope, equal-power pan, note mixing. No external playback engine.
+
+Instrument manifest (`instrument_manifest.json`):
+  {instrument_id, asset_id, kind: "pitched" | "drumkit", source_version, license, source_sha256,
+   zones: [{sample, root_key, lo_key, hi_key, lo_vel, hi_vel, volume_db, pan, tune_cents, offset, keytrack, one_shot,
+            loop?, seq?, rand?, release_s?}]}
+Sample paths are relative to the asset root directory recorded for `asset_id`.
+"""
+from __future__ import annotations
+
+import json
+from collections import OrderedDict
+from pathlib import Path
+
+import numpy as np
+
+from .schema import NoteEvent
+from .util import read_wav, to_stereo
+
+
+class SampleInstrument:
+    def __init__(self, manifest: dict, asset_root: str | Path, sr: int = 44100, cache_bytes: int = 512 << 20,
+                 attack_s: float = 0.003, default_release_s: float = 0.25, vel_exp: float = 0.6):
+        self.m, self.root, self.sr = manifest, Path(asset_root), sr
+        self.zones = manifest["zones"]
+        self.kind = manifest.get("kind", "pitched")
+        self.attack_s, self.release_s, self.vel_exp = attack_s, default_release_s, vel_exp
+        self._cache: OrderedDict[str, np.ndarray] = OrderedDict()
+        self._cache_bytes, self._cache_used = cache_bytes, 0
+        self.skipped = 0
+
+    @property
+    def instrument_id(self) -> str:
+        return self.m["instrument_id"]
+
+    @property
+    def asset_id(self) -> str:
+        return self.m["asset_id"]
+
+    # -- sample cache ------------------------------------------------------------------------------------------
+    def _audio(self, zone: dict) -> np.ndarray:
+        k = zone["sample"]
+        if k in self._cache:
+            self._cache.move_to_end(k)
+            return self._cache[k]
+        a = to_stereo(read_wav(self.root / k, self.sr)[0])
+        self._cache[k] = a
+        self._cache_used += a.nbytes
+        while self._cache_used > self._cache_bytes and len(self._cache) > 1:
+            _, old = self._cache.popitem(last=False)
+            self._cache_used -= old.nbytes
+        return a
+
+    # -- zone choice ---------------------------------------------------------------------------------------------
+    def select_zone(self, pitch: int, velocity: int, rr: float, counter: int) -> dict | None:
+        cand = [z for z in self.zones if z["lo_key"] <= pitch <= z["hi_key"] and z["lo_vel"] <= velocity <= z["hi_vel"]]
+        if not cand:  # nearest key range, same velocity window: tolerate small gaps in a mapping
+            vel_ok = [z for z in self.zones if z["lo_vel"] <= velocity <= z["hi_vel"]] or self.zones
+            z = min(vel_ok, key=lambda z: min(abs(pitch - z["lo_key"]), abs(pitch - z["hi_key"])))
+            if min(abs(pitch - z["lo_key"]), abs(pitch - z["hi_key"])) > 12:
+                return None
+            cand = [z]
+        seq = [z for z in cand if "seq" in z]
+        if seq:
+            L = seq[0]["seq"][1]
+            want = counter % L + 1
+            sel = [z for z in seq if z["seq"][0] == want]
+            cand = sel or cand
+        rnd = [z for z in cand if "rand" in z]
+        if rnd:
+            sel = [z for z in rnd if z["rand"][0] <= rr < z["rand"][1]]
+            cand = sel or cand
+        if len(cand) > 1:  # several equivalent zones: pick by rr, deterministic given rr
+            cand = sorted(cand, key=lambda z: (z["sample"]))
+            return cand[int(rr * len(cand)) % len(cand)]
+        return cand[0]
+
+    # -- one note --------------------------------------------------------------------------------------------------
+    def _note(self, zone: dict, pitch: int, velocity: int, held: int) -> np.ndarray:
+        a = self._audio(zone)
+        off = int(zone.get("offset", 0))
+        a = a[:, off:]
+        n_src = a.shape[1]
+        if n_src < 2:
+            return np.zeros((2, 0), np.float32)
+        ratio = 2.0 ** (((pitch - zone["root_key"]) if zone.get("keytrack", True) else 0) / 12.0
+                        + zone.get("tune_cents", 0.0) / 1200.0)
+        rel = int(round(zone.get("release_s", self.release_s) * self.sr))
+        one_shot = zone.get("one_shot") or self.kind == "drumkit"
+        loop = zone.get("loop")
+        if one_shot:
+            n_out = int((n_src - 1) / ratio)
+        elif loop:
+            n_out = held + rel
+        else:
+            n_out = min(held + rel, int((n_src - 1) / ratio))
+        n_out = max(n_out, 0)
+        pos = np.arange(n_out, dtype=np.float64) * ratio
+        if loop and not one_shot:
+            ls, le = max(loop[0] - off, 0), min(loop[1] - off, n_src - 1)
+            if le > ls:
+                pos = np.where(pos >= le, ls + np.mod(pos - ls, le - ls), pos)
+        pos = np.minimum(pos, n_src - 1.001)
+        i0 = pos.astype(np.int64)
+        fr = (pos - i0).astype(np.float32)
+        y = a[:, i0] * (1 - fr) + a[:, i0 + 1] * fr
+        env = np.ones(n_out, np.float32)
+        att = min(int(self.attack_s * self.sr), n_out)
+        if att:
+            env[:att] = np.linspace(0, 1, att, dtype=np.float32)
+        if not one_shot and n_out > held:  # release: exponential to -60 dB over `rel`
+            r = n_out - held
+            env[held:] *= np.exp(np.linspace(0, -6.9, r, dtype=np.float32))
+        elif one_shot and n_out > 64:
+            env[-64:] *= np.linspace(1, 0, 64, dtype=np.float32)
+        g = 10.0 ** (zone.get("volume_db", 0.0) / 20.0) * (max(velocity, 1) / 127.0) ** self.vel_exp
+        th = (zone.get("pan", 0.0) / 100.0 + 1.0) * np.pi / 4.0
+        pan = np.array([[np.cos(th)], [np.sin(th)]], np.float32) * np.float32(np.sqrt(2.0))
+        return (y * env * g * pan).astype(np.float32)
+
+    def render(self, events: list[NoteEvent], duration_samples: int, rng: np.random.RandomState) -> np.ndarray:
+        out = np.zeros((2, duration_samples), np.float32)
+        counter = 0
+        for ev in sorted(events, key=lambda e: (e.start, e.pitch)):
+            s0 = int(round(ev.start * self.sr))
+            if s0 >= duration_samples:
+                continue
+            rr = float(rng.rand())
+            z = self.select_zone(ev.pitch, ev.velocity, rr, counter)
+            counter += 1
+            if z is None:
+                self.skipped += 1
+                continue
+            held = max(int(round((ev.end - ev.start) * self.sr)), 1)
+            y = self._note(z, ev.pitch, ev.velocity, held)
+            n = min(y.shape[1], duration_samples - s0)
+            if n > 0:
+                out[:, s0:s0 + n] += y[:, :n]
+        return out
+
+
+def load_instrument(manifest_path: str | Path, asset_roots: dict[str, str | Path], sr: int = 44100, **kw) -> SampleInstrument:
+    m = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
+    return SampleInstrument(m, asset_roots[m["asset_id"]], sr, **kw)
+
+
+def build_manifest_from_sfz(sfz_path: str | Path, asset_root: str | Path, instrument_id: str, asset_id: str,
+                            source_version: str, license: str, source_sha256: str, kind: str = "pitched",
+                            strict: bool = True) -> tuple[dict, dict]:
+    """Ingest an SFZ file into an instrument manifest. -> (manifest, report{unsupported opcodes, notes, dropped})."""
+    from .sfz import parse_sfz, regions_to_zones
+    asset_root, sfz_path = Path(asset_root), Path(sfz_path)
+    regions, unsupported = parse_sfz(sfz_path.read_text(encoding="utf-8", errors="replace"), strict=strict)
+    zones, notes = regions_to_zones(regions, sfz_path.parent.relative_to(asset_root).as_posix()
+                                    if sfz_path.parent != asset_root else ".")
+    missing = [z["sample"] for z in zones if not (asset_root / z["sample"]).exists()]
+    zones = [z for z in zones if (asset_root / z["sample"]).exists()]
+    man = {"instrument_id": instrument_id, "asset_id": asset_id, "kind": kind, "source_version": source_version,
+           "license": license, "source_sha256": source_sha256, "zones": zones}
+    return man, {"unsupported_opcodes": dict(unsupported), "notes": dict(notes), "missing_samples": missing,
+                 "regions": len(regions), "zones": len(zones)}

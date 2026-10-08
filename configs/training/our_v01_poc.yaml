@@ -18,7 +18,7 @@ losses:
   - {name: waveform_l1, weight: 1.0, kwargs: {}}
   - name: multires_stft
     weight: 1.0
-    kwargs: {resolutions: [[2048, 512, 2048], [1024, 256, 1024], [512, 128, 512]]}
+    kwargs: {resolutions: [[2048, 512, 2048], [1024, 256, 1024], [512, 128, 512]], sc_floor_rel: 0.01}
 metrics:
   - {name: sdr, kwargs: {}}
   - {name: si_sdr, kwargs: {}}

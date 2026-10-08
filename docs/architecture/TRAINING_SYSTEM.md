@@ -35,3 +35,8 @@ STFT 규격, band 표현, backbone, decoder/head 방식, 2-stem A/B/C, loss 조�
 .venv/Scripts/python.exe -m pytest -q
 PYTHONPATH=src .venv/Scripts/python.exe -m engine.cli run configs/experiment/phase2_smoke.yaml
 ```
+
+## Phase 4 additions (Data Factory integration)
+- Dataset configs may set `plugin: <module>`; the runner imports it before building datasets (used by `data_factory.adapter`, kind `datafactory_scenes`). The engine does not import `data_factory`.
+- `multires_stft` has an optional `sc_floor_rel` (see `configs/training/our_v01_poc.yaml`). Without it, spectral convergence uses the whole-batch target norm and explodes (~1e10, measured) when a target stem is exactly silent, which is normal in Data Factory scenes (inactive stems). With `sc_floor_rel: 0.01` the denominator is `max(|T|, 0.01*|mixture|)` per item and the loss stays bounded (~30 at initialization for silent-target scenes). This deviates from the plain form in Research Packet 02 and needs a Research Lead decision, together with the still-deferred inactive-stem penalty.
+- Manifest policy: `GREEN_CONDITIONAL` grade and explicit obligations (`attribution_required`, `notice_required`, `attribution_text`, `license_url`); see `DATASET_PROVENANCE.md`.

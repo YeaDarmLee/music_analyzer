@@ -1,0 +1,28 @@
+{
+ "note": "FIXTURE assets (procedural tones); not representative of real sample libraries",
+ "spec_generation_ms_per_scene": 2.05,
+ "spec_json_bytes_mean": 6617,
+ "full_render": {
+  "scenes": 20,
+  "seconds_per_scene": 0.416,
+  "rtf": 0.084,
+  "mean_scene_seconds": 4.96
+ },
+ "prerender_bytes_per_scene_float32_mean": 6307494,
+ "window_render_3s_seconds_per_item": 0.337,
+ "dataloader_items_per_second_batch4": {
+  "workers_0": 3.49,
+  "workers_4": 12.33,
+  "workers_8": 23.57
+ },
+ "cache": {
+  "cold_s_per_item": 0.306,
+  "warm_s_per_item": 0.0098,
+  "bytes_per_item": 3158144
+ },
+ "cross_process_determinism": {
+  "spec_hash_equal": true,
+  "audio_hash_equal": true
+ },
+ "torch_cuda_available": true
+}

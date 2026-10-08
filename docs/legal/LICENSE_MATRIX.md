@@ -2,7 +2,7 @@
 
 규칙: 각 구성요소는 아래 열을 **따로** 판정한다. 한 열의 값이 다른 열로 번지지 않는다.
 값: `MIT`/`BSD-*`/`Apache-2.0`/`CC0` 등 SPDX, `UNKNOWN`(확인했으나 명시 없음), `NEEDS_RESEARCH`(아직 외부 조사 안 함), `N/A`.
-외부 근거는 Research Packet이 전달한 것만 적는다. 근거 없는 셀은 `NEEDS_RESEARCH`로 둔다.
+외부 근거는 Research Packet이 전달한 것만 적는다 (Packet 04/05 표기 [P45]; GitHub/Zenodo 메타데이터 확인은 2026-10-08 에이전트가 직접 조회). 근거 없는 셀은 `NEEDS_RESEARCH`로 둔다.
 
 Lineage 판정: `OK`(OUR MODEL lineage 사용 가능) / `REFERENCE_ONLY`(아키텍처 연구만) / `EXCLUDED`.
 
@@ -31,18 +31,56 @@ Lineage 판정: `OK`(OUR MODEL lineage 사용 가능) / `REFERENCE_ONLY`(아키�
 ### 1.1 OUR MODEL 제외 목록 (Packet 01 지시, 2026-10-08)
 Demucs pretrained, Open-Unmix UMXL pretrained, Banquet pretrained, SCNet pretrained, BSMamba2 pretrained. 해당 코드/논문은 Architecture Research 용도로만 쓴다. KJ checkpoint는 MIT지만 학습 데이터 provenance UNKNOWN이므로 experiment/reference만 가능하다.
 
-## 2. Data Factory 구성요소 (Research Packet 04 대기)
+## 2. Data Factory 구성요소 (Research Packet 04/05 **[P45]**, 2026-10-08)
 
-각 항목은 CODE / ASSET / SAMPLE / PRESET / GENERATED AUDIO RIGHTS / TRAINING RIGHTS 여섯 열로 쪼갠다.
+7열 판정: Code / Asset / Sample / Preset / Generated Audio / AI Training / 판정. commercial use와 AI training은 별도 조사 항목이다. 판정: GREEN, GREEN_CONDITIONAL(의무 기록 필요), YELLOW(연구/benchmark만), RED/UNKNOWN(사용 금지).
+URL은 Packet Source Map 그대로. `—` = 해당 없음.
 
-| 구성요소 | CODE | ASSET | SAMPLE | PRESET | GENERATED AUDIO | TRAINING | 판정 |
+### 2.1 소프트웨어
+
+| 구성요소 (URL) | Code | Asset/Sample/Preset | Generated Audio | AI Training | 판정 / v0 사용 |
+|---|---|---|---|---|---|
+| NumPy (https://github.com/numpy/numpy) | BSD-3-Clause | — | — | — | GREEN, **사용** |
+| SciPy (https://github.com/scipy/scipy) | BSD-3-Clause | — | — | — | GREEN, **사용** (WAV I/O, filter, FFT conv, resample) |
+| PyTorch | 기존 Engine 의존성 (Packet은 라이선스 값을 주지 않음) | — | — | — | NEEDS_RESEARCH (SPDX 확인) |
+| Mido (https://github.com/mido/mido) | MIT | — | — | — | GREEN, 미사용 (debug MIDI export 후보) |
+| pretty_midi (https://github.com/craffel/pretty-midi) | MIT | 연계 SoundFont/FluidSynth 경로는 코드 라이선스와 별개 | — | — | GREEN optional, 미사용 |
+| music21 (https://github.com/cuthbertLab/music21) | BSD-3-Clause | 번들 corpus는 곡별 별도 권리 → 자동 사용 금지 | — | — | 코드 GREEN, **corpus 자동 사용 금지**, 미사용 |
+| MusPy (https://github.com/salu133445/muspy) | MIT | 접근 symbolic dataset은 각각 별도 | — | — | 코드 GREEN, 미사용 |
+| librosa (https://github.com/librosa/librosa) | ISC | — | — | — | GREEN, v0 미채택 |
+| audiomentations (https://github.com/iver56/audiomentations) | MIT | — | — | — | GREEN optional, 미사용 |
+| torch-audiomentations (https://github.com/iver56/torch-audiomentations) | MIT | — | — | — | GREEN optional, 미사용 |
+| Spotify Pedalboard (https://github.com/spotify/pedalboard) | GPL-3.0 | — | — | — | **RED for Core** (permissive-only 정책) |
+| FluidSynth (https://github.com/FluidSynth/fluidsynth) | LGPL-2.1-or-later | SoundFont 권리는 별개 | — | — | YELLOW, v0 제외 |
+| sfizz (https://github.com/sfztools/sfizz) | BSD-2-Clause (2026-06-21 archived) | — | — | — | 코드 GREEN, runtime 제외, SFZ 동작 참고만 |
+| Surge XT (https://github.com/surge-synthesizer/surge) | GPL-3.0-or-later | — | — | — | RED for Core |
+| Dexed (https://github.com/asb2m10/dexed) | GPL-3.0 (내부 `msfa` FM 엔진 일부 Apache-2.0) | — | — | — | RED for Core |
+| OB-Xf (https://github.com/surge-synthesizer/OB-Xf) | GPL-3.0 | — | — | — | RED for Core |
+| OUR sampler / DSP synth / FX / composition (`src/data_factory`) | project-owned | 없음 (자체 생성) | project-owned | project-owned | GREEN (asset id `project-procedural-dsp`) |
+
+### 2.2 Asset / Sample
+
+| 구성요소 (URL) | Code | Asset | Sample | Preset | Generated Audio | AI Training | 판정 |
 |---|---|---|---|---|---|---|---|
-| FluidSynth | NEEDS_RESEARCH | N/A | N/A | N/A | NEEDS_RESEARCH | NEEDS_RESEARCH | NEEDS_RESEARCH |
-| GeneralUser GS (SF2) | N/A | NEEDS_RESEARCH | NEEDS_RESEARCH | N/A | NEEDS_RESEARCH | NEEDS_RESEARCH | NEEDS_RESEARCH. 레거시 `DATASET_LICENSES_COMMERCIAL_KO.md`는 소유자 제공 요약만 근거 |
-| sfizz | NEEDS_RESEARCH | N/A | N/A | N/A | N/A | N/A | NEEDS_RESEARCH |
-| Surge XT / Dexed / OB-Xf | NEEDS_RESEARCH | | | | | | NEEDS_RESEARCH (GPL 계열은 프로세스 분리 여부 포함) |
-| FreePats Timpani | N/A | CC0 1.0 (레거시 LICENSE.txt) | CC0 1.0 | N/A | NEEDS_RESEARCH | NEEDS_RESEARCH | 부분 확인 |
-| 자체 DSP synth (신규 구현) | 자체 | 없음 | 없음 | 자체 생성 | 자체 | 자체 | OK (구현 후 기록) |
+| VCSL (https://github.com/sgossner/VCSL, https://versilian-studios.com/vcsl/) | CC0 (포함된 스크립트) | CC0 | CC0 | SFZ는 CC0 범위 확인 후 사용 [P45] | unrestricted [P45] | 금지 조건 없음 [P45]; publisher: generative music/sampler 포함 | **GREEN** (GitHub API license 필드 CC0-1.0, 2026-10-08 직접 조회) |
+| VCSL Keys (https://versilian-studios.com/vcsl-keys/) | — | CC0 | CC0 | SFZ | unrestricted | 금지 조건 없음 [P45] | **GREEN**, Piano 1순위. **다운로드 위치/구조: NEEDS_RESEARCH** (VCSL repo 안인지 별도 배포인지 Packet에 없음) |
+| VSCO 2 CE (https://github.com/sgossner/VSCO-2-CE, https://versilian-studios.com/vsco-community/) | — | CC0 | CC0 | — | unrestricted | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회). strings/brass 등 후속 stem |
+| Karoryfer Big Little Bass (https://github.com/sfzinstruments/karoryfer.big-little-bass) | — | CC0-1.0 | CC0-1.0 | — | README: royalty-free commercial/non-commercial | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회) |
+| Karoryfer Sneakybass (https://github.com/sfzinstruments/karoryfer.sneakybass) | — | CC0-1.0 | CC0-1.0 | — | unrestricted | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회) |
+| Stargate Sample Pack (https://github.com/stargatedaw/stargate-sample-pack) | — | public-domain/unrestricted 의도 [P45] | 동일 | — | unrestricted | 금지 조건 없음 [P45] | GREEN candidate. **GitHub license 필드는 NOASSERTION** → ingest 시 repo `LICENSE` 원문과 SPDX 확인 필요 (NEEDS_RESEARCH). 확인 전 production 금지 |
+| VocalSet (https://doi.org/10.5281/zenodo.1203819) | — | CC BY 4.0 (Zenodo record license 필드 `cc-by-4.0`, version 1.1, 2026-10-08 조회) | 동일 | — | attribution 의무 | 금지 조건 없음 [P45] | **GREEN_CONDITIONAL** (attribution_required). excerpts 제외(프로젝트 정책). 인용문 정확한 형식: NEEDS_RESEARCH |
+| Common Voice (https://commonvoice.mozilla.org/oc/terms) | — | CC0 기여분 [P45] | — | — | — | 음성(발화) 데이터, 노래 아님 | v0 미사용 |
+| Freesound CC0 (https://freesound.org/help/faq/) | — | uploader 권리 검증 불가 | — | — | — | — | **YELLOW** (수동 allowlist만) |
+| MUSDB18 / MUSDB18-HQ (https://zenodo.org/records/3338373) | — | educational only, 상업 금지, MedleyDB 등 NC 포함 | — | — | — | — | **RED** |
+| MedleyDB | — | non-commercial (subset별) | — | — | — | — | **RED** (URL: NEEDS_RESEARCH) |
+| MoisesDB (https://github.com/moises-ai/moises-db) | — | CC BY-NC-SA 4.0 | — | — | — | — | **RED** |
+| Mixing Secrets (https://www.cambridge-mt.com/ms3/mtk/ , FAQ https://cambridge-mt.com/ms3/mtk-faq/) | — | educational only; AI engine training은 기여자별 별도 라이선스 필요 | — | — | — | — | **RED** |
+| MDB-stem-synth | — | CC BY-NC 4.0 | — | — | — | — | **RED** (URL: NEEDS_RESEARCH) |
+| Slakh2100 (https://github.com/ethman/Slakh) | — | CC BY 4.0 | — | — | — | upstream MIDI 권리 불확실 | **YELLOW** |
+| Lakh MIDI (https://colinraffel.com/projects/lmd/) | — | CC BY 4.0, 곡별 저자 attribution 불가 (maintainer) | — | — | — | — | **YELLOW** |
+| DnR v3 | Apache-2.0 | CC BY-SA 4.0 (ShareAlike) | — | — | — | — | **YELLOW** (URL: NEEDS_RESEARCH) |
+
+커밋된 판정 데이터: `configs/data_factory/asset_catalog.json`. ingest 후 레코드: `artifacts/assets/<id>.json`, 라이선스 원문 스냅샷: `artifacts/licenses/<id>/LICENSE.txt`.
 
 ## 3. 의존성 (Python 패키지)
 

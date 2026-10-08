@@ -173,9 +173,10 @@ def test_resume_is_bit_exact(cfg, tcfg, datasets, tmp_path):
 
 # 12/13 dataset manifest policy ------------------------------------------------------------------------------
 def _manifest(**over):
-    a = {"asset_id": "a1", "source": "s", "license": "CC0-1.0", "version": "1", "sha256": "ab" * 32, "grade": "GREEN",
+    a = {"asset_id": "a1", "source": "s", "source_url": "https://example.test/a1", "license": "CC0-1.0",
+         "license_url": "https://example.test/license", "version": "1", "sha256": "ab" * 32, "grade": "GREEN",
          "commercial_allowed": True, "training_allowed": True, "derivative_allowed": True,
-         "redistribution_allowed": True}
+         "redistribution_allowed": True, "attribution_required": False, "attribution_text": "", "notice_required": False}
     a.update(over)
     return {"assets": {"a1": a}, "samples": [{"sample_id": "s1", "asset_ids": ["a1"]}]}
 
@@ -210,6 +211,7 @@ def test_redistribution_flag_is_use_specific():
 def test_grades_per_usage():
     assert validate_manifest(_manifest(grade="YELLOW"), "RESEARCH") == []
     assert validate_manifest(_manifest(grade="YELLOW"), "PRODUCTION_TRAINING")
+    assert validate_manifest(_manifest(grade="GREEN_CONDITIONAL"), "PRODUCTION_TRAINING") == []
     for u in ("RESEARCH", "BENCHMARK", "PRODUCTION_TRAINING"):
         assert validate_manifest(_manifest(grade="RED"), u)
     assert validate_manifest(_manifest(grade="GREEN", sha256="bad"), "PRODUCTION_TRAINING")
@@ -289,3 +291,16 @@ def test_end_to_end_cuda_fp16_amp(tmp_path):
     assert r["inference"]["peak_vram_mib"] > 0
     meta = json.loads((r["run_dir"] / "experiment.json").read_text())
     assert meta["environment"]["cuda_available"] and meta["environment"]["gpu"]
+
+
+def test_attribution_obligation_enforced():
+    ok = _manifest(grade="GREEN_CONDITIONAL", attribution_required=True, attribution_text="VocalSet, CC BY 4.0")
+    assert validate_manifest(ok, "PRODUCTION_TRAINING") == []
+    missing = _manifest(grade="GREEN_CONDITIONAL", attribution_required=True, attribution_text="")
+    with pytest.raises(ManifestError, match="attribution_text"):
+        require_valid(missing, "PRODUCTION_TRAINING")
+    unstated = _manifest(attribution_required=None)
+    with pytest.raises(ManifestError, match="attribution_required"):
+        require_valid(unstated, "PRODUCTION_TRAINING")
+    assert validate_manifest(_manifest(license_url=""), "PRODUCTION_TRAINING")
+    assert validate_manifest(unstated, "RESEARCH") == []  # research does not demand obligations

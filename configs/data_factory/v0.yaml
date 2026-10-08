@@ -1,0 +1,23 @@
+# Data Factory v0 generation config. Distributions are initial hypotheses (Packet 04/05 s21-22), to be revised after benchmark.
+master_seed: 20261008
+sample_rate: 44100
+duration_seconds: [5.0, 12.0]
+bpm_range: [70, 150]
+split_ratios: {train: 0.8, val: 0.1, test: 0.1}   # decided per composition family, never per clip
+scene_types:
+  vocal_plus_instruments: 0.55
+  instrumental_only: 0.20
+  vocal_only: 0.10
+  sparse_instrument: 0.10
+  near_silence: 0.05
+profiles: [pop_clean, ballad, rock_dense, electronic, dry_rehearsal]
+mix:
+  stem_gain_db: [-6.0, 3.0]
+  vocal_gain_db: [-2.0, 4.0]
+  target_rms_db: [-24.0, -16.0]
+  near_silence_rms_db: [-60.0, -48.0]
+  peak_limit: 0.98
+# Populated by `data_factory.cli ingest-*` once assets are ingested (paths to instrument manifests / vocal index).
+instruments: {}
+holdout_instruments: []     # ids that appear only in the 'ood' split
+vocal_index: null

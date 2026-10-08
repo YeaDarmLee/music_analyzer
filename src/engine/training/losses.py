@@ -37,16 +37,32 @@ def waveform_l2(out, target, mix, use_input_scale=True, **_):
 
 
 @LOSSES.register("multires_stft")
-def multires_stft(out, target, mix, resolutions, use_input_scale=True, eps=1e-7, **_):
-    """Mean over resolutions of (spectral convergence + log-magnitude L1). resolutions: [[n_fft, hop, win], ...]."""
+def multires_stft(out, target, mix, resolutions, use_input_scale=True, eps=1e-7, sc_floor_rel=None, **_):
+    """Mean over resolutions of (spectral convergence + log-magnitude L1). resolutions: [[n_fft, hop, win], ...].
+
+    sc_floor_rel=None : spectral convergence uses the whole-batch target norm (Research Packet 02 form). This explodes
+                        (~1e10) when a target stem is exactly silent, e.g. an inactive stem in a batch of one scene.
+    sc_floor_rel=r    : per-item convergence with denominator max(|T|, r*|M|), M = mixture spectrum, which stays bounded for
+                        silent targets. Needed for any dataset that contains inactive stems (Data Factory)."""
     terms = []
+    sc_in = _scale(out) if use_input_scale else None
+    m_all = mix.float() / sc_in if sc_in is not None else mix.float()
     for p, t in _pairs(out, target, use_input_scale):
+        b = p.shape[0]
         p, t = p.reshape(-1, p.shape[-1]), t.reshape(-1, t.shape[-1])
+        m = m_all.reshape(-1, m_all.shape[-1])
         for n_fft, hop, win in resolutions:
             w = torch.hann_window(win, device=p.device)
             P = torch.stft(p, n_fft, hop, win, window=w, return_complex=True).abs()
             T = torch.stft(t, n_fft, hop, win, window=w, return_complex=True).abs()
-            sc = torch.linalg.vector_norm(T - P) / torch.linalg.vector_norm(T).clamp_min(eps)
+            if sc_floor_rel is None:
+                sc = torch.linalg.vector_norm(T - P) / torch.linalg.vector_norm(T).clamp_min(eps)
+            else:
+                M = torch.stft(m, n_fft, hop, win, window=w, return_complex=True).abs()
+                num = torch.linalg.vector_norm((T - P).reshape(b, -1), dim=1)
+                den = torch.maximum(torch.linalg.vector_norm(T.reshape(b, -1), dim=1),
+                                    sc_floor_rel * torch.linalg.vector_norm(M.reshape(b, -1), dim=1)).clamp_min(eps)
+                sc = (num / den).mean()
             lm = (torch.log(T + eps) - torch.log(P + eps)).abs().mean()
             terms.append(sc + lm)
     return torch.stack(terms).mean()

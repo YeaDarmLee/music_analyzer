@@ -8,7 +8,7 @@ version = "0.0.1"
 description = "Research engine: music source separation training/inference infrastructure"
 requires-python = ">=3.11,<3.13"
 # Lower bounds only. Phase 2 verified with .venv: torch 2.5.1+cu121, numpy 1.26.4, PyYAML 6.0.3.
-dependencies = ["numpy>=1.26", "PyYAML>=6.0", "torch>=2.5"]
+dependencies = ["numpy>=1.26", "PyYAML>=6.0", "torch>=2.5", "scipy>=1.11"]  # scipy (BSD-3, Packet 04/05 s4.2): WAV I/O, biquad/IIR filters, FFT convolution, resampling for data_factory
 
 [project.optional-dependencies]
 test = ["pytest>=8"]

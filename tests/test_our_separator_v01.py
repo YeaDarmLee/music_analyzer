@@ -243,3 +243,18 @@ def test_cuda_amp_fp16_forward_backward_full_spec():
     loss.backward()
     assert torch.isfinite(loss) and all(torch.isfinite(p.grad).all() for p in m.parameters() if p.grad is not None)
     assert (x - sum(o.stems.values())).abs().max() < 1e-3  # fp16 tolerance
+
+
+def test_multires_stft_silent_target_explodes_without_floor_and_is_bounded_with_it():
+    """Inactive stems (exactly silent targets) are normal in Data Factory scenes."""
+    x = audio(b=1, t=4000)
+    sil = torch.zeros_like(x)
+    from engine.interfaces import SeparationOutput
+    out = SeparationOutput({"vocals": x / 2, "instrumental": x / 2}, 8000, aux={"input_scale": x.pow(2).mean().sqrt().view(1, 1, 1)})
+    tg = {"vocals": sil, "instrumental": x}
+    res = [[256, 64, 256]]
+    plain = LOSSES.get("multires_stft")(out, tg, x, resolutions=res)
+    floored = LOSSES.get("multires_stft")(out, tg, x, resolutions=res, sc_floor_rel=0.01)
+    assert plain.item() > 1e6 and torch.isfinite(floored) and floored.item() < 200
+    ok = {"vocals": x / 2, "instrumental": x / 2}
+    assert LOSSES.get("multires_stft")(out, ok, x, resolutions=res, sc_floor_rel=0.01).item() < 1e-3  # perfect prediction stays ~0

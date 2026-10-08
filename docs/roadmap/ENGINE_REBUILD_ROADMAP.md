@@ -16,7 +16,7 @@
 | 01 | Separation Architecture + License (KJ, Mel/BS-RoFormer, SCNet, Demucs, BandIt, Banquet, Open-Unmix, BSMamba2, TS-BSmamba2, MuS3D) | v1 수령·반영 완료 (개별 URL 미수령: NEEDS_URL) | ARCHITECTURE_COMPARISON, LICENSE_MATRIX |
 | 02 | OUR v0.1 Architecture (3060 12GB 기준 n_fft/hop/band/dim/depth/chunk/batch/accum/AMP/loss/optimizer) | 수령·구현 완료 (`OUR_SEPARATOR_ARCHITECTURE.md`) | OUR_SEPARATOR_ARCHITECTURE |
 | 03 | 6-stem. 비교 대상: stem별 output projection / factorized projection / shared projection + stem embedding / lightweight shared decoder / query-conditioned decoder / hierarchical decoder (output projection 36.9% 병목 때문) | 실제 데이터 baseline 이후 | OUR_SEPARATOR_ARCHITECTURE §10.1 |
-| 04+05 (통합) | Commercial-Clean Data Factory & Dataset. 7열 판정(Code/Asset/Sample/Preset/Generated Audio/AI Training/판정; commercial use와 AI training은 별도 조사), GREEN/YELLOW/RED/UNKNOWN(UNKNOWN은 사용 금지). Data Factory v0 대상: Drums, Bass, Piano, Synth(자체 DSP 우선) → 이후 Electric/Acoustic Guitar, Strings, Brass | **다음 Packet.** 수령 전에는 Data Factory 코드/의존성/asset 선택 금지 | DATA_FACTORY_ARCHITECTURE, LICENSE_MATRIX §2, DATASET_PROVENANCE |
+| 04+05 (통합) | Commercial-Clean Data Factory & Dataset. 7열 판정(Code/Asset/Sample/Preset/Generated Audio/AI Training/판정; commercial use와 AI training은 별도 조사), GREEN/YELLOW/RED/UNKNOWN(UNKNOWN은 사용 금지). Data Factory v0 대상: Drums, Bass, Piano, Synth(자체 DSP 우선) → 이후 Electric/Acoustic Guitar, Strings, Brass | 수령·구현 완료 (DF-1~DF-7, `DATA_FACTORY_ARCHITECTURE.md`). DF-0 실제 asset 다운로드는 사용자 승인 대기 | DATA_FACTORY_ARCHITECTURE, LICENSE_MATRIX §2, DATASET_PROVENANCE |
 
 ## Phase 상태
 
@@ -26,7 +26,8 @@
 | 1 | 아키텍처·라이선스 | Packet 01 반영 완료. 남은 NEEDS_RESEARCH는 매트릭스 참조 |
 | 2 | Engine foundation (config, registry, checkpoint/provenance, trainer, 테스트) | 완료 (`TRAINING_SYSTEM.md`) |
 | 3 | OUR MODEL v0.1 구현 + profiling + synthetic overfit | 완료·승인. v0.1 아키텍처 개발 일시 정지 (실제 데이터 전까지 개선 판단 불가) |
-| 4~7 | Data Factory v0 (Packet 04), 2-stem 최적화/ablation, 6-stem, 13+ | 후속. 실제 분리 데이터가 먼저 필요 |
+| 4 | Data Factory v0 | 코드·테스트·fixture POC 완료. 실제 asset ingest(DF-0) 대기 |
+| 5~7 | 생성 음원 청취 검증 → our_separator_v01 본학습 → 2-stem ablation → 6-stem(Packet 03) → 13+ | 후속 |
 
 ## 확정 제약
 - Dev GPU RTX 3060 12 GiB, 학습 1장 동작, AMP 필수, 수 M~수십 M params, chunk 3~8 s.

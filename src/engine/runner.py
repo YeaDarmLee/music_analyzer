@@ -1,6 +1,7 @@
 """Config-driven end-to-end run: manifest check -> train -> checkpoint+provenance -> reload -> inference -> metrics."""
 from __future__ import annotations
 
+import importlib
 from pathlib import Path
 
 import torch
@@ -27,6 +28,8 @@ def run_experiment(experiment_path: str | Path, base_dir: str | Path = ".", resu
     manifest_path = configs_root(cfg) / cfg.dataset["params"]["manifest"]
     manifest_sha = require_valid(load_manifest(manifest_path), cfg.dataset["usage"])  # raises on policy violation
 
+    if "plugin" in cfg.dataset:  # dataset provider package (e.g. data_factory.adapter) registers its own DATASETS kind
+        importlib.import_module(cfg.dataset["plugin"])
     run = Run.create(cfg, manifest_sha, base_dir)
     seed = cfg.training["seed"]
     model_cfg = cfg.model
