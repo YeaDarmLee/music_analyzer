@@ -537,3 +537,24 @@ UNKNOWN은 자동 삭제 대상이 아니다. 위험도 정의: SAFE=지금 지�
 - `final_11 baseline`의 `bs_6stem`·`bs_karaoke`·`melband_karaoke`(UNKNOWN 라이선스)와 CLAPSep 스택: commercial_13 동결 후 baseline 폐기 시점에 재검토.
 - `audiosep-env`(0.28 GB)는 `clapsep-env`가 쓰는 동안 삭제할 수 없다.
 - AudioSep/wesep 재생성: `prepare-audiosep.py` 등으로 재다운로드 가능하며 URL·commit·체크포인트 SHA256은 `docs/RETIRED_TOOLS_PROVENANCE.json`에 있다.
+
+
+## 14. 후속 조사 (읽기 전용, 삭제 없음): 단독 job 41건, 버전별 평가 폴더
+
+### 14-1. 단독 job 41건 — 테스트 하네스 잔여물로 판단됨
+`scripts/audit-standalone-jobs.py`로 조사. 합계 1.35 GB(job 결과 + 입력 asset).
+- 41건 모두 **2026-10-06 22:49 ~ 10-07 00:20 (약 90분)** 에 생성됐다. preset은 `baseline` 22(Demucs 계열), `instrument_mega5` 14, `vocal_roformer` 5.
+- 입력 파일 이름은 `piano-before.wav` 22, `mix.wav` 10, `instrumental.wav` 9. 길이는 전부 15~20 s. 사용자가 올린 곡이 아니라 합성/연구용 클립이다.
+- 입력이 남은 4개 분석의 원본과 같은 오디오인 것 0건, `song/` 파일과 같은 것 0건.
+- 테스트·스크립트·문서에서 이 job id를 이름으로 부르는 파일은 1개뿐이다.
+- 결론: 평가·연구 실행이 라이브러리에 남긴 **BENCHMARK 성격의 단독 결과**. 다만 `WebLibrary.entries()`가 라이브러리 목록에 보여주는 항목이라 삭제는 승인 후 `delete` 경로가 아니라(분석 레코드가 없음) job/asset 정리로 해야 한다. 회수 예상 **1.35 GB**.
+
+### 14-2. 버전별 평가 폴더 (`stability-v11…v16`, `controls-v11…v16`, 12개)
+- 이 폴더들의 큰 부분은 `evaluation-references/` **12.69 GB (2,496 파일)** 다.
+- `scripts/audit-reference-regeneration.py`로 모든 파일을 검사했다: **1,878개는 전부 0인 무음 stem**(해당 악기의 reference가 없음), **618개는 `prepared.json`이 이름을 부르는 reference 파일들을 합쳐 비트 단위로 똑같이 재구성**된다(해당 reference 파일은 모두 존재). 재구성 불가·불일치는 **0개**.
+- `ground_truth.evaluate()`가 실행할 때마다 `evaluation-references/`를 다시 쓰기 때문에, 지우더라도 같은 source에서 재생성된다. 케이스 정의 폴더의 `references/`(80개), `mix.wav`, 각 버전의 `report.json`/`prepared.json`/`run.json`은 그대로 둔다.
+- 별개로, 하드링크가 아닌 동일 내용 파일 그룹이 547개(절감 가능 6.47 GB)다. `evaluation-references`를 지우면 이 중복도 함께 사라진다.
+- 결론: 버전 폴더의 `evaluation-references/`는 **재생성 가능한 파생물 (D, SAFE에 가까운 REVIEW)** — 회수 예상 최대 12.7 GB(논리), 실제 물리 회수량은 일부 하드링크 때문에 이보다 적을 수 있다.
+
+### 14-3. 이 두 가지를 반영한 예상 (승인 시)
+현재 48.5 GB → 단독 job 정리 −1.35 GB, 버전 폴더 references −약 12 GB ⇒ **약 35 GB**. 1차 목표 30~35 GB에 들어온다. 그 아래는 commercial_13 동결 후 baseline 폐기(CLAPSep 2.7 GB, UNKNOWN 체크포인트 2.5 GB, melband_karaoke 포함 등)로 이어진다.
