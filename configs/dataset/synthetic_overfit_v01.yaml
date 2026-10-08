@@ -1,0 +1,11 @@
+# Deterministic procedural scenes for the learnability (overfit) test. Not a real training dataset.
+name: synthetic_overfit_v01
+kind: synthetic_sum
+usage: RESEARCH
+chunk_seconds: 2.9838
+params:
+  chunk_samples: 131584
+  num_items_train: 16
+  num_items_val: 16
+  val_same_as_train: true
+  manifest: dataset/synthetic_tiny.manifest.json

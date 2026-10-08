@@ -1,0 +1,118 @@
+{
+ "note": "MEASURED on RTX 3060 12 GiB, torch 2.5.1+cu121, Windows 11. Synthetic random input, loss = waveform_l1 + multires_stft, AMP fp16. chunk_samples=131584.",
+ "environment": {
+  "cuda_available": true,
+  "cuda_runtime": "12.1",
+  "gpu": "NVIDIA GeForce RTX 3060",
+  "gpu_total_mib": 12287,
+  "platform": "Windows-11-10.0.22631-SP0",
+  "python": "3.12.14",
+  "torch": "2.5.1+cu121"
+ },
+ "profile": {
+  "ckpt_on_b1": {
+   "params_total": 8316732,
+   "params_trainable": 8316732,
+   "fp32_checkpoint_mib": 31.725814819335938,
+   "breakdown": {
+    "band_projector": 1547028,
+    "backbone": 3550464,
+    "decoder_trunk": 148224,
+    "output_projection": 3071016,
+    "total": 8316732
+   },
+   "chunk_samples": 131584,
+   "batch_size": 1,
+   "amp": "float16",
+   "gradient_checkpointing": true,
+   "device": "NVIDIA GeForce RTX 3060",
+   "train_peak_vram_mib": 373.0390625,
+   "train_step_ms_fwd_bwd": 227.15023333269832,
+   "train_fwd_ms": 70.36646666650388,
+   "train_bwd_ms_est": 156.78376666619442,
+   "inference_ms": 64.01776666704488,
+   "inference_peak_vram_mib": 181.38330078125,
+   "rtf": 0.02145537078988843,
+   "forward_flops": 139179119616,
+   "frames": 258
+  },
+  "ckpt_off_b1": {
+   "params_total": 8316732,
+   "params_trainable": 8316732,
+   "fp32_checkpoint_mib": 31.725814819335938,
+   "breakdown": {
+    "band_projector": 1547028,
+    "backbone": 3550464,
+    "decoder_trunk": 148224,
+    "output_projection": 3071016,
+    "total": 8316732
+   },
+   "chunk_samples": 131584,
+   "batch_size": 1,
+   "amp": "float16",
+   "gradient_checkpointing": false,
+   "device": "NVIDIA GeForce RTX 3060",
+   "train_peak_vram_mib": 1700.76416015625,
+   "train_step_ms_fwd_bwd": 189.0843999996529,
+   "train_fwd_ms": 71.33466666709865,
+   "train_bwd_ms_est": 117.74973333255426,
+   "inference_ms": 63.11719999939669,
+   "inference_peak_vram_mib": 180.92236328125,
+   "rtf": 0.021153548455537102,
+   "forward_flops": 139179119616,
+   "frames": 258
+  },
+  "ckpt_on_b2": {
+   "params_total": 8316732,
+   "params_trainable": 8316732,
+   "fp32_checkpoint_mib": 31.725814819335938,
+   "breakdown": {
+    "band_projector": 1547028,
+    "backbone": 3550464,
+    "decoder_trunk": 148224,
+    "output_projection": 3071016,
+    "total": 8316732
+   },
+   "chunk_samples": 131584,
+   "batch_size": 2,
+   "amp": "float16",
+   "gradient_checkpointing": true,
+   "device": "NVIDIA GeForce RTX 3060",
+   "train_peak_vram_mib": 664.37060546875,
+   "train_step_ms_fwd_bwd": 403.010866666591,
+   "train_fwd_ms": 109.08030000064173,
+   "train_bwd_ms_est": 293.9305666659493,
+   "inference_ms": 98.47493333412179,
+   "inference_peak_vram_mib": 277.591796875,
+   "rtf": 0.01650179565917882,
+   "forward_flops": 278358239232,
+   "frames": 258
+  },
+  "ckpt_on_b4": {
+   "params_total": 8316732,
+   "params_trainable": 8316732,
+   "fp32_checkpoint_mib": 31.725814819335938,
+   "breakdown": {
+    "band_projector": 1547028,
+    "backbone": 3550464,
+    "decoder_trunk": 148224,
+    "output_projection": 3071016,
+    "total": 8316732
+   },
+   "chunk_samples": 131584,
+   "batch_size": 4,
+   "amp": "float16",
+   "gradient_checkpointing": true,
+   "device": "NVIDIA GeForce RTX 3060",
+   "train_peak_vram_mib": 1274.60107421875,
+   "train_step_ms_fwd_bwd": 756.523233333913,
+   "train_fwd_ms": 185.406000000512,
+   "train_bwd_ms_est": 571.117233333401,
+   "inference_ms": 170.4423333333883,
+   "inference_peak_vram_mib": 465.9921875,
+   "rtf": 0.0142808147267191,
+   "forward_flops": 556716478464,
+   "frames": 258
+  }
+ }
+}

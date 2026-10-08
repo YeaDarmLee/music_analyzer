@@ -1,0 +1,24 @@
+# OUR Separator v0.1 (Research Packet 02). 2-stem baseline; stems/num_stems come from this file only.
+model_id: our_separator_v01
+sample_rate: 44100
+channels: 2
+stems: [vocals, instrumental]
+params:
+  n_fft: 2048
+  hop_length: 512
+  win_length: 2048
+  num_bands: 60
+  dim: 192
+  depth: 6
+  heads: 6
+  dim_head: 32
+  ff_expansion: 2
+  ff_activation: silu
+  attn_dropout: 0.0
+  decoder_hidden: 384
+  mask_activation: bounded_tanh
+  mask_bound: 2.0
+  output_consistency_mode: project   # residual (A) | soft (B) | project (C)
+  input_normalization: true
+  norm_min_rms: 0.0001
+  gradient_checkpointing: true

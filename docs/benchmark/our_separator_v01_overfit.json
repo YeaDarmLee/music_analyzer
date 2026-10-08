@@ -1,0 +1,149 @@
+{
+ "note": "Overfit/learnability test on 16 deterministic procedural sine-sum scenes (validation == training scenes). NOT a separation-quality result.",
+ "run_id": "20261008T063321-our_v01_overfit-ef84ffdc",
+ "git_dirty_at_run": true,
+ "report": {
+  "checkpoint": "runs\\20261008T063321-our_v01_overfit-ef84ffdc\\checkpoints\\step_000150.ckpt",
+  "checkpoint_step": 150,
+  "scenes": 16,
+  "all_finite": true,
+  "per_stem": {
+   "vocals": {
+    "sdr": 26.128581762313843,
+    "si_sdr": 26.865081548690796,
+    "cross_sdr": -2.966872703284025,
+    "energy_ratio": 1.0040734969079494
+   },
+   "instrumental": {
+    "sdr": 26.929864406585693,
+    "si_sdr": 26.934200048446655,
+    "cross_sdr": -3.76815552264452,
+    "energy_ratio": 0.9983148574829102
+   }
+  },
+  "stem_swap": false,
+  "collapse": false
+ },
+ "val_curve": [
+  {
+   "event": "val",
+   "step": 10,
+   "val_loss": 1.755065642297268,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 3.0070556700229645,
+   "val_si_sdr": 0.7117143552750349
+  },
+  {
+   "event": "val",
+   "step": 20,
+   "val_loss": 1.6372388899326324,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 3.9604075849056244,
+   "val_si_sdr": 2.4492291063070297
+  },
+  {
+   "event": "val",
+   "step": 30,
+   "val_loss": 1.4478448405861855,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 5.7530825436115265,
+   "val_si_sdr": 5.372313588857651
+  },
+  {
+   "event": "val",
+   "step": 40,
+   "val_loss": 1.1676030531525612,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 9.329802691936493,
+   "val_si_sdr": 10.423344552516937
+  },
+  {
+   "event": "val",
+   "step": 50,
+   "val_loss": 0.7799446433782578,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 20.242276430130005,
+   "val_si_sdr": 23.06159222126007
+  },
+  {
+   "event": "val",
+   "step": 60,
+   "val_loss": 0.7629809081554413,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 19.569526374340057,
+   "val_si_sdr": 22.529463231563568
+  },
+  {
+   "event": "val",
+   "step": 70,
+   "val_loss": 0.6786344610154629,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 24.494670391082764,
+   "val_si_sdr": 25.915520906448364
+  },
+  {
+   "event": "val",
+   "step": 80,
+   "val_loss": 0.642075177282095,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.1712104678154,
+   "val_si_sdr": 26.84471559524536
+  },
+  {
+   "event": "val",
+   "step": 90,
+   "val_loss": 0.6320562176406384,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.225465059280396,
+   "val_si_sdr": 26.794012427330017
+  },
+  {
+   "event": "val",
+   "step": 100,
+   "val_loss": 0.6250993683934212,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.408861875534058,
+   "val_si_sdr": 26.837729573249817
+  },
+  {
+   "event": "val",
+   "step": 110,
+   "val_loss": 0.6229211874306202,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.427740693092346,
+   "val_si_sdr": 26.815447211265564
+  },
+  {
+   "event": "val",
+   "step": 120,
+   "val_loss": 0.6209646724164486,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.357291221618652,
+   "val_si_sdr": 26.739736676216125
+  },
+  {
+   "event": "val",
+   "step": 130,
+   "val_loss": 0.6184304878115654,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.491402983665466,
+   "val_si_sdr": 26.873573184013367
+  },
+  {
+   "event": "val",
+   "step": 140,
+   "val_loss": 0.617241270840168,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.510058045387268,
+   "val_si_sdr": 26.89093852043152
+  },
+  {
+   "event": "val",
+   "step": 150,
+   "val_loss": 0.6164176017045975,
+   "val_reconstruction_error_db": -125.83652830123901,
+   "val_sdr": 26.529179573059082,
+   "val_si_sdr": 26.89961278438568
+  }
+ ]
+}

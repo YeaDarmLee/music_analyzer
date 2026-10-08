@@ -67,6 +67,10 @@ class Trainer:
         self.optimizer = getattr(torch.optim, o["name"])(self.model.parameters(), lr=o["lr"], **o["kwargs"])
         s = tcfg["scheduler"]
         self.scheduler = getattr(torch.optim.lr_scheduler, s["name"])(self.optimizer, **s["kwargs"]) if s else None
+        self.plateau = isinstance(self.scheduler, torch.optim.lr_scheduler.ReduceLROnPlateau)
+        self.monitor = s.get("monitor") if s else None
+        if self.plateau and not self.monitor:
+            raise ValueError("ReduceLROnPlateau needs training.scheduler.monitor (a validation metric key)")
         amp = tcfg["amp"]
         self.amp_enabled = amp["enabled"]
         self.amp_dtype = getattr(torch, amp["dtype"])
@@ -181,7 +185,7 @@ class Trainer:
                 self.scaler.step(self.optimizer)
                 self.scaler.update()
                 self.optimizer.zero_grad(set_to_none=True)
-                if self.scheduler:
+                if self.scheduler and not self.plateau:
                     self.scheduler.step()
                 self.step += 1
                 self.log({"event": "train", "step": self.step, "loss": float(loss), "parts": parts,
@@ -189,6 +193,8 @@ class Trainer:
                 if self.step % self.tcfg["val_every"] == 0 or self.step == target:
                     last_val = self.validate()
                     self.log({"event": "val", "step": self.step, **last_val})
+                    if self.plateau:
+                        self.scheduler.step(last_val[self.monitor])
                 if self.step % self.tcfg["checkpoint_every"] == 0 or self.step == target:
                     self.save()
                 if self.step >= target:

@@ -90,13 +90,13 @@ Stereo waveform → Complex STFT → Band Projector → Shared Band Encoder
 
 [P01] 실험 가치 예상 순서: C → B → A. **예상일 뿐이며 동결하지 않는다.** 동일 backbone에서 세 방식을 비교 가능하게 구현한 뒤 ablation으로 결정한다.
 
-## 5. 후보 구현 표 (Packet 02 이후)
+## 5. 후보 구현 표
 
-| 후보 | params | FLOPs | 3060 학습 VRAM | 안정성 | 추론 속도 | 2-stem | 6-stem | 13-stem |
-|---|---|---|---|---|---|---|---|---|
-| Family 가설(§2) 첫 변형 | NEEDS_MEASUREMENT | NEEDS_MEASUREMENT | NEEDS_MEASUREMENT | | | | | |
+| 후보 | params | FLOPs (3 s fwd) | 3060 학습 VRAM (b1, ckpt) | 추론 RTF | 상태 |
+|---|---|---|---|---|---|
+| Family 가설의 첫 변형 = `our_separator_v01` (Packet 02) | 8.32M (MEASURED) | 1.39e11 (MEASURED) | 373 MiB (MEASURED) | 0.021 (MEASURED) | 구현·profiling·overfit 완료. 분리 품질은 미측정 (`docs/architecture/OUR_SEPARATOR_ARCHITECTURE.md`) |
 
-n_fft / hop / band 수 / dim / depth / chunk / batch / accumulation / loss / optimizer는 Research Packet 02에서 확정. 그 전에는 코드·문서 어디에도 고정하지 않는다.
+stem 확장 비용, 안정성, 2-stem 실성능은 ablation(AB-01~07)과 실제 데이터 이후에 채운다.
 
 ## 6. 6-stem 방식 (Packet 03 대기)
 6 고정 head / shared decoder + query / hierarchical. [P01]은 BandIt의 shared encoder 원칙을 6-stem 설계 원칙으로 채택할 가치가 있다고 평가했다. 선택은 실험 후.
