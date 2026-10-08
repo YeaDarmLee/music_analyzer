@@ -3,7 +3,7 @@
     "case": "stereo44k_5s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 68.7,
+    "seconds": 95.2,
     "stems": 13,
     "stem_contract": {
       "expected": 13,
@@ -25,7 +25,7 @@
     "case": "mono48k_5s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 66.6,
+    "seconds": 91.2,
     "stems": 13,
     "stem_contract": {
       "expected": 13,
@@ -34,13 +34,13 @@
       "unexpected": []
     },
     "partition": {
-      "max_abs_error": 8.23493238044648e-08,
-      "rms_error": 6.285854540110772e-09,
+      "max_abs_error": 8.136251494761382e-08,
+      "rms_error": 6.303313489963286e-09,
       "samples_over_2e-6": 0,
       "nan": 0,
       "inf": 0,
       "clipping_samples": 0,
-      "dc_offset": 0.001428506919182837
+      "dc_offset": 0.0014279820024967194
     }
   },
   {
@@ -54,7 +54,7 @@
     "case": "silence_3s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 55.1,
+    "seconds": 78.7,
     "stems": 13,
     "stem_contract": {
       "expected": 13,
@@ -76,7 +76,7 @@
     "case": "long_90s",
     "state": "SUCCEEDED",
     "error": null,
-    "seconds": 222.2,
+    "seconds": 218.5,
     "stems": 13,
     "stem_contract": {
       "expected": 13,
