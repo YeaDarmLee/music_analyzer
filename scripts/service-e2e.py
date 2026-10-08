@@ -82,15 +82,18 @@ try:
     assert row["state"] == "SUCCEEDED", row
     families = sorted(t["family"] for t in row["tracks"])
     steps["analysis"] = {"states": progress, "seconds": round(time.monotonic() - started), "stems": len(families), "families": families}
-    assert len(families) == EXPECTED, families
-    assert not INTERNAL.search(json.dumps(row, ensure_ascii=False)), INTERNAL.search(json.dumps(row, ensure_ascii=False))
+    assert 0 < len(families) <= EXPECTED, families  # the API lists audible stems only; the final/ folder must hold every stem of the contract
+    steps["api_detail_keys"] = sorted(row)
+    leak = INTERNAL.search(json.dumps(row, ensure_ascii=False)); assert not leak, json.dumps(row, ensure_ascii=False)[max(0, leak.start() - 80): leak.end() + 60]
 
     folder = data / "web" / identifier
     steps["layout"] = {"top": sorted(p.name for p in folder.iterdir()), "final": sorted(p.name for p in (folder / "final").iterdir())}
     assert (folder / "original.wav").is_file() and (folder / "manifest.json").is_file() and len(steps["layout"]["final"]) == EXPECTED
     steps["scratch_after_success"] = {"jobs": files("jobs"), "inputs": files("inputs")}
-    leftover = [f for f in steps["scratch_after_success"]["jobs"] + steps["scratch_after_success"]["inputs"] if not f.endswith(("job.json", ".log"))]
-    assert leftover == [], leftover
+    scratch = steps["scratch_after_success"]["jobs"] + steps["scratch_after_success"]["inputs"]
+    audio_left = [f for f in scratch if f.endswith((".wav", ".flac", ".mp3", ".zip", ".npy", ".pt", ".ckpt")) or (data / f).stat().st_size > 1 << 20]
+    steps["scratch_after_success"] = {"trace_files": len(scratch), "trace_bytes": sum((data / f).stat().st_size for f in scratch), "audio_or_large_left": audio_left}
+    assert audio_left == [], audio_left  # job.json / attempt logs / request / environment are the kept trace; no audio
 
     family = families[0]
     status, body, headers = call(f"/api/analyses/{identifier}/audio/{family}?start_frame=0&num_frames=44100")

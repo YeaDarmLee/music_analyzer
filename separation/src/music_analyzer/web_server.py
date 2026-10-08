@@ -152,7 +152,7 @@ class WebLibrary:
 
     def public(self,row):
         """API view of a record: no file paths, and no internal stage names or error text (those stay in record.json and the server log)."""
-        view={k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path","stage","error","storage")}
+        view={k:v for k,v in row.items() if k not in ("tracks","original","instrumental","job_ids","input_path","stage","error","storage","vocal_source","backing_percussion","context_routing","cymbal_recovery","percussion_context_job_id","percussion_refinement","recovery_policy","string_routing","timing_profile","tonal_job_id","vocal_instrument_restoration","secondary_vocals_excluded","active_job_id")}
         if row.get("state")=="FAILED":view["error_code"]="ANALYSIS_FAILED"
         return view|{"track_count":sum(not self.output_silent(t) for t in row.get("tracks",[]))}
 
