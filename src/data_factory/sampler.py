@@ -21,8 +21,14 @@ from .util import read_wav, to_stereo
 
 class SampleInstrument:
     def __init__(self, manifest: dict, asset_root: str | Path, sr: int = 44100, cache_bytes: int = 512 << 20,
-                 attack_s: float = 0.003, default_release_s: float = 0.25, vel_exp: float = 0.6):
-        self.m, self.root, self.sr = manifest, Path(asset_root), sr
+                 attack_s: float = 0.003, default_release_s: float = 0.25, vel_exp: float = 0.6,
+                 max_sample_seconds: float = 14.0):
+        self.m, self.sr = manifest, sr
+        self.root = Path(asset_root)
+        if manifest.get("sample_root"):  # derived (e.g. FLAC->WAV decoded) copy of the pinned asset
+            sr_root = Path(manifest["sample_root"])
+            self.root = sr_root if sr_root.is_absolute() else self.root / sr_root
+        self.max_sample_seconds = max_sample_seconds
         self.zones = manifest["zones"]
         self.kind = manifest.get("kind", "pitched")
         self.attack_s, self.release_s, self.vel_exp = attack_s, default_release_s, vel_exp
@@ -44,7 +50,7 @@ class SampleInstrument:
         if k in self._cache:
             self._cache.move_to_end(k)
             return self._cache[k]
-        a = to_stereo(read_wav(self.root / k, self.sr)[0])
+        a = to_stereo(read_wav(self.root / k, self.sr, self.max_sample_seconds)[0])
         self._cache[k] = a
         self._cache_used += a.nbytes
         while self._cache_used > self._cache_bytes and len(self._cache) > 1:
@@ -145,18 +151,35 @@ def load_instrument(manifest_path: str | Path, asset_roots: dict[str, str | Path
     return SampleInstrument(m, asset_roots[m["asset_id"]], sr, **kw)
 
 
-def build_manifest_from_sfz(sfz_path: str | Path, asset_root: str | Path, instrument_id: str, asset_id: str,
+def build_manifest_from_sfz(sfz_path: str | Path | list, asset_root: str | Path, instrument_id: str, asset_id: str,
                             source_version: str, license: str, source_sha256: str, kind: str = "pitched",
-                            strict: bool = True) -> tuple[dict, dict]:
-    """Ingest an SFZ file into an instrument manifest. -> (manifest, report{unsupported opcodes, notes, dropped})."""
+                            strict: bool = True, base_dir: str | None = None, cc_state: dict | None = None,
+                            sample_root: str | None = None) -> tuple[dict, dict]:
+    """Ingest SFZ file(s) into an instrument manifest. -> (manifest, report).
+
+    sfz_path: one path, or a list of (path, overrides_dict) pairs. Overrides are explicit opcodes prepended as a <group>
+    to that file (e.g. {"hivel": 63, "seq_length": 5} for a Karoryfer velocity map whose program file would set them);
+    they are recorded in manifest["ingest_overrides"]. base_dir (relative to asset_root) is the directory that
+    `sample=` paths are relative to - SFZ resolves them against the ROOT program file, not an #include'd map file."""
     from .sfz import parse_sfz, regions_to_zones
-    asset_root, sfz_path = Path(asset_root), Path(sfz_path)
-    regions, unsupported = parse_sfz(sfz_path.read_text(encoding="utf-8", errors="replace"), strict=strict)
-    zones, notes = regions_to_zones(regions, sfz_path.parent.relative_to(asset_root).as_posix()
-                                    if sfz_path.parent != asset_root else ".")
+    asset_root = Path(asset_root)
+    items = [(Path(sfz_path), {})] if isinstance(sfz_path, (str, Path)) else [(Path(p), dict(o)) for p, o in sfz_path]
+    regions, unsupported, notes_all, overrides = [], {}, {}, {}
+    for path, ov in items:
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if ov:
+            text = "<group> " + " ".join(f"{k}={v}" for k, v in ov.items()) + "\n" + text
+            overrides[path.relative_to(asset_root).as_posix()] = ov
+        reg, uns = parse_sfz(text, strict=strict, cc_state=cc_state)
+        for k, v in uns.items():
+            unsupported[k] = unsupported.get(k, 0) + v
+        regions += reg
+    here = base_dir if base_dir is not None else (items[0][0].parent.relative_to(asset_root).as_posix() or ".")
+    zones, notes = regions_to_zones(regions, here)
     missing = [z["sample"] for z in zones if not (asset_root / z["sample"]).exists()]
     zones = [z for z in zones if (asset_root / z["sample"]).exists()]
     man = {"instrument_id": instrument_id, "asset_id": asset_id, "kind": kind, "source_version": source_version,
-           "license": license, "source_sha256": source_sha256, "zones": zones}
-    return man, {"unsupported_opcodes": dict(unsupported), "notes": dict(notes), "missing_samples": missing,
+           "license": license, "source_sha256": source_sha256, "ingest_overrides": overrides,
+           "cc_state": {str(k): v for k, v in (cc_state or {}).items()}, "zones": zones}
+    return man, {"unsupported_opcodes": unsupported, "notes": dict(notes), "missing_samples": missing,
                  "regions": len(regions), "zones": len(zones)}

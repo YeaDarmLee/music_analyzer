@@ -26,7 +26,7 @@
 | 1 | 아키텍처·라이선스 | Packet 01 반영 완료. 남은 NEEDS_RESEARCH는 매트릭스 참조 |
 | 2 | Engine foundation (config, registry, checkpoint/provenance, trainer, 테스트) | 완료 (`TRAINING_SYSTEM.md`) |
 | 3 | OUR MODEL v0.1 구현 + profiling + synthetic overfit | 완료·승인. v0.1 아키텍처 개발 일시 정지 (실제 데이터 전까지 개선 판단 불가) |
-| 4 | Data Factory v0 | 코드·테스트·fixture POC 완료. 실제 asset ingest(DF-0) 대기 |
+| 4 | Data Factory v0 | DF-0~7 완료: 실제 asset ingest, 15-scene listening pack, 20-step 학습 smoke(CUDA). **정성 청취는 사람 확인 대기** |
 | 5~7 | 생성 음원 청취 검증 → our_separator_v01 본학습 → 2-stem ablation → 6-stem(Packet 03) → 13+ | 후속 |
 
 ## 확정 제약

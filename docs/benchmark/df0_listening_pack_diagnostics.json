@@ -1,0 +1,326 @@
+{
+ "bass_1": {
+  "mix": {
+   "rms_db": -16.6,
+   "peak": 0.451,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 151,
+   "stereo_corr": 1.0
+  },
+  "bass": {
+   "rms_db": -16.6,
+   "peak": 0.451,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 151,
+   "stereo_corr": 1.0
+  }
+ },
+ "bass_2": {
+  "mix": {
+   "rms_db": -17.3,
+   "peak": 0.711,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 279,
+   "stereo_corr": 0.93
+  },
+  "bass": {
+   "rms_db": -17.3,
+   "peak": 0.711,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 279,
+   "stereo_corr": 0.93
+  }
+ },
+ "bass_3": {
+  "mix": {
+   "rms_db": -16.1,
+   "peak": 0.697,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 115,
+   "stereo_corr": 1.0
+  },
+  "bass": {
+   "rms_db": -16.1,
+   "peak": 0.697,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 115,
+   "stereo_corr": 1.0
+  }
+ },
+ "drums_1": {
+  "mix": {
+   "rms_db": -23.6,
+   "peak": 0.666,
+   "active_frac_-50dB": 0.99,
+   "centroid_hz": 5850,
+   "stereo_corr": 0.89
+  },
+  "drums": {
+   "rms_db": -23.6,
+   "peak": 0.666,
+   "active_frac_-50dB": 0.99,
+   "centroid_hz": 5850,
+   "stereo_corr": 0.89
+  }
+ },
+ "drums_2": {
+  "mix": {
+   "rms_db": -20.7,
+   "peak": 0.98,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 5857,
+   "stereo_corr": 0.92
+  },
+  "drums": {
+   "rms_db": -20.7,
+   "peak": 0.98,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 5857,
+   "stereo_corr": 0.92
+  }
+ },
+ "drums_3": {
+  "mix": {
+   "rms_db": -21.0,
+   "peak": 0.692,
+   "active_frac_-50dB": 0.95,
+   "centroid_hz": 4956,
+   "stereo_corr": 0.56
+  },
+  "drums": {
+   "rms_db": -21.0,
+   "peak": 0.692,
+   "active_frac_-50dB": 0.95,
+   "centroid_hz": 4956,
+   "stereo_corr": 0.56
+  }
+ },
+ "piano_1": {
+  "mix": {
+   "rms_db": -17.3,
+   "peak": 0.711,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1294,
+   "stereo_corr": 0.72
+  },
+  "piano": {
+   "rms_db": -17.3,
+   "peak": 0.711,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1294,
+   "stereo_corr": 0.72
+  }
+ },
+ "piano_2": {
+  "mix": {
+   "rms_db": -22.2,
+   "peak": 0.98,
+   "active_frac_-50dB": 0.93,
+   "centroid_hz": 618,
+   "stereo_corr": 0.52
+  },
+  "piano": {
+   "rms_db": -22.2,
+   "peak": 0.98,
+   "active_frac_-50dB": 0.93,
+   "centroid_hz": 618,
+   "stereo_corr": 0.52
+  }
+ },
+ "piano_3": {
+  "mix": {
+   "rms_db": -17.3,
+   "peak": 0.458,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 669,
+   "stereo_corr": 0.82
+  },
+  "piano": {
+   "rms_db": -17.3,
+   "peak": 0.458,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 669,
+   "stereo_corr": 0.82
+  }
+ },
+ "synth_1": {
+  "mix": {
+   "rms_db": -19.5,
+   "peak": 0.492,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 990,
+   "stereo_corr": 0.89
+  },
+  "synth": {
+   "rms_db": -19.5,
+   "peak": 0.492,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 990,
+   "stereo_corr": 0.89
+  }
+ },
+ "synth_2": {
+  "mix": {
+   "rms_db": -22.8,
+   "peak": 0.37,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1422,
+   "stereo_corr": 0.42
+  },
+  "synth": {
+   "rms_db": -22.8,
+   "peak": 0.37,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1422,
+   "stereo_corr": 0.42
+  }
+ },
+ "synth_3": {
+  "mix": {
+   "rms_db": -25.3,
+   "peak": 0.418,
+   "active_frac_-50dB": 0.99,
+   "centroid_hz": 1916,
+   "stereo_corr": 0.45
+  },
+  "synth": {
+   "rms_db": -25.3,
+   "peak": 0.418,
+   "active_frac_-50dB": 0.99,
+   "centroid_hz": 1916,
+   "stereo_corr": 0.45
+  }
+ },
+ "vocal_band_1": {
+  "mix": {
+   "rms_db": -17.9,
+   "peak": 0.789,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 2463,
+   "stereo_corr": 0.55
+  },
+  "bass": {
+   "rms_db": -27.3,
+   "peak": 0.202,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 100,
+   "stereo_corr": 1.0
+  },
+  "drums": {
+   "rms_db": -26.5,
+   "peak": 0.587,
+   "active_frac_-50dB": 0.98,
+   "centroid_hz": 4606,
+   "stereo_corr": 0.58
+  },
+  "piano": {
+   "rms_db": -21.4,
+   "peak": 0.427,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 625,
+   "stereo_corr": 0.52
+  },
+  "synth": {
+   "rms_db": -24.7,
+   "peak": 0.327,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1155,
+   "stereo_corr": 0.32
+  },
+  "vocal": {
+   "rms_db": -29.2,
+   "peak": 0.426,
+   "active_frac_-50dB": 0.26,
+   "centroid_hz": 1563,
+   "stereo_corr": 0.83
+  }
+ },
+ "vocal_band_2": {
+  "mix": {
+   "rms_db": -24.1,
+   "peak": 0.345,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 4193,
+   "stereo_corr": 0.78
+  },
+  "bass": {
+   "rms_db": -33.1,
+   "peak": 0.095,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 121,
+   "stereo_corr": 1.0
+  },
+  "drums": {
+   "rms_db": -33.2,
+   "peak": 0.218,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 7464,
+   "stereo_corr": 0.82
+  },
+  "piano": {
+   "rms_db": -29.1,
+   "peak": 0.194,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 571,
+   "stereo_corr": 0.57
+  },
+  "synth": {
+   "rms_db": -31.2,
+   "peak": 0.199,
+   "active_frac_-50dB": 0.46,
+   "centroid_hz": 4436,
+   "stereo_corr": 1.0
+  },
+  "vocal": {
+   "rms_db": -30.6,
+   "peak": 0.158,
+   "active_frac_-50dB": 0.97,
+   "centroid_hz": 2158,
+   "stereo_corr": 0.86
+  }
+ },
+ "vocal_band_3": {
+  "mix": {
+   "rms_db": -21.6,
+   "peak": 0.625,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 4799,
+   "stereo_corr": 0.89
+  },
+  "bass": {
+   "rms_db": -31.5,
+   "peak": 0.134,
+   "active_frac_-50dB": 0.44,
+   "centroid_hz": 114,
+   "stereo_corr": 1.0
+  },
+  "drums": {
+   "rms_db": -26.3,
+   "peak": 0.581,
+   "active_frac_-50dB": 0.66,
+   "centroid_hz": 6606,
+   "stereo_corr": 0.95
+  },
+  "piano": {
+   "rms_db": -30.4,
+   "peak": 0.363,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1141,
+   "stereo_corr": 0.66
+  },
+  "synth": {
+   "rms_db": -27.4,
+   "peak": 0.242,
+   "active_frac_-50dB": 1.0,
+   "centroid_hz": 1336,
+   "stereo_corr": 0.88
+  },
+  "vocal": {
+   "rms_db": -29.3,
+   "peak": 0.415,
+   "active_frac_-50dB": 0.37,
+   "centroid_hz": 2913,
+   "stereo_corr": 1.0
+  }
+ }
+}

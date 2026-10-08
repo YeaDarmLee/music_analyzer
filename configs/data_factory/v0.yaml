@@ -12,12 +12,24 @@ scene_types:
   near_silence: 0.05
 profiles: [pop_clean, ballad, rock_dense, electronic, dry_rehearsal]
 mix:
+  stem_ref_rms_db: -20.0         # every stem is first equalized to this playing-loudness, then the random gains below apply
   stem_gain_db: [-6.0, 3.0]
   vocal_gain_db: [-2.0, 4.0]
   target_rms_db: [-24.0, -16.0]
   near_silence_rms_db: [-60.0, -48.0]
   peak_limit: 0.98
 # Populated by `data_factory.cli ingest-*` once assets are ingested (paths to instrument manifests / vocal index).
-instruments: {}
-holdout_instruments: []     # ids that appear only in the 'ood' split
-vocal_index: null
+instruments:
+  piano:
+    - {manifest: artifacts/instruments/vcsl_keys_grand_k.json}
+    - {manifest: artifacts/instruments/vcsl_keys_steinway_b.json}
+    - {manifest: artifacts/instruments/vcsl_keys_upright_knight.json}
+    - {manifest: artifacts/instruments/vcsl_keys_upright_y.json}
+  bass:
+    - {manifest: artifacts/instruments/blb_pluck_center.json}
+    - {manifest: artifacts/instruments/sneakybass_pluck.json}
+  drums:
+    - {manifest: artifacts/instruments/vcsl_drums.json}
+    - {manifest: artifacts/instruments/stargate_drums.json}
+holdout_instruments: [vcsl_keys_upright_y]     # appears only in the 'ood' split (unseen-piano generalization test)
+vocal_index: artifacts/vocalset_index.json

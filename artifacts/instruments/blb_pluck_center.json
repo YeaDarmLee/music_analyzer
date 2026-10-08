@@ -1,0 +1,7941 @@
+{
+ "instrument_id": "blb_pluck_center",
+ "asset_id": "karoryfer_big_little_bass",
+ "kind": "pitched",
+ "source_version": "4e92bdf54dcd2d6cfad968cc90542d5461c9b9fc",
+ "license": "CC0-1.0",
+ "source_sha256": "fa0a0af3f216ed1b819786d13b97dc05fdcc0bc0853ee84a5452a8561995db6c",
+ "ingest_overrides": {
+  "Programs/maps/p_map.sfz": {
+   "hivel": "63",
+   "seq_length": "5"
+  },
+  "Programs/maps/f_map.sfz": {
+   "lovel": "64",
+   "seq_length": "5"
+  }
+ },
+ "cc_state": {},
+ "zones": [
+  {
+   "sample": "Samples/big_little_pluck_b1_p_rr5.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_p_rr4.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_p_rr3.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_p_rr2.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_p_rr1.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_p_rr5.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_p_rr4.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_p_rr3.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_p_rr2.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_p_rr1.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_p_rr5.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_p_rr4.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_p_rr3.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_p_rr2.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_p_rr1.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_p_rr5.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_p_rr4.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_p_rr3.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_p_rr2.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_p_rr1.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_p_rr5.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_p_rr4.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_p_rr3.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_p_rr2.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_p_rr1.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_p_rr5.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_p_rr4.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_p_rr3.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_p_rr2.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_p_rr1.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_p_rr5.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_p_rr4.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_p_rr3.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_p_rr2.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_p_rr1.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_p_rr5.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_p_rr4.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_p_rr3.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_p_rr2.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_p_rr1.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_p_rr5.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_p_rr4.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_p_rr3.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_p_rr2.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_p_rr1.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_p_rr5.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_p_rr4.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_p_rr3.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_p_rr2.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_p_rr1.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_p_rr5.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_p_rr4.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_p_rr3.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_p_rr2.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_p_rr1.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_p_rr5.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_p_rr4.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_p_rr3.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_p_rr2.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_p_rr1.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_p_rr5.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_p_rr4.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_p_rr3.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_p_rr2.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_p_rr1.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_p_rr5.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_p_rr4.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_p_rr3.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_p_rr2.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_p_rr1.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_p_rr5.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_p_rr4.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_p_rr3.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_p_rr2.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_p_rr1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_p_rr5.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_p_rr4.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_p_rr3.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_p_rr2.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_p_rr1.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_p_rr5.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_p_rr4.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_p_rr3.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_p_rr2.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_p_rr1.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_p_rr5.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_p_rr4.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_p_rr3.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_p_rr2.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_p_rr1.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_p_rr5.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_p_rr4.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_p_rr3.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_p_rr2.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_p_rr1.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_p_rr5.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_p_rr4.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_p_rr3.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_p_rr2.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_p_rr1.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_p_rr5.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_p_rr4.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_p_rr3.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_p_rr2.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_p_rr1.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_p_rr5.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_p_rr4.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_p_rr3.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_p_rr2.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_p_rr1.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_p_rr5.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_p_rr4.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_p_rr3.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_p_rr2.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_p_rr1.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_p_rr5.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_p_rr4.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_p_rr3.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_p_rr2.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_p_rr1.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_p_rr5.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_p_rr4.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_p_rr3.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_p_rr2.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_p_rr1.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_p_rr5.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_p_rr4.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_p_rr3.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_p_rr2.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_p_rr1.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_p_rr5.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_p_rr4.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_p_rr3.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_p_rr2.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_p_rr1.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_p_rr5.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_p_rr4.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_p_rr3.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_p_rr2.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_p_rr1.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_p_rr5.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_p_rr4.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_p_rr3.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_p_rr2.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_p_rr1.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_p_rr5.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_p_rr4.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_p_rr3.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_p_rr2.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_p_rr1.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_p_rr5.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_p_rr4.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_p_rr3.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_p_rr2.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_p_rr1.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_p_rr5.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_p_rr4.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_p_rr3.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_p_rr2.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_p_rr1.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_p_rr5.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_p_rr4.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_p_rr3.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_p_rr2.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_p_rr1.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_p_rr5.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_p_rr4.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_p_rr3.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_p_rr2.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_p_rr1.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_p_rr5.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_p_rr4.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_p_rr3.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_p_rr2.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_p_rr1.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_p_rr5.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_p_rr4.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_p_rr3.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_p_rr2.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_p_rr1.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_p_rr5.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_p_rr4.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_p_rr3.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_p_rr2.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_p_rr1.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_p_rr5.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_p_rr4.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_p_rr3.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_p_rr2.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_p_rr1.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_p_rr5.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_p_rr4.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_p_rr3.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_p_rr2.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_p_rr1.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_p_rr5.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_p_rr4.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_p_rr3.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_p_rr2.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_p_rr1.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_p_rr5.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_p_rr4.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_p_rr3.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_p_rr2.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_p_rr1.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_p_rr5.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_p_rr4.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_p_rr3.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_p_rr2.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_p_rr1.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_p_rr5.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_p_rr4.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_p_rr3.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_p_rr2.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_p_rr1.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_p_rr5.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_p_rr4.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_p_rr3.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_p_rr2.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_p_rr1.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_f_rr5.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_f_rr4.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_f_rr3.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_f_rr2.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b1_f_rr1.wav",
+   "root_key": 35,
+   "lo_key": 35,
+   "hi_key": 35,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_f_rr5.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_f_rr4.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_f_rr3.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_f_rr2.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c2_f_rr1.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_f_rr5.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_f_rr4.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_f_rr3.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_f_rr2.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db2_f_rr1.wav",
+   "root_key": 37,
+   "lo_key": 37,
+   "hi_key": 37,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_f_rr5.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_f_rr4.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_f_rr3.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_f_rr2.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d2_f_rr1.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_f_rr5.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_f_rr4.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_f_rr3.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_f_rr2.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb2_f_rr1.wav",
+   "root_key": 39,
+   "lo_key": 39,
+   "hi_key": 39,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_f_rr5.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_f_rr4.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_f_rr3.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_f_rr2.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e2_f_rr1.wav",
+   "root_key": 40,
+   "lo_key": 40,
+   "hi_key": 40,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_f_rr5.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_f_rr4.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_f_rr3.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_f_rr2.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f2_f_rr1.wav",
+   "root_key": 41,
+   "lo_key": 41,
+   "hi_key": 41,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_f_rr5.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_f_rr4.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_f_rr3.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_f_rr2.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb2_f_rr1.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_f_rr5.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_f_rr4.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_f_rr3.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_f_rr2.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g2_f_rr1.wav",
+   "root_key": 43,
+   "lo_key": 43,
+   "hi_key": 43,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_f_rr5.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_f_rr4.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_f_rr3.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_f_rr2.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab2_f_rr1.wav",
+   "root_key": 44,
+   "lo_key": 44,
+   "hi_key": 44,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_f_rr5.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_f_rr4.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_f_rr3.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_f_rr2.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a2_f_rr1.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_f_rr5.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_f_rr4.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_f_rr3.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_f_rr2.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb2_f_rr1.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_f_rr5.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_f_rr4.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_f_rr3.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_f_rr2.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b2_f_rr1.wav",
+   "root_key": 47,
+   "lo_key": 47,
+   "hi_key": 47,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 2.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_f_rr5.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_f_rr4.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_f_rr3.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_f_rr2.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c3_f_rr1.wav",
+   "root_key": 48,
+   "lo_key": 48,
+   "hi_key": 48,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_f_rr5.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_f_rr4.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_f_rr3.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_f_rr2.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db3_f_rr1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_f_rr5.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_f_rr4.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_f_rr3.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_f_rr2.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d3_f_rr1.wav",
+   "root_key": 50,
+   "lo_key": 50,
+   "hi_key": 50,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_f_rr5.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_f_rr4.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_f_rr3.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_f_rr2.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb3_f_rr1.wav",
+   "root_key": 51,
+   "lo_key": 51,
+   "hi_key": 51,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_f_rr5.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_f_rr4.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_f_rr3.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_f_rr2.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e3_f_rr1.wav",
+   "root_key": 52,
+   "lo_key": 52,
+   "hi_key": 52,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_f_rr5.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_f_rr4.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_f_rr3.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_f_rr2.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f3_f_rr1.wav",
+   "root_key": 53,
+   "lo_key": 53,
+   "hi_key": 53,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_f_rr5.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_f_rr4.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_f_rr3.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_f_rr2.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb3_f_rr1.wav",
+   "root_key": 54,
+   "lo_key": 54,
+   "hi_key": 54,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_f_rr5.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_f_rr4.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_f_rr3.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_f_rr2.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g3_f_rr1.wav",
+   "root_key": 55,
+   "lo_key": 55,
+   "hi_key": 55,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_f_rr5.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_f_rr4.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_f_rr3.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_f_rr2.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab3_f_rr1.wav",
+   "root_key": 56,
+   "lo_key": 56,
+   "hi_key": 56,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_f_rr5.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_f_rr4.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_f_rr3.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_f_rr2.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a3_f_rr1.wav",
+   "root_key": 57,
+   "lo_key": 57,
+   "hi_key": 57,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_f_rr5.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_f_rr4.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_f_rr3.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_f_rr2.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb3_f_rr1.wav",
+   "root_key": 58,
+   "lo_key": 58,
+   "hi_key": 58,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_f_rr5.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_f_rr4.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_f_rr3.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_f_rr2.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b3_f_rr1.wav",
+   "root_key": 59,
+   "lo_key": 59,
+   "hi_key": 59,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_f_rr5.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_f_rr4.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_f_rr3.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_f_rr2.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c4_f_rr1.wav",
+   "root_key": 60,
+   "lo_key": 60,
+   "hi_key": 60,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_f_rr5.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_f_rr4.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_f_rr3.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_f_rr2.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db4_f_rr1.wav",
+   "root_key": 61,
+   "lo_key": 61,
+   "hi_key": 61,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 6.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_f_rr5.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_f_rr4.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_f_rr3.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_f_rr2.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d4_f_rr1.wav",
+   "root_key": 62,
+   "lo_key": 62,
+   "hi_key": 62,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_f_rr5.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_f_rr4.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_f_rr3.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_f_rr2.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb4_f_rr1.wav",
+   "root_key": 63,
+   "lo_key": 63,
+   "hi_key": 63,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_f_rr5.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_f_rr4.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_f_rr3.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_f_rr2.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e4_f_rr1.wav",
+   "root_key": 64,
+   "lo_key": 64,
+   "hi_key": 64,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_f_rr5.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_f_rr4.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_f_rr3.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_f_rr2.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f4_f_rr1.wav",
+   "root_key": 65,
+   "lo_key": 65,
+   "hi_key": 65,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_f_rr5.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_f_rr4.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_f_rr3.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_f_rr2.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb4_f_rr1.wav",
+   "root_key": 66,
+   "lo_key": 66,
+   "hi_key": 66,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_f_rr5.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_f_rr4.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_f_rr3.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_f_rr2.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_g4_f_rr1.wav",
+   "root_key": 67,
+   "lo_key": 67,
+   "hi_key": 67,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_f_rr5.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_f_rr4.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_f_rr3.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_f_rr2.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_ab4_f_rr1.wav",
+   "root_key": 68,
+   "lo_key": 68,
+   "hi_key": 68,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_f_rr5.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_f_rr4.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_f_rr3.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_f_rr2.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_a4_f_rr1.wav",
+   "root_key": 69,
+   "lo_key": 69,
+   "hi_key": 69,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_f_rr5.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_f_rr4.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_f_rr3.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_f_rr2.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_bb4_f_rr1.wav",
+   "root_key": 70,
+   "lo_key": 70,
+   "hi_key": 70,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_f_rr5.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_f_rr4.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_f_rr3.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_f_rr2.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_b4_f_rr1.wav",
+   "root_key": 71,
+   "lo_key": 71,
+   "hi_key": 71,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_f_rr5.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_f_rr4.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_f_rr3.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_f_rr2.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_c5_f_rr1.wav",
+   "root_key": 72,
+   "lo_key": 72,
+   "hi_key": 72,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_f_rr5.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_f_rr4.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_f_rr3.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_f_rr2.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_db5_f_rr1.wav",
+   "root_key": 73,
+   "lo_key": 73,
+   "hi_key": 73,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_f_rr5.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_f_rr4.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_f_rr3.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_f_rr2.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_d5_f_rr1.wav",
+   "root_key": 74,
+   "lo_key": 74,
+   "hi_key": 74,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_f_rr5.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_f_rr4.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_f_rr3.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_f_rr2.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_eb5_f_rr1.wav",
+   "root_key": 75,
+   "lo_key": 75,
+   "hi_key": 75,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_f_rr5.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_f_rr4.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_f_rr3.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_f_rr2.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_e5_f_rr1.wav",
+   "root_key": 76,
+   "lo_key": 76,
+   "hi_key": 76,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_f_rr5.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_f_rr4.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_f_rr3.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_f_rr2.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_f5_f_rr1.wav",
+   "root_key": 77,
+   "lo_key": 77,
+   "hi_key": 77,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_f_rr5.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    5,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_f_rr4.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    4,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_f_rr3.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    3,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_f_rr2.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    5
+   ]
+  },
+  {
+   "sample": "Samples/big_little_pluck_gb5_f_rr1.wav",
+   "root_key": 78,
+   "lo_key": 78,
+   "hi_key": 78,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 4.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    5
+   ]
+  }
+ ]
+}

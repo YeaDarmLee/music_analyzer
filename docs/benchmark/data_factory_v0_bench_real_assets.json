@@ -1,0 +1,28 @@
+{
+ "spec_generation_ms_per_scene": 2.31,
+ "spec_json_bytes_mean": 7500,
+ "full_render_cold_cache": {
+  "scenes": 40,
+  "seconds_per_scene": 0.663,
+  "rtf": 0.079,
+  "mean_scene_seconds": 8.43,
+  "qc_pass": "40/40"
+ },
+ "full_render_warm_sample_cache_seconds_per_scene": 0.745,
+ "prerender_bytes_per_scene_float32_mean": 10225070,
+ "dataloader_items_per_second_batch4_full_scene_render": {
+  "workers_0": 1.64,
+  "workers_4": 5.06,
+  "workers_8": 11.04
+ },
+ "disk_cache_full_scene": {
+  "cold_s_per_item": 0.598,
+  "warm_s_per_item": 0.0101,
+  "bytes_per_item": 9043937
+ },
+ "cross_process_determinism_real_assets": {
+  "spec_hash_equal": true,
+  "audio_hash_equal": true
+ },
+ "torch_cuda_available": true
+}

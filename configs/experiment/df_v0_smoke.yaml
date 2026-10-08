@@ -1,0 +1,5 @@
+name: df_v0_smoke
+output_root: runs
+model: model/our_separator_v01.yaml
+training: training/df_v0_smoke.yaml
+dataset: dataset/df_v0_2stem.yaml

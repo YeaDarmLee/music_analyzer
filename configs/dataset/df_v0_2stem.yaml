@@ -1,0 +1,16 @@
+# Data Factory v0 scenes, 2-stem targets (vocals / instrumental). Lazy: full-scene render then crop.
+name: df_v0_2stem
+kind: datafactory_scenes
+plugin: data_factory.adapter
+usage: PRODUCTION_TRAINING        # every asset of every listed scene must pass the production gate
+chunk_seconds: 2.9838
+params:
+  manifest: ../artifacts/manifests/df_v0_smoke.manifest.json   # relative to configs/ ; regenerate with data_factory.cli manifest
+  factory_config: configs/data_factory/v0.yaml
+  repo_root: .
+  target_schema: 2stem_v1
+  chunk_samples: 131584
+  num_scenes: {train: 200, val: 40}
+  cache_dir: null
+  render_path: full
+  activity_threshold: 0.0001

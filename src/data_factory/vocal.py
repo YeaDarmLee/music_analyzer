@@ -57,10 +57,29 @@ def _duration(p: Path) -> tuple[float, int]:
         return x.shape[1] / sr, sr
 
 
-def singer_split(singers: dict[str, str], override: dict | None = None) -> dict[str, str]:
-    """singers: singer -> gender. Fixed, deterministic, singer-disjoint."""
+def _num(s: str) -> int:
+    return int(re.sub(r"\D", "", s))
+
+
+def singer_split(singers: dict[str, str], override: dict | None = None, publisher_test: list | None = None) -> dict[str, str]:
+    """singers: singer -> gender. Fixed, deterministic, singer-disjoint.
+    publisher_test: singers the dataset publisher reserved for testing (VocalSet `test_singers_technique.txt`) -> split `test`;
+    from the remaining singers the highest-numbered one of each gender becomes `val`, the rest `train`."""
     if override:
         return dict(override)
+    if publisher_test:
+        test = set(publisher_test) & set(singers)
+        if not test:
+            raise ValueError("publisher test singers not found among clips")
+        out = {s: "train" for s in singers}
+        for g in sorted(set(singers.values())):
+            rest = sorted((s for s, gg in singers.items() if gg == g and s not in test), key=_num)
+            if len(rest) < 2:
+                raise ValueError(f"not enough non-test {g} singers to carve a validation singer")
+            out[rest[-1]] = "val"
+        for s in test:
+            out[s] = "test"
+        return out
     out = {}
     for g in sorted(set(singers.values())):
         ids = sorted((s for s, gg in singers.items() if gg == g), key=lambda s: int(re.sub(r"\D", "", s)))
@@ -74,10 +93,16 @@ def singer_split(singers: dict[str, str], override: dict | None = None) -> dict[
 
 def build_vocal_index(root: str | Path, asset_id: str = "vocalset", split_override: dict | None = None) -> dict:
     root = Path(root)
-    clips, excluded = [], {"excerpts": 0, "unclassified": 0, "no_singer": 0}
+    pub_file = root / "test_singers_technique.txt"
+    publisher_test = [l.strip() for l in pub_file.read_text(encoding="utf-8").splitlines() if l.strip()] if pub_file.exists() else None
+    clips, excluded = [], {"excerpts": 0, "unclassified": 0, "no_singer": 0, "macos_resource_fork": 0, "unreadable": 0}
+    unreadable: list[str] = []
     singers: dict[str, str] = {}
     for p in sorted(root.rglob("*.wav")):
         rel = p.relative_to(root)
+        if "__MACOSX" in rel.parts or p.name.startswith("._"):  # AppleDouble resource forks, not audio
+            excluded["macos_resource_fork"] += 1
+            continue
         cat, sg = _category(rel), _singer(rel)
         if cat == "excerpts":
             excluded["excerpts"] += 1
@@ -86,15 +111,22 @@ def build_vocal_index(root: str | Path, asset_id: str = "vocalset", split_overri
         elif cat not in ALLOWED:
             excluded["unclassified"] += 1
         else:
-            dur, sr = _duration(p)
+            try:
+                dur, sr = _duration(p)
+            except Exception:  # corrupted file: excluded AND listed, never silently skipped
+                excluded["unreadable"] += 1
+                unreadable.append(rel.as_posix())
+                continue
             singers[sg[0]] = sg[1]
             clips.append({"clip_id": rel.as_posix(), "singer": sg[0], "gender": sg[1], "category": cat,
                           "duration_s": round(dur, 4), "sr": sr})
     if not clips:
         raise ValueError("no usable (non-excerpt) VocalSet clips found")
-    split = singer_split(singers, split_override)
-    return {"asset_id": asset_id, "allowed_categories": list(ALLOWED), "excluded": excluded, "split_policy": SPLIT_RULE,
-            "publisher_split": "NEEDS_RESEARCH", "singer_split": split, "clips": clips}
+    split = singer_split(singers, split_override, publisher_test)
+    return {"asset_id": asset_id, "allowed_categories": list(ALLOWED), "excluded": excluded, "unreadable_files": unreadable, "split_policy": ("publisher test singers (test_singers_technique.txt) -> test; highest-numbered remaining singer per gender -> val; "
+                            "rest train" if publisher_test else SPLIT_RULE),
+            "publisher_split": ("used: test_singers_technique.txt shipped in the archive (made for a technique classifier)" if publisher_test
+                                else "not available in this tree (NEEDS_RESEARCH)"), "singer_split": split, "clips": clips}
 
 
 def clips_for_split(index: dict, split: str) -> list[dict]:

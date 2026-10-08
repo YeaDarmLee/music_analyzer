@@ -1,0 +1,1529 @@
+{
+ "instrument_id": "vcsl_drums",
+ "asset_id": "vcsl",
+ "kind": "drumkit",
+ "source_version": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+ "license": "CC0-1.0",
+ "source_sha256": "a36d56fec3c10aafb6585a9416ce688775ed6a546e19521670d967c048dc8cc8",
+ "exclude_prefixes": [],
+ "include_prefixes": [
+  "Membranophones/",
+  "Idiophones/"
+ ],
+ "name_include": "hit|close",
+ "name_exclude": "roll|cresc|taps|snare2_stick|rim|_rel|bow|bell|legacy|loose|hitns",
+ "zones": [
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_Close_rr1_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.3333333333333333
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_Close_rr2_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.3333333333333333,
+    0.6666666666666666
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitOC_rr5_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.6666666666666666,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v1_rr1_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 26,
+   "hi_vel": 50,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v1_rr2_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 26,
+   "hi_vel": 50,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v2_rr1_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 51,
+   "hi_vel": 76,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v2_rr2_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 51,
+   "hi_vel": 76,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v3_rr1_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 77,
+   "hi_vel": 101,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v3_rr2_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 77,
+   "hi_vel": 101,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v4_rr1_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 102,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitC_v4_rr2_Mid.wav",
+   "root_key": 42,
+   "lo_key": 42,
+   "hi_key": 42,
+   "lo_vel": 102,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitO_rr1_Mid.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Hi-Hat Cymbal/HiHat_HitO_rr2_Mid.wav",
+   "root_key": 46,
+   "lo_key": 46,
+   "hi_key": 46,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_f1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.14285714285714285
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_fff1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.14285714285714285,
+    0.2857142857142857
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_mp1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.2857142857142857,
+    0.42857142857142855
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_pp1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.42857142857142855,
+    0.5714285714285714
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_stick_f1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5714285714285714,
+    0.7142857142857143
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_stick_mp1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.7142857142857143,
+    0.8571428571428571
+   ]
+  },
+  {
+   "sample": "Idiophones/Struck Idiophones/Suspended Cymbal 1/susCymb1_hit_stick_pp1.wav",
+   "root_key": 49,
+   "lo_key": 49,
+   "hi_key": 49,
+   "lo_vel": 1,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.8571428571428571,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_f.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.125
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_ff.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.125,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_mf1.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.375
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_mf2.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.375,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_mp1.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.625
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_mp2.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.625,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_pp1.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    0.875
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 2/bassdrum_hit_pp2.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 1,
+   "hi_vel": 25,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.875,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v2_rr1_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 26,
+   "hi_vel": 50,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v2_rr2_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 26,
+   "hi_vel": 50,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v3_rr1_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 51,
+   "hi_vel": 76,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v3_rr2_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 51,
+   "hi_vel": 76,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v5_rr1_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 77,
+   "hi_vel": 101,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v5_rr2_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 77,
+   "hi_vel": 101,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v7_rr1_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 102,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v7_rr2_Sum.wav",
+   "root_key": 36,
+   "lo_key": 36,
+   "hi_key": 36,
+   "lo_vel": 102,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v2_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 1,
+   "hi_vel": 18,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v2_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 1,
+   "hi_vel": 18,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v2_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 1,
+   "hi_vel": 18,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v2_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 1,
+   "hi_vel": 18,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v3_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 19,
+   "hi_vel": 36,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v3_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 19,
+   "hi_vel": 36,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v3_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 19,
+   "hi_vel": 36,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v3_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 19,
+   "hi_vel": 36,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v4_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 37,
+   "hi_vel": 54,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v4_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 37,
+   "hi_vel": 54,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v4_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 37,
+   "hi_vel": 54,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v4_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 37,
+   "hi_vel": 54,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v5_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.16666666666666666
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v5_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.16666666666666666,
+    0.3333333333333333
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v5_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.3333333333333333,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v5_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.6666666666666666
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v5_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.6666666666666666,
+    0.8333333333333334
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 3/Snare4_HitSN_v5_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 55,
+   "hi_vel": 72,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.8333333333333334,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v6_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 73,
+   "hi_vel": 90,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v6_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 73,
+   "hi_vel": 90,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v7_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 91,
+   "hi_vel": 108,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v7_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 91,
+   "hi_vel": 108,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v9_rr1_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 109,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Snare Drum, Modern 1/Snare2_HitSN_v9_rr2_Mid.wav",
+   "root_key": 38,
+   "lo_key": 38,
+   "hi_key": 38,
+   "lo_vel": 109,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v2_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.125
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v2_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.125,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v2_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.375
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v2_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.375,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v2_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.625
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v2_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.625,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v2_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    0.875
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v2_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 1,
+   "hi_vel": 42,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.875,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v3_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.125
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v3_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.125,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v3_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.375
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v3_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.375,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v3_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.625
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v3_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.625,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v3_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    0.875
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v3_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 43,
+   "hi_vel": 84,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.875,
+    1.0
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v4_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.0,
+    0.125
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Mallet/TomH_HitM_v4_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.125,
+    0.25
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v4_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.25,
+    0.375
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 1/Stick/TomH_HitS_v4_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.375,
+    0.5
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v4_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.5,
+    0.625
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Mallet/TomL_HitM_v4_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.625,
+    0.75
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v4_rr1_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.75,
+    0.875
+   ]
+  },
+  {
+   "sample": "Membranophones/Struck Membranophones/Tom 2/Stick/TomL_HitS_v4_rr2_Mid.wav",
+   "root_key": 45,
+   "lo_key": 45,
+   "hi_key": 45,
+   "lo_vel": 85,
+   "hi_vel": 127,
+   "volume_db": 0.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": false,
+   "one_shot": true,
+   "rand": [
+    0.875,
+    1.0
+   ]
+  }
+ ]
+}

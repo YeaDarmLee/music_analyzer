@@ -118,7 +118,7 @@
    "attribution_required": false,
    "attribution_text": "",
    "notice_required": false,
-   "notes": "Packet: 'GREEN candidate', published as public-domain/unrestricted. Exact license text/SPDX must be taken from the repository LICENSE at ingest (NEEDS_RESEARCH).",
+   "notes": "Repo LICENSE verified as CC0 1.0 Universal (2026-10-08, Research Lead + agent reading the cloned file); README: public-domain, attribution-free, any purpose. GitHub SPDX auto-detection (NOASSERTION) is not used. Bundle aggregates sub-collections (freesound/, fugue-state-audio/, karoryfer/, microlag/, sgossner/VCSL); the freesound/ subtree is Freesound user uploads (Packet s6.7 YELLOW rationale) and is excluded from kits by default.",
    "packet_ref": "s6.6"
   },
   "vocalset": {
@@ -136,9 +136,9 @@
    "derivative_allowed": true,
    "redistribution_allowed": true,
    "attribution_required": true,
-   "attribution_text": "VocalSet: A Singing Voice Dataset, https://doi.org/10.5281/zenodo.1203819, licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Verify the record's required citation text at ingest.",
+   "attribution_text": "Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo. VocalSet: A Singing Voice Dataset (version 1.1, Zenodo, 2018). DOI 10.5281/zenodo.1203819. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Creator names as listed by the Zenodo record; modified (cropped, mixed, processed) for model training.",
    "notice_required": false,
-   "notes": "Production use limited to scales/arpeggios/long_tones; excerpts excluded by project policy. Pin the exact Zenodo record/version at ingest (NEEDS_RESEARCH). Publisher singer split: NEEDS_RESEARCH.",
+   "notes": "Production use limited to scales/arpeggios/long_tones; excerpts excluded by project policy. Pinned: Zenodo record 1203819 v1.1, VocalSet11.zip (md5 verified). Publisher singer split found in the archive (test_singers_technique.txt) and used for the test split.",
    "packet_ref": "s11.1"
   },
   "freesound_cc0": {

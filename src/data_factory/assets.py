@@ -66,7 +66,11 @@ def ingest_asset(asset_id: str, root: str | Path, version: str, license_file: st
     lic_snapshot.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(license_file, lic_snapshot)
     rec.update(overrides or {})
-    rec.update(version=version, sha256=tree, files=n_files, bytes=n_bytes, root=str(Path(root)),
+    try:  # keep committed records machine-independent: repo-relative when the asset lives inside the repo tree
+        root_str = Path(root).resolve().relative_to(REPO).as_posix()
+    except ValueError:
+        root_str = str(Path(root).resolve())
+    rec.update(version=version, sha256=tree, files=n_files, bytes=n_bytes, root=root_str,
                license_snapshot=f"artifacts/licenses/{asset_id}/LICENSE.txt", license_snapshot_sha256=sha256_file(lic_snapshot),
                downloaded_at=datetime.now(timezone.utc).isoformat(timespec="seconds"))
     out = Path(asset_dir) / f"{asset_id}.json"

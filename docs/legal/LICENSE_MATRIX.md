@@ -63,11 +63,11 @@ URL은 Packet Source Map 그대로. `—` = 해당 없음.
 | 구성요소 (URL) | Code | Asset | Sample | Preset | Generated Audio | AI Training | 판정 |
 |---|---|---|---|---|---|---|---|
 | VCSL (https://github.com/sgossner/VCSL, https://versilian-studios.com/vcsl/) | CC0 (포함된 스크립트) | CC0 | CC0 | SFZ는 CC0 범위 확인 후 사용 [P45] | unrestricted [P45] | 금지 조건 없음 [P45]; publisher: generative music/sampler 포함 | **GREEN** (GitHub API license 필드 CC0-1.0, 2026-10-08 직접 조회) |
-| VCSL Keys (https://versilian-studios.com/vcsl-keys/) | — | CC0 | CC0 | SFZ | unrestricted | 금지 조건 없음 [P45] | **GREEN**, Piano 1순위. **다운로드 위치/구조: NEEDS_RESEARCH** (VCSL repo 안인지 별도 배포인지 Packet에 없음) |
+| VCSL Keys (https://versilian-studios.com/vcsl-keys/) | — | CC0 | CC0 | SFZ | unrestricted | 금지 조건 없음 [P45] | **GREEN**, Piano 1순위. 공식 페이지의 별도 배포 `VCSL_Keys.zip`(VCSL repo의 피아노 폴더는 SFZ 없음). 아카이브에 LICENSE 파일이 없어 페이지 문구를 증빙 스냅샷으로 저장 |
 | VSCO 2 CE (https://github.com/sgossner/VSCO-2-CE, https://versilian-studios.com/vsco-community/) | — | CC0 | CC0 | — | unrestricted | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회). strings/brass 등 후속 stem |
 | Karoryfer Big Little Bass (https://github.com/sfzinstruments/karoryfer.big-little-bass) | — | CC0-1.0 | CC0-1.0 | — | README: royalty-free commercial/non-commercial | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회) |
 | Karoryfer Sneakybass (https://github.com/sfzinstruments/karoryfer.sneakybass) | — | CC0-1.0 | CC0-1.0 | — | unrestricted | 금지 조건 없음 | **GREEN** (GitHub CC0-1.0 조회) |
-| Stargate Sample Pack (https://github.com/stargatedaw/stargate-sample-pack) | — | public-domain/unrestricted 의도 [P45] | 동일 | — | unrestricted | 금지 조건 없음 [P45] | GREEN candidate. **GitHub license 필드는 NOASSERTION** → ingest 시 repo `LICENSE` 원문과 SPDX 확인 필요 (NEEDS_RESEARCH). 확인 전 production 금지 |
+| Stargate Sample Pack (https://github.com/stargatedaw/stargate-sample-pack) | — | public-domain/unrestricted 의도 [P45] | 동일 | — | unrestricted | 금지 조건 없음 [P45] | **GREEN** (repo `LICENSE` 원문 = CC0 1.0 Universal 확인, GitHub의 NOASSERTION은 자동 인식 실패일 뿐). 번들에 `freesound/` 사용자 업로드 38개 포함 → 제외 |
 | VocalSet (https://doi.org/10.5281/zenodo.1203819) | — | CC BY 4.0 (Zenodo record license 필드 `cc-by-4.0`, version 1.1, 2026-10-08 조회) | 동일 | — | attribution 의무 | 금지 조건 없음 [P45] | **GREEN_CONDITIONAL** (attribution_required). excerpts 제외(프로젝트 정책). 인용문 정확한 형식: NEEDS_RESEARCH |
 | Common Voice (https://commonvoice.mozilla.org/oc/terms) | — | CC0 기여분 [P45] | — | — | — | 음성(발화) 데이터, 노래 아님 | v0 미사용 |
 | Freesound CC0 (https://freesound.org/help/faq/) | — | uploader 권리 검증 불가 | — | — | — | — | **YELLOW** (수동 allowlist만) |

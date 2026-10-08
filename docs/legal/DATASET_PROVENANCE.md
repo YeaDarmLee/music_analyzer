@@ -8,7 +8,7 @@ GREEN만 학습 manifest에 들어간다. 곡/트랙별 라이선스가 다른 �
 
 | 데이터셋 | 등급 | 근거 | 비고 |
 |---|---|---|---|
-| VocalSet | **GREEN_CONDITIONAL** | CC BY 4.0 (Zenodo `1203819`, v1.1, 파일 `VocalSet11.zip` 2.08 GB 조회) | attribution 필수. scales/arpeggios/long_tones만, **excerpts 제외**. singer-disjoint split. 출판사 제공 split: NEEDS_RESEARCH (프로젝트 고정 규칙 사용) |
+| VocalSet | **GREEN_CONDITIONAL** | CC BY 4.0 (Zenodo `1203819`, v1.1, 파일 `VocalSet11.zip` 2.08 GB 조회) | attribution 필수. scales/arpeggios/long_tones만, **excerpts 제외**(139 clip). singer-disjoint split: 아카이브의 `test_singers_technique.txt`를 test로 사용, val은 성별별 최고 번호 잔여 가수. 2026-10-08 ingest 완료 (3474 clip). 인용 문구 형식: NEEDS_RESEARCH |
 | MUSDB18 / MUSDB18-HQ | RED | educational only, 상업 금지, NC 구성요소 포함 | Production 학습 금지 |
 | MedleyDB | RED | non-commercial | |
 | MoisesDB | RED | CC BY-NC-SA 4.0 | |
@@ -27,8 +27,9 @@ GREEN만 학습 manifest에 들어간다. 곡/트랙별 라이선스가 다른 �
 | 소스 | 등급 | 근거 |
 |---|---|---|
 | 자체 DSP synth / 드럼 synth / FX / composition 출력 | GREEN | 자체 생성 (asset id `project-procedural-dsp`, 레코드는 코드에서 생성, 생성기 버전이 sha256) |
-| VCSL, VCSL Keys, VSCO 2 CE, Big Little Bass, Sneakybass | GREEN (ingest 전까지 version/sha256 null → production 거부) | LICENSE_MATRIX 2.2 |
-| Stargate Sample Pack | GREEN candidate (SPDX NEEDS_RESEARCH) | repo `LICENSE` 원문 확인 후 승격 |
+| VCSL(드럼), VCSL Keys, Big Little Bass, Sneakybass | **GREEN, ingest 완료** (해시·스냅샷: `ASSET_DOWNLOADS.md`) | LICENSE_MATRIX 2.2 |
+| VSCO 2 CE | GREEN (미다운로드, version/sha256 null → production 거부) | 보류: Strings/Brass 단계 |
+| Stargate Sample Pack | **GREEN, ingest 완료** (repo LICENSE = CC0 1.0 Universal) | `freesound/` 하위 38개는 kit에서 제외 (Freesound 업로더 권리 이슈) |
 | Freesound CC0 자동 수집 | YELLOW | |
 
 ## 3. Asset 기록 스키마 (구현 대상)

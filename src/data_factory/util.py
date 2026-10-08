@@ -59,9 +59,16 @@ def tree_sha256(root: str | Path, skip_dirs=(".git",)) -> tuple[str, int, int]:
     return hashlib.sha256("\n".join(lines).encode()).hexdigest(), n, total
 
 
-def read_wav(path: str | Path, target_sr: int | None = None) -> tuple[np.ndarray, int]:
-    """-> (float32 array (channels, samples), sample_rate). PCM8/16/24/32 and float WAV; optional resample."""
-    sr, x = wavfile.read(str(path))
+def read_wav(path: str | Path, target_sr: int | None = None, max_seconds: float | None = None) -> tuple[np.ndarray, int]:
+    """-> (float32 array (channels, samples), sample_rate). PCM8/16/24/32 and float WAV; optional resample.
+    max_seconds reads only the head of the file (memory-mapped), used for very long instrument samples."""
+    try:
+        sr, x = wavfile.read(str(path), mmap=True)
+    except ValueError:  # formats scipy cannot memory-map
+        sr, x = wavfile.read(str(path))
+    if max_seconds is not None:
+        x = x[: int(max_seconds * sr)]
+    x = np.array(x)
     if x.dtype == np.uint8:
         x = (x.astype(np.float32) - 128.0) / 128.0
     elif x.dtype == np.int16:

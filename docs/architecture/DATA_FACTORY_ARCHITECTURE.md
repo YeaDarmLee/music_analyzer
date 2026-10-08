@@ -62,3 +62,11 @@ val_0000001/ mix.wav, <active stem>.wav ..., metadata.json, provenance.json, spe
 - sampler: SFZ 전체 호환 아님. 외부 SFZ의 필터/엔벨로프 opcode는 무시(보고됨). 샘플 리피치는 선형 보간.
 - `ingest-drumkit`의 파일명 키워드 규칙은 실제 Stargate/VCSL 구조 확인 전 가정이다 (NEEDS_VERIFICATION after download).
 - 정성 청취: 에이전트는 오디오를 들을 수 없다. 청취용 procedural 샘플 12개를 `data/factory/listening_procedural/`에 생성해 두었다 (사람이 확인해야 함).
+
+## 8. DF-0 결과 반영 (2026-10-08)
+- **실제 asset ingest 완료**: VCSL(드럼), VCSL Keys(피아노 4종), Big Little Bass, Sneakybass, Stargate(드럼), VocalSet. 판정·해시·크기·reject/warning 수는 `docs/legal/ASSET_DOWNLOADS.md`. 모든 scene은 `PRODUCTION_TRAINING` gate를 통과한다 (240 scene manifest: `artifacts/manifests/df_v0_smoke.manifest.json`, 7개 asset id).
+- **Instrument manifest**는 `artifacts/instruments/`에 커밋된다. 피아노는 FLAC 원본에서 ingest 시점에 디코딩한 float32 WAV 사본(`data/derived/vcsl_keys_wav`, manifest의 `sample_root`/`conversion`에 기록)을 읽는다.
+- **스템 레벨**: 믹서가 먼저 모든 스템을 active-RMS(가장 큰 frame 대비 -40 dB 이내 frame의 RMS) -20 dBFS로 맞춘 뒤 랜덤 gain(`stem_gain_db`, 보컬 `vocal_gain_db`)을 적용한다. 이 단계 전에는 보컬이 반주보다 22~26 dB 작게 렌더되었다 (listening pack 진단으로 발견).
+- **Activity**: 어댑터가 crop된 target의 peak로 stem별 `active`를 계산하고 trainer가 loss와 metric에 전달한다. 학습 metric(`sdr`, `si_sdr`)은 inactive 항목을 건너뛰고, `inactive_rms_ratio_db`가 비활성 stem 환각을 감시한다.
+- **측정(실제 asset, `docs/benchmark/data_factory_v0_bench_real_assets.json`)**: spec 생성 2.3 ms; scene 전체 렌더 0.66 s / 평균 8.4 s scene (RTF 0.079), QC 40/40 통과; full-scene 렌더 dataloader 1.6 / 5.1 / 11.0 item/s (worker 0/4/8, batch 4); 디스크 캐시 hit 0.01 s/item (scene당 약 9 MB — 대량 데이터에서는 LRU 상한 필수); 별도 프로세스 결정성 spec·audio hash 일치.
+- **알려진 한계**: 피아노는 서스테인 페달 down 영역만 쓰고 key-release 샘플은 쓰지 않는다. Stargate의 `freesound/` 하위(38개)는 제외했다. 드럼 kit은 폴더/파일명 규칙 기반이고 청취 검증 전이다.

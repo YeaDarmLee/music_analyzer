@@ -85,8 +85,9 @@ class Trainer:
     # --- helpers -----------------------------------------------------------------------------------------
     def _loader(self, ds, shuffle: bool, epoch: int = 0) -> DataLoader:
         g = torch.Generator().manual_seed(self.tcfg["seed"] + epoch)
+        nw = int(self.tcfg.get("num_workers", 0))  # optional; data order does not depend on it (sampler seeded by seed+epoch)
         return DataLoader(ds, batch_size=self.tcfg["batch_size"], shuffle=shuffle, generator=g if shuffle else None,
-                          drop_last=shuffle, num_workers=0, pin_memory=self.device.type == "cuda")
+                          drop_last=shuffle, num_workers=nw, persistent_workers=False, pin_memory=self.device.type == "cuda")
 
     def _forward_loss(self, batch):
         mix = batch["mix"]
@@ -138,13 +139,17 @@ class Trainer:
     def validate(self) -> dict:
         self.model.eval()
         losses, sums, n = [], {name: 0.0 for name, _, _ in self.metric_fns}, 0
+        counts = {name: 0 for name, _, _ in self.metric_fns}
         try:
             for batch in itertools.islice(self._loader(self.val_ds, False), self.tcfg["val_batches"]):
                 batch = _to_device(batch, self.device)
                 out, loss, _ = self._forward_loss(batch)
                 losses.append(float(loss))
                 for name, fn, kw in self.metric_fns:
-                    sums[name] += fn(out, batch["stems"], batch["mix"], **kw)
+                    v = fn(out, batch["stems"], batch["mix"], active=batch.get("active"), **kw)
+                    if v == v:  # NaN = metric undefined for this batch (e.g. no active item)
+                        sums[name] += v
+                        counts[name] += 1
                 n += 1
         except torch.cuda.OutOfMemoryError as e:
             raise self._oom(e) from e
@@ -152,7 +157,7 @@ class Trainer:
             self.model.train()
         if n == 0:
             raise ValueError("validation produced no batches")
-        return {"val_loss": sum(losses) / n, **{f"val_{k}": v / n for k, v in sums.items()}}
+        return {"val_loss": sum(losses) / n, **{f"val_{k}": (v / counts[k] if counts[k] else float("nan")) for k, v in sums.items()}}
 
     # --- training ----------------------------------------------------------------------------------------
     def fit(self, max_steps: int | None = None) -> dict:

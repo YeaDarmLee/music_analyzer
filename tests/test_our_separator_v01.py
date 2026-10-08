@@ -311,3 +311,18 @@ def test_composite_passes_activity_to_losses():
     tg = {"vocals": torch.zeros_like(x), "instrumental": x}
     total, _ = comp(out, tg, x, {"vocals": torch.tensor([False]), "instrumental": torch.tensor([True])})
     assert torch.isfinite(total) and total.item() < 50
+
+
+def test_metrics_skip_inactive_items_and_monitor_hallucination():
+    from engine.registry import METRICS
+    x = audio(b=2, t=4000)
+    out = _act_out(x)
+    out.stems = {"vocals": torch.stack([x[0], x[1] * 0.1]), "instrumental": x * 0.5}
+    tg = {"vocals": torch.stack([x[0], torch.zeros_like(x[1])]), "instrumental": x * 0.5}
+    act = {"vocals": torch.tensor([True, False]), "instrumental": torch.tensor([True, True])}
+    plain = METRICS.get("sdr")(out, tg, x)
+    masked = METRICS.get("sdr")(out, tg, x, active=act)
+    assert masked > 40 and plain < masked                       # the silent target no longer drags the mean to ~ -80 dB
+    ratio = METRICS.get("inactive_rms_ratio_db")(out, tg, x, active=act)
+    assert -25 < ratio < -5                                      # est rms is ~0.1 x the mixture rms on the inactive item
+    assert METRICS.get("inactive_rms_ratio_db")(out, tg, x, active=None) != METRICS.get("inactive_rms_ratio_db")(out, tg, x, active=None)  # NaN without activity

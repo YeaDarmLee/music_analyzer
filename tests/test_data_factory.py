@@ -59,7 +59,7 @@ def test_catalog_encodes_packet_verdicts():
 def test_unpinned_catalog_asset_rejected_for_production():
     recs = A.load_records()
     with pytest.raises(A.ManifestError, match="version|sha256"):
-        A.gate(recs, ["vcsl_keys"], "PRODUCTION_TRAINING")  # catalog verdict is GREEN but nothing is ingested yet
+        A.gate(recs, ["vsco2ce"], "PRODUCTION_TRAINING")  # catalog verdict is GREEN but not downloaded/ingested (deferred)
     A.gate(recs, [A.INTERNAL_ASSET_ID], "PRODUCTION_TRAINING")  # own DSP passes
 
 
@@ -289,7 +289,7 @@ def test_singer_split_disjoint_and_excerpts_excluded(tmp_path):
     for c in idx["clips"]:
         by.setdefault(idx["singer_split"][c["singer"]], set()).add(c["singer"])
     assert not (by["train"] & by["val"]) and not (by["train"] & by["test"]) and not (by["val"] & by["test"])
-    assert set(by) == {"train", "val", "test"} and idx["publisher_split"] == "NEEDS_RESEARCH"
+    assert set(by) == {"train", "val", "test"} and "NEEDS_RESEARCH" in idx["publisher_split"]
 
 
 def test_vocal_clips_per_split_never_cross_singers(fac):
@@ -445,3 +445,91 @@ def test_item_activity_flags_follow_the_data(fac):
             assert flag == bool(v.abs().max() > 1e-4)
             seen.add((k, flag))
     assert seen == {("vocals", True), ("vocals", False), ("instrumental", True), ("instrumental", False)}
+
+
+# --- DF-0 ingest features -----------------------------------------------------------------------------------------------------
+def test_sfz_cc_state_gating_is_region_selection_not_ignoring():
+    txt = ("<group> locc64=65 hicc64=127\n<region> sample=sus.wav key=60\n"
+           "<group> locc64=0 hicc64=64\n<region> sample=nosus.wav key=60\n"
+           "<group> on_locc64=64 on_hicc64=127\n<region> sample=pedal_down_thump.wav key=60\n"
+           "<group> locc99=10\n<region> sample=other.wav key=61")
+    with pytest.raises(SfzUnsupported):
+        parse_sfz(txt)                                    # CC gates are critical without an explicit state
+    with pytest.raises(SfzUnsupported):
+        parse_sfz(txt, cc_state={64: 127})                # cc99 is still undefined -> still critical
+    reg, uns = parse_sfz(txt.split("<group> locc99")[0], cc_state={64: 127})
+    assert [r["sample"] for r in reg] == ["sus.wav"]
+    assert uns["dropped region: CC-triggered (on_loccN)"] == 1 and any("outside cc_state" in k for k in uns)
+
+
+def test_build_manifest_records_overrides_and_resolves_relative_samples(tmp_path):
+    from data_factory.sampler import build_manifest_from_sfz
+    from data_factory.util import write_wav
+    root = tmp_path / "a"
+    (root / "Programs" / "maps").mkdir(parents=True)
+    (root / "Samples").mkdir()
+    write_wav(root / "Samples" / "x.wav", np.zeros((2, 100), np.float32), SR)
+    (root / "Programs" / "maps" / "m.sfz").write_text("<region>\nsample=..\\Samples\\x.wav\nlokey=30 hikey=40 pitch_keycenter=35\n")
+    man, rep = build_manifest_from_sfz([(root / "Programs" / "maps" / "m.sfz", {"hivel": 63, "seq_length": 5})], root, "i", "karoryfer_sneakybass",
+                                       "v", "CC0-1.0", "sha", base_dir="Programs")
+    z = man["zones"][0]
+    assert z["sample"] == "Samples/x.wav" and z["hi_vel"] == 63 and z["seq"] == [1, 5] and rep["missing_samples"] == []
+    assert man["ingest_overrides"] == {"Programs/maps/m.sfz": {"hivel": 63, "seq_length": 5}}
+
+
+def test_drumkit_roles_velocity_layers_and_filters(tmp_path):
+    from data_factory.cli import drumkit_manifest
+    from data_factory.util import write_wav
+    names = ["Snare Drum/Snare2_HitSN_v2_rr1.wav", "Snare Drum/Snare2_HitSN_v4_rr1.wav", "Snare Drum/Snare2_HitNS_v2_rr1.wav",
+             "Snare Drum/Snare2_rollSN_v2.wav", "Hi-Hat/HiHat_HitC_v1_rr1.wav", "Hi-Hat/HiHat_HitO_v1_rr1.wav", "Hi-Hat/HiHat_HitOC_v1_rr1.wav",
+             "Bass Drum 1/BDrumNew_hit_v1.wav", "freesound/kick/k.wav", "Tom 1/Stick/TomH_HitS_v1_rr1.wav", "Tom 1/TomH_rimS_v1.wav"]
+    for n in names:
+        write_wav(tmp_path / n, np.zeros((2, 50), np.float32), SR)
+    man, rep = drumkit_manifest(tmp_path, "vcsl", "k", "v", "CC0-1.0", "sha", exclude_prefixes=("freesound/",),
+                                name_include="hit", name_exclude="roll|rim|hitns")
+    assert rep["roles"] == {"snare": 2, "hat_closed": 1, "hat_open": 2, "kick": 1, "tom": 1} or rep["roles"]["snare"] == 2
+    assert rep["roles"]["kick"] == 1 and rep["excluded_files"] >= 3
+    snares = sorted((z["lo_vel"], z["hi_vel"]) for z in man["zones"] if z["root_key"] == 38)
+    assert snares == [(1, 63), (64, 127)]                         # two velocity layers split the range
+    inst = SampleInstrument(man, tmp_path, SR)
+    z = inst.select_zone(38, 120, 0.5, 0)
+    assert "v4" in z["sample"]
+
+
+def test_forced_scene_content_and_samples(fac):
+    sp = fac.make_spec(0, "val", force={"active": ["piano"], "sample": True, "scene_type": "listen_piano"})
+    assert sp.active_stems == ["piano"] and sp.renderers["piano"]["kind"] == "sample" and sp.scene_type == "listen_piano"
+    sp2 = fac.make_spec(0, "val", force={"active": ["drums", "bass"], "sample": True})
+    assert sp2.renderers["drums"]["kind"] == "sample" and sp2.renderers["bass"]["kind"] == "sample"
+    assert fac.make_spec(0, "val").hash() != sp.hash()
+
+
+def test_read_wav_head_only_matches_full_prefix(tmp_path):
+    from data_factory.util import read_wav, write_wav
+    x = np.random.RandomState(0).randn(2, 44100 * 2).astype(np.float32) * .1
+    write_wav(tmp_path / "a.wav", x, SR)
+    head, _ = read_wav(tmp_path / "a.wav", None, 0.5)
+    assert head.shape == (2, 22050) and np.array_equal(head, x[:, :22050])
+
+
+def test_publisher_test_singers_become_test_split(tmp_path):
+    root = make_vocalset(tmp_path)
+    (root / "test_singers_technique.txt").write_text("female2" + chr(10) + "male3" + chr(10), encoding="utf-8")
+    idx = build_vocal_index(root)
+    sp = idx["singer_split"]
+    assert sp["female2"] == "test" and sp["male3"] == "test"
+    assert sp["female4"] == "val" and sp["male4"] == "val"                 # highest-numbered remaining singer per gender
+    assert sorted(set(sp.values())) == ["test", "train", "val"] and "used:" in idx["publisher_split"]
+    assert all(sp[s] == "train" for s in ("female1", "female3", "male1", "male2"))
+
+
+def test_stem_reference_loudness_equalizes_before_random_gains():
+    from data_factory.mixer import active_rms
+    r = np.random.RandomState(0)
+    quiet = (r.randn(2, 20000) * 0.002).astype(np.float32)
+    loud = (r.randn(2, 20000) * 0.2).astype(np.float32)
+    loud[:, 10000:] = 0  # half silence must not dilute the loudness estimate
+    cfg = {"stem_gain_db": {}, "target_rms_db": -20.0, "peak_limit": 0.98, "stem_ref_rms_db": -20.0}
+    fin, mix, _ = mix_stems({"vocal": quiet, "drums": loud}, {}, cfg, 1, SR, 20000)
+    assert abs(20 * np.log10(active_rms(fin["vocal"])) - 20 * np.log10(active_rms(fin["drums"]))) < 0.5
+    assert np.abs(sum(f.astype(np.float64) for f in fin.values()) - mix).max() < 2e-6

@@ -1,0 +1,261 @@
+{
+ "assets": [
+  {
+   "asset_id": "karoryfer_big_little_bass",
+   "grade": "GREEN",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "source_url": "https://github.com/sfzinstruments/karoryfer.big-little-bass",
+   "resolved_version": "4e92bdf54dcd2d6cfad968cc90542d5461c9b9fc",
+   "source_commit": "4e92bdf54dcd2d6cfad968cc90542d5461c9b9fc",
+   "source_commit_date": "2024-12-05T17:51:13+01:00",
+   "archive_url": null,
+   "archive_bytes": null,
+   "archive_md5": null,
+   "archive_sha256": null,
+   "tree_sha256": "fa0a0af3f216ed1b819786d13b97dc05fdcc0bc0853ee84a5452a8561995db6c",
+   "files": 481,
+   "tree_bytes": 318178161,
+   "license_snapshot": "artifacts/licenses/karoryfer_big_little_bass/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328",
+   "downloaded_at": "2026-10-08T08:13:28+00:00",
+   "attribution_required": false,
+   "on_disk_checkout_bytes": 318178161,
+   "git_metadata_bytes": 263576186
+  },
+  {
+   "asset_id": "karoryfer_sneakybass",
+   "grade": "GREEN",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "source_url": "https://github.com/sfzinstruments/karoryfer.sneakybass",
+   "resolved_version": "cc1a67e5c913678b85eaad1a3b5cb180d3be3e2d",
+   "source_commit": "cc1a67e5c913678b85eaad1a3b5cb180d3be3e2d",
+   "source_commit_date": "2022-12-05T19:42:52+01:00",
+   "archive_url": null,
+   "archive_bytes": null,
+   "archive_md5": null,
+   "archive_sha256": null,
+   "tree_sha256": "ba7bf9bf5546028477d402452d44601f673a2f4bb0725b99612d4b0715f92d84",
+   "files": 715,
+   "tree_bytes": 418714718,
+   "license_snapshot": "artifacts/licenses/karoryfer_sneakybass/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328",
+   "downloaded_at": "2026-10-08T08:13:34+00:00",
+   "attribution_required": false,
+   "on_disk_checkout_bytes": 418714718,
+   "git_metadata_bytes": 340459677
+  },
+  {
+   "asset_id": "stargate_sample_pack",
+   "grade": "GREEN",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "source_url": "https://github.com/stargatedaw/stargate-sample-pack",
+   "resolved_version": "dbfd6ec52d4ed53b60bdbea5fc6adf295127c027",
+   "source_commit": "dbfd6ec52d4ed53b60bdbea5fc6adf295127c027",
+   "source_commit_date": "2022-12-24T15:59:48-08:00",
+   "archive_url": null,
+   "archive_bytes": null,
+   "archive_md5": null,
+   "archive_sha256": null,
+   "tree_sha256": "653338fc08cfd14c33452c9ff65f9270e3537b9317ae0706d61ec62a20ad3402",
+   "files": 358,
+   "tree_bytes": 270695958,
+   "license_snapshot": "artifacts/licenses/stargate_sample_pack/LICENSE.txt",
+   "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6",
+   "downloaded_at": "2026-10-08T08:13:40+00:00",
+   "attribution_required": false,
+   "on_disk_checkout_bytes": 270695958,
+   "git_metadata_bytes": 197314869
+  },
+  {
+   "asset_id": "vcsl",
+   "grade": "GREEN",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "source_url": "https://github.com/sgossner/VCSL",
+   "resolved_version": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+   "source_commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+   "source_commit_date": "2026-01-14T15:39:38-05:00",
+   "archive_url": null,
+   "archive_bytes": null,
+   "archive_md5": null,
+   "archive_sha256": null,
+   "tree_sha256": "a36d56fec3c10aafb6585a9416ce688775ed6a546e19521670d967c048dc8cc8",
+   "files": 196,
+   "tree_bytes": 176770353,
+   "license_snapshot": "artifacts/licenses/vcsl/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328",
+   "downloaded_at": "2026-10-08T08:13:45+00:00",
+   "attribution_required": false,
+   "on_disk_checkout_bytes": 176770353,
+   "git_metadata_bytes": 1817700882
+  },
+  {
+   "asset_id": "vcsl_keys",
+   "grade": "GREEN",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "source_url": "https://versilian-studios.com/vcsl-keys/",
+   "resolved_version": "2e91c9aa7b16d936",
+   "source_commit": null,
+   "source_commit_date": null,
+   "archive_url": "https://versilian-studios.com/Distro/VCSL_Keys.zip",
+   "archive_bytes": 655370475,
+   "archive_md5": "42b5c583e5945898f71ec93112f92f2d",
+   "archive_sha256": "2e91c9aa7b16d936f035963149df1fe4cbd65911116fb3e3ea6daca52e92024b",
+   "tree_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+   "files": 1481,
+   "tree_bytes": 682332627,
+   "license_snapshot": "artifacts/licenses/vcsl_keys/LICENSE.txt",
+   "license_snapshot_sha256": "0dae6bfdfc9b9f227b798d6a4a04409804230d23f2ba78e2943cfc4fe7b5cfa6",
+   "downloaded_at": "2026-10-08T08:16:58+00:00",
+   "attribution_required": false,
+   "on_disk_checkout_bytes": 682332627,
+   "git_metadata_bytes": 0
+  },
+  {
+   "asset_id": "vocalset",
+   "grade": "GREEN_CONDITIONAL",
+   "license": "CC-BY-4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "source_url": "https://doi.org/10.5281/zenodo.1203819",
+   "resolved_version": "df3dbe37b3dd840d",
+   "source_commit": null,
+   "source_commit_date": null,
+   "archive_url": "https://zenodo.org/api/records/1203819/files/VocalSet11.zip/content",
+   "archive_bytes": 2077243579,
+   "archive_md5": "0c09396242f946e7111ad7d8fc649b81",
+   "archive_sha256": "df3dbe37b3dd840dce4bf7a4d2545d36daf38abc63a368f0e2003764aa7fa124",
+   "tree_sha256": "ab1b20927a78f65f2e6fe29b41a49eaddbeda1493b881feec5cea1ae797347f3",
+   "files": 4225,
+   "tree_bytes": 2794258140,
+   "license_snapshot": "artifacts/licenses/vocalset/LICENSE.txt",
+   "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801",
+   "downloaded_at": "2026-10-08T09:04:39+00:00",
+   "attribution_required": true,
+   "on_disk_checkout_bytes": 2794258140,
+   "git_metadata_bytes": 0
+  }
+ ],
+ "instruments": {
+  "blb_pluck_center": {
+   "asset_id": "karoryfer_big_little_bass",
+   "zones": 440,
+   "kind": "pitched",
+   "cc_state": {},
+   "overrides": {
+    "Programs/maps/p_map.sfz": {
+     "hivel": "63",
+     "seq_length": "5"
+    },
+    "Programs/maps/f_map.sfz": {
+     "lovel": "64",
+     "seq_length": "5"
+    }
+   },
+   "sample_root": null,
+   "conversion": null
+  },
+  "sneakybass_pluck": {
+   "asset_id": "karoryfer_sneakybass",
+   "zones": 160,
+   "kind": "pitched",
+   "cc_state": {},
+   "overrides": {},
+   "sample_root": null,
+   "conversion": null
+  },
+  "stargate_drums": {
+   "asset_id": "stargate_sample_pack",
+   "zones": 69,
+   "kind": "drumkit",
+   "cc_state": null,
+   "overrides": null,
+   "sample_root": null,
+   "conversion": null
+  },
+  "vcsl_drums": {
+   "asset_id": "vcsl",
+   "zones": 84,
+   "kind": "drumkit",
+   "cc_state": null,
+   "overrides": null,
+   "sample_root": null,
+   "conversion": null
+  },
+  "vcsl_keys_grand_k": {
+   "asset_id": "vcsl_keys",
+   "zones": 138,
+   "kind": "pitched",
+   "cc_state": {
+    "64": 127
+   },
+   "overrides": {},
+   "sample_root": "data/derived/vcsl_keys_wav",
+   "conversion": {
+    "from": "flac",
+    "to": "wav float32",
+    "tool": "python-soundfile 0.13.1 / libsndfile 1.2.2",
+    "scope": "ingest-time only",
+    "source_asset_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+    "files": 138
+   }
+  },
+  "vcsl_keys_steinway_b": {
+   "asset_id": "vcsl_keys",
+   "zones": 126,
+   "kind": "pitched",
+   "cc_state": {
+    "64": 127
+   },
+   "overrides": {},
+   "sample_root": "data/derived/vcsl_keys_wav",
+   "conversion": {
+    "from": "flac",
+    "to": "wav float32",
+    "tool": "python-soundfile 0.13.1 / libsndfile 1.2.2",
+    "scope": "ingest-time only",
+    "source_asset_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+    "files": 126
+   }
+  },
+  "vcsl_keys_upright_knight": {
+   "asset_id": "vcsl_keys",
+   "zones": 90,
+   "kind": "pitched",
+   "cc_state": {
+    "64": 127
+   },
+   "overrides": {},
+   "sample_root": "data/derived/vcsl_keys_wav",
+   "conversion": {
+    "from": "flac",
+    "to": "wav float32",
+    "tool": "python-soundfile 0.13.1 / libsndfile 1.2.2",
+    "scope": "ingest-time only",
+    "source_asset_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+    "files": 90
+   }
+  },
+  "vcsl_keys_upright_y": {
+   "asset_id": "vcsl_keys",
+   "zones": 70,
+   "kind": "pitched",
+   "cc_state": {
+    "64": 127
+   },
+   "overrides": {},
+   "sample_root": "data/derived/vcsl_keys_wav",
+   "conversion": {
+    "from": "flac",
+    "to": "wav float32",
+    "tool": "python-soundfile 0.13.1 / libsndfile 1.2.2",
+    "scope": "ingest-time only",
+    "source_asset_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+    "files": 70
+   }
+  }
+ }
+}

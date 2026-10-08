@@ -1,0 +1,1313 @@
+{
+ "instrument_id": "vcsl_keys_upright_y",
+ "asset_id": "vcsl_keys",
+ "kind": "pitched",
+ "source_version": "2e91c9aa7b16d936",
+ "license": "CC0-1.0",
+ "source_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+ "ingest_overrides": {},
+ "cc_state": {
+  "64": 127
+ },
+ "zones": [
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C0_vl1_rr1.wav",
+   "root_key": 24,
+   "lo_key": 21,
+   "hi_key": 27,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 29.651838,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C0_vl1_rr2.wav",
+   "root_key": 24,
+   "lo_key": 21,
+   "hi_key": 27,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 23.30364,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C0_vl2_rr1.wav",
+   "root_key": 24,
+   "lo_key": 21,
+   "hi_key": 27,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 8.641084,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C0_vl3_rr1.wav",
+   "root_key": 24,
+   "lo_key": 21,
+   "hi_key": 27,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 6.807817,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G0_vl1_rr1.wav",
+   "root_key": 31,
+   "lo_key": 28,
+   "hi_key": 33,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 30.440483,
+   "pan": 0.0,
+   "tune_cents": 8.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G0_vl2_rr1.wav",
+   "root_key": 31,
+   "lo_key": 28,
+   "hi_key": 33,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 9.228881,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G0_vl3_rr1.wav",
+   "root_key": 31,
+   "lo_key": 28,
+   "hi_key": 33,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 0.44741,
+   "pan": 0.0,
+   "tune_cents": 5.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C1_vl1_rr1.wav",
+   "root_key": 36,
+   "lo_key": 34,
+   "hi_key": 39,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 27.527336,
+   "pan": 0.0,
+   "tune_cents": 3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C1_vl2_rr1.wav",
+   "root_key": 36,
+   "lo_key": 34,
+   "hi_key": 39,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 13.829127,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C1_vl2_rr2.wav",
+   "root_key": 36,
+   "lo_key": 34,
+   "hi_key": 39,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 4.654397,
+   "pan": 0.0,
+   "tune_cents": -4.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C1_vl3_rr1.wav",
+   "root_key": 36,
+   "lo_key": 34,
+   "hi_key": 39,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -0.323115,
+   "pan": 0.0,
+   "tune_cents": -5.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C1_vl3_rr2.wav",
+   "root_key": 36,
+   "lo_key": 34,
+   "hi_key": 39,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -1.378471,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G1_vl1_rr1.wav",
+   "root_key": 43,
+   "lo_key": 40,
+   "hi_key": 45,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 21.925918,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G1_vl2_rr1.wav",
+   "root_key": 43,
+   "lo_key": 40,
+   "hi_key": 45,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 12.989024,
+   "pan": 0.0,
+   "tune_cents": -3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G1_vl2_rr2.wav",
+   "root_key": 43,
+   "lo_key": 40,
+   "hi_key": 45,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 6.741346,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G1_vl3_rr1.wav",
+   "root_key": 43,
+   "lo_key": 40,
+   "hi_key": 45,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -1.607382,
+   "pan": 0.0,
+   "tune_cents": -9.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G1_vl3_rr2.wav",
+   "root_key": 43,
+   "lo_key": 40,
+   "hi_key": 45,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -3.01966,
+   "pan": 0.0,
+   "tune_cents": -9.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl1_rr1.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 39.028239,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl1_rr2.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 30.033653,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl2_rr1.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 9.888998,
+   "pan": 0.0,
+   "tune_cents": -1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl2_rr2.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 5.097862,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl3_rr1.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -0.108011,
+   "pan": 0.0,
+   "tune_cents": -3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C2_vl3_rr2.wav",
+   "root_key": 48,
+   "lo_key": 46,
+   "hi_key": 51,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 0.033486,
+   "pan": 0.0,
+   "tune_cents": -3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl1_rr1.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 20.013207,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl1_rr2.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 14.920328,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl2_rr1.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 5.476154,
+   "pan": 0.0,
+   "tune_cents": -5.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl2_rr2.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 5.332269,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl3_rr1.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -4.224868,
+   "pan": 0.0,
+   "tune_cents": -8.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G2_vl3_rr2.wav",
+   "root_key": 55,
+   "lo_key": 52,
+   "hi_key": 57,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -2.251521,
+   "pan": 0.0,
+   "tune_cents": -8.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl1_rr1.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 20.955601,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl1_rr2.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 37.618421,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl2_rr1.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 9.158663,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl2_rr2.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 5.926395,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl3_rr1.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -1.940383,
+   "pan": 0.0,
+   "tune_cents": -5.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C3_vl3_rr2.wav",
+   "root_key": 60,
+   "lo_key": 58,
+   "hi_key": 63,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -1.136041,
+   "pan": 0.0,
+   "tune_cents": -4.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl1_rr1.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 22.189059,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl1_rr2.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 26.144332,
+   "pan": 0.0,
+   "tune_cents": -1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl2_rr1.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 13.52652,
+   "pan": 0.0,
+   "tune_cents": -4.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl2_rr2.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 6.343567,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl3_rr1.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 0.118514,
+   "pan": 0.0,
+   "tune_cents": -7.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G3_vl3_rr2.wav",
+   "root_key": 67,
+   "lo_key": 64,
+   "hi_key": 69,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -0.323157,
+   "pan": 0.0,
+   "tune_cents": -8.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl1_rr1.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 17.450003,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl1_rr2.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 17.283262,
+   "pan": 0.0,
+   "tune_cents": -1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl2_rr1.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 6.95215,
+   "pan": 0.0,
+   "tune_cents": -3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl2_rr2.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 3.559239,
+   "pan": 0.0,
+   "tune_cents": -4.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl3_rr1.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -3.856524,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C4_vl3_rr2.wav",
+   "root_key": 72,
+   "lo_key": 70,
+   "hi_key": 75,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -3.24634,
+   "pan": 0.0,
+   "tune_cents": -6.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl1_rr1.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 19.718828,
+   "pan": 0.0,
+   "tune_cents": 3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl1_rr2.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 21.397055,
+   "pan": 0.0,
+   "tune_cents": 3.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl2_rr1.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 4.01673,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl2_rr2.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 4.155063,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl3_rr1.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -2.290823,
+   "pan": 0.0,
+   "tune_cents": -1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G4_vl3_rr2.wav",
+   "root_key": 79,
+   "lo_key": 76,
+   "hi_key": 81,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": -1.398889,
+   "pan": 0.0,
+   "tune_cents": -1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl1_rr1.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 40.339234,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl1_rr2.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 26.711033,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl2_rr1.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 10.431828,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl2_rr2.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 10.187154,
+   "pan": 0.0,
+   "tune_cents": 2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl3_rr1.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 3.23982,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C5_vl3_rr2.wav",
+   "root_key": 84,
+   "lo_key": 82,
+   "hi_key": 87,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 3.971374,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G5_vl1_rr1.wav",
+   "root_key": 91,
+   "lo_key": 88,
+   "hi_key": 93,
+   "lo_vel": 0,
+   "hi_vel": 65,
+   "volume_db": 32.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G5_vl2_rr1.wav",
+   "root_key": 91,
+   "lo_key": 88,
+   "hi_key": 93,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 12.090187,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G5_vl2_rr2.wav",
+   "root_key": 91,
+   "lo_key": 88,
+   "hi_key": 93,
+   "lo_vel": 66,
+   "hi_vel": 99,
+   "volume_db": 10.771573,
+   "pan": 0.0,
+   "tune_cents": 1.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G5_vl3_rr1.wav",
+   "root_key": 91,
+   "lo_key": 88,
+   "hi_key": 93,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 2.494364,
+   "pan": 0.0,
+   "tune_cents": -5.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G5_vl3_rr2.wav",
+   "root_key": 91,
+   "lo_key": 88,
+   "hi_key": 93,
+   "lo_vel": 100,
+   "hi_vel": 127,
+   "volume_db": 3.096803,
+   "pan": 0.0,
+   "tune_cents": -2.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C6_vl2_rr1.wav",
+   "root_key": 96,
+   "lo_key": 94,
+   "hi_key": 100,
+   "lo_vel": 0,
+   "hi_vel": 83,
+   "volume_db": 7.532214,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C6_vl2_rr2.wav",
+   "root_key": 96,
+   "lo_key": 94,
+   "hi_key": 100,
+   "lo_vel": 0,
+   "hi_vel": 83,
+   "volume_db": 13.610472,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C6_vl3_rr1.wav",
+   "root_key": 96,
+   "lo_key": 94,
+   "hi_key": 100,
+   "lo_vel": 84,
+   "hi_vel": 127,
+   "volume_db": 1.788612,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    1,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_C6_vl3_rr2.wav",
+   "root_key": 96,
+   "lo_key": 94,
+   "hi_key": 100,
+   "lo_vel": 84,
+   "hi_vel": 127,
+   "volume_db": 2.004837,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "seq": [
+    2,
+    2
+   ],
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G6_vl1_rr1.wav",
+   "root_key": 103,
+   "lo_key": 101,
+   "hi_key": 108,
+   "lo_vel": 0,
+   "hi_vel": 63,
+   "volume_db": 26.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  },
+  {
+   "sample": "Upright Piano, Y/Sustains/Upright1_Sus_G6_vl3_rr2.wav",
+   "root_key": 103,
+   "lo_key": 101,
+   "hi_key": 108,
+   "lo_vel": 64,
+   "hi_vel": 127,
+   "volume_db": 3.0,
+   "pan": 0.0,
+   "tune_cents": 0.0,
+   "offset": 0,
+   "keytrack": true,
+   "one_shot": false,
+   "release_s": 0.5
+  }
+ ],
+ "sample_root": "data/derived/vcsl_keys_wav",
+ "conversion": {
+  "from": "flac",
+  "to": "wav float32",
+  "tool": "python-soundfile 0.13.1 / libsndfile 1.2.2",
+  "scope": "ingest-time only",
+  "source_asset_sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+  "files": 70
+ }
+}

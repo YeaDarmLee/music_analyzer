@@ -43,8 +43,12 @@ def _opcodes(block: str) -> dict:
     return out
 
 
-def parse_sfz(text: str, strict: bool = True) -> tuple[list[dict], Counter]:
-    """-> (regions as flat opcode dicts with inheritance applied, counter of unsupported opcodes)."""
+def parse_sfz(text: str, strict: bool = True, cc_state: dict | None = None) -> tuple[list[dict], Counter]:
+    """-> (regions as flat opcode dicts with inheritance applied, counter of unsupported opcodes).
+
+    cc_state={64: 127}: evaluate loccN/hiccN gates for a FIXED controller state (here: sustain pedal down). A region is kept iff
+    every gated controller lies inside its [lo, hi] range; this is region selection, not ignoring. A gate on a controller that
+    is not in cc_state stays CRITICAL. on_loccN/on_hiccN regions (CC-triggered note-ons) are dropped and counted."""
     if re.search(r"^\s*#(include|define)\b", text, flags=re.M):
         raise SfzUnsupported("#include/#define change region definitions and are not supported")
     text = re.sub(r"//[^\n]*", "", text)
@@ -67,6 +71,26 @@ def parse_sfz(text: str, strict: bool = True) -> tuple[list[dict], Counter]:
             r = {**levels["global"], **levels["master"], **levels["group"], **ops}
             r["_default_path"] = control.get("default_path", "")
             regions.append(r)
+    cc_state = cc_state or {}
+    if cc_state:
+        kept = []
+        for r in regions:
+            if any(re.match(r"^on_(lo|hi)cc\d+$", k) for k in r):
+                unsupported["dropped region: CC-triggered (on_loccN)"] += 1
+                continue
+            ok = True
+            for k in list(r):
+                m = re.match(r"^(lo|hi)cc(\d+)$", k)
+                if m and int(m.group(2)) in cc_state:
+                    n = int(m.group(2))
+                    lo, hi = float(r.get(f"locc{n}", 0)), float(r.get(f"hicc{n}", 127))
+                    ok &= lo <= cc_state[n] <= hi
+                    r.pop(k)
+            if ok:
+                kept.append(r)
+            else:
+                unsupported[f"dropped region: outside cc_state {cc_state}"] += 1
+        regions = kept
     known = {"sample", "key", "lokey", "hikey", "pitch_keycenter", "lovel", "hivel", "volume", "pan", "tune", "transpose",
              "offset", "loop_mode", "loop_start", "loop_end", "seq_length", "seq_position", "lorand", "hirand", "group",
              "off_by", "pitch_keytrack", "ampeg_release", "ampeg_attack", "trigger", "_default_path", "end", "loopmode"}

@@ -1,0 +1,2056 @@
+{
+ "manifest_version": 1,
+ "name": "data_factory_scenes",
+ "assets": {
+  "karoryfer_big_little_bass": {
+   "asset_id": "karoryfer_big_little_bass",
+   "source": "Karoryfer Big Little Bass",
+   "source_url": "https://github.com/sfzinstruments/karoryfer.big-little-bass",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "version": "4e92bdf54dcd2d6cfad968cc90542d5461c9b9fc",
+   "sha256": "fa0a0af3f216ed1b819786d13b97dc05fdcc0bc0853ee84a5452a8561995db6c",
+   "downloaded_at": "2026-10-08T08:13:28+00:00",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "source_commit": "4e92bdf54dcd2d6cfad968cc90542d5461c9b9fc",
+   "source_commit_date": "2024-12-05T17:51:13+01:00",
+   "source_remote": "https://github.com/sfzinstruments/karoryfer.big-little-bass",
+   "retrieval": "git clone --depth 1",
+   "files": 481,
+   "bytes": 318178161,
+   "license_snapshot": "artifacts/licenses/karoryfer_big_little_bass/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+  },
+  "karoryfer_sneakybass": {
+   "asset_id": "karoryfer_sneakybass",
+   "source": "Karoryfer Sneakybass",
+   "source_url": "https://github.com/sfzinstruments/karoryfer.sneakybass",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "version": "cc1a67e5c913678b85eaad1a3b5cb180d3be3e2d",
+   "sha256": "ba7bf9bf5546028477d402452d44601f673a2f4bb0725b99612d4b0715f92d84",
+   "downloaded_at": "2026-10-08T08:13:34+00:00",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "source_commit": "cc1a67e5c913678b85eaad1a3b5cb180d3be3e2d",
+   "source_commit_date": "2022-12-05T19:42:52+01:00",
+   "source_remote": "https://github.com/sfzinstruments/karoryfer.sneakybass",
+   "retrieval": "git clone --depth 1",
+   "files": 715,
+   "bytes": 418714718,
+   "license_snapshot": "artifacts/licenses/karoryfer_sneakybass/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+  },
+  "project-procedural-dsp": {
+   "asset_id": "project-procedural-dsp",
+   "source": "Music Analyzer data_factory procedural DSP (project-written code)",
+   "source_url": "repo:src/data_factory",
+   "license": "project-owned",
+   "license_url": "repo:src/data_factory",
+   "version": "df0.1",
+   "sha256": "6805a5367816006b449788fb3e821666bdfc7483c28b57f9f95878116b0aef0a",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "downloaded_at": "n/a"
+  },
+  "stargate_sample_pack": {
+   "asset_id": "stargate_sample_pack",
+   "source": "Stargate Sample Pack",
+   "source_url": "https://github.com/stargatedaw/stargate-sample-pack",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "version": "dbfd6ec52d4ed53b60bdbea5fc6adf295127c027",
+   "sha256": "653338fc08cfd14c33452c9ff65f9270e3537b9317ae0706d61ec62a20ad3402",
+   "downloaded_at": "2026-10-08T08:13:40+00:00",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "source_commit": "dbfd6ec52d4ed53b60bdbea5fc6adf295127c027",
+   "source_commit_date": "2022-12-24T15:59:48-08:00",
+   "source_remote": "https://github.com/stargatedaw/stargate-sample-pack",
+   "retrieval": "git clone --depth 1",
+   "files": 358,
+   "bytes": 270695958,
+   "license_snapshot": "artifacts/licenses/stargate_sample_pack/LICENSE.txt",
+   "license_snapshot_sha256": "50b0537fd5f8a4d4899b90d2e1e233a1bca53e56897b84785edd094b3a3d72b6"
+  },
+  "vcsl": {
+   "asset_id": "vcsl",
+   "source": "Versilian Community Sample Library (https://versilian-studios.com/vcsl/)",
+   "source_url": "https://github.com/sgossner/VCSL",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "version": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+   "sha256": "a36d56fec3c10aafb6585a9416ce688775ed6a546e19521670d967c048dc8cc8",
+   "downloaded_at": "2026-10-08T08:13:45+00:00",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "source_commit": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+   "source_commit_date": "2026-01-14T15:39:38-05:00",
+   "source_remote": "https://github.com/sgossner/VCSL",
+   "retrieval": "git clone --depth 1",
+   "files": 196,
+   "bytes": 176770353,
+   "license_snapshot": "artifacts/licenses/vcsl/LICENSE.txt",
+   "license_snapshot_sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+  },
+  "vcsl_keys": {
+   "asset_id": "vcsl_keys",
+   "source": "VCSL Keys",
+   "source_url": "https://versilian-studios.com/vcsl-keys/",
+   "license": "CC0-1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en",
+   "version": "2e91c9aa7b16d936",
+   "sha256": "27b9d75738b7ad7b2c3a6d671e6b93971fdd8882e72e9033d572b1577c6bcf04",
+   "downloaded_at": "2026-10-08T08:16:58+00:00",
+   "grade": "GREEN",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": false,
+   "attribution_text": "",
+   "notice_required": false,
+   "archive_url": "https://versilian-studios.com/Distro/VCSL_Keys.zip",
+   "archive_name": "VCSL_Keys.zip",
+   "archive_bytes": 655370475,
+   "archive_md5": "42b5c583e5945898f71ec93112f92f2d",
+   "archive_sha256": "2e91c9aa7b16d936f035963149df1fe4cbd65911116fb3e3ea6daca52e92024b",
+   "retrieval": "https download + zip extract",
+   "files": 1481,
+   "bytes": 682332627,
+   "license_snapshot": "artifacts/licenses/vcsl_keys/LICENSE.txt",
+   "license_snapshot_sha256": "0dae6bfdfc9b9f227b798d6a4a04409804230d23f2ba78e2943cfc4fe7b5cfa6"
+  },
+  "vocalset": {
+   "asset_id": "vocalset",
+   "source": "VocalSet: A Singing Voice Dataset",
+   "source_url": "https://doi.org/10.5281/zenodo.1203819",
+   "license": "CC-BY-4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "version": "df3dbe37b3dd840d",
+   "sha256": "ab1b20927a78f65f2e6fe29b41a49eaddbeda1493b881feec5cea1ae797347f3",
+   "downloaded_at": "2026-10-08T09:04:39+00:00",
+   "grade": "GREEN_CONDITIONAL",
+   "commercial_allowed": true,
+   "training_allowed": true,
+   "derivative_allowed": true,
+   "redistribution_allowed": true,
+   "attribution_required": true,
+   "attribution_text": "Wilkins, Julia; Prem Seetharaman; Alison Wahl; Bryan Pardo. VocalSet: A Singing Voice Dataset (version 1.1, Zenodo, 2018). DOI 10.5281/zenodo.1203819. Licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Creator names as listed by the Zenodo record; modified (cropped, mixed, processed) for model training.",
+   "notice_required": false,
+   "archive_url": "https://zenodo.org/api/records/1203819/files/VocalSet11.zip/content",
+   "archive_name": "VocalSet11.zip",
+   "archive_bytes": 2077243579,
+   "archive_md5": "0c09396242f946e7111ad7d8fc649b81",
+   "archive_sha256": "df3dbe37b3dd840dce4bf7a4d2545d36daf38abc63a368f0e2003764aa7fa124",
+   "retrieval": "https download + zip extract",
+   "files": 4225,
+   "bytes": 2794258140,
+   "license_snapshot": "artifacts/licenses/vocalset/LICENSE.txt",
+   "license_snapshot_sha256": "4b3ea01d43cbfbb1adb214831cbf2ad0e842303c2929130d76863b644e306801"
+  }
+ },
+ "samples": [
+  {
+   "sample_id": "train_0000000",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000001",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000002",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000003",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000004",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000005",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000006",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000007",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000008",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000009",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000010",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000011",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000012",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000013",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000014",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000015",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000016",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000017",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000018",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000019",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000020",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000021",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000022",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000023",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000024",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000025",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000026",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000027",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000028",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000029",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000030",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000031",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000032",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000033",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000034",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000035",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000036",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000037",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000038",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000039",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack"
+   ]
+  },
+  {
+   "sample_id": "train_0000040",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000041",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000042",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000043",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000044",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000045",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000046",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000047",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000048",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000049",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000050",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000051",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000052",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000053",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000054",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000055",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000056",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000057",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000058",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000059",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000060",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000061",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000062",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl"
+   ]
+  },
+  {
+   "sample_id": "train_0000063",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000064",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000065",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000066",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000067",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000068",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000069",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000070",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000071",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "stargate_sample_pack"
+   ]
+  },
+  {
+   "sample_id": "train_0000072",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000073",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000074",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000075",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000076",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000077",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000078",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000079",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000080",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000081",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000082",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000083",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000084",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000085",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000086",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000087",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000088",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000089",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000090",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000091",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000092",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000093",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000094",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000095",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl"
+   ]
+  },
+  {
+   "sample_id": "train_0000096",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000097",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000098",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000099",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000100",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000101",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000102",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000103",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000104",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000105",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000106",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000107",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000108",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000109",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000110",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000111",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000112",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000113",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000114",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000115",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000116",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000117",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000118",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000119",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl"
+   ]
+  },
+  {
+   "sample_id": "train_0000120",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000121",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000122",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000123",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000124",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000125",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000126",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000127",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000128",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000129",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000130",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000131",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000132",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000133",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000134",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000135",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000136",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000137",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000138",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000139",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000140",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000141",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000142",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000143",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000144",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000145",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000146",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000147",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000148",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000149",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000150",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000151",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000152",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000153",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000154",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000155",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000156",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000157",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000158",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000159",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000160",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000161",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000162",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000163",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000164",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000165",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000166",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000167",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000168",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000169",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000170",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000171",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000172",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000173",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000174",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000175",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl"
+   ]
+  },
+  {
+   "sample_id": "train_0000176",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000177",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000178",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000179",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000180",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000181",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000182",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000183",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000184",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000185",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000186",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "train_0000187",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000188",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000189",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000190",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000191",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000192",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000193",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000194",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000195",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000196",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000197",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "train_0000198",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "train_0000199",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000000",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000001",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000002",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000003",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "val_0000004",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000005",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000006",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000007",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000008",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000009",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000010",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000011",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack"
+   ]
+  },
+  {
+   "sample_id": "val_0000012",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "val_0000013",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "val_0000014",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000015",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000016",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000017",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000018",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000019",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000020",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000021",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000022",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000023",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000024",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000025",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000026",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "val_0000027",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000028",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000029",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000030",
+   "asset_ids": [
+    "project-procedural-dsp"
+   ]
+  },
+  {
+   "sample_id": "val_0000031",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "val_0000032",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  },
+  {
+   "sample_id": "val_0000033",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "stargate_sample_pack",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000034",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000035",
+   "asset_ids": [
+    "karoryfer_big_little_bass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000036",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000037",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000038",
+   "asset_ids": [
+    "karoryfer_sneakybass",
+    "project-procedural-dsp",
+    "vcsl_keys",
+    "vocalset"
+   ]
+  },
+  {
+   "sample_id": "val_0000039",
+   "asset_ids": [
+    "project-procedural-dsp",
+    "vcsl_keys"
+   ]
+  }
+ ]
+}

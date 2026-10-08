@@ -58,6 +58,9 @@ class Factory:
                 aroot = records[man["asset_id"]].get("root")
                 if not aroot:
                     raise ValueError(f"asset {man['asset_id']} is not ingested (no root); cannot load {it['manifest']}")
+                aroot = Path(aroot) if Path(aroot).is_absolute() else root / aroot
+                if man.get("sample_root") and not Path(man["sample_root"]).is_absolute():
+                    man["sample_root"] = str((root / man["sample_root"]).resolve())  # derived-sample dirs are repo-relative
                 inst[man["instrument_id"]] = SampleInstrument(man, aroot, cfg.get("sample_rate", SAMPLE_RATE))
                 stems[man["instrument_id"]] = stem
         cfg["instrument_stems"] = stems
@@ -65,14 +68,17 @@ class Factory:
         if cfg.get("vocal_index"):
             vi = json.loads((root / cfg["vocal_index"]).read_text(encoding="utf-8"))
             vroot = records[vi["asset_id"]]["root"]
+            vroot = Path(vroot) if Path(vroot).is_absolute() else root / vroot
         return cls(cfg, inst, vi, vroot, records)
 
     # ------------------------------------------------------------------------------------------------------------
-    def make_spec(self, index: int, split: str, git_commit: str = "") -> SceneSpec:
+    def make_spec(self, index: int, split: str, git_commit: str = "", force: dict | None = None) -> SceneSpec:
+        """force (listening/evaluation packs only): {"active": [stems], "sample": bool, "scene_type": str} overrides the
+        random scene-type draw; it is part of the seed so forced scenes never collide with regular ones."""
         cfg, sr = self.cfg, self.sr
         family_target = "test" if split == "ood" else split
         for attempt in range(256):  # rejection sampling keeps whole composition families inside one split
-            seeds = derive_seeds(cfg["master_seed"], index, f"{split}#{attempt}")
+            seeds = derive_seeds(cfg["master_seed"], index, f"{split}#{attempt}" + (f"#force{sorted(force.items())}" if force else ""))
             lo, hi = cfg["duration_seconds"]
             rc = make_rng(seeds["composition"])
             dur = float(rc.uniform(lo, hi))
@@ -88,13 +94,16 @@ class Factory:
         rm = make_rng(seeds["mix"])
 
         stype, active = self._scene_type(rp, split)
+        if force and "active" in force:
+            stype, active = force.get("scene_type", "forced"), set(force["active"])
+            rp.rand()
         profile = list(cfg["profiles"])[rm.randint(len(cfg["profiles"]))]
         sparse = stype in ("sparse_instrument", "near_silence")
         comp = dict(comp, density=0.2 if sparse else comp["density"])
 
         events, renderers, assets_used, perf_meta = [], {}, {A.INTERNAL_ASSET_ID}, {}
         for stem in [s for s in INSTRUMENTS if s in active]:
-            ev, meta, rend, aid = self._instrument(stem, comp, dur, rp, ri, split)
+            ev, meta, rend, aid = self._instrument(stem, comp, dur, rp, ri, split, bool(force and force.get("sample")))
             events += ev
             renderers[stem] = rend
             perf_meta[stem] = meta
@@ -110,7 +119,8 @@ class Factory:
         if "vocal" in gains:
             gains["vocal"] = float(rm.uniform(*mix_cfg["vocal_gain_db"]))
         lvl = mix_cfg["near_silence_rms_db"] if stype == "near_silence" else mix_cfg["target_rms_db"]
-        mix = {"stem_gain_db": gains, "target_rms_db": float(rm.uniform(*lvl)), "peak_limit": mix_cfg["peak_limit"]}
+        mix = {"stem_gain_db": gains, "target_rms_db": float(rm.uniform(*lvl)), "peak_limit": mix_cfg["peak_limit"],
+               "stem_ref_rms_db": mix_cfg.get("stem_ref_rms_db")}
         comp_store = {k: v for k, v in comp.items() if k != "scale"} | {"performance": perf_meta}
         return SceneSpec(
             scene_id=f"{split}_{index:07d}", split=split, composition_family_id=comp["family_id"], duration_samples=n,
@@ -146,9 +156,9 @@ class Factory:
         ids = self.by_stem.get(stem, [])
         return [i for i in ids if (i in hold) == (split == "ood")] or ([] if split != "ood" else [i for i in ids if i not in hold])
 
-    def _instrument(self, stem, comp, dur, rp, ri, split):
+    def _instrument(self, stem, comp, dur, rp, ri, split, force_sample=False):
         pool = self._pool(stem, split)
-        use_sample = bool(pool) and (stem == "piano" or ri.rand() < .5)
+        use_sample = bool(pool) and (stem == "piano" or force_sample or ri.rand() < .5)
         if stem == "piano":
             ev, meta = performance.piano(comp, dur, rp)
             if use_sample:
